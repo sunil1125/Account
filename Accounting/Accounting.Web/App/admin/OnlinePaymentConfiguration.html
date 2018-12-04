@@ -1,0 +1,540 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div class="align-right">
+		<span class="PageTitleBlack float-left" style="margin-top: 12px; margin-bottom: 10px;">Online Payment Configuration</span>
+	</div>
+	<div class="tableLayout width-percent-100">
+		<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+			<li id="agencyLink" class="active"><a href="#agency" data-toggle="tab" data-bind="click: onAgencyClick" tabindex="-1"><span class="tabHeaderText">Agency</span></a></li>
+			<li id="companyLink" class=""><a href="#company" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Company</span></a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content contentAreaWithBackground">
+			<div id="agency" class="tab-pane fade active in " style="width: 100%; position: relative;">
+				<table style="width: 100%;">
+					<tr>
+						<td>
+							<div class="width-percent-100 margin-right-percent-1">
+								<div class="float-left width-percent-30">
+									<table>
+										<tr>
+											<td class="typeLabels">Partner Company:
+											</td>
+											<td class="typeStatus">
+												<div data-bind="compose: { model: agencyNameSearchList, view: 'purchaseOrder/purchaseOrderToSalesOrder/searchAgencyNameControl' }"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="float-right width-percent-30">
+									<!--<button id="btneEdit" class="btn btn-primary float-right" disabled="disabled" style="margin-right:30px;">Edit</button>-->
+									<button id="btnDeleteAgency" class="btn btn-primary float-right margin-right-3" style="margin-right: 30px;" data-bind="click: onAgencyDelete, enable: enableAgencyDelete">Delete</button>
+									<button id="btnSaveAgency" class="btn btn-primary float-right margin-right-3" style="margin-right: 3px;" data-bind="click: agencySave, enable: enableAgencySave">Save</button>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="width-percent-100 margin-top--6">
+								<div class="table-cell float-left width-percent-31 margin-top--6">
+									<table class="width-percent-100">
+										<tr>
+											<td>
+												<fieldset>
+													<legend class="margin-bottom--5">Credit Card</legend>
+													<div class=" width-percent-100">
+														<table class="tbl-sales-order width-percent-100">
+															<tr>
+																<td colspan="2">
+																	<div class="typecontrols padding-top-0 margin-bottom--17">
+																		<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button2" class=" flatButton btn btn-checkbox active width-100"
+																			data-bind="css: { active: isAgencyCreditCaredSelected }, html: isAgencyCreditCaredSelected() ? agencyCreditCardhtml() : agencyCreditCardName, click: agencyCreditCardClick ">
+																		</button>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels width-percent-20">Charge $:
+																</td>
+																<td class="typeStatus">
+																	<div data-bind=" validationElement: agencyCCCharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+																		<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (agencyCCCharge.isModified() && !agencyCCCharge.isValid()), tooltip: { title: agencyCCCharge.isModified() ? agencyCCCharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																		<input id="agencyCCCharge" type="text" maxlength="5" class="" data-bind="style: { width: (agencyCCCharge.isModified() && !agencyCCCharge.isValid()) ? '85.2%' : '77%' }, value: agencyCCCharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels">Charge Type:
+																</td>
+																<td class="typeStatus">
+																	<select id="select9" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: agencyCCchargeTypes, value: selecteedAgencyCCchargeTypes"></select>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<fieldset class="width-percent-86">
+																		<legend>Note:</legend>
+																		<div>
+																			<textarea id="Textarea3" class="accounting-textarea  OnlinePaymentdebitCard" data-bind="value: agencyCCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+																		</div>
+																	</fieldset>
+																</td>
+															</tr>
+														</table>
+													</div>
+												</fieldset>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="table-cell float-left width-percent-31 margin-left-percent-1 margin-top--6">
+									<table class="width-percent-100">
+										<tr>
+											<td>
+												<fieldset>
+													<legend class="margin-bottom--5">E-Check</legend>
+													<div class=" width-percent-100">
+														<table class="tbl-sales-order width-percent-100">
+															<tr>
+																<td colspan="2">
+																	<div class="typecontrols padding-top-0 margin-bottom--17">
+																		<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button3" class=" flatButton btn btn-checkbox active width-100"
+																			data-bind="css: { active: isAgencyECheckSelected }, html: isAgencyECheckSelected() ? agencyECheckhtml() : agencyECheckName, click: agencyECheckClick ">
+																		</button>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels width-percent-20">Charge $:
+																</td>
+																<td class="typeStatus">
+																	<div data-bind=" validationElement: agencyCECharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+																		<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (agencyCECharge.isModified() && !agencyCECharge.isValid()), tooltip: { title: agencyCECharge.isModified() ? agencyCECharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																		<input id="Text6" type="text" maxlength="5" class="" data-bind="style: { width: (agencyCECharge.isModified() && !agencyCECharge.isValid()) ? '85.2%' : '77%' }, value: agencyCECharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels">Charge Type:
+																</td>
+																<td class="typeStatus">
+																	<select id="select1" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: agencyECchargeTypes, value: selecteedAgencyECchargeTypes"></select>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<fieldset class="width-percent-86">
+																		<legend>Note:</legend>
+																		<div>
+																			<textarea id="Textarea1" class="accounting-textarea  OnlinePaymentdebitCard" data-bind="value: agencyECNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+																		</div>
+																	</fieldset>
+																</td>
+															</tr>
+														</table>
+													</div>
+												</fieldset>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="table-cell float-right width-percent-31 margin-top--6" style="margin-right: 2%;">
+									<table class="width-percent-100">
+										<tr>
+											<td>
+												<fieldset>
+													<legend class="margin-bottom--5">Debit Card</legend>
+													<div class=" width-percent-100">
+														<table class="tbl-sales-order width-percent-100">
+															<tr>
+																<td colspan="2">
+																	<div class="typecontrols padding-top-0 margin-bottom--17">
+																		<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button4" class=" flatButton btn btn-checkbox active width-100"
+																			data-bind="css: { active: isAgencyDebitCardSelected }, html: isAgencyDebitCardSelected() ? agencyDebitCardHtml() : agencyDebitCardName, click: agencyDebitCardClick ">
+																		</button>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels width-percent-20">Charge $:
+																</td>
+																<td class="typeStatus">
+																	<input id="Text4" class="width-percent-77" type="text" placeholder="" readonly="readonly" />
+																</td>
+															</tr>
+															<tr>
+																<td class="typeLabels">Charge Type:
+																</td>
+																<td class="typeStatus">
+																	<select id="select2" class="margin-bottom-0 custom-input width-percent-77" disabled="disabled"></select>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<fieldset class="width-percent-86">
+																		<legend>Note:</legend>
+																		<div>
+																			<textarea id="Textarea2" class="accounting-textarea  OnlinePaymentdebitCard" data-bind="value: agencyDCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+																		</div>
+																	</fieldset>
+																</td>
+															</tr>
+														</table>
+													</div>
+												</fieldset>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+								<div class="row-fluid">
+									<div id="Div1" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div id="customerConfiguration" class="width-percent-100 margin-right-percent-1">
+
+					<div class="float-left width-percent-100">
+						<table>
+							<tr>
+								<td>Customer Name:</td>
+								<td>
+									<input type="text" name="txtCustomerName" data-bind="value: customerName" readonly="true" /></td>
+							</tr>
+						</table>
+						<div class="float-right width-percent-30" style="margin-top: -30px;">
+							<button id="btndeleteCustomer" class="btn btn-primary float-right margin-right-3" style="margin-right: 30px;" data-bind="click: onCustomerDelete, enable: enableCustomerDelete">Delete</button>
+							<button id="btnsaveCustomer" class="btn btn-primary float-right margin-right-3" style="margin-right: 3px;" data-bind="click: customerSave, enable: enableCustomerSave">Save</button>
+						</div>
+					</div>
+
+					<div class="width-percent-100 margin-top--8">
+						<div class="table-cell float-left width-percent-31 margin-top--8">
+							<table class="width-percent-100">
+								<tr>
+									<td>
+										<fieldset>
+											<legend class="margin-bottom--5">Credit Card</legend>
+											<div class=" width-percent-100">
+												<table class="tbl-sales-order width-percent-100">
+													<tr>
+														<td colspan="2">
+															<div class="typecontrols padding-top-0 margin-bottom--17">
+																<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button9" class=" flatButton btn btn-checkbox active width-100"
+																	data-bind="css: { active: isCustomerCreditCaredSelected }, html: isCustomerCreditCaredSelected() ? customerCreditCardhtml() : customerCreditCardName, click: customerCreditCardClick ">
+																</button>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels width-percent-20">Charge $:
+														</td>
+														<td class="typeStatus">
+															<div data-bind=" validationElement: customerCCCharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+																<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (customerCCCharge.isModified() && !customerCCCharge.isValid()), tooltip: { title: customerCCCharge.isModified() ? customerCCCharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																<input id="Text5" type="text" maxlength="5" class="" data-bind="style: { width: (customerCCCharge.isModified() && !customerCCCharge.isValid()) ? '85.2%' : '77%' }, value: customerCCCharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">Charge Type:
+														</td>
+														<td class="typeStatus">
+															<select id="select6" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: companyCCchargeTypes, value: selecteedcustomerCCchargeTypes"></select>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															<fieldset class="width-percent-86">
+																<legend>Note:</legend>
+																<div>
+																	<textarea id="Textarea7" class="accounting-textarea  OnlinePaymentdebitCard" data-bind="value: customerCCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+																</div>
+															</fieldset>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</fieldset>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="table-cell float-left width-percent-31 margin-left-percent-1 margin-top--8">
+							<table class="width-percent-100">
+								<tr>
+									<td>
+										<fieldset>
+											<legend class="margin-bottom--5">E-Check</legend>
+											<div class=" width-percent-100">
+												<table class="tbl-sales-order width-percent-100">
+													<tr>
+														<td colspan="2">
+															<div class="typecontrols padding-top-0 margin-bottom--17">
+																<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button10" class=" flatButton btn btn-checkbox active width-100"
+																	data-bind="css: { active: isCustomerECheckSelected }, html: isCustomerECheckSelected() ? customerECheckhtml() : customerECheckName, click: customerECheckClick ">
+																</button>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels width-percent-20">Charge $:
+														</td>
+														<td class="typeStatus">
+															<div data-bind=" validationElement: customerECharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+																<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (customerECharge.isModified() && !customerECharge.isValid()), tooltip: { title: customerECharge.isModified() ? customerECharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																<input id="Text2" type="text" maxlength="5" class="" data-bind="style: { width: (customerECharge.isModified() && !customerECharge.isValid()) ? '85.2%' : '77%' }, value: customerECharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">Charge Type:
+														</td>
+														<td class="typeStatus">
+
+															<select id="select7" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: companyECchargeTypes, value: selecteedcustomerECchargeTypes"></select>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															<fieldset class="width-percent-86">
+																<legend>Note:</legend>
+																<div>
+																	<textarea id="Textarea8" data-bind="value: customerECNote, valueUpdate: 'afterkeydown'" class="accounting-textarea OnlinePaymentdebitCard" cols="10" rows="3" maxlength="200"></textarea>
+																</div>
+															</fieldset>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</fieldset>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="table-cell float-right width-percent-31 margin-top--8" style="margin-right: 2%;">
+							<table class="width-percent-100">
+								<tr>
+									<td>
+										<fieldset>
+											<legend class="margin-bottom--5">Debit Card</legend>
+											<div class=" width-percent-100">
+												<table class="tbl-sales-order width-percent-100">
+													<tr>
+														<td colspan="2">
+															<div class="typecontrols padding-top-0 margin-bottom--17">
+																<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button11" class=" flatButton btn btn-checkbox active width-100"
+																	data-bind="css: { active: isCustomerDebitCardSelected }, html: isCustomerDebitCardSelected() ? customerDebitCardHtml() : customerDebitCardName, click: customerDebitCardClick ">
+																</button>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels width-percent-20">Charge $:
+														</td>
+														<td class="typeStatus">
+															<input type="text" class="width-percent-77" data-bind="attr: { 'readonly': 'readonly' }" />
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">Charge Type:
+														</td>
+														<td class="typeStatus">
+															<select id="select8" class="margin-bottom-0 custom-input width-percent-77" data-bind="enable: false"></select>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															<fieldset class="width-percent-86">
+																<legend>Note:</legend>
+																<div>
+																	<textarea id="Textarea9" class="accounting-textarea OnlinePaymentdebitCard" data-bind="value: customerDCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+																</div>
+															</fieldset>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</fieldset>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="company">
+				<div class="float-right width-percent-100">
+					<button id="btnSaveCompany" class="btn btn-primary float-right margin-right-3" style="margin-right: 30px;" data-bind="click: companySave, enable: enableCompanySave">Save</button>
+				</div>
+				<div class="width-percent-100">
+					<div class="table-cell float-left width-percent-31">
+						<table class="width-percent-100">
+							<tr>
+								<td>
+									<fieldset>
+										<legend class="margin-bottom--5">Credit Card</legend>
+										<div class="width-percent-100">
+											<table class="tbl-sales-order width-percent-100">
+												<tr>
+													<td colspan="2">
+														<div class="typecontrols padding-top-0 margin-bottom--17">
+															<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button7" class=" flatButton btn btn-checkbox active width-100"
+																data-bind="css: { active: isCompnayCreditCaredSelected }, html: isCompnayCreditCaredSelected() ? companyCreditCardhtml() : companyCreditCardName, click: companyCreditCardClick ">
+															</button>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels width-percent-20">Charge $:
+													</td>
+													<td class="typeStatus">
+														<div data-bind=" validationElement: companyCCCharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+															<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (companyCCCharge.isModified() && !companyCCCharge.isValid()), tooltip: { title: companyCCCharge.isModified() ? companyCCCharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+															<input id="Text3" type="text" maxlength="5" class="" data-bind="style: { width: (companyCCCharge.isModified() && !companyCCCharge.isValid()) ? '85.2%' : '77%' }, value: companyCCCharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels">Charge Type:
+													</td>
+													<td class="typeStatus">
+														<select id="select3" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: companyCCchargeTypes, value: selecteedcompanyCCchargeTypes"></select>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<fieldset class="width-percent-86">
+															<legend>Note:</legend>
+															<div>
+																<textarea id="Textarea4" class="accounting-textarea  OnlinePaymentdebitCard" data-bind="value: companyCCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="table-cell float-left width-percent-31 margin-left-percent-1">
+						<table class="width-percent-100">
+							<tr>
+								<td>
+									<fieldset>
+										<legend class="margin-bottom--5">E-Check</legend>
+										<div class=" width-percent-100">
+											<table class="tbl-sales-order width-percent-100">
+												<tr>
+													<td colspan="2">
+														<div class="typecontrols padding-top-0 margin-bottom--17">
+															<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button6" class=" flatButton btn btn-checkbox active width-100"
+																data-bind="css: { active: isCompnayECheckSelected }, html: isCompnayECheckSelected() ? companyECheckhtml() : companyECheckName, click: companyECheckClick ">
+															</button>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels width-percent-20">Charge $:
+													</td>
+													<td class="typeStatus">
+														<div data-bind=" validationElement: companyCECharge, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Payment-Fields' }">
+															<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (companyCECharge.isModified() && !companyCECharge.isValid()), tooltip: { title: companyCECharge.isModified() ? companyCECharge.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+															<input id="Text7" type="text" maxlength="5" class="" data-bind="style: { width: (companyCECharge.isModified() && !companyCECharge.isValid()) ? '85.2%' : '77%' }, value: companyCECharge, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown' " />
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels">Charge Type:
+													</td>
+													<td class="typeStatus">
+
+														<select id="select4" class="margin-bottom-0 custom-input width-percent-77" data-bind="options: companyECchargeTypes, value: selecteedcompanyECchargeTypes"></select>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<fieldset class="width-percent-86">
+															<legend>Note:</legend>
+															<div>
+																<textarea id="Textarea5" data-bind="value: companyECNote, valueUpdate: 'afterkeydown'" class="accounting-textarea OnlinePaymentdebitCard" cols="10" rows="3" maxlength="200"></textarea>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="table-cell float-right width-percent-31" style="margin-right: 2%;">
+						<table class="width-percent-100">
+							<tr>
+								<td>
+									<fieldset>
+										<legend class="margin-bottom--5">Debit Card</legend>
+										<div class=" width-percent-100">
+											<table class="tbl-sales-order width-percent-100">
+												<tr>
+													<td colspan="2">
+														<div class="typecontrols padding-top-0 margin-bottom--17">
+															<button style="width: 140px; margin-bottom: 20px;" type="button" id="Button5" class=" flatButton btn btn-checkbox active width-100"
+																data-bind="css: { active: isCompnayDebitCardSelected }, html: isCompnayDebitCardSelected() ? companyDebitCardHtml() : companyDebitCardName, click: companyDebitCardClick ">
+															</button>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels width-percent-20">Charge $:
+													</td>
+													<td class="typeStatus">
+														<input type="text" class=" width-percent-77" data-bind=" attr: { readonly: true }" />
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels">Charge Type:
+													</td>
+													<td class="typeStatus">
+														<select id="select5" class="margin-bottom-0 custom-input width-percent-77" data-bind=" attr: { readonly: true }"></select>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<fieldset class="width-percent-86">
+															<legend>Note:</legend>
+															<div>
+																<textarea id="Textarea6" class="accounting-textarea OnlinePaymentdebitCard" data-bind="value: companyDCNote, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="200"></textarea>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</fieldset>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

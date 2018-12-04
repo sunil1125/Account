@@ -1,0 +1,155 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div id="notesDIV" tabindex="-1" class="table-cell div-percent-40 ">
+		<table class="padding-left-10 span4  width-percent-100">
+			<tr>
+				<td class="width-percent-30 ">
+
+					<div class="span4 width-percent-100">
+						<table class="tbl-sales-order width-percent-100 ">
+							<tr>
+								<td class="typeLabels width-percent-10">Bill of Lading:
+								</td>
+								<td class="typeStatus">
+									<input id="Text11" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: billofLading, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Status:
+								</td>
+								<td class="typeStatus">
+									<select id="drpItems" class="newselect  width-153" data-bind="options: claimstatus, value: selectedclaimstatus, enable: false"></select>
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Carrier Claim#:
+								</td>
+								<td class="typeStatus">
+									<input id="Text13" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: carrierClaim, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">PRO #:
+								</td>
+								<td class="typeStatus">
+									<input id="Text14" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: proNumber, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Carrier:
+								</td>
+								<td class="typeStatus">
+									<input id="Text15" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: carrier, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Customer:
+								</td>
+								<td class="typeStatus">
+									<input id="Text16" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: customer, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td class="width-percent-30 ">
+
+					<div class="span4 width-percent-100">
+						<table class="tbl-sales-order width-percent-100 ">
+							<tr>
+								<td class="typeLabels width-percent-10">Shipper:
+								</td>
+								<td class="typeStatus">
+									<input id="Text17" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: shipper, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Consignee:
+								</td>
+								<td class="typeStatus">
+									<input id="Text18" type="text" maxlength="100" placeholder="" class="width-140" data-bind="value: consignee, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Date Received:
+								</td>
+								<td class="typeStatus">
+
+									<div data-bind="enable: false">
+										<!--<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (receivedDate.isModified() && !receivedDate.isValid()), tooltip: { title: receivedDate.isModified() ? receivedDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>-->
+
+										<div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+											data-bind="datepicker: receivedDate, datepickerOptions: datepickerOptions, enable: false">
+											<input id="Text1" type="text" size="16" class="span10  width-140" placeholder="mm/dd/yyyy" data-bind="value: receivedDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { readonly: true }" />
+											<span class="add-on disabledateLink" data-bind="css: { disabledateLink: true } ">
+												<i class="icon-calendar"></i>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Date Filed:
+								</td>
+								<td class="typeStatus">
+
+									<div data-bind="enable: false">
+										<!--   <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (filedDate.isModified() && !filedDate.isValid()), tooltip: { title: filedDate.isModified() ? filedDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>-->
+
+										<div class="input-append date" id="Div2" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+											data-bind="datepicker: filedDate, datepickerOptions: datepickerOptions">
+											<input id="Text2" type="text" size="16" class="span10  width-140" placeholder="mm/dd/yyyy" data-bind="value: filedDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { readonly: true }" />
+											<span class="add-on disabledateLink" data-bind="css: { disabledateLink: true } ">
+												<i class="icon-calendar"></i>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Amount Filed $:
+								</td>
+								<td class="typeStatus">
+
+									<input id="amountfiled" type="text" maxlength="100" placeholder="" class="width-140" data-bind="event: { keypress: formatDecimalNumber(amountFiled) }, value: amountFiled, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+							<tr>
+								<td class="typeLabels">Settled Amount $:
+								</td>
+								<td class="typeStatus">
+
+									<input id="settledAmt" type="text" maxlength="100" placeholder="" class="width-140" data-bind="event: { keypress: formatDecimalNumber(settledAmount) }, value: settledAmount, valueUpdate: 'afterkeydown', uniqueName: true, attr: { readonly: true }" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<!-- <td class="width-percent-40 ">
+
+                  <fieldset>
+                        <legend>Add Notes</legend>
+                        <textarea id="Textarea1" class="accounting-textarea height-155 width-215"
+                            maxlength="500"></textarea>
+                    </fieldset>
+                </td>-->
+			</tr>
+			<!--      <tr>
+                <td colspan="3">
+                    <div class="align-right padding-top-10">
+                        <button class="btn btn-primary width-80">Add</button>
+                    </div>
+                    </td>
+            </tr>-->
+		</table>
+	</div>
+	<div class="table-cell div-percent-60 padding-top-5">
+		<div class="margin-top--55 margin-left-percent-4 width-percent-92" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+	</div>
+</div>

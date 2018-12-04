@@ -1,0 +1,29 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv">
+	<div class="padding-bottom-15">
+		<span class="PageTitleBlack margin-left-25 ">Search Result</span>
+	</div>
+	<div id="content">
+		<div id="gridDiv">
+			<!--<div class="row-fluid">
+				<div id="gridHistory" class="margin-top--35" data-bind="compose: { model: transactionSearchGrid, view: '../templates/reportViewerControlV2' }"></div>
+			</div>-->
+
+			<div data-bind="visible: isVendorBillVisible">
+				<div style="padding: 0px 20px 0px 20px;" data-bind="compose: { model: searchProValueContainer, view: '../templates/reportViewerControlV2' } "></div>
+			</div>
+			<div data-bind="visible: isSalesVisible">
+				<div id="gridSearchBol" style="padding: 0px 20px 0px 20px;" data-bind="compose: { model: searchBolValueContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+			<div data-bind="visible: isEdi210Visible">
+				<div id="gridSearchEdi" style="padding: 0px 20px 0px 20px;" data-bind="compose: { model: searchEdiValueContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

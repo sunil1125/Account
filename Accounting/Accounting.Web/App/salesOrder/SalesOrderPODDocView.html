@@ -1,0 +1,66 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div class="table-cell fourDiv">
+		<table class="width-percent-100 tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Doc Owner:
+				</td>
+				<td class="typeStatus" colspan="2">
+					<select id="selectDocOwner" class="newselect width-percent-100" data-bind="options: salesOrderOwnerTypes, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select..', enable: isEnable, value: docOwner, valueUpdate: 'afterkeydown'"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">File Type:
+				</td>
+				<td class="typeStatus" colspan="2">
+					<select class="newselect width-percent-100" data-bind="event: { click: updateOrUpload }, options: salesOrderFileTypes, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select..', enable: isEnable, value: fileType, valueUpdate: 'afterkeydown'"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Upload File:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-100" disabled="disabled" data-bind="value: UploadedFileName" />
+				</td>
+				<td class="typeStatus align-right" style="width: 20%;">
+					<!-- ko if: isPOD -->
+					<button class="btn flatButton" data-bind="click: function () { $('#fileToUpload').trigger('click'); }, enable: isEnableBrowse()">Browse</button>
+					<input type="file" class="display-none" accept="application/pdf , image/*" name="fileToUpload" id="fileToUpload" data-bind="event: { change: uploadSalesOrderDocument }" data-buttontext="Your label here." />
+					<!-- /ko -->
+					<!-- ko if: isBolRc -->
+					<button class="btn flatButton" data-bind="click: function () { $('#fileToUpload1').trigger('click'); }, enable: isEnableBrowse()">Browse</button>
+					<input type="file" class="display-none" accept="image/*" name="fileToUpload1" id="fileToUpload1" data-bind="event: { change: uploadSalesOrderDocument }" data-buttontext="Your label here." />
+					<!-- /ko -->
+					<!-- ko if: isDocOther -->
+					<button class="btn flatButton" data-bind="click: function () { $('#fileToUpload2').trigger('click'); }, enable: isEnableBrowse()">Browse</button>
+					<input type="file" class="display-none" accept="application/pdf,.doc,.docx,.rtf" name="fileToUpload2" id="fileToUpload2" data-bind="event: { change: uploadSalesOrderDocument }" data-buttontext="Your label here." />
+					<!-- /ko -->
+				</td>
+			</tr>
+			<tr>
+				<td class="align-left" colspan="3">
+					<fieldset>
+						<legend>Description</legend>
+						<textarea id="txtuserNote" data-bind="value: FileName" class="accounting-textarea width-percent-96 height-75" maxlength="200"></textarea>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeStatus"></td>
+				<td class="typeStatus"></td>
+				<td class="align-right">
+					<button class="btn btn-primary width-80" data-bind="click: onAdd, enable: enableUploadButton(), visible: isEnableUpload()">Upload</button>
+					<button class="btn btn-primary width-80" data-bind="click: onUpdate, enable: enableUpdateButton(), visible: !isEnableUpload()">Update</button></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<div class="margin-top--55 margin-left-percent-4" id="divPodDoc" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+	</div>
+</div>

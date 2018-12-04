@@ -1,0 +1,300 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+/*#region Global Variables */
+/*#endregion */
+/*#region Login Style */
+.pageHeader {
+  background-color: #586d7c !important;
+}
+.pageFooter {
+  background-color: #586d7c !important;
+}
+.welcomText {
+  color: #5d6c7f !important;
+}
+.loginBackground {
+  background-color: #c7c0b5 !important;
+}
+.loginHotButton {
+  background-color: #3a78bd !important;
+}
+.loginLinks {
+  color: #3a78bd !important;
+}
+/*#endregion */
+/*#region Navigation Styles */
+.navBackground {
+  background-color: #5d6c7f !important;
+}
+.whiteDownCaret:after {
+  border-top-color: #5d6c7f !important;
+}
+.open .whiteDownCaret::before {
+  /*border-top-color: @menuBackground !important;*/
+
+  top: 13px !important;
+  border-bottom-color: #fff !important;
+  border-top-color: transparent !important;
+}
+.open .whiteDownCaret:after {
+  border-top-color: transparent !important;
+  border-bottom-color: #5d6c7f !important;
+}
+.loginName:hover .whiteDownCaret::after {
+  border-top-color: #b7bec8 !important;
+}
+.open .loginName:hover .whiteDownCaret::after {
+  border-top-color: transparent !important;
+  border-bottom-color: #b7bec8 !important;
+}
+.menuBackground {
+  background-color: #5d6c7f;
+  color: White;
+}
+.menuBtn {
+  background: #5d6c7f;
+  color: White;
+}
+.menuBtn:hover {
+  background-color: #b7bec8;
+  color: #5d6c7f;
+}
+.menuBtnClick,
+.menuBtnClick:hover {
+  background-color: #b7bec8;
+  color: #5d6c7f;
+}
+#subMenuList {
+  background-color: #5d6c7f;
+  color: White;
+}
+#subMenuList:hover,
+#subMenuList:active {
+  background-color: #5d6c7f;
+  color: White;
+}
+#subMenuList > li {
+  background: #5d6c7f;
+  color: White;
+}
+#subMenuList > li > a,
+#subMenuList > li > a > span {
+  color: White;
+}
+#subMenuList > li > a:hover,
+#subMenuList > li > a:hover span {
+  color: #5d6c7f !important;
+  background: #b7bec8;
+}
+.loginName {
+  background: #5d6c7f;
+  color: White;
+}
+.loginName:hover {
+  background-color: #b7bec8;
+  color: #5d6c7f;
+}
+.loginName.active,
+.loginName:hover {
+  background-color: #b7bec8;
+  color: #5d6c7f;
+}
+#myaccountSubMenu {
+  background-color: #5d6c7f;
+  color: White;
+}
+#myaccountSubMenu:hover,
+#myaccountSubMenu:active {
+  background-color: #5d6c7f;
+  color: White;
+}
+#myaccountSubMenu > li {
+  background: #5d6c7f;
+  color: White;
+}
+#myaccountSubMenu > li > a,
+#myaccountSubMenu > li > a > span {
+  color: White;
+}
+#myaccountSubMenu > li > a:hover,
+#myaccountSubMenu > li > a:hover span {
+  color: #5d6c7f !important;
+  background: #b7bec8;
+}
+/*#endregion */
+/*#region Hot Button */
+.hotButton {
+  background-color: #3a78bd !important;
+  color: White !important;
+}
+.applyBtn {
+  border-radius: 0px;
+  border: 0px;
+}
+.cancelBtn {
+  border: 0px;
+  border-radius: 0px;
+}
+/*#endregion */
+/*#region Tab style  */
+.nav-tab-new > li > a {
+  background: #b7bec8;
+}
+.nav-tab-new > .active > a,
+.nav-tab-new > .active > a:hover,
+.nav-tab-new > .active > a:focus {
+  background: none repeat scroll 0 0 #f5f5f5;
+}
+/*#endregion */
+/*#region Content Area */
+.contentAreaWithoutDenimBackground {
+  background-color: #f5f5f5 !important;
+}
+/*#endregion */
+/*#region Ko-Grid style */
+.kgGroupPanel,
+.kgHeaderContainer,
+.kgTopPanel,
+.kgFooterPanel {
+  background-color: #343434 !important;
+}
+.kgLabel,
+.pageDropdownLabel {
+  color: #ffffff;
+}
+/*.kgSortButtonDown {
+	border-color: @gridSort-down;
+	border-style: solid;
+	border-width: 5px 5px 0;
+	float: right;
+	height: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: 12px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	width: 0;
+}
+
+.kgSortButtonUp {
+	border-color: @gridSort-up;
+	border-style: solid;
+	border-width: 0 5px 5px;
+	float: right;
+	height: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: 12px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	width: 0;
+}*/
+.gridHeader {
+  background-color: #506a77;
+}
+/*#endregion */
+/*#region Calendar control */
+.daterangepicker {
+  background: none repeat scroll 0 0 #3f4c5c;
+}
+.daterangepicker.opensright:after {
+  border-bottom: 6px solid #3f4c5c;
+}
+.daterangepicker .ranges li {
+  background: none repeat scroll 0 0 #3f4c5c;
+  color: white;
+}
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+  background: none repeat scroll 0 0 #506a77;
+  color: white;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #3f4c5c;
+  background-image: linear-gradient(to bottom, #3f4c5c, #3f4c5c);
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+}
+.daterangepicker td.available:hover {
+  background: #506a77;
+  color: #fff;
+}
+.daterangepicker td.in-range {
+  background: #d1dbe3;
+}
+.daterangepicker .calendar-ranges input.active {
+  background: #3f4c5c;
+  border: 1px solid #3f4c5c;
+  color: #fff;
+}
+.daterangepicker .calendar-ranges span,
+.daterangepicker .calendar-ranges span.active {
+  color: white;
+}
+/*#endregion */
+/*#region online payments */
+/* online payment flow indicator arrows*/
+.onlineArrow {
+  background: #5d6c7f;
+  color: White;
+}
+.onlineArrow::after {
+  border-left-color: #5d6c7f;
+}
+.onlineArrowActive {
+  background-color: #b7bec8;
+  color: #5d6c7f;
+}
+.onlineArrowActive::after {
+  border-left-color: #b7bec8;
+}
+/* online payment flow indicator arrows*/
+/*#endregion */
+/*#region Chat Control UI */
+.chatOnlineStatusBlock {
+  background-color: #5d6c7f;
+}
+.chatUserBlock {
+  background-color: #5d6c7f;
+}
+.chatCaret:before {
+  border-bottom-color: #9A9A9A;
+}
+.chatCaret:after {
+  border-bottom-color: #5d6c7f;
+}
+#chatText {
+  color: white;
+}
+#chatText a {
+  color: white;
+}
+#chatText a:hover {
+  color: white;
+}
+.chatboxhead {
+  background-color: #5d6c7f !important;
+}
+.chatboxblink {
+  background-color: #f99d39 !important;
+  border-right: 1px solid #f99d39 !important;
+  border-left: 1px solid #f99d39 !important;
+}
+.dropdownChat-menu {
+  background-color: #5d6c7f !important;
+}
+.btn-checkbox.active {
+  background-color: #5d6c7f !important;
+  color: White;
+  font-weight: normal;
+  border-color: #f5f5f5;
+}
+/*#endregion */

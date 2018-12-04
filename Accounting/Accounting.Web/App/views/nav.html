@@ -1,0 +1,121 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="navBackground" id="mainNavBackGround">
+	<div class="keepContentInCenter" id="navigationContainer">
+		<div id="divNavigation" class="header">
+			<nav id="menuList">
+				<!--- Parent Menu List -->
+				<div style="margin-left: 20px">
+					<ul id="mainMenu" class="nav nav-pills pull-left">
+						<li>
+							<div class="accountName" data-bind="text: accountName"></div>
+						</li>
+						<!-- ko foreach: router.navigationModel -->
+						<li>
+
+							<div class="mainMenuId dropdown">
+								<!-- ko if: (title ==='Home') -->
+								<div id="homeImageDiv" style="display: inline-block;" data-bind="event: { click: $root.navigateOnMouseClick }">
+									<div class="homeIcon" style="overflow: hidden; padding: 12px 10px 0px 20px;" data-bind=" attr: { id: title }, css: { menuBtnClick: title === $parent.selectedMainMenu() }, event: { mouseover: $parent.showTabHeaderMainOnMouserHover }">
+										<div id="homeImage" style="margin-left: -6px;" />
+									</div>
+								</div>
+								<!-- /ko -->
+
+								<!-- ko ifnot: (title==='Home' || title==='Transaction Search') -->
+								<div class="menuBtn" data-toggle="dropdown"
+									data-bind="text: title, attr: { id: id }, css: { menuBtnClick: title === $parent.selectedMainMenu() }, event: { mouseover: $parent.showTabHeaderMainOnMouserHover }">
+								</div>
+								<!-- /ko -->
+								<!-- ko if: (title ==='Transaction Search') -->
+								<div class="menuBtn" data-bind="click: function () { $root.createNewTab(route, title, moduleId, settings, hash) }, attr: { id: id }, css: { menuBtnClick: title === $parent.selectedMainMenu() }, event: { mouseover: $parent.showTabHeaderMainOnMouserHover }">
+									<div style="overflow: hidden;" data-bind="text: title, attr: { id: id }"></div>
+								</div>
+								<!-- /ko -->
+								<ul id="subMenuList" class="dropdown-menu" data-bind=" event: { mouseover: $parent.showTabHeaderMainOnMouserHover }, foreach: $root.getSubMenuListByTitle(title)">
+									<li>
+										<a data-bind="click: function () { $root.createNewTab(route, title, moduleId, settings, hash); $root.hidesubmenu(); return true; }, attr: { id: id }">
+											<span>
+												<!-- ko if: settings.hasOwnProperty("cssClass") -->
+												<span data-bind="css: settings.cssClass" style="display: inline-block;"></span>
+												<!-- /ko -->
+												<span data-bind="text: title"></span>
+											</span>
+										</a>
+									</li>
+
+									<!-- ko foreach: $root.gettabListByName(title, $parent.title) -->
+									<li>
+										<a data-bind="attr: { href: '#' + tabId }, click: $root.setTabActive">
+											<span>
+												<!-- ko if: $parent.settings.hasOwnProperty("cssClass") -->
+												<span data-bind="css: $parent.settings.cssClass" style="display: inline-block;"></span>
+												<!-- /ko -->
+												<span data-bind="text: header"></span>
+											</span>
+										</a>
+									</li>
+									<!-- /ko -->
+								</ul>
+							</div>
+						</li>
+						<!-- /ko -->
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div id="divLogo">
+			<div id="rightButtonConatinerDiv" style="width: 17%">
+				<table>
+					<tr>
+						<td id="navSearch" style="vertical-align: middle;">
+							<input type="text" id="searchIcon" style="height: 20px; background-position: 90% 50%; width: 100%" placeholder="Search here"
+								data-bind='categorizetypeahead: SearchBOLAndPRO, categorizeTypeaheadOptions: globalSearchOptions, event: { onSelect: onSelectSearchResult, onClickMoreResult: onClickMoreResult }, visible: isGlobalSearch' />
+						</td>
+						<td id="buttonContainerColumn">
+							<div id="Div1" class="dropdown">
+								<!--$parent.selectedMainMenu(title);   -->
+								<!--width: 130px-->
+								<button class="loginName" style="text-align: right;" data-bind="event: { mouseover: showUserSettings }">
+									<div class="crop margin-top-10" style="margin-right: 36px;">
+										<span style="font-size: 14px;" data-bind="text: welcomeNote"></span>&nbsp;&nbsp;
+									</div>
+									&nbsp;&nbsp;<img class="margin-top--40" id="arrowIcon" style="width: 13px; height: 7px;" src="Content/images/icon_expandarrow1.png" />
+								</button>
+								<ul id="myaccountSubMenu" class="dropdown-menu">
+									<li data-bind="foreach: MyAccountSubMenu">
+										<a data-bind="text: title, click: function () { $root.createNewTab(route, title, moduleId, settings, hash); return true; }"></a>
+									</li>
+									<li><a data-bind="click: SignOut">Log Out</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row-fluid" data-bind="event: { mouseover: mouseoutFromNav }">
+	<div id="tabContainerDiv">
+		<div class="tabbable container-fluid-new-tab span12" style="padding-top: 38px;">
+			<div class="keepContentInCenter">
+				<ul id="ulTabs" class="nav nav-tabs nav-tab-new" data-bind="foreach: tabContainerList, visible: tabVisible">
+					<!-- ko if: settings.tabType -->
+					<li class="active" data-bind="attr: { id: 'li' + tabId, title: header() }, css: { active: cssActive }, visible: showTabHeader">
+						<i data-bind="style: { backgroundImage: 'url(\'' + settings.tabType.imageUrl + '\')' }" style="height: 16px; width: 16px; display: inline-table; margin: 3px 0 0 -130px;"></i>
+						<a href="#" data-toggle="tab" data-bind="text: headerDisplay(), attr: { href: '#' + tabId }, click: $root.setTabActive"></a>
+						<i id="tabCloseBtnIcon" class="close icon-remove" data-bind="click: function () { $parent.closeTab(tabId, header(), settings.defaultSettings); }, visible: !pageLoader()"></i>
+						<i id="tabLoaderIcon" class="icon-spinner icon-spin active" data-bind="visible: pageLoader"></i>
+					</li>
+					<!-- /ko -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

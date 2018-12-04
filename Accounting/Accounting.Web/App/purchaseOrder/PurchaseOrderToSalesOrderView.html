@@ -1,0 +1,125 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<summary>
+Purchase Order To Sales Order View
+</summary>
+<changeHistory>}
+<id>DE20960</id> <by>SHREESHA ADIGA</by><date>14-12-2015</date><description>Changed the tootip from "pickupdate.error" to ".errorMessage" to display the error messages dynamically</description>
+</changeHistory>-->
+
+<div id="divPOtoSO" class="tableLayout">
+	<div class="table-cell">
+		<div>
+			<table class="tbl-sales-order" style="width: 97%; margin-left: 8%;">
+				<tr>
+					<td class="typeLabels" style="width: 24%;">*Customer Name:
+					</td>
+					<td class="typeStatus">
+						<!--<div data-bind="compose: { model: customerNameSearchList, view: 'purchaseOrder/purchaseOrderToSalesOrder/searchCustomerNameControl' }"></div>-->
+						<div style="width: 89.5%" data-bind="compose: { model: customerSearchList, view: 'templates/searchCustomerAutoComplete' }"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="typeLabels">Agent Name:
+					</td>
+					<td class="typeStatus">
+						<input type="text" class="width-PO-SO-Fields" data-bind="value: agentName, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+						<!--		<div data-bind="compose: { model: agentNameSearchList, view: 'purchaseOrder/purchaseOrderToSalesOrder/searchAgentNameControl' }"></div>-->
+					</td>
+				</tr>
+				<tr>
+					<td class="typeLabels">Agency Name:
+					</td>
+					<td class="typeStatus">
+						<input type="text" class="width-PO-SO-Fields" data-bind="value: agencyName, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+						<!--<div data-bind="compose: { model: agencyNameSearchList, view: 'purchaseOrder/purchaseOrderToSalesOrder/searchAgencyNameControl' }"></div>-->
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2">
+						<table class="table-bordered shipment-item width-percent-92-5 padding-bottom-8">
+							<thead>
+								<tr>
+									<th class="width-75">
+										<label class="style-label">Term</label></th>
+									<th class="width-35">
+										<label class="style-label">Available Credit($)</label></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="width-75">
+										<span data-bind="text: term"></span>
+									</td>
+									<td class="width-35">
+										<span class="float-right" data-bind="text: availableCredit"></span><span class="float-right">$</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="typeLabels">*Pick Up Date:
+					</td>
+					<td class="typeStatus">
+						<div class="typecontrols padding-top-0">
+							<div class="validation-label2" data-bind=" validationElement: pickupDate">
+								<i class="fa fa-question-circle valdation_icon" style="z-index: 999;" data-bind=" visible: (pickupDate.isModified() && !pickupDate.isValid()), tooltip: { title: pickupDate.isModified() ? pickupDate.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+									data-bind="datepicker: pickupDate, datepickerOptions: datepickerOptions, css: { borderRedOnValidation: (pickupDate.isModified() && !pickupDate.isValid()) }" style="width: 87%;">
+
+									<input type="text" id="pickupDate" size="16" class="requiredFieldBgColor span10 validation2" placeholder="mm/dd/yyyy"
+										data-bind="event: { blur: convertToPickupDate }, style: { 'padding-left': (pickupDate.isModified() && !pickupDate.isValid()) ? '20px' : '' }, value: pickupDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" maxlength="10" style="width: 91%" />
+									<span class="add-on">
+										<i class="icon-calendar"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="padding-right-16 padding-top-10 width-percent-100">
+						<div class="width-percent-100">
+							<div id="divTruckLoad" data-bind="visible: isPoToSo">
+							<input type="checkbox" data-bind="checked: isTruckLoadChecked">TruckLoad Bill
+							</div>
+							<table class="width-percent-100">
+								<tr>
+									<td colspan="3">
+										<button class="btn btn-primary width-142" data-bind="click: onRateItOnCustomer, enable: !isTruckLoadChecked()">Rate it on customer</button>
+										<button class="btn btn-primary width-142" data-bind="click: onRateItOnCustomerManuallyClick">Rate Manually</button>
+									</td>
+								</tr>
+								<tr>
+
+									<td colspan="3">
+										<button class="btn btn-primary width-142" data-bind="click: onSendAgentMailNotification, enable: isAgentNotificationClicked">Agent Notification</button>
+										<button class="btn btn-primary width-142" data-bind="click: onStopTimer, visible: ((isForeignBolSelectedForView()) && showTimer), text: timerTitle"></button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div style="margin-top: 8px;"></div>
+									</td>
+								</tr>
+								<tr data-bind="visible: ((isForeignBolSelectedForView()) && showTimer)">
+									<td colspan="3">
+										<i class="fa fa-clock-o fa-lg" title="Time Remaining" style="font-size: 16px;"></i><span class="timer-colNewForLabel" title="Time Remaining">Time Remaining </span><span class="timer-colNew" data-bind="text: timeRemaining" title="Time Remaining"></span><span class="HH-MM" title="Time Remaining">(HH:MM:SS)</span>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

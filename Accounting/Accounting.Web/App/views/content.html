@@ -1,0 +1,12 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="keepContentInCenter">
+	<div class="row-fluid" data-bind="showContentProgress: showContentProgress, contentProgressOptions: { showProgressBar: true, childId: 'section-content', zindex: 50 }, css: isDenimBackground() ? 'contentAreaDenimBackground' : 'contentAreaWithoutDenimBackground' ">
+		<div class="container-fluid contentArea" id="section-content" data-bind="router: { transition: 'entrance', afterCompose: router.afterCompose, cacheViews: false, binding: beforeBind }"></div>
+	</div>
+</div>

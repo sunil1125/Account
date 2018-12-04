@@ -1,0 +1,67 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Rexnord Invoicing Report</span>
+		</div>
+		<div class="row-fluid">
+			<div class="accordion" id="accordion2">
+				<div class="ediGridWithHeader">
+					<div class="float-left margin-all-10">
+						<table class="tbl-sales-order">
+							<tr>
+								<td class="typeLabels">From Date:
+								</td>
+
+								<td class="typeLabels">
+
+									<div class="typecontrols padding-top-0">
+										<div data-bind=" validationElement: fromDate, validationOptions: { errorElementClass: 'input-validation-error width-153' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (fromDate.isModified() && !fromDate.isValid()), tooltip: { title: fromDate.isModified() ? fromDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+											<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: fromDate, datepickerOptions: datepickerOptions">
+												<input id="pickupDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToFromDate }, value: fromDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (fromDate.isModified() && !fromDate.isValid()) ? '111px' : '125px' }" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td class="typeLabels">To Date:
+								</td>
+								<td class="typeLabels">
+
+									<div class="typecontrols padding-top-0">
+										<div data-bind=" validationElement: toDate, validationOptions: { errorElementClass: 'input-validation-error width-153' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (toDate.isModified() && !toDate.isValid()), tooltip: { title: toDate.isModified() ? toDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+											<div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: toDate, datepickerOptions: datepickerOptions">
+												<input id="Text1" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToDate }, value: toDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (toDate.isModified() && !toDate.isValid()) ? '111px' : '125px' }" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="float-right">
+						<button id="btngenerateReport" class="btn btn-primary" data-bind="click: generateReport" style="margin: 10px;">Generate Report</button>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid" style="margin-top: -35px;">
+				<div id="gridHistory" data-bind="compose: { model: RexnordInvoicedReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

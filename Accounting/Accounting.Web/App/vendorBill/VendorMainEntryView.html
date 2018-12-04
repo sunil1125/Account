@@ -1,0 +1,73 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressAccordian, contentProgressOptions: { showProgressBar: true, opacity: 0.9, height: 700 }">
+
+		<div class="alignrigth margin-top-1 float-none">
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isSetModelAndSave ">Save</button>
+		</div>
+
+		<div class="row-fluid margin-top-5" id="gridbind">
+			<div class="accordion" id="accordion2">
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<span class="custom-accordian-header">Vendor Bill</span>
+						</div>
+						<div id="collapseVendorBill" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div data-bind="compose: { model: vendorBillViewModel, view: 'vendorBill/VendorBillView' }"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseItems" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseItems" data-bind="click: onItemClick">Items
+							</a>
+						</div>
+						<div id="collapseItems" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="itemsDiv" tabindex="-1" data-bind="compose: { model: vendorBillItemViewModel, view: 'vendorBill/VendorBillItemView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseAddress" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseAddress" data-bind="click: onAddressClick">Address
+							</a>
+						</div>
+						<div id="collapseAddress" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="addressDiv" tabindex="-1" data-bind="compose: { model: vendorAddressViewModel, view: 'vendorBill/VendorAddressView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseNotes" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseNotes" data-bind="click: onNotesClick">Notes
+							</a>
+						</div>
+						<div id="collapseNotes" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: vendorBillNotesEntryViewModel, view: 'vendorBill/VendorBillNotesEntryView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

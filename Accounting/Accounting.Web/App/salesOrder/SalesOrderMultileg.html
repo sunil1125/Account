@@ -1,0 +1,143 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="span4 margin-left--10 width-percent-100 padding-left-10">
+	<div>
+		<table>
+			<tr>
+				<td class="width-percent-60" style="vertical-align: top;">
+
+					<fieldset>
+						<legend>Multileg Carrier Details</legend>
+						<div class="span4 width-percent-100">
+							<table class="tbl-sales-order width-percent-98 margin-left--7">
+								<tr>
+									<td style="text-align: justify;"></td>
+									<td style="text-align: center;">Carrier
+									</td>
+									<td style="text-align: center;">Transit Days
+									</td>
+									<td style="text-align: center;">PRO Number
+									</td>
+									<td style="text-align: center;"></td>
+								</tr>
+								<tr>
+									<td class="typeLabels width-percent-10">Ground Carrier Details:
+									</td>
+									<td>
+										<input type="text" maxlength="20" style="width: 200px;" data-bind=" value: groundCarriername, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" readonly="true" />
+									</td>
+									<td>
+										<input type="text" maxlength="20" style="width: 80px;" data-bind=" value: groundTransitDays, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" readonly="true" />
+									</td>
+									<td>
+										<input type="text" style="width: 100px;" maxlength="20" data-bind=" value: groundProNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" readonly="true" />
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="typeLabels width-percent-10">*Ocean Carrier Details:
+									</td>
+									<td style="width: 220px;">
+										<div data-bind="compose: { model: oceanCarrierSearchList, view: 'salesOrder/searchOceanCarrierDetailControl' }, attr: { 'disabled': isCallFromEdit }"></div>
+									</td>
+									<td style="width: 100px;">
+										<input type="text" maxlength="20" style="width: 80px;" data-bind="event: { keypress: isNumber }, value: oceanTransitDays, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': isCallFromEdit }" />
+									</td>
+									<td style="width: 120px;">
+										<input type="text" style="width: 100px;" maxlength="20" data-bind="event: { keypress: isAlphaNumericSpace }, value: oceanProNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': isCallFromEdit }" />
+									</td>
+									<td class="">
+										<button type="button" id="sameAsGroundButton" class="flatButton btn btn-checkbox height-30 active padding-left-10" data-bind="css: { active: selected }, html: selected() ? html() : name, click: selectOption, enable: disableCheckButton">
+										</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+				<td class="width-percent-30">
+
+					<fieldset>
+						<legend>Terminal Hub Address</legend>
+						<div class="span4 width-percent-100">
+							<table class="tbl-sales-order width-percent-100 margin-left--7">
+								<tr>
+									<td class="typeLabels width-percent-10">*Company Name:
+									</td>
+									<td class="typeStatus">
+										<div data-bind=" validationElement: terminalHubCompanyName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (terminalHubCompanyName.isModified() && !terminalHubCompanyName.isValid()), tooltip: { title: terminalHubCompanyName.isModified() ? terminalHubCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<input id="Text1" type="text" class="width-percent-93" data-bind="validationOptions: { errorElementClass: null }, style: { width: (terminalHubCompanyName.isModified() && !terminalHubCompanyName.isValid()) ? errorWidth : normalWidth }, value: terminalHubCompanyName" maxlength="13" readonly="true" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*Contact Person:
+									</td>
+									<td class="typeStatus">
+										<div data-bind=" validationElement: terminalHubContactPerson, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (terminalHubContactPerson.isModified() && !terminalHubContactPerson.isValid()), tooltip: { title: terminalHubContactPerson.isModified() ? terminalHubContactPerson.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<input type="text" class="requiredFieldBgColor width-percent-93" maxlength="50" data-bind="validationOptions: { errorElementClass: null }, style: { width: (terminalHubContactPerson.isModified() && !terminalHubContactPerson.isValid()) ? errorWidth : normalWidth }, value: terminalHubContactPerson" readonly="true" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Phone:
+									</td>
+									<td class="typeStatus">
+										<input id="Text2" type="text" class="width-percent-93" data-bind="  value: terminalHubPhone" maxlength="13" readonly="true" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">FAX:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="width-percent-93" data-bind="value: terminalHubFax" maxlength="13" readonly="true" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Address1:
+									</td>
+									<td class="typeStatus">
+										<input type="text" maxlength="100" class="width-percent-93" data-bind=" value: terminalHubAddress1" readonly="true" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Address2:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="width-percent-93" maxlength="100" data-bind="value: terminalHubAddress2, valueUpdate: 'afterkeydown', uniqueName: true" readonly="true" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*City State or ZIP:
+									</td>
+									<td class="typeStatus">
+										<div data-bind=" validationElement: terminalHubCityStateZip, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (terminalHubCityStateZip.isModified() && !terminalHubCityStateZip.isValid()), tooltip: { title: terminalHubCityStateZip.isModified() ? terminalHubCityStateZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<input type="text" class="requiredFieldBgColor width-percent-93" maxlength="50" data-bind="validationOptions: { errorElementClass: null }, style: { width: (terminalHubCityStateZip.isModified() && !terminalHubCityStateZip.isValid()) ? errorWidth : normalWidth }, value: terminalHubCityStateZip" readonly="true" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="typeStatus">
+										<span class="label">USA</span>
+									</td>
+								</tr>
+								<tr class="height-17">
+									<td colspan="2"></td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

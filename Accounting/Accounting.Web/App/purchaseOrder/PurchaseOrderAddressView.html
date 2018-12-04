@@ -1,0 +1,345 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>DE20724</id> <by>Vasanthakumar</by> <date>24-11-2015</date><description>Added id for country combo and billto country lable added to show international shipment</description>
+<id>US26388</id> <by>Baldev Singh Thakur</by> <date>17-01-2017</date><description>Added text property for countryLableBillto</description>
+</changeHistory>-->
+<div class="tableLayout" id="divPOAddress">
+	<div class="table-cell">
+		<div class="span4 margin-left--10 width-percent-100">
+			<div>
+				<button type="button" id="internationalShipmentButton" class=" flatButton btn btn-checkbox height-30 active" data-bind="css: { active: selected }, html: selected() ? html() : name, click: selectOption, attr: { 'disabled': shouldBeReadOnly }">
+				</button>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<td class="width-percent-30">
+
+							<fieldset>
+								<legend>Shipper</legend>
+								<div class="span4 width-percent-100">
+									<table class="tbl-sales-order width-percent-100 margin-left--7">
+										<tr>
+											<td class="typeLabels width-percent-10">*Company Name:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: shipperCompanyName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (shipperCompanyName.isModified() && !shipperCompanyName.isValid()), tooltip: { title: shipperCompanyName.isModified() ? shipperCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="shipperCompanyName" type="text" maxlength="100" class="requiredFieldBgColor" data-bind="style: { width: (shipperCompanyName.isModified() && !shipperCompanyName.isValid()) ? '89%' : '93%' }, value: shipperCompanyName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly } " placeholder="Company Name" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: shipperCompanyName">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (shipperCompanyName.isModified() && !shipperCompanyName.isValid()), tooltip: { title: shipperCompanyName.isModified() ? shipperCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="shipperCompanyName" class="requiredFieldBgColor validation2 shipperCompanyNameClass" maxlength="100" placeholder="Company Name" data-bind=" attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (shipperCompanyName.isModified() && !shipperCompanyName.isValid()) }, style: { 'padding-left': (shipperCompanyName.isModified() && !shipperCompanyName.isValid()) ? '15px' : '' }, value: shipperCompanyName, minLength: 2, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Contact Person:
+											</td>
+											<td class="typeStatus">
+												<input class="width-percent-93" type="text" maxlength="50" data-bind="value: shipperContactPerson, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" />
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Phone:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: shipperPhone, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (shipperPhone.isModified() && !shipperPhone.isValid()), tooltip: { title: shipperPhone.isModified() ? shipperPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="shipperPhoneNo" class="shipperPhoneNoFocus" type="text" data-bind=" event: { keypress: formatPhoneNumber(shipperPhone) }, style: { width: (shipperPhone.isModified() && !shipperPhone.isValid()) ? '89%' : '93%' }, value: shipperPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" maxlength="13" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: shipperPhone">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (shipperPhone.isModified() && !shipperPhone.isValid()), tooltip: { title: shipperPhone.isModified() ? shipperPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="shipperPhoneNo" class="validation2 shipperPhoneNoFocus" maxlength="13" data-bind=" event: { keypress: formatPhoneNumber(shipperPhone) }, attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (shipperPhone.isModified() && !shipperPhone.isValid()) }, style: { 'padding-left': (shipperPhone.isModified() && !shipperPhone.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: shipperPhone, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">FAX:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: shipperFax, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (shipperFax.isModified() && !shipperFax.isValid()), tooltip: { title: shipperFax.isModified() ? shipperFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="shipperFax" type="text" data-bind="event: { keypress: formatPhoneNumber(shipperFax) }, style: { width: (shipperFax.isModified() && !shipperFax.isValid()) ? '89%' : '93%' }, value: shipperFax, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" maxlength="13" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: shipperFax">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (shipperFax.isModified() && !shipperFax.isValid()), tooltip: { title: shipperFax.isModified() ? shipperFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="shipperFax" class="validation2" maxlength="13" data-bind="event: { keypress: formatPhoneNumber(shipperFax) }, attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (shipperFax.isModified() && !shipperFax.isValid()) }, style: { 'padding-left': (shipperFax.isModified() && !shipperFax.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: shipperFax, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address1:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: shipperAddress1, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (shipperAddress1.isModified() && !shipperAddress1.isValid()), tooltip: { title: shipperAddress1.isModified() ? shipperAddress1.error : '', placement: 'bottom', trigger: 'hover' } " style="text-align: left;"></i>
+													<input type="text" maxlength="100" data-bind="style: { width: (shipperAddress1.isModified() && !shipperAddress1.isValid()) ? '89%' : '93%' }, value: shipperAddress1, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: shipperAddress1">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (shipperAddress1.isModified() && !shipperAddress1.isValid()), tooltip: { title: shipperAddress1.isModified() ? shipperAddress1.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="shipperAddress1st" class="validation2" maxlength="100" data-bind="attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (shipperAddress1.isModified() && !shipperAddress1.isValid()) }, style: { 'padding-left': (shipperAddress1.isModified() && !shipperAddress1.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: shipperAddress1, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address2:
+											</td>
+											<td class="typeStatus">
+												<input type="text" class="width-percent-93" maxlength="100" data-bind="value: shipperAddress2, valueUpdate: 'afterkeydown', uniqueName: true, attr: { 'readonly': shouldBeReadOnly }" />
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">*City State or ZIP:
+											</td>
+											<td class="typeStatus">
+												<div data-bind="compose: { model: shipperLocation, view: 'templates/searchLocationControl' }, attr: { 'disabled': shouldBeReadOnly }"></div>
+											</td>
+										</tr>
+										<tr class="height-20">
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="typeStatus">
+
+												<table class="margin-right-20">
+													<tr>
+														<td class="width-percent-72-5">
+															<span class="label" data-bind="visible: !isInternationalShipmentSelected(), text: countryLabelShipper"></span>
+                                                            <!--##START: DE20724-->
+															<select id="shipperCountrylist" class="width-percent--70 margin-bottom-0" data-bind="options: countryList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select...', value: selectedShipperCountryCode, visible: isInternationalShipmentSelected(), attr: { 'disabled': shouldBeReadOnly } "></select>
+                                                            <!--##END: DE20724-->
+														</td>
+														<td>
+															<button type="button" id="ButtonShipperMapped" class=" flatButton btn btn-checkbox height-30 width-150 active" data-bind="css: { active: shipperSelected }, html: shipperSelected() ? htmlShipper() : shipperName, click: selectShipperOption, visible: isForeignVisible">
+															</button>
+															<!--<button class="btn btn-primary">Add To Mapping</button><!--data-bind="click: onSave, enable: isChange"-->
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr class="height-17">
+											<td colspan="2"></td>
+										</tr>
+									</table>
+								</div>
+							</fieldset>
+						</td>
+						<td class="width-percent-30">
+							<fieldset>
+								<legend>Consignee</legend>
+								<div class="span4 width-percent-100">
+									<table class="tbl-sales-order width-percent-100 margin-left--7">
+										<tr>
+											<td class="typeLabels width-percent-10">*Company Name:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: consigneeCompanyName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (consigneeCompanyName.isModified() && !consigneeCompanyName.isValid()), tooltip: { title: consigneeCompanyName.isModified() ? consigneeCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="consigneeCompanyName" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" data-bind="style: { width: (consigneeCompanyName.isModified() && !consigneeCompanyName.isValid()) ? '89%' : '93%' }, value: consigneeCompanyName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" placeholder="Company Name" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: consigneeCompanyName">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (consigneeCompanyName.isModified() && !consigneeCompanyName.isValid()), tooltip: { title: consigneeCompanyName.isModified() ? consigneeCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="consigneeCompanyName" class="requiredFieldBgColor validation2 consigneeCompanyNameClass" maxlength="100" placeholder="Company Name" data-bind=" attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (consigneeCompanyName.isModified() && !consigneeCompanyName.isValid()) }, style: { 'padding-left': (consigneeCompanyName.isModified() && !consigneeCompanyName.isValid()) ? '15px' : '' }, value: consigneeCompanyName, minLength: 2, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Contact Person:
+											</td>
+											<td class="typeStatus">
+												<input class="width-percent-93" type="text" maxlength="50" data-bind="value: consigneeContactPerson, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" />
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Phone:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: consigneePhone, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (consigneePhone.isModified() && !consigneePhone.isValid()), tooltip: { title: consigneePhone.isModified() ? consigneePhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="consigneePhone" class="consigneePhoneNoFocus" type="text" data-bind="event: { keypress: formatPhoneNumber(consigneePhone) }, style: { width: (consigneePhone.isModified() && !consigneePhone.isValid()) ? '89%' : '93%' }, value: consigneePhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" maxlength="13" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: consigneePhone">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (consigneePhone.isModified() && !consigneePhone.isValid()), tooltip: { title: consigneePhone.isModified() ? consigneePhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="consigneePhone" class="validation2 consigneePhoneNoFocus" maxlength="13" data-bind=" event: { keypress: formatPhoneNumber(consigneePhone) }, attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (consigneePhone.isModified() && !consigneePhone.isValid()) }, style: { 'padding-left': (consigneePhone.isModified() && !consigneePhone.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: consigneePhone, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">FAX:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: consigneeFax, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (consigneeFax.isModified() && !consigneeFax.isValid()), tooltip: { title: consigneeFax.isModified() ? consigneeFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="consigneeFax" type="text" data-bind="event: { keypress: formatPhoneNumber(consigneeFax) }, style: { width: (consigneeFax.isModified() && !consigneeFax.isValid()) ? '89%' : '93%' }, value: consigneeFax, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" maxlength="13" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: consigneeFax">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (consigneeFax.isModified() && !consigneeFax.isValid()), tooltip: { title: consigneeFax.isModified() ? consigneeFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="consigneeFax" class="validation2" maxlength="13" data-bind="event: { keypress: formatPhoneNumber(consigneeFax) }, attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (consigneeFax.isModified() && !consigneeFax.isValid()) }, style: { 'padding-left': (consigneeFax.isModified() && !consigneeFax.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: consigneeFax, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address1:
+											</td>
+											<td class="typeStatus">
+												<!--<div data-bind=" validationElement: consigneeAddress1, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (consigneeAddress1.isModified() && !consigneeAddress1.isValid()), tooltip: { title: consigneeAddress1.isModified() ? consigneeAddress1.error : '', placement: 'bottom', trigger: 'hover' } " style="text-align: left;"></i>
+													<input type="text" maxlength="100" data-bind="style: { width: (consigneeAddress1.isModified() && !consigneeAddress1.isValid()) ? '89%' : '93%' }, value: consigneeAddress1, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" />
+												</div>-->
+												<label class="validation-label2" data-bind=" validationElement: consigneeAddress1">
+													<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (consigneeAddress1.isModified() && !consigneeAddress1.isValid()), tooltip: { title: consigneeAddress1.isModified() ? consigneeAddress1.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" id="consigneeAddress1st" class="validation2" maxlength="100" data-bind="attr: { 'readonly': shouldBeReadOnly }, css: { borderRedOnValidation: (consigneeAddress1.isModified() && !consigneeAddress1.isValid()) }, style: { 'padding-left': (consigneeAddress1.isModified() && !consigneeAddress1.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', value: consigneeAddress1, validationOptions: { errorElementClass: null }" style="width: 93%" />
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address2:
+											</td>
+											<td class="typeStatus">
+												<input class="width-percent-93" type="text" maxlength="100" data-bind="value: consigneeAddress2, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly }" />
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">*City State or ZIP:
+											</td>
+											<td class="typeStatus">
+												<div data-bind="compose: { model: consigneeLocation, view: 'templates/searchLocationControl' }, attr: { 'readonly': shouldBeReadOnly }"></div>
+											</td>
+										</tr>
+										<tr class="height-20">
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="typeStatus">
+												<table class="margin-right-20">
+													<tr>
+														<td class="width-percent-72-5">
+															<span class="label" data-bind="visible: !isInternationalShipmentSelected(), text: countryLabelConsignee"></span>
+                                                            <!--##START: DE20724-->
+															<select id="consigneeCountryList" class="width-percent--70 margin-bottom-0" data-bind="options: countryList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select...', value: selectedConsigneeCountryCode, visible: isInternationalShipmentSelected(), attr: { 'disabled': shouldBeReadOnly } "></select>
+                                                            <!--##END: DE20724-->
+														</td>
+														<td>
+															<button type="button" id="ButtonConsigneeMapped" class=" flatButton btn btn-checkbox height-30 width-150 active" data-bind="css: { active: consigneeSelected }, html: consigneeSelected() ? htmlConsignee() : consigneeName, click: selectConsigneeOption, visible: isForeignVisible">
+															</button>
+															<!--<button class="btn btn-primary">Address Mapped</button>-->
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr class="height-17">
+											<td colspan="2"></td>
+										</tr>
+									</table>
+								</div>
+							</fieldset>
+						</td>
+						<td class="vertical-align-top width-percent-30">
+							<fieldset data-bind="style: { height: (isInternationalShipmentSelected() ? '305px' : '305px') }">
+								<legend>Bill To</legend>
+								<div class="span4 width-percent-100">
+									<table class="tbl-sales-order width-percent-100 margin-left--7">
+										<tr>
+											<td class="typeLabels width-percent-10">*Company Name:
+											</td>
+											<td class="typeStatus">
+												<div data-bind=" validationElement: billToCompanyName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (billToCompanyName.isModified() && !billToCompanyName.isValid()), tooltip: { title: billToCompanyName.isModified() ? billToCompanyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="billToCompanyName" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" data-bind="style: { width: (billToCompanyName.isModified() && !billToCompanyName.isValid()) ? '89%' : '93%' }, value: billToCompanyName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': isCallForEdit }" placeholder="Company Name" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Phone:
+											</td>
+											<td class="typeStatus">
+												<div data-bind=" validationElement: billToPhone, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (billToPhone.isModified() && !billToPhone.isValid()), tooltip: { title: billToPhone.isModified() ? billToPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="billToPhone" class="billToPhoneNoFocus" type="text" data-bind="event: { keypress: formatPhoneNumber(billToPhone) }, style: { width: (billToPhone.isModified() && !billToPhone.isValid()) ? '89%' : '93%' }, value: billToPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': isCallForEdit }" maxlength="13" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">FAX:
+											</td>
+											<td class="typeStatus">
+												<div data-bind=" validationElement: billToFax, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (billToFax.isModified() && !billToFax.isValid()), tooltip: { title: billToFax.isModified() ? billToFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input id="billToFax" type="text" data-bind="event: { keypress: formatPhoneNumber(billToFax) }, style: { width: (billToFax.isModified() && !billToFax.isValid()) ? '89%' : '93%' }, value: billToFax, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': isCallForEdit }" maxlength="13" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address1:
+											</td>
+											<td class="typeStatus">
+												<div data-bind=" validationElement: billToAddress1, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+													<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (billToAddress1.isModified() && !billToAddress1.isValid()), tooltip: { title: billToAddress1.isModified() ? billToAddress1.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+													<input type="text" maxlength="100" data-bind="style: { width: (billToAddress1.isModified() && !billToAddress1.isValid()) ? '89%' : '93%' }, value: billToAddress1, attr: { 'readonly': isCallForEdit }, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Address2:
+											</td>
+											<td class="typeStatus">
+												<input class="width-percent-93" type="text" maxlength="100" data-bind="value: billToAddress2, attr: { 'readonly': isCallForEdit }" />
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">*City State or ZIP:
+											</td>
+											<td class="typeStatus">
+												<div data-bind="compose: { model: billToLocation, view: 'templates/searchLocationControl' }, event: { keydown: isTabPress }"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels"></td>
+											<td class="typeStatus">
+												<table class="margin-right-20">
+													<tr>
+														<td class="width-percent-72-5">
+															<!--###START: US26388-->
+															<span class="label" data-bind="visible: !isInternationalShipmentSelected(), text: countryLabelBillto"></span>
+															<!--###END: US26388-->
+                                                            <!--##START: DE20724-->
+															<select id="billToCountryList" class="width-percent--70 margin-bottom-0" data-bind="options: countryList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select...', value: selectedBillToCountryCode, visible: isInternationalShipmentSelected(), attr: { 'disabled': isCallForEdit } "></select>
+                                                            <!--##END: DE20724-->
+														</td>
+														<td>
+															<!--<button class="btn btn-primary">Address Mapped</button>-->
+															<button type="button" id="ButtonBillToMapped" class=" flatButton btn btn-checkbox height-30 width-150 active" data-bind="css: { active: billtoSelected }, html: billtoSelected() ? htmlBillTo() : billToName, click: selectBillToOption, visible: isForeignVisible">
+															</button>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td class="typeLabels">Process Detail:
+											</td>
+											<td class="typeStatus">
+												<textarea cols="50" rows="2" class="accounting-textarea width-percent-93 " readonly="readonly" data-bind="value: processDetails"></textarea>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

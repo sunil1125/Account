@@ -1,0 +1,129 @@
+﻿<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US21290</id> <by>Shreesha Adiga</by> <date>17-03-2016</date><description>Show longdescription instead of short description in item dropdown</description>
+<id>DE24475</id> <by>Dhaval Tamhane</by> <date>22-09-2016</date><description>Showing full validation messsage to user for Items</description>
+<id>US24907</id> <by>Vasanthakumar</by> <date>07-10-2016</date><description>Increase character limit for Product Name</description>
+</changeHistory>-->
+<div id="divPOItem">
+
+	<div class="row-fluid">
+		<div id="divItemsContainer" class="span12 item-div-container">
+			<table id="tblPurchaseOrderItems" class="table table-bordered shipment-item ">
+				<thead>
+					<tr>
+						<th>
+							<label class="align-center">Item</label></th>
+						<th>
+							<label class="align-center">Description</label></th>
+						<th>
+							<label class="align-center">Cost</label></th>
+						<th>
+							<label class="align-center">Class</label></th>
+						<th>
+							<label class="align-center">Weight</label></th>
+						<th>
+							<label class="align-center">PCS</label></th>
+						<th>
+							<label class="align-center">Dimensions</label></th>
+						<th>
+							<label class="align-center">Package Type</label></th>
+						<th>
+							<button class="btn btn-primary width-50 height-30" id="addItemButton" data-bind="click: onAdd">Add</button>
+						</th>
+					</tr>
+				</thead>
+				<tbody data-bind='foreach: purchaseOrderItemsList' class="line-items">
+					<tr class="lineItemRow">
+
+						<!--##START: DE24475-->
+						<td data-title="Unit Type" class="unit-type width-percent--5">
+							<!--##END: DE24475-->
+
+							<label class="validation-label2" data-bind=" validationElement: selectedItemTypes">
+
+								<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectedItemTypes.isModified() && !selectedItemTypes.isValid()), tooltip: { title: selectedItemTypes.isModified() ? selectedItemTypes.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<!--##START: US21290-->
+								<select id="drpItems" class=" validation2 requiredFieldBgColor unitTypeDropDown newselect width-200" data-togle="tooltip"
+									data-bind="options: $parent.shipmentItemTypes, css: { borderRedOnValidation: (selectedItemTypes.isModified() && !selectedItemTypes.isValid()) }, style: { 'padding-left': (selectedItemTypes.isModified() && !selectedItemTypes.isValid()) ? '16px' : '' }, value: selectedItemTypes, validationOptions: { errorElementClass: null }, optionsText: 'LongDescription', optionsCaption: 'Select...', attr: { id: ('selectItem' + $index() + 1) }">
+								</select>
+								<!--##END: US21290-->
+							</label>
+						</td>
+
+						<td data-title="Description" class="width-percent-16">
+							<label class="validation-label2" data-bind=" validationElement: userDescription">
+								<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (userDescription.isModified() && !userDescription.isValid()), tooltip: { title: userDescription.isModified() ? userDescription.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<!--##START: US24907-->
+								<input type="text" id="txtDescription" name="Commodity" class="requiredFieldBgColor validation2 txtDescription" data-bind=" css: { borderRedOnValidation: (userDescription.isModified() && !userDescription.isValid()) }, style: { 'padding-left': (userDescription.isModified() && !userDescription.isValid()) ? '15px' : '' }, attr: { id: ('txtDescription' + $index() + 1), 'readOnly': !(isShippingItemMiscellaneous()) }, value: userDescription, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" style="width: 95%" maxlength="300" />
+								<!--##END: US24907-->
+							</label>
+						</td>
+
+						<td data-title="Cost" class="width-percent-10">
+							<label class="validation-label2" data-bind="validationElement: cost, style: { 'margin-left': ((cost.isModified() && !cost.isValid()) ? '11px' : '') }">
+
+								<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (cost.isModified() && !cost.isValid()), tooltip: { title: cost.isModified() ? cost.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<strong data-bind=" visible: (!cost.isModified() || cost.isValid())">$</strong>
+								<input type="text" id="txtCost" class="requiredFieldBgColor validation2 txtCost height-20 min-width-50" data-togle="tooltip" maxlength="11" data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, css: { borderRedOnValidation: (cost.isModified() && !cost.isValid()) }, style: { 'padding-left': (cost.isModified() && !cost.isValid()) ? '16px' : '' }, value: cost, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { id: ('palletCount' + $index() + 1) }" style="width: 85%" />
+							</label>
+						</td>
+
+						<td data-title="Class" class="width-percent--5">
+							<div data-bind="visible: isShippingItem">
+								<select data-togle="tooltip" class="classDropDown newselect width-50"
+									data-bind="options: $parent.classTypes, optionsValue: 'ID', value: selectedClassType, optionsText: 'Value', optionsCaption: 'Select...', validationOptions: { errorElementClass: null }, attr: { id: ('selectClass' + $index() + 1) }">
+								</select>
+							</div>
+						</td>
+
+						<td data-title="Weight" class="nowrap width-percent-3">
+							<div class="weightDiv">
+								<div class="float-left"
+									data-bind="visible: isShippingItem">
+									<input class="weightTextBox" type='text' maxlength="9"
+										data-bind="numeric: weight, value: weight, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { id: ('txtWeight' + $index() + 1) }" />
+								</div>
+							</div>
+						</td>
+
+						<td data-title="#Pcs" class="width-percent-4">
+							<div data-bind="visible: isShippingItem">
+								<input class="pcsTextBox" type='text' data-togle="tooltip" maxlength="6"
+									data-bind="numeric: pieceCount, value: pieceCount, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { id: ('txtPCS' + $index() + 1) }" />
+							</div>
+						</td>
+
+						<td data-title="Dimensions" class="width-percent--5">
+							<div class="dimensions" data-bind="visible: isShippingItem">
+								<input type="text" style="width: 20px" placeholder="L" maxlength="9" data-bind="numeric: dimensionLength, value: dimensionLength, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtLength' + $index() + 1) }" />
+								<input type="text" style="width: 20px" placeholder="W" maxlength="9" data-bind="numeric: dimensionWidth, value: dimensionWidth, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtWidth' + $index() + 1) }" />
+								<input type="text" style="width: 20px" placeholder="H" maxlength="9" data-bind="numeric: dimensionHeight, value: dimensionHeight, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtHeight' + $index() + 1) }" />
+							</div>
+						</td>
+
+						<td data-title="package" class="width-percent--5">
+							<div
+								data-bind="validationElement: selectedPackageType, validationOptions: { errorElementClass: 'input-validation-error' }, visible: isShippingItem">
+								<i class=" icon-question-sign tooltip-cursor"
+									data-bind=" visible: (selectedPackageType.isModified() && !selectedPackageType.isValid()), tooltip: { title: selectedPackageType.isModified() ? selectedPackageType.error : '', placement: 'bottom', trigger: 'hover' } " />
+								<select data-togle="tooltip" class="classDropDown newselect width-100"
+									data-bind="options: $parent.packageTypes, optionsValue: 'ID', value: selectedPackageType, optionsText: 'Value', optionsCaption: 'Select...', validationOptions: { errorElementClass: null }, attr: { id: ('selectPackage' + $index() + 1) }">
+								</select>
+							</div>
+						</td>
+						<td data-title="delete" class="width-percent-2 align-center vertical-align-middle">
+							<input data-bind="click: $parent.removeLineItem, event: { keydown: $parent.isTabPress }, attr: { id: ('imgButtonDelete' + $index() + 1) }" type="image" src="Content/images/Icon_Trash.png" onmouseover="this.src='Content/images/Icon_Trash_Over.png';" onmouseout="this.src='Content/images/Icon_Trash.png';" onmousedown="this.src='Content/images/Icon_Trash_Down.png';" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--Line Item End-->

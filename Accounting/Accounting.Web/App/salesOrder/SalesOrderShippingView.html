@@ -1,0 +1,325 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+Sales order shipping Details Entry/Edit
+</summary>
+<changeHistory>
+<id>US22417</id> <by>Janakiram</by> <date>19-05-2016</date> <description>Main SO Screen UI Field changes added like Customer BOL#, Total Pieces, Total Weight</description>
+</changeHistory>
+!-->
+<div id="divSOShippingView" class="tableLayout">
+    <div class="table-cell threeDiv">
+        <table class="tbl-sales-order">
+            <tr data-bind="visible: CanSeeCustomerTermType">
+                <td class="typeLabels">Customer Id:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: masterCustomerId" readonly="readonly" />
+                </td>
+            </tr>
+            <!-- ###START: US22417 !-->
+            <tr>
+                <td class="typeLabels">Customer BOL#:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" maxlength="20" data-bind="event: { keypress: isAlphaNumericSpace }, value: customerBolNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" />
+                </td>
+            </tr>
+            <!-- ###END: US22417 !-->
+            <tr>
+                <td class="typeLabels">*Requested Pickup Date:
+                </td>
+                <td class="typeStatus">
+                    <div class="typecontrols padding-top-0">
+                        <div data-bind=" validationElement: requestedPickupDate, validationOptions: { errorElementClass: 'input-validation-error width-218' }">
+                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (requestedPickupDate.isModified() && !requestedPickupDate.isValid()), tooltip: { title: requestedPickupDate.isModified() ? requestedPickupDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                            <div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="datepicker: requestedPickupDate, datepickerOptions: datepickerOptions, style: { width: (requestedPickupDate.isModified() && !requestedPickupDate.isValid()) ? '200px' : '233px' }">
+                                <input id="txtRequestedPickupDate" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToRequestedPickupDate }, value: requestedPickupDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (requestedPickupDate.isModified() && !requestedPickupDate.isValid()) ? '175px' : '193px' }, attr: { 'readonly': !(isSaveEnable()) }" maxlength="10" />
+                                <span class="add-on" data-bind="css: { disabledateLink: !isSaveEnable() }">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Pickup Date:
+                </td>
+                <td class="typeStatus">
+                    <div class="typecontrols padding-top-0">
+                        <div data-bind=" validationElement: pickupDate, validationOptions: { errorElementClass: 'input-validation-error width-218' }">
+                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (pickupDate.isModified() && !pickupDate.isValid()), tooltip: { title: pickupDate.isModified() ? pickupDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                            <div class="input-append date" id="Div2" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="datepicker: pickupDate, datepickerOptions: datepickerOptions, style: { width: (pickupDate.isModified() && !pickupDate.isValid()) ? '200px' : '233px' }">
+                                <input id="txtPickupDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToPickupDate }, value: pickupDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" maxlength="10" />
+                                <span class="add-on" data-bind="css: { disabledateLink: !isSaveEnable() }">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Invoice Date:
+                </td>
+                <td class="typeStatus">
+                    <div class="typecontrols padding-top-0">
+                        <div data-bind=" validationElement: invoiceDate, validationOptions: { errorElementClass: 'input-validation-error width-218' } ">
+                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (invoiceDate.isModified() && !invoiceDate.isValid()), tooltip: { title: invoiceDate.isModified() ? invoiceDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                            <div class="input-append date" id="Div5" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="datepicker: invoiceDate, datepickerOptions: datepickerOptions, style: { width: (invoiceDate.isModified() && !invoiceDate.isValid()) ? '200px' : '233px' }">
+                                <input id="Text2" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="value: invoiceDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': 'readonly' }" />
+                                <span class="add-on" data-bind="css: { disabledateLink: true }">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Transit Days:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="event: { keypress: isNumber }, value: transitDays, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" />
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">*Pickup Ready Time:
+                </td>
+                <td class="typeStatus">
+                    <div class="controls">
+                        <!--<div data-bind=" validationElement: pickupReadyTime, validationOptions: { errorElementClass: 'input-validation-error width-218' }">
+							<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (pickupReadyTime.isModified() && !pickupReadyTime.isValid()), tooltip: { title: pickupReadyTime.isModified() ? pickupReadyTime.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+							<div class="input-append bootstrap-timepicker" data-bind="validationElement: pickupReadyTime, validationOptions: { errorElementClass: 'error-class' }, style: { 'width': (pickupReadyTime.isModified() && !pickupReadyTime.isValid()) ? '93%' : '71%' }">
+								<span class=" ValidationErrorImage2 tooltip-cursor" style="font-size: 12px; vertical-align: text-top;" data-bind=" visible: (pickupReadyTime.isModified() && !pickupReadyTime.isValid()), tooltip: { title: pickupReadyTime.isModified() ? pickupReadyTime.error : '', placement: 'bottom', trigger: 'hover' }"></span>
+								<input id="sdReadyTimeP" class="timepickerTextBox requiredFieldBgColor" type="text" value="" placeholder="hh:mm"
+									data-bind="validationOptions: { errorElementClass: '' }, jQTimepicker: pickupReadyTime, jQTimepickerOptions: pickupReadyTimeOptions, style: { 'width': (pickupReadyTime.isModified() && !pickupReadyTime.isValid()) ? '83%' : '76%' }, valueUpdate: 'afterkeydown', enable: isSaveEnable" />
+								<span class="icon-time add-on timeZone ui-timeicon" data-bind="event: { mouseover: showReadyTimeMessage }, css: { disabledateLink: !isSaveEnable() }"></span>
+							</div>
+						</div>-->
+                        <div class="validation-label2" data-bind=" validationElement: pickupReadyTime">
+                            <i class="fa fa-question-circle valdation_icon" style="z-index: 9999;" data-bind=" visible: (pickupReadyTime.isModified() && !pickupReadyTime.isValid()), tooltip: { title: pickupReadyTime.isModified() ? pickupReadyTime.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+                            <div class="input-append bootstrap-timepicker" id="divIdReadyTimeP" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="validationElement: pickupReadyTime, css: { borderRedOnValidation: (pickupReadyTime.isModified() && !pickupReadyTime.isValid()) }" style="width: 218px">
+
+                                <input type="text" id="sdReadyTimeP" class="requiredFieldBgColor validation2" value="" placeholder="hh:mm"
+                                    data-bind=" jQTimepicker: pickupReadyTime, jQTimepickerOptions: pickupReadyTimeOptions, style: { 'padding-left': (pickupReadyTime.isModified() && !pickupReadyTime.isValid()) ? '17px' : '' }, value: pickupReadyTime, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" style="width: 179px;" />
+                                <span class="icon-time add-on timeZone ui-timeicon" data-bind="event: { mouseover: showReadyTimeMessage }, css: { disabledateLink: !isSaveEnable() }"></span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">*Pickup Close Time:
+                </td>
+                <td class="typeStatus">
+                    <div class="controls">
+                        <!--<div data-bind=" validationElement: pickupCloseTime, validationOptions: { errorElementClass: 'input-validation-error width-218' }">
+							<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (pickupCloseTime.isModified() && !pickupCloseTime.isValid()), tooltip: { title: pickupCloseTime.isModified() ? pickupCloseTime.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+							<div class="input-append bootstrap-timepicker" data-bind="validationElement: pickupCloseTime, validationOptions: { errorElementClass: 'error-class' }, style: { 'width': (pickupCloseTime.isModified() && !pickupCloseTime.isValid()) ? '93%' : '71%' }">
+								<span class="ValidationErrorImage2 tooltip-cursor" style="font-size: 12px; vertical-align: text-top;" data-bind=" visible: (pickupCloseTime.isModified() && !pickupCloseTime.isValid()), tooltip: { title: pickupCloseTime.isModified() ? pickupCloseTime.errorMessage : '', placement: 'bottom', trigger: 'hover' }"></span>
+								<input id="sdCloseTimeP" type="text" class="timepickerTextBox requiredFieldBgColor" value="" placeholder="hh:mm"
+									data-bind="validationOptions: { errorElementClass: '' }, jQTimepicker: pickupCloseTime, jQTimepickerOptions: pickupCloseTimeOptions, style: { 'width': (pickupCloseTime.isModified() && !pickupCloseTime.isValid()) ? '83%' : '76%' }, valueUpdate: 'afterkeydown', enable: isSaveEnable" />
+
+								<span class="icon-time add-on timeZone ui-timeicon" data-bind="event: { mouseover: showReadyTimeMessage }, css: { disabledateLink: !isSaveEnable() }"></span>
+							</div>
+						</div>-->
+                        <div class="validation-label2" data-bind=" validationElement: pickupCloseTime">
+                            <i class="fa fa-question-circle valdation_icon" style="z-index: 9999;" data-bind=" visible: (pickupCloseTime.isModified() && !pickupCloseTime.isValid()), tooltip: { title: pickupCloseTime.isModified() ? pickupCloseTime.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+                            <div class="input-append bootstrap-timepicker" id="divIdCloseTimeP" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="validationElement: pickupCloseTime, css: { borderRedOnValidation: (pickupCloseTime.isModified() && !pickupCloseTime.isValid()) }" style="width: 218px">
+
+                                <input type="text" id="sdCloseTimeP" class="requiredFieldBgColor validation2" value="" placeholder="hh:mm"
+                                    data-bind=" jQTimepicker: pickupCloseTime, jQTimepickerOptions: pickupCloseTimeOptions, style: { 'padding-left': (pickupCloseTime.isModified() && !pickupCloseTime.isValid()) ? '17px' : '' }, value: pickupCloseTime, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" style="width: 179px;" />
+                                <span class="icon-time add-on timeZone ui-timeicon" data-bind="event: { mouseover: showReadyTimeMessage }, css: { disabledateLink: !isSaveEnable() }"></span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Estimated Due Date:
+                </td>
+                <td class="typeStatus">
+                    <div class="typecontrols padding-top-0">
+                        <div data-bind=" validationElement: estimatedDueDate, validationOptions: { errorElementClass: 'input-validation-error width-218' } ">
+                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (estimatedDueDate.isModified() && !estimatedDueDate.isValid()), tooltip: { title: estimatedDueDate.isModified() ? estimatedDueDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                            <div class="input-append date" id="Div3" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="datepicker: estimatedDueDate, datepickerOptions: datepickerOptions, style: { width: (estimatedDueDate.isModified() && !estimatedDueDate.isValid()) ? '200px' : '233px' }">
+                                <input id="Text3" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="value: estimatedDueDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': 'readonly' }" />
+                                <span class="add-on" data-bind="css: { disabledateLink: true } ">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30" data-bind="value: newShipmentType, visible: processFlow">New Shipment Type:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: newShipmentType, visible: processFlow, valueUpdate: 'afterkeydown', attr: { readonly: true }" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span style="color: #e80c4d" data-bind="visible: isWeekend, text: isWeekendMessage"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="table-cell threeDiv">
+        <table class="tbl-sales-order">
+            <tr>
+                <td class="typeLabels height-30">Ship By:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: shipBy, valueUpdate: 'afterkeydown', attr: { readonly: true }" />
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30">Origin Terminal Phone #:
+                </td>
+                <td class="typeStatus">
+                    <!--<div data-bind=" validationElement: originTerminalPhone, validationOptions: { errorElementClass: 'input-validation-error' }" style="width:221px;">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (originTerminalPhone.isModified() && !originTerminalPhone.isValid()), tooltip: { title: originTerminalPhone.isModified() ? originTerminalPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input id="txtOriginTerminalPhone" type="text" data-bind="numeric: originTerminalPhone, event: { keypress: formatPhoneNumber(originTerminalPhone) }, style: { width: (originTerminalPhone.isModified() && !originTerminalPhone.isValid()) ? '190px' : '206px' }, value: originTerminalPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isSaveEnable" maxlength="19" />
+					</div>-->
+                    <label class="validation-label2" data-bind=" validationElement: originTerminalPhone">
+                        <i class="fa fa-question-circle valdation_icon" data-bind=" visible: (originTerminalPhone.isModified() && !originTerminalPhone.isValid()), tooltip: { title: originTerminalPhone.isModified() ? originTerminalPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+                        <input type="text" id="txtOriginTerminalPhone" class="validation2" data-bind="numeric: originTerminalPhone, event: { keypress: formatPhoneNumber(originTerminalPhone) }, css: { borderRedOnValidation: (originTerminalPhone.isModified() && !originTerminalPhone.isValid()) }, style: { 'padding-left': (originTerminalPhone.isModified() && !originTerminalPhone.isValid()) ? '20px' : '' }, attr: { 'readonly': !(isSaveEnable()) }, value: originTerminalPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" maxlength="19" style="width: 206px;" />
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30">Destination Terminal Phone #:
+                </td>
+                <td class="typeStatus">
+                    <!--<div data-bind="validationElement: destinationTerminalPhone, validationOptions: { errorElementClass: 'input-validation-error' }" style="width:94%;">
+						<i class="icon-question-sign tooltip-cursor" data-bind="visible: (destinationTerminalPhone.isModified() && !destinationTerminalPhone.isValid()), tooltip: { title: destinationTerminalPhone.isModified() ? destinationTerminalPhone.error : '', placement: 'bottom', trigger: 'hover' }"></i>
+						<input id="txtDestinationTerminalPhone" type="text" data-bind="numeric: destinationTerminalPhone, event: { keypress: formatPhoneNumber(destinationTerminalPhone) }, style: { width: (destinationTerminalPhone.isModified() && !destinationTerminalPhone.isValid()) ? '83%' : '68.5%' }, value: destinationTerminalPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isSaveEnable" maxlength="19" />
+					</div>-->
+                    <label class="validation-label2" data-bind=" validationElement: destinationTerminalPhone">
+                        <i class="fa fa-question-circle valdation_icon" data-bind=" visible: (destinationTerminalPhone.isModified() && !destinationTerminalPhone.isValid()), tooltip: { title: destinationTerminalPhone.isModified() ? destinationTerminalPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+                        <input type="text" id="txtDestinationTerminalPhone" class="validation2" data-bind="numeric: destinationTerminalPhone, event: { keypress: formatPhoneNumber(destinationTerminalPhone) }, css: { borderRedOnValidation: (destinationTerminalPhone.isModified() && !destinationTerminalPhone.isValid()) }, style: { 'padding-left': (destinationTerminalPhone.isModified() && !destinationTerminalPhone.isValid()) ? '20px' : '' }, attr: { 'readonly': !(isSaveEnable()) }, value: destinationTerminalPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" maxlength="19" style="width: 206px;" />
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30">*Service Type:
+                </td>
+                <td class="typeStatus">
+                    <select id="selectOrderStatus" class="requiredFieldBgColor margin-bottom-0" data-bind="options: serviceTypeList, optionsValue: 'ID', optionsText: 'Value', value: selectedServiceType, attr: { disabled: EnableServiceType }, enable: isServiceTypeEnable">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30">Insured Amount $:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: insuredAmount, valueUpdate: 'afterkeydown', attr: { readonly: true }" />
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Delivery Date:
+                </td>
+                <td class="typeStatus">
+                    <div class="typecontrols padding-top-0" data-bind="disabled: callForEntry">
+                        <div data-bind=" validationElement: deliveryDate, validationOptions: { errorElementClass: 'input-validation-error width-218' } ">
+                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (deliveryDate.isModified() && !deliveryDate.isValid()), tooltip: { title: deliveryDate.isModified() ? deliveryDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                            <div class="input-append date" id="Div4" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+                                data-bind="datepicker: deliveryDate, datepickerOptions: datepickerOptions, style: { width: (deliveryDate.isModified() && !deliveryDate.isValid()) ? '200px' : '233px' }">
+                                <input id="Text4" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToDeliveryDate }, value: deliveryDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" maxlength="10" />
+                                <span class="add-on" data-bind="css: { disabledateLink: !isSaveEnable() } ">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels height-30">Carrier Pickup Number:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: carrierPickupNumber, valueUpdate: 'afterkeydown', attr: { readonly: true }" />
+                </td>
+            </tr>
+            <tr data-bind="visible: CanSeeCustomerTermType">
+                <td class="typeLabels">Terms:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" data-bind="value: termsType" readonly="readonly" />
+                </td>
+            </tr>
+              <!-- ###START: US22417 !-->
+            <tr>
+                <td class="typeLabels">Total Pieces:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" maxlength="5" readonly="readonly" data-bind="value: totalPieces, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': 'readonly' }" />
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Total Weight:
+                </td>
+                <td class="typeStatus">
+                    <input type="text" maxlength="10" readonly="readonly" data-bind='value: totalWeigth, uniqueName: true, validationOptions: { errorElementClass: null }' />
+                </td>
+            </tr>
+              <!-- ###END: US22417 !-->
+        </table>
+    </div>
+
+    <div class="table-cell threeDiv">
+        <table class="tbl-sales-order">
+            <tr>
+                <td class="typeLabels">Pickup Remarks:
+                </td>
+                <td class="typeStatus">
+                    <textarea id="txtpickup" class="accounting-textarea height-100 width-283" data-bind="value: pickupRemarks, valueUpdate: 'afterkeydown', attr: { 'readonly': !(isSaveEnable()) }"
+                        maxlength="500"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="typeLabels">Delivery Remarks:
+                </td>
+                <td class="typeStatus">
+                    <textarea id="txtdelivery" class="accounting-textarea height-100 width-283" data-bind="value: deliverRemarks, event: { keydown: isTabPress }, valueUpdate: 'afterkeydown', attr: { 'readonly': !(isSaveEnable()) }"
+                        maxlength="500"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="popoverdiv" id="pickupTimePopup">
+    <div class="width-400">
+        <p class="popoverpara">
+            Service Delays can occur if<br />
+            <br />
+            1) Shipment Ready time is later than Shipment Close time <b>and / or</b><br />
+            <br />
+            2) Shipment Date & Ready Time combination has already past.
+        </p>
+    </div>
+</div>

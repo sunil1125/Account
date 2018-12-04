@@ -1,0 +1,231 @@
+﻿<!--******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+******************************************************************************-->
+
+<!--
+<createDetails>
+<id>US25143</id> <by>Shreesha Adiga</by><date>05-10-2016</date> <description>Moved all the code from Welcome.html to DashboardCharts.html</description>
+</createDetails>
+<changeHistory>
+<id>US19763</id> <by>Shreesha Adiga</by> <date>01-Dec-2015</date> <description>Removed Chart container for "Inactive UVB"</description>
+<id>US23631</id> <by>Shreesha Adiga</by> <date>28-07-2015</date> <description>Implemented Requote Worked Graph For IRManagers</description>
+<id>US23630</id> <by>Vasanthakumar</by> <date>03-08-2016</date> <description>Implemented Dispute Worked Graph For IRManagers</description>
+<id>US23629</id> <by>Shreesha Adiga</by> <date>03-08-2016</date> <description>Added Dispute Worked Graph For (Logged-in) Individual User; Changed the Position of the Requote Worked Chart of IR Managers</description>
+<id>DE23843</id> <by>Vasanthakumar</by> <date>03-08-2016</date> <description>Implemented Dispute Worked Graph For IRManagers</description>
+</changeHistory>
+-->
+<style>
+	.tooltip-inner {
+		max-width: 350px;
+		padding: 5px;
+		color: #ffffff;
+		text-align: center;
+		text-decoration: none;
+		background-color: black !important;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+</style>
+<div class="container-fluid">
+	<div id="mainDiv" style="margin-top: 2%;">
+		<div style="width: 100%;">
+			<table style="margin: 0 auto">
+				<tr>
+					<td colspan="3">
+						<div class="float-right">
+							<table>
+								<tr>
+									<td>
+										<button class="btn btn-primary" data-bind="click: onClickDownloadFile, visible: isAcctCustomer()" style="height: 30px;">Download Data Files</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div style="background-color: white" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="pNumberofUVBs" class="fa fa-chevron-left fa-lg" data-bind="click: onClickPreviousNumberofUVBsCreated, attr: { 'class': customClass }, tooltip: { title: 'Next Dates' }"></i>
+									</td>
+									<td>
+										<div id="chart-container" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="nNumberofUVBs" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onclickNextNumberofUVBsCreated, tooltip: { title: 'Previous Dates' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<td>
+						<div style="width: 8px;"></div>
+					</td>
+					<td>
+						<div style="background-color: white;">
+							<table style="width: 100%">
+								<tr>
+									<td colspan="3">
+										<div id="chart-container2" class=" float-left">FusionCharts will render here</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<!--<td>
+						<div style="width: 8px;"></div>
+					</td>-->
+				</tr>
+				<tr>
+					<td colspan="3" style="height: 10px;"></td>
+				</tr>
+				<tr data-bind="visible: isRexnordCustomer()">
+					<td>
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForRB, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="pNumberofMAB_RB" class="fa fa-chevron-left fa-lg" data-bind="click: onClickPreviousNumberofManualAuditBill_RequoteBoard, attr: { 'class': customClassForRB }, tooltip: { title: 'Next Dates' }"></i>
+									</td>
+									<td>
+										<div id="chart-Container-Requote" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="nNumberofMAB_RB" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: OnClickNextNumberofManualAuditBill_RequoteBoard, tooltip: { title: 'Previous Dates' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<td>
+						<div style="width: 8px;"></div>
+					</td>
+					<td>
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForSB, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="pNumberofMAB_SB" class="fa fa-chevron-left fa-lg" data-bind="click: onClickPreviousNumberofManualAuditBill_SubourderBoard, attr: { 'class': customClassForSB }, tooltip: { title: 'Next Dates' }"></i>
+									</td>
+									<td>
+										<div id="chart-Container-Suborder" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="nNumberofMAB_sB" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onClickNextNumberofManualAuditBill_SubourderBoard, tooltip: { title: 'Previous Dates' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<!--##START: US23631-->
+				<tr>
+					<td colspan="3" style="height: 10px;"></td>
+				</tr>
+				<!--##START: DE23843-->
+				<tr data-bind="visible: isRexnordCustomer()">
+					<!--##START: DE23843-->
+					<td colspan="1">
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForDisputeDashboardGraph, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="previous-button-dispute-dashboard-chart" data-bind="click: onClickPreviousDipsuteDashboardGraph, attr: { 'class': customClassForDisputeDashboardGraph }, tooltip: { title: 'Next Date' }"></i>
+									</td>
+									<td>
+										<div id="chart-container-dispute-dashboard-graph" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="next-button-dispute-dashboard-chart" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onClickNextDisputeDashboardGraph, tooltip: { title: 'Previous Date' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<!--##END: US23604-->
+
+					<td>
+						<div style="width: 8px;"></div>
+					</td>
+
+					<td colspan="1" data-bind="visible: hasPermissionToDisplayDisputeWorkedByIndividualUserGraph">
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForDisputeWorkedByIndividualUser, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="previous-button-dispute-individual-chart" data-bind="click: onClickPreviousDisputeWorkedByIndividualUserChart, attr: { 'class': customClassForDisputeWorkedByIndividualUser }, tooltip: { title: 'Next Dates' }"></i>
+									</td>
+									<td>
+										<div id="chart-container-dispute-worked-individual-user" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="next-button-dispute-individual-chart" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onClickNextDisputeWorkedByIndividualUserChart, tooltip: { title: 'Previous Dates' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<!--##END: US23629-->
+
+				</tr>
+				<!--##END: US23631-->
+				<!--##START: US23630-->
+				<tr>
+					<td colspan="3" style="height: 10px;"></td>
+				</tr>
+				<tr data-bind="visible: isHasPermissionToDisplayDisputeWorkedByTeam()">
+					<td colspan="3">
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForDisputeWorkedByTeamForIRManagers, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="next-button-dispute-managers-chart" data-bind="click: onClickPreviousDisputeWorkedByTeamIRManagersChart, attr: { 'class': customClassForDisputeWorkedByTeamForManagers }, tooltip: { title: 'Next Date' }"></i>
+									</td>
+									<td>
+										<div id="chart-container-dispute-workedbyteam-for-managers" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="previous-button-dispute-managers-chart" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onClickNextDisputeWorkedByTeamIRManagersChart, tooltip: { title: 'Previous Date' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<!--##END: US23630-->
+				<tr>
+					<td colspan="3" style="height: 10px;"></td>
+				</tr>
+				<tr data-bind="visible: hasPermissionToDisplayRequoteWorkedByTeam">
+					<td colspan="3">
+						<div style="background-color: white" data-bind="showContentProgress: listProgressForRequoteWorkedForIRManagers, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<table style="width: 100%;">
+								<tr>
+									<td>
+										<i id="next-button-requote-managers-chart" data-bind="click: onClickPreviousRequoteWorkedIRManagersChart, attr: { 'class': customClassForRequoteWorkedForManagers }, tooltip: { title: 'Next Date' }"></i>
+									</td>
+									<td>
+										<div id="chart-container-requote-worked-managers" class=" float-left">FusionCharts will render here</div>
+									</td>
+									<td>
+										<i id="previous-button-requote-managers-chart" class="fa fa-chevron-right fa-lg enableAwsomFontLeftRightArrowIcon" data-bind="click: onClickNextRequoteWorkedIRManagersChart, tooltip: { title: 'Previous Date' }"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+
+
+				</tr>
+				<!--##END: US23630-->
+			</table>
+		</div>
+	</div>
+</div>

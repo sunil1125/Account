@@ -1,0 +1,374 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US20961</id> <by>Shreesha Adiga</by> <date>08-03-2016</date> <description>If bill moved to mas disable some inputs</description>
+<id>US21791</id> <by>Shreesha Adiga</by> <date>05-05-2016</date> <description>Diplay aging days | Disable Dispute date always</description>
+<id>DE23003</id> <by>Shreesha Adiga</by> <date>26-05-2016</date> <description>Enable dispute status dropdown and dispute amount input for DisputeShortPaid, EVEN if it has been moved to MAS</description>
+<id>DE23033</id> <by>Shreesha Adiga</by> <date>31-05-2016</date> <description>Disable the amount, note, and reason code fields if bill is moved to mas</description>    
+<id>DE22884</id> <by>Janakiram</by> <date>24-06-2016</date> <description>Decreased lenght of dispute notes fromm 4000 to 1000</description>	  
+<id>US24870</id> <by>Janakiram</by> <date>19-09-2016</date> <description>Replaced the Dispute With Carrier Hyperlink with a Button</description>>	  
+<id>DE25119</id> <by>Janakiram</by> <date>23-11-2016</date> <description>Disable fields for credit line items</description>
+</changeHistory>-->
+<div id="mainDivInternalDisputeDetails" class="tableLayout">
+	<div class="table-cell">
+		<table class="width-percent-100">
+			<tr>
+				<td>
+					<fieldset>
+						<legend>Internal Dispute Details</legend>
+						<div class="width-percent-100">
+							<div class="width-percent-50 float-left">
+								<table class="tbl-sales-order width-percent-100">
+									<tr>
+										<td class="typeLabels">Dispute By :</td>
+										<td class="typeStatus">
+											<input type="text" class="width-percent-87" data-bind="value: internalDisputedBy" readonly="readonly" /></td>
+									</tr>
+									<tr>
+										<td class="typeLabels">Dispute Amount $ :</td>
+										<td class="typeStatus">
+											<input type="text" class="width-percent-87" data-bind="value: internalDisputedAmount" readonly="readonly" /></td>
+									</tr>
+									<tr>
+										<td class="typeLabels">Dispute Date :</td>
+										<td class="typeStatus">
+											<div class="typecontrols padding-top-0">
+												<div class="input-append date width-percent-90" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+													data-bind="datepicker: internalDisputeDate, datepickerOptions: datepickerOptions">
+													<input id="internalDisputeDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToBookedDate }, style: { width: (internalDisputeDate.isModified() && !internalDisputeDate.isValid()) ? '65%' : '94%' }, value: internalDisputeDate, valueUpdate: 'afterkeydown'" maxlength="10" disabled="disabled" />
+													<span class="add-on" data-bind="css: { disabledateLink: true } " style="width: 20px;">
+														<i class="icon-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="width-percent-50 float-left">
+								<table class="width-percent-100">
+									<tr>
+										<td>
+											<fieldset class="width-percent-90 margin-left-10">
+												<legend>Dispute Note:</legend>
+												<div>
+													<textarea id="txtAreaDisputeNotes" class="accounting-textarea  SalesOrder-InternalDispute-accounting-textarea" data-bind="value: internalDisputedNotes" style="" cols="10" rows="3" maxlength="200" readonly="readonly"></textarea>
+												</div>
+											</fieldset>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+
+						<div id="divInternalDisputeDetails" class="item-div-container min-height-150 bg-gainsboro" style="margin-left: 0px;">
+							<table id="rowClick" class="table table-bordered shipment-itemDispute">
+								<thead>
+									<tr>
+										<th>
+											<label class="align-center">PRONo</label></th>
+										<th>
+											<label class="align-center">Dispute Date</label></th>
+										<th>
+											<label class="align-center">Dispute Amount</label></th>
+										<th>
+											<label class="align-center">Bill Status</label></th>
+										<th>
+											<label class="align-center">Notes</label></th>
+										<th>
+											<label class="align-cente">Mas Move Status</label></th>
+										<th>
+											<label class="align-center">Select</label></th>
+										<th>
+											<label class="align-center">IsHoldVB</label></th>
+										<th>
+											<label class="align-center">IsQuickPay</label></th>
+										<th>
+											<label class="align-center">Internal Dispute</label></th>
+										<th>
+											<label class="align-center">Dispute With Carrier</label></th>
+									</tr>
+								</thead>
+								<tbody data-bind="foreach: disputeVendorBillDetailsModels" class="line-items">
+									<tr class="lineItemRow">
+										<td class="width-percent-10">
+											<label class="label-SalesOrderDispute" data-bind="text: proNumber, attr: { title: proNumber }"></label>
+										</td>
+										<td class="width-percent-10">
+											<label class="label-SalesOrderDispute" data-bind="text: disputedDate, attr: { title: disputedDate }"></label>
+										</td>
+										<td class="width-percent-10 align-right">
+											<label class="label-SalesOrderDispute" data-bind="text: disputedAmount, attr: { title: disputedAmount }"></label>
+										</td>
+										<td class="width-percent-10">
+											<label class="label-SalesOrderDispute" data-bind="text: selectedbillStatus, attr: { title: selectedbillStatus }"></label>
+										</td>
+										<td class="cropNotesSODispute">
+											<label class="label-SalesOrderDispute" data-bind="text: disputeNotes, attr: { title: disputeNotes }"></label>
+										</td>
+										<td class="width-percent-15">
+											<label class="label-SalesOrderDispute" data-bind="text: selectedMasClearingStatus, attr: { title: selectedMasClearingStatus }"></label>
+										</td>
+										<td class="align-center width-percent-5">
+											<a class="label-SalesOrderDispute" style="cursor: pointer;" data-bind="click: $parent.selectItem">Select</a>
+										</td>
+
+										<td class="align-center width-percent-5">
+											<input type="checkbox" data-bind="enable: $parent.isSelected(), checked: isHoldVB" />
+										</td>
+										<td class="align-center width-percent-5">
+											<input type="checkbox" data-bind="enable: $parent.isSelected(), checked: isQuickPay" />
+										</td>
+										
+										<td class="width-percent-10">
+											<!-- ###START: DE25119 -->
+											<a class="label-SalesOrderDispute" style="cursor: pointer;" data-bind="click: $parent.internalDispute, css: { disabledateLink: !$parent.isViewOnly() || !isCreditProcessEnable() }" title="Internal Dispute">Internal Dispute</a>
+											<!-- ###END: DE25119 -->
+										</td>
+										<!-- ###START: US20687 -->
+										<td class="width-percent-10">
+											<!-- ###START: US24870 -->
+											<!-- ###START: DE25119 -->
+											<button class="btn btn-primary width-142" data-bind="click: $parent.selectDisputeWithCarrierLink, enable: isCreditProcessEnable">Dispute With Carrier</button>
+											<!-- ###END: US24870 -->
+											<!-- ###END: DE25119 -->
+										</td>
+										<!-- ###END: US20687 --> 
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="divVBDisputeDetails" class="tableLayout" data-bind="visible: isVisibleDisputeDetails">
+	<div class="table-cell">
+		<table class="width-percent-100">
+			<tr>
+				<td>
+					<fieldset>
+						<legend>Vendor Bill Dispute Details</legend>
+						<div>
+							<table class="width-percent-100">
+								<tr>
+									<td>
+										<div class="width-percent-50 float-left">
+											<table class="tbl-sales-order width-percent-100">
+												<!-- ###START: US20584 -->
+												<tr>
+													<!-- ##START: US20961 -->
+													<td class="typeLabels">State :</td>
+													<td>
+														<!-- ###START: DE25119 -->
+														<select class="newselect width-238" data-bind="options: salesOrderStatusTypes, optionsText: 'DisputedStatus', optionsValue: 'ID', optionsCaption: 'Select..', value: internalDisputeStatusId, enable: disableDisputeView" style="width: 88%;"></select>
+														<!-- ###END: DE25119 -->
+													</td>
+													<!-- ##END: US20961 -->
+												</tr>
+												<!-- ###END: US20584 -->
+												<tr>
+													<td class="typeLabels">Dispute Status :</td>
+													<td>
+														<!--##START: US20961-->
+														<!--##START: DE23003-->
+														<select id="selectDisputeStatus" class="margin-bottom-0 width-percent-88" data-bind="options: billStatusList, optionsValue: 'ID', optionsText: 'Value', value: billstatuId, enable: isBillStatusDisputeShortPaid() || !isBillMovedToMas()"></select>
+														<!--##END: DE23003-->
+														<!--##END: US20961-->
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels">Dispute Amount $ :</td>
+													<td>
+														<label class="validation-label2" data-bind=" validationElement: salesOrderTotalDisputeAmount">
+															<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (salesOrderTotalDisputeAmount.isModified() && !salesOrderTotalDisputeAmount.isValid()), tooltip: { title: salesOrderTotalDisputeAmount.isModified() ? salesOrderTotalDisputeAmount.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+															<input type="text" id="txtsalesOrderTotalDisputeAmount" class="validation2 linkDetailsWithNoBorder" data-bind=" css: { borderRedOnValidation: (salesOrderTotalDisputeAmount.isModified() && !salesOrderTotalDisputeAmount.isValid()) }, style: { 'padding-left': (salesOrderTotalDisputeAmount.isModified() && !salesOrderTotalDisputeAmount.isValid()) ? '20px' : '' }, value: salesOrderTotalDisputeAmount, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" readonly="readonly" style="width: 85.5%" />
+														</label>
+													</td>
+												</tr>
+												<tr>
+													<td class="typeLabels">Dispute Date :</td>
+													<td>
+														<div class="typecontrols padding-top-0">
+															<div class="validation-label2" data-bind=" validationElement: VBDisputeDate">
+																<i class="fa fa-question-circle valdation_icon" style="z-index: 9999;" data-bind=" visible: (VBDisputeDate.isModified() && !VBDisputeDate.isValid()), tooltip: { title: VBDisputeDate.isModified() ? VBDisputeDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																<div class="input-append date" id="divIdVBDisputeDate" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+																	data-bind="datepicker: VBDisputeDate, datepickerOptions: datepickerOptions, css: { borderRedOnValidation: (VBDisputeDate.isModified() && !VBDisputeDate.isValid()) }" style="width: 88%;">
+																	<!-- ##START: US20961 -->
+																	<!--##START: US21791-->
+																	<input type="text" id="VBDisputeDate" size="16" class="span10 validation2" placeholder="mm/dd/yyyy"
+																		data-bind="event: { blur: convertToVBDisputeDate }, style: { 'padding-left': (VBDisputeDate.isModified() && !VBDisputeDate.isValid()) ? '17px' : '' }, value: VBDisputeDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" readonly="readonly" maxlength="10" style="width: 94%" />
+																	<span class="add-on" data-bind="css: { disabledateLink: true } " style="width: 20px;">
+																		<!--##END: US21791-->
+																		<i class="icon-calendar"></i>
+																		<!-- ##END: US20961 -->
+																	</span>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<!--##START: US21791-->
+												<tr>
+													<td class="typeLabels">Dispute Age in Days:</td>
+													<td>
+														<input type="text" data-bind="value: agingDays" readonly="readonly" style="width: 85.5%" />
+													</td>
+												</tr>
+												<!--##END: US21791-->
+											</table>
+										</div>
+										<div class="width-percent-50 float-left">
+											<table class="width-percent-100">
+												<!-- ###START: US20584 -->
+												<tr>
+													<td>
+														<div class="float-right">
+															<button class="btn btn-primary" data-bind=" click: onSave, enable: isSelected">Save</button>
+														</div>
+													</td>
+												</tr>
+												<!-- ###END: US20584 -->
+												<tr>
+													<td>
+														<fieldset class="width-percent-96 margin-left-10">
+															<legend>Dispute Note:</legend>
+															<div>
+																<label class="validation-label2" data-bind=" validationElement: disputeNoteString">
+																	<i class="fa fa-question-circle valdation_icon_SOdisputeNotestab" data-bind=" visible: (disputeNoteString.isModified() && !disputeNoteString.isValid()), tooltip: { title: disputeNoteString.isModified() ? disputeNoteString.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																	<textarea id="txtdisputeNoteString" class="accounting-textarea  SalesOrder-Dispute-accounting-textarea validation2" cols="10" rows="3" maxlength="200" data-bind="css: { borderRedOnValidation: (disputeNoteString.isModified() && !disputeNoteString.isValid()) }, style: { 'padding-left': (disputeNoteString.isModified() && !disputeNoteString.isValid()) ? '17px' : '' }, value: disputeNoteString, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { readonly: true }" style="width: 98%" />
+																</label>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="width-percent-100">
+							<table class="width-percent-100">
+								<tr>
+									<td>
+										<div>
+											<table id="Table2" class="table">
+												<thead>
+													<tr>
+														<th style="background-color: gainsboro;">
+															<span class="align-center" style="color: black; font-weight: 100;">PRO#</span><span class="align-center" data-bind="text: proNumberHeader" style="color: black"></span></th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div style="margin-top: -26px; min-height: 130px; background-color: gainsboro;">
+							<div class="row-fluid">
+								<div id="divItemsContainer" class="span12 item-div-container">
+									<table id="tblSalesOrderItems" class="table table-bordered shipment-itemDispute">
+										<thead>
+											<tr>
+												<th style="width: 15%;">
+													<label class="align-center">Items</label></th>
+
+												<th style="width: 15%;">
+													<label class="align-center">Desc</label></th>
+												<th style="width: 11%;">
+													<label class="align-center">Cost</label></th>
+												<th style="width: 11%;">
+													<label class="align-center">Pay</label></th>
+												<th style="width: 13%;">
+													<label class="align-center">Dispute Amount</label>
+												</th>
+												<th style="width: 20%;">
+													<label class="align-center">Reason Note</label>
+												</th>
+												<th style="width: 10%;">
+													<label class="align-center">Reason Code</label>
+												</th>
+										</thead>
+										<tbody id="bodysalesOrderItems" class="line-items" data-bind="foreach: DisputeVendorBillItemsModel">
+											<tr class="lineItemRow">
+												<td>
+													<input type="text" class="width-percent-90" data-bind="value: item" readonly="readonly" />
+												</td>
+												<td>
+													<input type="text" style="width: 85%;" readonly="readonly" data-bind="value: description" />
+												</td>
+												<td>$<input type="text" style="width: 82%;" readonly="readonly" data-bind="value: cost" />
+												</td>
+												<td>$<input type="text" style="width: 82%;" readonly="readonly" data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, value: pay" />
+												</td>
+												<td>
+													<div class="tableLayout">
+														<div class="table-cell" style="width: 1%">
+															<span style="margin-top: -10px;">$</span>
+														</div>
+														<div class="table-cell" style="padding: 0px;" data-bind=" validationElement: disputeAmount, validationOptions: { errorElementClass: 'input-validation-error' }">
+															<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (disputeAmount.isModified() && !disputeAmount.isValid()), tooltip: { title: disputeAmount.isModified() ? disputeAmount.errorMessage : '', placement: 'bottom', trigger: 'hover' } " />
+															<!-- ##START: US20961 -->
+															<!--##START: DE23003-->
+															<!--##START: DE23033-->
+															<input type="text" maxlength="11" data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, enable: ($parent.isBillStatusDispute() && $parent.selecteLineItem.moveToMasDate() == null), value: disputeAmount, style: { width: (disputeAmount.isModified() && !disputeAmount.isValid()) ? '80%' : '87%' }, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+															<!--##END: DE23033-->
+															<!--##END: DE23003-->
+															<!-- ##END: US20961 -->
+														</div>
+													</div>
+												</td>
+												<td>
+													<!-- ##START: US20961 -->
+													<!--##START: DE23003-->
+													<!--##START: DE23033-->
+													<!--##START: DE22884-->
+													<textarea id="Textarea1" placeholder="Notes are used to validate dispute with carriers" class="accounting-textarea  SalesOrder-Dispute-ReasonNote-accounting-textarea" cols="10" rows="3" maxlength="1000" data-bind="value: reasonNotes, enable: ($parent.isBillStatusDispute() && $parent.selecteLineItem.moveToMasDate() == null), valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }"></textarea>
+													<!--##END: DE22884-->
+													<!--##END: DE23033-->
+													<!--##END: DE23003-->
+													<!-- ##END: US20961 -->
+												</td>
+												<td>
+													<!-- ##START: US20961 -->
+													<!--##START: DE23003-->
+													<!--##START: DE23033-->
+													<select id="select1" class="margin-bottom-0 width-percent-88" data-bind="options: reasonCodesListFoBinding, enable: ($parent.isBillStatusDispute() && $parent.selecteLineItem.moveToMasDate() == null), optionsText: 'Remarks', value: selectedReasonCode"></select>
+													<!--##END: DE23033-->
+													<!--##END: DE23003-->
+													<!-- ##END: US20961 -->
+												</td>
+											</tr>
+										</tbody>
+										<tr class="lineItemRow">
+											<td></td>
+											<td class="width-percent-1 align-center vertical-align-middle" style="font-weight: bolder">Total
+											</td>
+											<td style="text-align: left">
+												<span style="font-weight: bold;">$</span><span class="label-SalesOrderDispute" data-bind="text: salesOrderTotalCost, attr: { title: salesOrderTotalCost }" style="width: 65%; font-weight: bold; margin-left: 2px;"></span>
+											</td>
+											<td style="text-align: left">
+												<span style="font-weight: bold;">$</span><span class="label-SalesOrderDispute" data-bind="text: salesOrderTotalPayAmount, attr: { title: salesOrderTotalPayAmount }" style="width: 65%; font-weight: bold; margin-left: 2px;"></span>
+											</td>
+											<td style="padding-left: 11px">
+												<span style="font-weight: bold;">$</span><span class="label-SalesOrderDispute" data-bind="text: salesOrderTotalDisputeAmount, attr: { title: salesOrderTotalDisputeAmount }" style="width: 65%; font-weight: bold; margin-left: 2px;"></span>
+											</td>
+									</table>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

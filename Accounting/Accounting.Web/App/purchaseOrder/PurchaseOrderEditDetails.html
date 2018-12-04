@@ -1,0 +1,156 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressAccordian, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+
+		<div class="alignrigth margin-top-1" style="float: none; margin-right: 27px;">
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isChange">Save</button>
+			<input type="image" style="height: 30px" data-bind="click: expandAllAccordions, attr: { src: expandSourceImage }" />
+			<input type="image" src="Content/images/collapse.png" style="height: 30px" data-bind="click: collapseAllAccordions, attr: { src: collapseSourceImage }" />
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButton" style="text-indent: 0;"></i></a>
+		</div>
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+		<div class="row-fluid margin-top-5" id="gridbind">
+			<div class="accordion" id="accordion2">
+
+				<!--Purchase Order Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<span class="custom-accordian-header">Unmatched Vendor Bill</span>
+						</div>
+						<div id="collapsePurchaseOrder" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div id="detailsDiv" data-bind="compose: { model: purchaseOrderDetailsViewModel, view: 'purchaseOrder/PurchaseOrderDetailsView' }"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Purchase Order Section END-->
+
+				<!--Items Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseItems" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseItems">Items
+							</a>
+						</div>
+						<div id="collapseItems" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="itemsDiv" tabindex="-1" data-bind="compose: { model: purchaseOrderItemViewModel, view: 'purchaseOrder/PurchaseOrderItemView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Items Section END-->
+
+				<!--Address Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseAddress" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseAddress" data-bind="click: onAddressClick">Address
+							</a>
+						</div>
+						<div id="collapseAddress" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="addressDiv" tabindex="-1" data-bind="compose: { model: purchaseOrderAddressViewModel, view: 'purchaseOrder/PurchaseOrderAddressView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Address Section END-->
+
+				<!--Notes Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseNotes" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseNotes" data-bind="click: onNotesClick">Notes
+							</a>
+						</div>
+						<div id="collapseNotes" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="notesDiv" data-bind="compose: { model: purchaseOrderNotesViewModel, view: 'purchaseOrder/PurchaseOrderNotesView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Notes Section END-->
+
+				<!--Notes Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseReviewedNotes" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseReviewedNotes" data-bind="click: onReviewedNotesClick">Reviewed Notes
+							</a>
+						</div>
+						<div id="collapseReviewedNotes" class="accordion-body collapse" style="overflow: hidden;">
+							<div class="accordion-inner">
+								<div id="reviewedNotesDiv" data-bind="compose: { model: PurchaseOrderReviewedNotes, view: 'purchaseOrder/PurchaseOrderReviewedNotes' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Notes Section END-->
+
+				<!--POP Possibility Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapsePOPpossibility" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapsePOPpossibility" data-bind="click: getPOPData">UVB Possibility
+							</a>
+						</div>
+						<div id="collapsePOPpossibility" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="poPossibility" class="margin-top--30" data-bind="compose: { model: purchaseOrderPOPViewModel, view: 'purchaseOrder/PurchaseOrderPOPpossibility' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--POP Possibility Section END-->
+
+				<!-- History Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseHistory" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseHistory" data-bind="click: getPurchaseOrderHistorydetails">History
+							</a>
+						</div>
+						<div id="collapseHistory" class="accordion-body collapse" data-bind="showContentProgress: listProgressHistory, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="accordion-inner">
+								<div class="alignrigth" style="margin-top: 1px">
+								</div>
+								<div data-bind="compose: { model: POHistoryViewModel, view: 'purchaseOrder/PurchaseOrderHistory' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- History Section END -->
+
+				<!-- POD Doc Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="A1" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapsePOD" data-bind="click: loadPodDocDetails">POD / DOC
+							</a>
+						</div>
+						<div id="collapsePOD" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="podDoc" tabindex="-1" data-bind="compose: { model: purchaseOrderPODDocViewModel, view: 'purchaseOrder/PurchaseOrderPODDocView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- POD Doc Section END -->
+			</div>
+		</div>
+	</div>
+</div>

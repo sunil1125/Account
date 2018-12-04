@@ -1,0 +1,55 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+body {
+	font-family: 'Source Sans Pro';
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.receiptTable {
+	margin: 20px 0px 20px 20px;
+}
+
+.recieptCell {
+	border: 0px;
+	border: 1px solid #C0C0C0;
+	border-top: 1px solid #C0C0C0;
+	border-left: 1px solid #C0C0C0;
+	width: 600px;
+	font-size: 13px;
+	border-collapse: separate;
+}
+
+	.recieptCell > thead {
+		background-color: rgb(102,102,102);
+		font-size: large;
+		color: white;
+		text-align: left;
+	}
+
+	.recieptCell th {
+		text-align: center;
+	}
+
+	.recieptCell td {
+		padding: 5px 0 5px 10px;
+	}
+
+	.recieptCell thead > span {
+		font-size: 12px;
+	}
+
+.greybgcolor {
+	background: #F3F3F3;
+	padding: 5px 5px 5px 5px;
+	border: 1px solid #C0C0C0;
+	border-right: none;
+	border-top: none;
+}

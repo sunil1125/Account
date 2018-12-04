@@ -1,0 +1,44 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US20856</id> <by>Vasanthakumar</by> <date>25-02-2016</date><description>VB Exception Board 'Resolve' button to be always shown on UI</description>
+</changeHistory>-->
+<!--##START: US20856-->
+<div class="row-fluid">
+	<div class="app-page-title margin-left-25">
+		<span class="PageTitleBlack">Vendor Bill Exception Board</span>
+	</div>
+
+	<div class="container-fluid">
+		<div class="accordion" id="accordion2">
+			<div class="ediGridWithHeader margin-top-30 gridOptionalHeader">
+				<div class="margin-right-35 float-right margin-all-10">
+					<table>
+						<tr>
+							<td>
+								<button class="btn btn-primary margin-top--3" data-bind="click: onClickResolve, visible: true, enable: isEnableResolve" style="height: 30px;">Resolve</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30" style="margin-top: -3px;" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+							</td>							
+							<td class="position-Relative">
+								<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid" id="gridDiv">
+			<div class="gridPOBord gridHeaderPositionForPOBoard" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>
+<!--##END: US20856-->

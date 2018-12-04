@@ -1,0 +1,386 @@
+﻿/*#region Global Variables */
+@login-header: #586D7C;
+@login-footer: #586D7C;
+@welcomeText: #5D6C7F;
+@loginBackground: #C7C0B5;
+@loginHotButton: #3A78BD;
+@loginHotButtonText: White;
+@loginLinks: #3A78BD;
+
+@menuBackground: #5D6C7F;
+@menu-hover: #B7BEC8;
+@menuText: White;
+
+@activeTab: whitesmoke;
+@inactiveTab: #B7BEC8;
+@contentBackground: whitesmoke;
+
+@KoGrid-header-footer: #343434;
+@KoGrid-header-footer-text: white;
+@KoGrid-topPannel: #506A77;
+@gridSort-up: white;
+@gridSort-down: white;
+
+@calendarBackground: #3F4C5C;
+@dateRangeBackground: #3F4C5C;
+@dateRangeActiveBackground: #506A77;
+@selectedDateBackground: #3F4C5C;
+@dateHover: #506A77;
+@rangeBackground: #D1DBE3;
+@dateTextHover: #3F4C5C;
+
+@calHotButton: #2E517A;
+@calHotButtonText: black;
+@chatBlinkBackground: #f99d39;
+/*#endregion */
+
+/*#region Login Style */
+
+.pageHeader {
+	background-color: @login-header !important;
+}
+
+.pageFooter {
+	background-color: @login-footer !important;
+}
+
+.welcomText {
+	color: @welcomeText !important;
+}
+
+.loginBackground {
+	background-color: @loginBackground !important;
+}
+
+.loginHotButton {
+	background-color: @loginHotButton !important;
+}
+
+.loginLinks {
+	color: @loginLinks !important;
+}
+
+/*#endregion */
+
+/*#region Navigation Styles */
+
+.navBackground {
+	background-color: @menuBackground !important;
+}
+
+.whiteDownCaret:after {
+	border-top-color: @menuBackground !important;
+}
+
+.open .whiteDownCaret::before {
+	/*border-top-color: @menuBackground !important;*/
+	top: 13px !important;
+	border-bottom-color: #fff !important;
+	border-top-color:transparent !important;
+}
+
+.open .whiteDownCaret:after{
+	border-top-color:transparent !important;
+	border-bottom-color: @menuBackground !important;
+}
+
+.loginName:hover .whiteDownCaret::after {
+	border-top-color: @menu-hover !important;
+}
+
+.open .loginName:hover .whiteDownCaret::after {
+	border-top-color: transparent !important;
+	border-bottom-color: @menu-hover !important;
+}
+
+.menuBackground {
+	background-color: @menuBackground;
+	color: @menuText;
+}
+
+.menuBtn {
+	background: @menuBackground;
+	color: @menuText;
+}
+
+	.menuBtn:hover {
+		background-color: @menu-hover;
+		color: @menuBackground;
+	}
+
+.menuBtnClick, .menuBtnClick:hover {
+	background-color: @menu-hover;
+	color: @menuBackground;
+}
+
+#subMenuList {
+	background-color: @menuBackground;
+	color: @menuText;
+}
+
+	#subMenuList:hover, #subMenuList:active {
+		background-color: @menuBackground;
+		color: @menuText;
+	}
+
+	#subMenuList > li {
+		background: @menuBackground;
+		color: @menuText;
+	}
+
+		#subMenuList > li > a, #subMenuList > li > a > span {
+			color: @menuText;
+		}
+
+			#subMenuList > li > a:hover, #subMenuList > li > a:hover span {
+				color: @menuBackground !important;
+				background: @menu-hover;
+			}
+
+.loginName {
+	background: @menuBackground;
+	color: @menuText;
+}
+
+	.loginName:hover {
+		background-color: @menu-hover;
+		color: @menuBackground;
+	}
+
+	.loginName.active, .loginName:hover {
+		background-color: @menu-hover;
+		color: @menuBackground;
+	}
+
+#myaccountSubMenu {
+	background-color: @menuBackground;
+	color: @menuText;
+}
+
+	#myaccountSubMenu:hover, #myaccountSubMenu:active {
+		background-color: @menuBackground;
+		color: @menuText;
+	}
+
+	#myaccountSubMenu > li {
+		background: @menuBackground;
+		color: @menuText;
+	}
+
+		#myaccountSubMenu > li > a, #myaccountSubMenu > li > a > span {
+			color: @menuText;
+		}
+
+			#myaccountSubMenu > li > a:hover, #myaccountSubMenu > li > a:hover span {
+				color: @menuBackground !important;
+				background: @menu-hover;
+			}
+/*#endregion */
+
+/*#region Hot Button */
+
+.hotButton {
+	background-color: @loginHotButton !important;
+	color: @loginHotButtonText !important;
+}
+
+.applyBtn {
+	border-radius: 0px;
+	border: 0px;
+}
+
+.cancelBtn {
+	border: 0px;
+	border-radius: 0px;
+}
+
+/*#endregion */
+
+/*#region Tab style  */
+
+//inactive tab
+.nav-tab-new > li > a {
+	background: @inactiveTab;
+}
+
+//active tab
+.nav-tab-new > .active > a, .nav-tab-new > .active > a:hover, .nav-tab-new > .active > a:focus {
+	background: none repeat scroll 0 0 @activeTab;
+}
+
+/*#endregion */
+
+/*#region Content Area */
+
+.contentAreaWithoutDenimBackground {
+	background-color: @contentBackground !important;
+}
+
+/*#endregion */
+
+/*#region Ko-Grid style */
+.kgGroupPanel, .kgHeaderContainer, .kgTopPanel, .kgFooterPanel {
+	background-color: @KoGrid-header-footer !important;
+}
+
+.kgLabel, .pageDropdownLabel {
+	color: @KoGrid-header-footer-text;
+}
+
+/*.kgSortButtonDown {
+	border-color: @gridSort-down;
+	border-style: solid;
+	border-width: 5px 5px 0;
+	float: right;
+	height: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: 12px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	width: 0;
+}
+
+.kgSortButtonUp {
+	border-color: @gridSort-up;
+	border-style: solid;
+	border-width: 0 5px 5px;
+	float: right;
+	height: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: 12px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	width: 0;
+}*/
+
+.gridHeader {
+	background-color: @KoGrid-topPannel;
+}
+
+/*#endregion */
+
+/*#region Calendar control */
+.daterangepicker {
+	background: none repeat scroll 0 0 @calendarBackground;
+}
+
+	.daterangepicker.opensright:after {
+		border-bottom: 6px solid @calendarBackground;
+	}
+
+	.daterangepicker .ranges li {
+		background: none repeat scroll 0 0 @dateRangeBackground;
+		color: white;
+	}
+
+		.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
+			background: none repeat scroll 0 0 @dateRangeActiveBackground;
+			color: white;
+		}
+
+	.daterangepicker td.active, .daterangepicker td.active:hover {
+		background-color: @selectedDateBackground;
+		background-image: linear-gradient(to bottom, @selectedDateBackground, @selectedDateBackground);
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		color: #FFFFFF;
+	}
+
+	.daterangepicker td.available:hover {
+		background: @dateHover;
+		color: #fff;
+	}
+
+	.daterangepicker td.in-range {
+		background: @rangeBackground;
+	}
+
+	.daterangepicker .calendar-ranges input.active {
+		background: @dateTextHover;
+		border: 1px solid @dateTextHover;
+		color: #fff;
+	}
+
+	.daterangepicker .calendar-ranges span, .daterangepicker .calendar-ranges span.active {
+		color: white;
+	}
+
+/*#endregion */
+
+/*#region online payments */
+
+/* online payment flow indicator arrows*/
+.onlineArrow {
+	background: @menuBackground;
+	color: @menuText;
+}
+
+	.onlineArrow::after {
+		border-left-color: @menuBackground;
+	}
+
+.onlineArrowActive {
+	background-color: @menu-hover;
+	color: @menuBackground;
+}
+
+	.onlineArrowActive::after {
+		border-left-color: @menu-hover;
+	}
+/* online payment flow indicator arrows*/
+
+/*#endregion */
+
+/*#region Chat Control UI */
+.chatOnlineStatusBlock {
+	background-color: @menuBackground;
+}
+
+.chatUserBlock {
+	background-color: @menuBackground;
+}
+
+.chatCaret:before {
+	border-bottom-color: #9A9A9A;
+}
+
+.chatCaret:after {
+	border-bottom-color: @menuBackground;
+}
+
+#chatText {
+	color: white;
+}
+
+	#chatText a {
+		color: white;
+	}
+
+		#chatText a:hover {
+			color: white;
+		}
+
+.chatboxhead {
+	background-color: @menuBackground !important;
+}
+
+.chatboxblink {
+	background-color: @chatBlinkBackground !important;
+	border-right: 1px solid @chatBlinkBackground!important;
+	border-left: 1px solid @chatBlinkBackground!important;
+}
+
+.dropdownChat-menu {
+	background-color: @menuBackground !important;
+}
+
+.btn-checkbox.active {
+	background-color: @menuBackground !important;
+	color: @menuText;
+	font-weight: normal;
+	border-color: @contentBackground;
+}
+/*#endregion */

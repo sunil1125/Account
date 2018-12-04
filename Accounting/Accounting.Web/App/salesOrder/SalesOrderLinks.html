@@ -1,0 +1,231 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<table class="table table-bordered shipment-item " data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+			<thead>
+				<tr>
+					<th>
+						<label class="align-center">Show Details</label></th>
+					<th>
+						<label class="align-center">Sales Order</label></th>
+					<th>
+						<label class="align-center">Invoices</label></th>
+					<th>
+						<label class="align-center">Vendor Bills</label></th>
+				</tr>
+			</thead>
+			<tbody class="line-items" data-bind='foreach: shipmentLinksList'>
+				<tr class="lineItemRow">
+
+					<td class="width-percent-2 align-center">
+						<!--<input type="radio" name="radShow" data-bind="click: $root.showDetails" /> -->
+						<input type="image" class="height-20" data-bind="click: showDetails, attr: { src: expandSourceImage }" />
+					</td>
+
+					<td data-title="Sales Order" class="width-percent-11 align-center">
+						<a class="cursor-pointer" data-bind="text: SOValue, css: { disableAnchorTag: IsSameBolNumber }, click: onSalesOrderClick"></a>
+					</td>
+
+					<td data-title="Invoices" class="width-percent-11 align-center">
+						<a class="cursor-pointer" data-bind="text: InvoiceValue, click: onInvoiceNumberClick"></a>
+					</td>
+
+					<td data-title="Vendor Bills" class="width-percent-11">
+						<div style="width: 100%;">
+							<table class="width-percent-100">
+								<tr class="width-percent-100">
+									<td class="width-percent-50">
+										<a class="cursor-pointer cropCarrierNameForLinks" data-bind="text: VBValue, css: { disableAnchorTag: IsSameProNumber }, attr: { title: VBValue }, click: onVendorBillClick"></a>
+									</td>
+									<td class="width-percent-50">
+										<span class="cropCarrierNameForLinks" data-bind="text: carrierCodeDsiplay, attr: { title: carrierCodeDsiplay }" style="margin-left: 5px;"></span>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr data-bind="visible: isSelected">
+					<td class="bg-white" colspan="4">
+						<div class="tableLayout height-160" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="table-cell fourDiv">
+								<table class="table shipment-item linkDetailsWithNoBorder">
+									<tbody class="line-items" data-bind='foreach: linkSectionDetails'>
+										<tr>
+											<td class="weight-bold">
+												<span>Sales Order</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Process Status</span>
+											</td>
+											<td data-title="SO - Process Status" class="width-percent-11">
+												<span data-bind="text: SalesOrderProcessStatusDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Invoice Status</span>
+											</td>
+											<td data-title="SO - Invoice Status">
+												<span data-bind="text: SalesOrderInvoiceStatusDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Cost</span>
+											</td>
+											<td data-title="SO - Cost">$<span data-bind="text: SalesOrderCost.toFixed(2)"></span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span>Revenue</span>
+											</td>
+											<td data-title="SO - Revenue">$<span data-bind="text: SalesOrderRevenue.toFixed(2)"></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="table-cell fourDiv">
+								<table class="table shipment-item linkDetailsWithNoBorder">
+									<tbody class="line-items" data-bind='foreach: linkSectionDetails'>
+										<tr>
+
+											<td class="weight-bold">
+												<span>Invoice</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Date</span>
+											</td>
+											<td data-title="INV - Date" class="width-percent-11">
+												<span data-bind="text: InvoiceDateDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Amount</span>
+											</td>
+											<td data-title="INV - Amount" class="width-percent-11">$<span data-bind="text: InvoiceAmount.toFixed(2)"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Balance</span>
+											</td>
+											<td data-title="INV - Balance" class="width-percent-11">$<span data-bind="text: InvoiceBalance.toFixed(2)"></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="table-cell fourDiv">
+								<table class="table shipment-item linkDetailsWithNoBorder">
+									<tbody class="line-items" data-bind='foreach: linkSectionDetails'>
+										<tr>
+
+											<td class="weight-bold">
+												<span>Vendor Bills</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Carrier</span>
+											</td>
+											<td data-title="VB - Carrier" class="width-percent-11">
+												<span data-bind="text: VendorBillCarrier"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Status</span>
+											</td>
+											<td data-title="VB - Status" class="width-percent-11">
+												<span data-bind="text: VendorBillStatusDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>MAS Transfer Date</span>
+											</td>
+											<td data-title="VB  - MAS Transfer Date" class="width-percent-11">
+												<span data-bind="text: VendorBillMasTransferDateDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Amount</span>
+											</td>
+											<td data-title="VB - Amount" class="width-percent-11">$<span data-bind="text: VendorBillAmount.toFixed(2)"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Balance</span>
+											</td>
+											<td data-title="VB - Balance" class="width-percent-11">$<span data-bind="text: VendorBillBalance.toFixed(2)"></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="table-cell fourDiv">
+								<table class="table shipment-item linkDetailsWithNoBorder">
+									<tbody class="line-items" data-bind='foreach: linkSectionDetails'>
+										<tr>
+
+											<td class="weight-bold">
+												<span>Claim</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Number</span>
+											</td>
+											<td data-title="Claim Number" class="width-percent-11">
+												<span data-bind="text: ClaimNumber"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>BOL</span>
+											</td>
+											<td data-title="Claim - BOL" class="width-percent-11">
+												<span data-bind="text: ClaimBolNumber"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Status Date</span>
+											</td>
+											<td data-title="Claim - Status Date" class="width-percent-11">
+												<span data-bind="text: ClaimStatusDateDisplay"></span>
+											</td>
+										</tr>
+										<tr>
+											<td class="width-percent-7">
+												<span>Amount</span>
+											</td>
+											<td data-title="Claim - Amount" class="width-percent-11">$<span data-bind="text: ClaimAmount.toFixed(2)"></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

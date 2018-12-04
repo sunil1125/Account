@@ -1,0 +1,55 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px;" data-bind="text: gridHeader"></label>
+</div>
+<table id="tblVendorBillItems" class="table table-bordered shipment-item">
+	<thead>
+		<tr>
+			<th style="width: 95px;">
+				<label class="align-center">PRO No</label></th>
+			<th style="width: 95px;">
+				<label class="align-center">Items</label></th>
+			<th style="width: 95px;">
+				<label class="align-center">Description</label></th>
+			<th style="width: 75px;">
+				<label class="align-center">Cost</label></th>
+			<th style="width: 75px;" data-bind="visible: isDisputeAmountVisible()">
+				<label class="align-center">Dispute Amount</label></th>
+			<th>
+				<label class="align-center">Class</label></th>
+			<th>
+				<label class="align-center">Weight</label></th>
+		</tr>
+	</thead>
+	<tbody data-bind='foreach: vendorBillItemsList' class="line-items">
+		<tr class="lineItemRow" data-bind="css: totalRow">
+			<td style="width: 95px;">
+				<span data-bind="text: proNo"></span>
+			</td>
+			<td style="width: 95px; max-width: 95px;">
+				<label class="cropRebillItems" data-bind="text: itemName, attr: { title: itemName }"></label>
+			</td>
+			<td style="width: 95px; max-width: 95px;">
+				<label class="cropRebillItems" data-bind="text: userDescription, attr: { title: userDescription }"></label>
+			</td>
+			<td style="text-align: right; width: 75px;">
+				<strong>$</strong><span data-bind="text: cost "></span>
+			</td>
+			<td style="width: 75px; text-align: right;" data-bind="visible: $parent.isDisputeAmountVisible()">
+				<strong>$</strong><span data-bind="text: disputeAmount"></span>
+			</td>
+			<td data-title="Class" class="width-percent--5" style="text-align: center;">
+				<label data-bind="text: selectedClassType, attr: { title: selectedClassType }" style="width: auto; overflow: hidden;"></label>
+			</td>
+			<td data-title="Weight" class="nowrap width-percent-3" style="text-align: center;">
+				<span data-bind="text: weight "></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

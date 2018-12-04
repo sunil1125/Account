@@ -1,0 +1,121 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="mypopup border-radius-8" style="width: 1500px; margin-left: -800px; margin-top: -170px !important" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 50.9, height: 500 }">
+
+	<div id="content" class="width-percent-100">
+		<!--<div class="custom-modal-header-row"></div>-->
+		<div class="custom-modal-header border-top-8">
+			<h4 class="custom-modal-header-text">Item Details</h4>
+			<button class="btn btn-primary" data-bind="click: closePopup" style="float: right; padding-bottom: 3px; margin-top: -2px;">Close</button>
+		</div>
+
+		<!--		<div class="custom-modal-body rowContainerForLineItems">
+			<div>
+				<h4>Item Details </h4>
+				<div style="text-align: right; padding-bottom: 5px; margin-top: -39px; margin-right: 53px;">
+					<button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+				</div>
+			</div>
+		</div>-->
+
+		<div>
+			<table>
+
+				<tr>
+					<td class="vertical-align-top" style="width: 50%;">
+						<label style="font-weight: bold; font-size: medium">Adjusted Order</label>
+						<table id="tblSalesOrderOrginialItems" class="table table-bordered shipment-item">
+							<thead>
+								<tr>
+									<!--<th data-bind="visible: isBOLnumber">
+							<label class="align-center">BOL No</label></th>-->
+									<th style="width: 95px;">
+										<label class="align-center">Items</label></th>
+
+									<th style="width: 95px;">
+										<label class="align-center">Description</label></th>
+									<th class="width-75">
+										<label class="align-center">Cost</label></th>
+									<!--<th class="width-75" data-bind="visible: isBSCost">
+							<label class="align-center">BS Cost</label></th>-->
+									<th class="width-75" data-bind="visible: true">
+										<label class="align-center">Rev</label></th>
+									<th class="width-25">
+										<label class="align-center">Cls</label></th>
+									<th class="width-25">
+										<label class="align-center">Wgt</label></th>
+									<th style="width: 20px;">
+										<label class="align-center">PCS</label></th>
+
+									<!--<th style="width: 10px;" data-bind="visible: isHaz">
+							<label class="align-center">Haz</label></th>
+						<th data-bind="visible: isSelect">
+							<label class="align-center">Select</label></th>-->
+								</tr>
+							</thead>
+							<tbody id="bodysalesOrderItems" data-bind='foreach: salesOrderOriginalItemsList' class="line-items">
+								<tr data-bind="css: totalRow">
+									<!--<td data-title="BOLNumber" class="width-percent-5 align-center vertical-align-middle" data-bind="visible: $parent.isBOLnumber">
+							<span style="max-width: 200px; overflow: hidden; margin-right: 3px;" data-bind="text: BOLNumber, attr: { title: BOLNumber }"></span>
+						</td>-->
+									<td style="width: 95px; max-width: 95px;">
+										<label class="cropRebillItems" data-bind="text: selectedShippmentItemTypes, attr: { title: selectedShippmentItemTypes }"></label>
+									</td>
+									<td data-title="Description" style="width: 95px; max-width: 95px;">
+										<label data-bind="text: userDescription, attr: { title: userDescription }" class="cropRebillItems" style="margin-right: 3px;"></label>
+									</td>
+
+									<td data-title="Cost" class="width-75" style="text-align: right;">
+										<strong>$</strong><span data-bind="text: cost "></span>
+									</td>
+									<!--<td data-title="BSCost" style="text-align: right;" class="width-percent-3" data-bind="visible: $parent.isBSCost">
+
+							<strong>$</strong>
+							<span data-bind="text: bSCost"></span>
+						</td>-->
+									<td data-title="Rev" class="width-75" style="text-align: right;" data-bind="visible: true">
+										<strong>$</strong><span data-bind="text: rev"></span>
+									</td>
+									<td data-title="Class" class="width-25" style="text-align: center;">
+										<span data-bind="text: selectedClassType"></span>
+									</td>
+									<td data-title="Weight" class="width-25" style="text-align: center;">
+										<span data-bind="text: weight"></span>
+									</td>
+									<td data-title="#Pcs" style="width: 20px; text-align: center;">
+										<span data-bind="text: pieceCount"></span>
+									</td>
+									<!--		<td data-title="Haz" class="align-center vertical-align-middle" style="width: 10px;" data-bind="visible: $parent.isHaz">
+
+							<input type="checkbox" class="margin-top-7" data-togle="tooltip" data-bind="checked: isHazardous, enable: false, visible: isHazTotal" />
+						</td>
+						<td data-title="Select" class="width-percent-2 align-center vertical-align-middle" data-bind="visible: $parent.isSelect">
+							<input type="checkbox" class="margin-top-7" data-togle="tooltip" data-bind="checked: isCheck, valueUpdate: 'afterkeydown', enable: $parent.isSaveEnable" />
+						</td>-->
+								</tr>
+							</tbody>
+						</table>
+					</td>
+					<td class="vertical-align-top" style="width: 50%;">
+						<label style="font-weight: bold; font-size: medium">Vendor Bill Items</label>
+						<div class="padding-right-16 width-percent-100" data-bind="compose: { model: salesOrderReBillVendorItemViewModel, view: 'salesOrder/SalesOrderRebillVendorItemonlyAmountView' }"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+
+			<div>
+				<!--<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px;" data-bind="text: gridHeader"></label>
+				<button type="button" id="electButton" class=" flatButton btn btn-checkbox active width-100" style="margin-top: -32px; float: right;" data-bind="css: { active: selected }, html: selected() ? html() : name, click: selectOption, visible: isSelect, enable: isSaveEnable">
+				</button>-->
+			</div>
+		</div>
+	</div>
+</div>

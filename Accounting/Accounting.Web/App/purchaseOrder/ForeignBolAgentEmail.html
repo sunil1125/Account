@@ -1,0 +1,100 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+BOL Agent Email Notification
+</summary>
+<changeHistory>
+<id>US23323</id> <by>Janakiram</by> <date>19-05-2016</date> <description>Enabled Email text box and allowing multiple email with required and validation</description>
+</changeHistory>
+!-->
+<div id="divForeignBolAgent" class="custom-msg-box border-radius-8" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+    <!--<div class="custom-modal-header-row"></div>-->
+    <div class="custom-modal-header border-top-8">
+
+        <h4 class="custom-modal-header-text">Send Agent Mail</h4>
+    </div>
+    <table class="tbl-agentMail shipment-item margin-all-15">
+        <tr>
+            <td class="typeLabels">Customer Name:
+            </td>
+            <td class="typeStatus height-25">
+                <!--<input type="text" data-bind="value: customerName" />-->
+                <span data-bind="text: customerName"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="typeLabels height-25">Select Rep Name:
+            </td>
+            <td class="typeStatus  width-percent-74">
+                <!--<input type="text" data-bind="value: agentName" />-->
+                <span data-bind="text: agentName"></span>
+            </td>
+        </tr>
+        <tr>
+            <!-- ###START: US23323 !-->
+            <td class="typeLabels">*Email ID(s):
+            </td>
+            <td class="typeStatus">
+                <div data-bind="validationElement: emailValidation, validationOptions: { errorElementClass: 'input-validation-error-220' }">
+                    <i class="icon-question-sign tooltip-cursor" data-bind=" visible: (emailValidation.isModified() && !emailValidation.isValid()), tooltip: { title: emailValidation.isModified() ? emailValidation.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+                    <input id="emailValidation" type="text" placeholder="Email Id , separated by commas or semicolons" data-bind="style: { width: (emailValidation.isModified() && !emailValidation.isValid()) ? '188px' : '212px' }, value: emailValidation, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+                </div>
+            </td>
+            <!-- ###END: US23323 !-->
+        </tr>
+        <tr>
+            <td class="typeLabels">Attached Files:
+            </td>
+            <td class="typeStatus">
+                <table class="table-bordered shipment-item width-percent-100">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label class="style-label">Description</label></th>
+                            <th>
+                                <label class="style-label">Remove</label></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind='foreach: uploadedItems'>
+                        <tr>
+                            <td>
+                                <span data-bind="text: Description"></span>
+                            </td>
+                            <td class="td-upload-agent-mail">
+                                <input type="image" data-bind="click: $parent.removeAttachedItem" src="Content/images/Icon_Trash.png" onmouseover="this.src='Content/images/Icon_Trash_Over.png';" onmouseout="this.src='Content/images/Icon_Trash.png';" onmousedown="this.src='Content/images/Icon_Trash_Down.png';" onmouseup="this.src='Content/images/Icon_Trash_Over.png';" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <fieldset>
+                    <legend>Comments:</legend>
+                    <textarea id="txtComments" data-bind="value: Comments" cols="25" rows="5" maxlength="200" class="textarea-percent-96 height-60"></textarea>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">
+                <div id="buttonDiv" class="align-right margin-top-5">
+                    
+                     <!-- ###START: US23323 !-->
+                    <button class="btn btn-primary" data-bind="click: onSendMail, enable: isMailNotSend"">Send Mail</button>
+                     <!-- ###END: US23323 !-->
+
+                    <button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

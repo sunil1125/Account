@@ -1,0 +1,127 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<style>
+	@media only screen and (min-width:1280px)
+	{
+		.gridHeader
+		{
+			width: 96.5%;
+		}
+
+		.reportViewSelector
+		{
+			width: 47%;
+			padding: 0px 30px 0px 0px;
+		}
+	}
+</style>
+<div style="width: 100%; overflow-x: auto;">
+	<!--<div class="alignGridAndPager">
+		<div class="paginationContainer" style="float: right">
+			<div class="paginationText">
+				<a href="javascript:void(0);" data-bind="click: fetchPreviousTenRecords, css: copyOfData().length > 0 ? (paginationNumber() === 1 ? 'disbalePagination' : true) : 'disbalePagination' ">< Prev 10&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="paginationText">
+				<a href="javascript:void(0);" data-bind="click: fetchNextTenRecords, css: copyOfData().length > 0 ? (paginationNumber() < maximumNumberOfPaginationAvailable() ? '' : 'disbalePagination') : 'disbalePagination' ">Next 10 ></a>
+			</div>
+		</div>
+	</div>
+	<div style="height: 30px;"></div>-->
+	<div class="verticalGridSuperContainer">
+		<div id="verticalGridContainer">
+			<div style="overflow: hidden;">
+				<div id="verticalColumnContainer">
+					<div data-bind="foreach: storeColumns" style="display: inline; width: 100%;">
+						<!-- ko if: field != 'CarrierName' -->
+						<!-- ko if: IsLogo === true -->
+						<div style="min-width: 210px" class="verticalGridColumn">
+							<div class="grid-sort-control contentArea">
+								<div style="color: #ffffff;">View Top Carrier By:</div>
+								<select data-bind="options: $parent.gridSortControl.sortControlColDef, optionsText: 'displayName', value: $parent.gridSortControl.selectedSortOption, enable: $root.copyOfData().length > 0"></select>
+							</div>
+						</div>
+						<!-- /ko -->
+
+						<!-- ko if: field === 'RowNumber' -->
+						<div class="verticalGridColumn" data-bind="text: displayName, visible: false "></div>
+						<!-- /ko -->
+
+						<!-- ko if: field != 'CarrierLogo' &&  field != 'RowNumber' -->
+						<div class="verticalGridColumn" data-bind="text: displayName, css: $root.copyOfData().length === 0 ? 'disableSorting' : field === 'CarrierLogo' ? 'imageClass' : field + 'Cols', visible: field === 'CarrierName' ? false : true, click: $root.copyOfData().length > 0 ? $root.sortByClick : '' "></div>
+						<!-- /ko -->
+
+						<!-- /ko-->
+					</div>
+				</div>
+
+				<div id="verticalRowContainer">
+					<div data-bind="foreach: jSonDataValue" style="display: inline;">
+						<!-- ko if: $index() < 10 -->
+						<div class="verticalRowCells">
+							<div data-bind="foreach: $parent.storeColumns">
+								<!-- ko if: field === 'CarrierLogo' -->
+								<div class="verticalGridRow">
+									<div class="indexLabel" data-bind="text: $parent[field] === '-' ? '&nbsp;' : '#' + $parent['RowNumber']"></div>
+									<img class="imageClass" data-bind="attr: { src: $parent[field], alt: $parent['CarrierName'] }, visible: $parent[field] === '-' ? false : true, event: { error: $root.noImage }" style="height: 67px;" />
+									<div data-bind="visible: $parent[field] === '-' ? true : false" class="imageClass"></div>
+									<div>
+										<a href="javascript:void(0);" style="color: #fff; text-decoration: underline;" data-bind="text: $parent[field] === '-' ? '' : 'Details'">Details</a>
+									</div>
+								</div>
+								<!-- /ko -->
+
+								<!-- ko if: field !== 'CarrierLogo' &&  field !== 'RowNumber' -->
+								<div class="verticalGridRow" data-bind="visible: field === 'CarrierName' ? false : true, css: field ">
+									<!-- ko if: SpecialSybmol === 'Dollar' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] && typeof ($parent[field]) === 'number' && NumberType === 'Decimal' ? ($parent[field]).toMoney(2) : $parent[field] === '-' ? '&nbsp;' : $parent[field]"></span>
+									<!-- /ko -->
+									<!-- ko if: SpecialSybmol === 'Percent' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] === '-' ? '&nbsp;' : ($parent[field]).toPercentage()"></span>
+									<!-- /ko -->
+
+									<!-- ko if: SpecialSybmol === 'Average'  && NumberType === '' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] === '-' ? '&nbsp;' : ($parent[field]).toAverage()"></span>
+									<!-- /ko -->
+									<!-- ko if: SpecialSybmol === 'Average'  && NumberType === 'Decimal' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] === '-' ? '&nbsp;' : ($parent[field]).toAverage(0)"></span>
+									<!-- /ko -->
+
+									<!-- ko if: SpecialSybmol === 'Fixed'  && NumberType === '' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] === '-' ? '&nbsp;' : ($parent[field]).toFixedDecimalWithSeparator(0, ',')"></span>
+									<!-- /ko -->
+									<!-- ko if: SpecialSybmol === 'Fixed'  && NumberType === 'Decimal' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] === '-' ? '&nbsp;' : ($parent[field]).toFixedDecimalWithSeparator(2, ',')"></span>
+									<!-- /ko -->
+
+									<!-- ko if: SpecialSybmol !== 'Dollar' && SpecialSybmol !== 'Percent' && SpecialSybmol !== 'Average' && SpecialSybmol !== 'Fixed' -->
+									<span class="verticalRowCellText" data-bind="text: $parent[field] && typeof ($parent[field]) === 'number' && NumberType === 'Decimal' ? ($parent[field]).toFixedDecimalWithSeparator(2) : $parent[field] === '-' ? '&nbsp;' : $parent[field]"></span>
+									<!-- /ko -->
+								</div>
+								<!-- /ko -->
+							</div>
+						</div>
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="alignGridAndPager">
+		<div class="paginationContainer">
+			<div class="paginationText">
+				<a href="javascript:void(0);"
+					data-bind="click: fetchPreviousTenRecords, css: copyOfData().length > 0 ? (paginationNumber() === 1 ? 'disbalePagination' : true) : 'disbalePagination' "><span class="vgPrevPage"></span>Prev</a>&nbsp;&nbsp;&nbsp;
+			</div>
+			<div class="paginationText">
+				<a href="javascript:void(0);"
+					data-bind="click: fetchNextTenRecords, css: copyOfData().length > 0 ? (paginationNumber() < maximumNumberOfPaginationAvailable() ? '' : 'disbalePagination') : 'disbalePagination' ">Next<span class="vgNextPage"></span></a>
+			</div>
+		</div>
+	</div>
+</div>

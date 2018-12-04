@@ -1,0 +1,55 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<!--region BUTTONS-->
+
+		<div class="alignrigth margin-bottom-0 margin-top-1 float-none">
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isSetModelAndSave ">Save</button>
+		</div>
+		<!--endregion BUTTONS-->
+		<div class="row-fluid" style="border-top: darkgrey 1px" id="gridbind">
+			<div>
+
+				<!--Purchase Order Section START-->
+				<div class="page-header contentAreaWithBackground">
+					<div data-bind="compose: { model: vendorBillViewModel, view: 'vendorBill/VendorBillView' }"></div>
+				</div>
+				<!--Purchase Order Section END-->
+
+				<!--	<div class="padding-top-15">-->
+				<div>
+					<!--region TABS-->
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="itemLink" class="active"><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemClick"><span class="tabHeaderText">Items</span></a></li>
+						<li id="addressLink" class=""><a href="#address" data-toggle="tab" tabindex="-1" data-bind="click: onAddressClick"><span class="tabHeaderText">Address</span></a></li>
+						<li id="notesLink" class=""><a href="#notes" data-toggle="tab" tabindex="-1" data-bind="click: onNotesClick"><span class="tabHeaderText">Notes</span></a></li>
+					</ul>
+					<!--endregion TABS-->
+
+					<!--region SECTIONS-->
+					<div id="myTabContent" class="tab-content contentAreaWithBackground">
+						<div class="tab-pane fade active in " id="item">
+							<!--Items Section START-->
+							<div data-bind="compose: { model: vendorBillItemViewModel, view: 'vendorBill/VendorBillItemView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="address">
+							<!--Address Section START-->
+							<div data-bind="compose: { model: vendorAddressViewModel, view: 'vendorBill/VendorAddressView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="notes">
+							<!--Notes Section START-->
+							<div data-bind="compose: { model: vendorBillNotesEntryViewModel, view: 'vendorBill/VendorBillNotesEntryView' }"></div>
+						</div>
+					</div>
+					<!--endregion SECTIONS-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

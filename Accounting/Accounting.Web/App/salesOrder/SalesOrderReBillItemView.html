@@ -1,0 +1,107 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px;" data-bind="text: gridHeader"></label>
+	<button type="button" id="electButton" class=" flatButton btn btn-checkbox active width-100" style="margin-top: -32px; float: right;" data-bind="css: { active: selected }, html: selected() ? html() : name, click: selectOption, visible: isSelect, enable: isSaveEnable">
+	</button>
+</div>
+<table id="tblSalesOrderOrginialItems" class="table table-bordered shipment-item">
+	<thead>
+		<tr>
+			<th data-bind="visible: isBOLnumber">
+				<label class="align-center">BOL No</label></th>
+			<th style="width: 95px;">
+				<label class="align-center">Items</label></th>
+
+			<th style="width: 95px;">
+				<label class="align-center">Description</label></th>
+			<th class="width-75">
+				<label class="align-center">Cost</label></th>
+			<th class="width-75" data-bind="visible: isBSCost">
+				<label class="align-center">BS Cost</label></th>
+			<th class="width-75" data-bind="visible: isRev">
+				<label class="align-center">Rev</label></th>
+			<th class="width-25">
+				<label class="align-center">Cls</label></th>
+			<th class="width-25">
+				<label class="align-center">Wgt</label></th>
+			<th style="width: 20px;">
+				<label class="align-center">PCS</label></th>
+
+			<th style="width: 10px;" data-bind="visible: isHaz">
+				<label class="align-center">Haz</label></th>
+			<th data-bind="visible: isSelect">
+				<label class="align-center">Select</label></th>
+		</tr>
+	</thead>
+	<tbody id="bodysalesOrderItems" data-bind='foreach: salesOrderOriginalItemsList' class="line-items">
+		<tr data-bind="css: totalRow">
+			<td data-title="BOLNumber" class="width-percent-5 align-center vertical-align-middle" data-bind="visible: $parent.isBOLnumber">
+				<span style="max-width: 200px; overflow: hidden; margin-right: 3px;" data-bind="text: BOLNumber, attr: { title: BOLNumber }"></span>
+			</td>
+			<td style="width: 95px; max-width: 95px;">
+				<label class="cropRebillItems" data-bind="text: selectedShippmentItemTypes, attr: { title: selectedShippmentItemTypes }"></label>
+			</td>
+			<td data-title="Description" style="width: 95px; max-width: 95px;">
+				<label data-bind="text: userDescription, attr: { title: userDescription }" class="cropRebillItems" style="margin-right: 3px;"></label>
+			</td>
+
+			<td data-title="Cost" class="width-75" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: cost "></span>
+			</td>
+			<td data-title="BSCost" style="text-align: right;" class="width-percent-3" data-bind="visible: $parent.isBSCost">
+
+				<strong>$</strong>
+				<span data-bind="text: bSCost"></span>
+			</td>
+			<td data-title="Rev" class="width-75" style="text-align: right;" data-bind="visible: $parent.isRev">
+				<strong>$</strong><span data-bind="text: rev"></span>
+			</td>
+			<td data-title="Class" class="width-25" style="text-align: center;">
+				<span data-bind="text: selectedClassType"></span>
+			</td>
+			<td data-title="Weight" class="width-25" style="text-align: center;">
+				<span data-bind="text: weight"></span>
+			</td>
+			<td data-title="#Pcs" style="width: 20px; text-align: center;">
+				<span data-bind="text: pieceCount"></span>
+			</td>
+			<td data-title="Haz" class="align-center vertical-align-middle" style="width: 10px;" data-bind="visible: $parent.isHaz">
+
+				<input type="checkbox" class="margin-top-7" data-togle="tooltip" data-bind="checked: isHazardous, enable: false, visible: isHazTotal" />
+			</td>
+			<td data-title="Select" class="width-percent-2 align-center vertical-align-middle" data-bind="visible: $parent.isSelect">
+				<input type="checkbox" class="margin-top-7" data-togle="tooltip" data-bind="checked: isCheck, valueUpdate: 'afterkeydown', enable: $parent.isSaveEnable" />
+			</td>
+		</tr>
+	</tbody>
+	<tr class="lineItemRow">
+		<td class="width-percent-1 align-center vertical-align-middle" style="font-weight: bolder">Total
+		</td>
+		<td class="width-percent-13"></td>
+		<td class="width-percent-13" data-bind="visible: isBOLnumber"></td>
+		<td class="width-percent-3" style="text-align: right;" data-title="text: salesOrderItemAmount">
+			<strong>$<span data-bind="text: salesOrderItemAmount"></span></strong>
+		</td>
+		<td class="width-percent-3" style="text-align: right;" data-bind=" visible: isBSCost">
+			<strong>$<span data-bind="text: salesOrderBsCost"></span></strong>
+		</td>
+		<td class="width-percent-3" style="text-align: right;" data-bind="visible: isRev">
+			<strong>$<span data-bind="text: salesOrderRevenue"></span></strong>
+		</td>
+		<td class="nowrap width-percent-3"></td>
+		<td class="nowrap width-percent-3" style="text-align: center;">
+			<strong><span data-bind="text: salesOrderItemWeight"></span></strong>
+		</td>
+		<td class="width-percent-4" style="text-align: center;">
+			<strong><span data-bind="text: salesOrderItemPieces"></span></strong>
+		</td>
+		<td class="width-percent-5" data-bind="visible: isHaz"></td>
+		<td class="width-percent--5" data-bind="visible: isSelect"></td>
+	</tr>
+</table>

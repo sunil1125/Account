@@ -1,0 +1,185 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+.verticalGridRow {
+  text-align: center;
+  font-size: 14px;
+  background: #fff;
+  height: 30px;
+  line-height: 30px;
+}
+.verticalGridRow:nth-of-type(odd) {
+  background: #F1F2F4;
+}
+.verticalGridRow:nth-child(2) {
+  background: #808080;
+  padding: 0px 5px 0px 5px;
+  height: 124px;
+}
+.verticalGridColumn {
+  font-size: 14px;
+  /*width: 100%;*/
+
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 0px 0px 10px;
+}
+.verticalGridColumn:nth-of-type(odd) {
+  background: #5C5F62;
+}
+.verticalGridColumn:nth-child(2n) {
+  background: #808080;
+}
+.verticalGridColumn:nth-child(2) {
+  height: 125px;
+  padding: 0px 0px 0px 0px;
+}
+.imageClass {
+  width: 130px;
+  /*height: 67px;*/
+}
+#verticalRowContainer {
+  margin: 0px;
+  font-size: 10px;
+  width: 83%;
+  float: left;
+  display: inline;
+}
+#verticalColumnContainer {
+  margin: 0px;
+  font-size: 0;
+  width: 12%;
+  color: #ffffff;
+  float: left;
+  min-width: 200px;
+  display: inline;
+}
+.verticalGridColumn:hover {
+  cursor: pointer;
+  /*background:#4B8CE4;*/
+}
+.verticalRowCells {
+  display: inline-block;
+  width: 12%;
+  min-width: 90px;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  border: 1px solid #fff;
+  border-bottom: 0px solid;
+  float: left;
+}
+#verticalGridContainer {
+  min-width: 1200px !important;
+  /*width: 100%;*/
+
+  /*padding: 10px 0px 0px 0px;*/
+}
+.grid-sort-control {
+  padding: 50px 5px 10px 5px;
+  /*background: #EFEFF7;*/
+}
+.grid-sort-control select {
+  width: 190px;
+}
+.grid-sort-control:hover {
+  cursor: default !important;
+}
+.verticalRowCellText {
+  vertical-align: middle;
+}
+.missingImage {
+  background: #fff;
+  width: 130px;
+  height: 67px;
+  font-weight: bold;
+  vertical-align: middle;
+  display: table-cell;
+}
+.paginationText > a.disbalePagination {
+  pointer-events: none;
+  color: #999999;
+}
+.paginationContainer {
+  float: right;
+  padding: 5px 10px 5px 0px;
+}
+.paginationText {
+  display: inline-block;
+  font-size: 14px;
+}
+.paginationText > a {
+  color: #ffffff;
+}
+.activeForSorting {
+  background: #C9DEFA !important;
+  font-weight: bold;
+}
+.activeForSortingExtraParameter {
+  color: #000;
+}
+.disableSorting,
+.disableSorting:hover {
+  cursor: default;
+}
+.alignGridAndPager {
+  width: 96.5%;
+  overflow: hidden;
+  min-width: 1172px;
+  background: #595959;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.verticalGridSuperContainer {
+  width: 100%;
+  min-width: 1165px;
+}
+.indexLabel {
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+.vgPrevPage {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 7.7px 5px 2px;
+  border-color: transparent #ffffff transparent transparent;
+  margin-right: 3px;
+  padding: 0px;
+  display: inline-block;
+}
+.disbalePagination .vgPrevPage {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 7.7px 5px 2px;
+  border-color: transparent #999999 transparent transparent;
+  margin-right: 3px;
+  padding: 0px;
+  display: inline-block;
+}
+.vgNextPage {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 2px 5px 7.7px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 3px;
+  padding: 0px;
+}
+.disbalePagination .vgNextPage {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 2px 5px 7.7px;
+  border-color: transparent transparent transparent #999999;
+  margin-left: 3px;
+  padding: 0px;
+}

@@ -1,0 +1,166 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="span10">
+	<table class="tbl-sales-order" style="width: 100%;">
+		<tr>
+			<td class="typeLabels">Vendor Name:
+			</td>
+			<td class="typeStatus">
+				<input type="text" class="extendedsearch-input" data-bind=" value: vendorName" tabindex="1" autofocus="autofocus" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Shipper Company Name:
+			</td>
+			<td class="typeStatus">
+				<input type="text" class="extendedsearch-input" tabindex="2" data-bind=" value: shipperCompanyName" />
+			</td>
+			<td class="typeLabels margin-left-20">Consignee Company Name:
+			</td>
+			<td>
+				<input type="text" class="extendedsearch-input" tabindex="3" data-bind=" value: consigneeCompanyName" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Pro #:
+			</td>
+			<td class="typeStatus">
+				<input type="text" class="extendedsearch-input" maxlength="15" tabindex="4" data-bind="value: proNumber" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">BOL:
+			</td>
+			<td class="typeStatus">
+				<input type="text" class="extendedsearch-input" maxlength="20" data-bind=" value: bolNumber" tabindex="5" />
+			</td>
+			<td class="typeLabels">Customer BOL:
+			</td>
+			<td>
+				<input type="text" class="extendedsearch-input" data-bind=" value: customerBOLNumber" tabindex="6" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">PO #:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="50" data-bind='event: { keypress: isNumber }, value: poNumber' tabindex="7" />
+			</td>
+		</tr>
+
+		<tr>
+			<td class="typeLabels">Reference #:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="15" data-bind='value: refNumber' tabindex="8" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Shipper Zip:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="15" data-bind='value: shipperZip' tabindex="9" />
+			</td>
+			<td class="typeLabels">Consignee Zip:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="15" data-bind='value: consigneeZip' tabindex="10" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Total Pieces:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="5" tabindex="11" data-bind='event: { keypress: isNumber }, value: totalPieces' />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Total Weight:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="10" data-bind='event: { keypress: isNumber }, value: totalWeigth' tabindex="12" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Amount $:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="10" data-bind='event: { keypress: isNumber }, value: vendorAmount' tabindex="13" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Bill Status
+			</td>
+			<td class="typeStatus">
+				<select class="margin-bottom-0" data-bind="options: billStatusList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'All', value: selectedbillStatusList" tabindex="14">
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Shipper City:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="10" data-bind='value: shipperCity' tabindex="15" />
+			</td>
+			<td class="typeLabels">Consignee City:
+			</td>
+			<td class="typeStatus">
+				<input type="text" maxlength="10" data-bind='value: consigneeCity' tabindex="16" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Item Numbers:
+			</td>
+			<td class="typeStatus">
+				<select class="margin-bottom-0" data-bind="options: itemNumberList, optionsText: 'ShortDescription', optionsValue: 'ItemId', optionsCaption: 'Select...', vlaue: itemNumberSelectedOption" tabindex="17">
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="typeLabels">Select Date Range:
+			</td>
+			<td class="typeStatus">
+				<select class="margin-bottom-0" data-bind="options: dateRangeOptionsList, optionsValue: 'ID', optionsText: 'Value', value: dateRangeSelectedOption" tabindex="18">
+				</select>
+			</td>
+
+			<td class="typeStatus" data-bind="visible: isDateSectionVisible()">
+				<span class="typeLabels" style="font-weight: normal;">From Date:</span>
+				<div class="typecontrols">
+					<div data-bind=" validationElement: fromDate, validationOptions: { errorElementClass: 'input-validation-error' }" style="width: 180px;">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (fromDate.isModified() && !fromDate.isValid()), tooltip: { title: fromDate.isModified() ? fromDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+						<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: fromDate, datepickerOptions: datepickerOptions">
+							<input id="pickupDate" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" data-bind="value: fromDate, validationOptions: { errorElementClass: null }" />
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+			</td>
+
+			<td class="typeStatus" data-bind="visible: isDateSectionVisible()">
+				<span class="typeLabels" style="font-weight: normal;">To Date:</span>
+				<div class="typecontrols">
+					<div data-bind=" validationElement: toDate, validationOptions: { errorElementClass: 'input-validation-error' }" style="width: 180px;">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (toDate.isModified() && !toDate.isValid()), tooltip: { title: toDate.isModified() ? toDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+						<div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: toDate, datepickerOptions: datepickerOptions">
+							<input id="Text1" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" data-bind="value: toDate, validationOptions: { errorElementClass: null }" />
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,69 @@
+﻿<!--******************************************************************************
+
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+
+******************************************************************************-->
+<!--
+<summary>
+View of AR Dashboard tab on the Welcome page
+</summary>
+<createDetails>
+<id>US25143</id> <by>Shreesha Adiga</by> <date>05-10-2016</date>
+</createDetails>
+<changeHistory>
+<id>US25144</id> <by>Dhaval Tamhane</by> <date>05-10-2016</date>
+<id>US25144</id> <by>Shreesha Adiga</by><date>07-10-2016</date><description>Implement new design; UI improvements</description>
+<id>US25144</id> <by>Shreesha Adiga</by><date>14-10-2016</date><description>Moved the classes to the style sheet</description>
+<id>US25685</id> <by>Shreesha Adiga</by><date>18-11-2016</date><description>Add a new grid for Vendor Bill Reassignment</description>
+<id>US25686</id> <by>Vasanthakumar</by> <date>25-11-2016</date> <description>Acct: Populate Data on AR Dashboard for vendor bill reassignment.</description>
+<id>DE25876</id> <by>Vasanthakumar</by> <date>17-02-2017</date> <description>Firefox Browser: Drop down and Refresh icon  on AR Dashboard is shown out of the grid.</description>
+<id>DE26017</id> <by>Vasanthakumar</by> <date>01-03-2017</date> <description>Improper UI on AR_dashboard in IE11</description>
+<id>US27216</id> <by>Baldev Singh Thakur</by> <date>09-03-2017</date> <description>modified the reload icon for IE 11 and firefox and change the width of the grid.</description>
+</changeHistory>
+-->
+
+<!--##START: DE25876-->
+<style>
+	@-moz-document url-prefix()
+	{
+		.margin-top-firefox { margin: 25px; }
+		.margin-reloadarboard-firefox {	top: 67px; }
+		.margin-left-reloadarboard-creditrequest-firefox {	left: 1435px; }
+		.margin-left-reloadarboard-vbreassign-firefox { left: 1410px; }
+	}
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		/* IE10+ CSS styles go here */
+		.margin-top-ie { margin: 25px; }
+		.margin-reloadarboard-ie { top: 52px; }
+		.margin-left-reloadarboard-creditrequest-ie { left: 1435px; }
+		.margin-left-reloadarboard-vbreassign-ie { left: 1410px; }
+	}
+</style>
+<!--##END: DE25876-->
+<div class="gridWrapper dashboard-container">
+	<div class="container-fluid">
+
+		<!--##START: US25685-->
+		<div>
+			<div class="float-left margin-all-10 margin-top-firefox margin-top-ie">
+				<select class="newselect" style="margin-top: 22px;" data-bind="options: boardTypeDropdownOptions, optionsText: 'Value', value: selectedGridType"></select>
+			</div>
+			<a href="javascript:void(0)" title="Reload" style="color: blue" class="reload-page-ar-dashboard margin-reloadarboard-firefox margin-reloadarboard-ie" data-bind="click: reloadPage, css: reloadGridClass"><i class="reloadButtonRe-QuoteBoard"></i></a>
+		</div>
+
+		<div class="row-fluid ar-dashboard-grid-container new-grid-ui-container" data-bind="visible: showCreditMemoRequestGrid">
+			<div data-bind="compose: { model: arDashboardReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+
+		<!--##START: US25686-->
+		<div class="row-fluid new-grid-ui-container" style="width: 1755px" data-bind="visible: showVBReassignmentGrid">
+			<div data-bind="compose: { model: vbReassignGridContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+		<!--##END: US25686-->
+
+		<!--##END: US25685-->
+	</div>
+</div>

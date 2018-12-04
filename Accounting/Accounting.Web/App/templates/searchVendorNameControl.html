@@ -1,0 +1,17 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div data-bind=" validationElement: vendorName, validationOptions: { errorElementClass: 'input-validation-error' }">
+    <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (vendorName.isModified() && !vendorName.isValid()), tooltip: { title: vendorName.isModified() ? vendorName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+    <input type="text" id="txtVendorName" class="txtVendorName"  maxlength="50"  autofocus="autofocus" placeholder="Vendor Name" autocomplete="off" data-filterkey="display"
+           data-bind="event: { onSelect: onSelectvendorName }, css: vendorClass, style: { width: (vendorName.isModified() && !vendorName.isValid()) ? errorWidth : normalWidth }, value: vendorName, throttle: true, typeahead: searchvendorName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isSubBillOrder" />
+</div>-->
+<label id="lblvendorName" class="validation-label2" data-bind=" validationElement: vendorName">
+	<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (vendorName.isModified() && !vendorName.isValid()), tooltip: { title: vendorName.isModified() ? vendorName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" id="txtvendorName" class="validation2 txtvendorName" autofocus="autofocus" placeholder="Vendor Name" maxlength="50" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectvendorName }, attr: { 'class': vendorClass, 'readonly': !(isSubBillOrder()) }, css: { borderRedOnValidation: (vendorName.isModified() && !vendorName.isValid()) }, style: { 'padding-left': (vendorName.isModified() && !vendorName.isValid()) ? '17px' : '', width: normalWidth }, value: vendorName, throttle: true, typeahead: searchvendorName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+</label>

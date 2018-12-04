@@ -1,0 +1,79 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+
+		<!--region BUTTONS-->
+		<div class="alignrigth margin-top-1" id="topButtonDiv" style="float: none; margin-right: 27px;">
+			<!--<button class="btn btn-primary" data-bind="click: showReasonPopup">popup</button>-->
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isChange">Save</button>
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButton" style="text-indent: 0;"></i></a>
+		</div>
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+		<!--endregion BUTTONS-->
+		<div class="row-fluid" style="border-top: darkgrey 1px" id="gridbind">
+			<div>
+
+				<!--Purchase Order Section START-->
+				<div class="page-header contentAreaWithBackground" style="padding-top: 0 !important;">
+					<div id="poDetails" data-bind="compose: { model: purchaseOrderDetailsViewModel, view: 'purchaseOrder/PurchaseOrderDetailsView' }"></div>
+				</div>
+				<!--Purchase Order Section END-->
+
+				<div>
+					<!--region TABS-->
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="itemLink" class="active"><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemClick"><span class="tabHeaderText">Items</span></a></li>
+						<li id="addressLink" class=""><a href="#address" data-toggle="tab" tabindex="-1" data-bind="click: onAddressClick"><span class="tabHeaderText">Address</span></a></li>
+						<li id="notesLink" class=""><a href="#notes" data-toggle="tab" tabindex="-1" data-bind="click: onNotesClick"><span class="tabHeaderText">Notes</span></a></li>
+						<li id="reviewedNotesLink" class=""><a href="#reviewedNotes" data-toggle="tab" tabindex="-1" data-bind="click: onReviewedNotesClick"><span class="tabHeaderText">Reviewed Notes</span></a></li>
+						<li id="popossibilityLink" class=""><a href="#popossibility" data-toggle="tab" tabindex="-1" data-bind="click: getPOPData"><span class="tabHeaderText">UVB Possibility</span></a></li>
+						<li id="historyLink" class=""><a href="#history" data-toggle="tab" tabindex="-1" data-bind="click: getPurchaseOrderHistorydetails"><span class="tabHeaderText">History</span></a></li>
+						<li id="podDocLink" class=""><a href="#tab_podDoc" data-toggle="tab" tabindex="-1" data-bind="click: loadPodDocDetails"><span class="tabHeaderText">POD / DOC</span></a></li>
+					</ul>
+					<!--endregion TABS-->
+
+					<!--region SECTIONS-->
+					<div id="myTabContent" class="tab-content contentAreaWithBackground">
+						<div class="tab-pane fade active in " id="item">
+							<!--Items Section START-->
+							<div data-bind="compose: { model: purchaseOrderItemViewModel, view: 'purchaseOrder/PurchaseOrderItemView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="address">
+							<!--Address Section START-->
+							<div data-bind="compose: { model: purchaseOrderAddressViewModel, view: 'purchaseOrder/PurchaseOrderAddressView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="notes">
+							<!--Notes Section START-->
+							<div data-bind="compose: { model: purchaseOrderNotesViewModel, view: 'purchaseOrder/PurchaseOrderNotesView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="reviewedNotes">
+							<!--reviewedNotes Section START-->
+							<div data-bind="compose: { model: PurchaseOrderReviewedNotes, view: 'purchaseOrder/PurchaseOrderReviewedNotes' }"></div>
+						</div>
+						<div class="tab-pane fade" id="popossibility">
+							<!--PO Possibility Section START-->
+							<div class="margin-top--30" data-bind="compose: { model: purchaseOrderPOPViewModel, view: 'purchaseOrder/PurchaseOrderPOPpossibility' }"></div>
+						</div>
+						<div class="tab-pane fade" id="history">
+							<!-- History Section START -->
+							<div data-bind="compose: { model: POHistoryViewModel, view: 'purchaseOrder/PurchaseOrderHistory' }"></div>
+						</div>
+						<div class="tab-pane fade" id="tab_podDoc">
+							<!--POD/DOC Section START-->
+							<div data-bind="compose: { model: purchaseOrderPODDocViewModel, view: 'purchaseOrder/PurchaseOrderPODDocView' }"></div>
+						</div>
+					</div>
+					<!--endregion SECTIONS-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

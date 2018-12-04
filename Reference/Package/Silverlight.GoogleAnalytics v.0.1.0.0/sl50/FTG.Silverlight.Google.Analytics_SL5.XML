@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FTG.Silverlight.Google.Analytics_SL5</name>
+    </assembly>
+    <members>
+        <member name="T:FTG.Silverlight.Google.Analytics.Tracker">
+            <summary>
+            Google analytics tracker.
+            </summary>
+        </member>
+        <member name="M:FTG.Silverlight.Google.Analytics.Tracker.TrackPage(System.String)">
+            <summary>
+            Track page
+            </summary>
+            <param name="page">page name or url</param>
+        </member>
+        <member name="M:FTG.Silverlight.Google.Analytics.Tracker.TrackEvent(System.String,System.String)">
+            <summary>
+            Tracks event
+            </summary>
+            <param name="category">event category</param>
+            <param name="action">event action</param>
+        </member>
+        <member name="M:FTG.Silverlight.Google.Analytics.Tracker.TrackEvent(System.String,System.String,System.String)">
+            <summary>
+            Track event
+            </summary>
+            <param name="category">event category</param>
+            <param name="action">event action</param>
+            <param name="label">event label</param>
+        </member>
+    </members>
+</doc>

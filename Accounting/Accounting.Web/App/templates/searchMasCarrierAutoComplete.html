@@ -1,0 +1,17 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div data-bind=" validationElement: masCarrierName, validationOptions: { errorElementClass: 'input-validation-error width-percent-97-2' }">
+    <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (masCarrierName.isModified() && !masCarrierName.isValid()), tooltip: { title: masCarrierName.isModified() ? masCarrierName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+    <input type="text" id="txtuserName" class="requiredFieldBgColor"  maxlength="50"  autofocus="autofocus" placeholder="MAS Carrier" autocomplete="off" data-filterkey="display"
+           data-bind="event: { onSelect: onSelectMasCarrier }, style: { width: (masCarrierName.isModified() && !masCarrierName.isValid()) ? errorWidth : normalWidth }, value: masCarrierName, throttle: true, typeahead:searchMasCarrier, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+</div>-->
+<label id="lblmasCarrierName" class="validation-label2" data-bind=" validationElement: masCarrierName">
+	<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (masCarrierName.isModified() && !masCarrierName.isValid()), tooltip: { title: masCarrierName.isModified() ? masCarrierName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" id="txtmasCarrierName" class="validation2 requiredFieldBgColor" autofocus="autofocus" placeholder="MAS Carrier" maxlength="50" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectMasCarrier }, css: { borderRedOnValidation: (masCarrierName.isModified() && !masCarrierName.isValid()) }, style: { 'padding-left': (masCarrierName.isModified() && !masCarrierName.isValid()) ? '17px' : '', width: normalWidth }, value: masCarrierName, throttle: true, typeahead: searchMasCarrier, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+</label>

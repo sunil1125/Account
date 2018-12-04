@@ -1,0 +1,175 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+Sales order tabbed view
+</summary>
+<changeHistory>
+<id>US22798</id> <by>Vasanthakumar</by> <date>20-06-2016</date> <description>Disable the ability to edit Multileg and Expedite shipments</description>
+<id>US25171</id> <by>Janakiram</by> <date>04-10-2016</date> <description>Added new button for "Request Credit".</description>
+<id>US25171</id> <by>Janakiram</by> <date>14-10-2016</date> <description>Added new button for "Request Credit Memo".</description>
+<id>US25349</id> <by>Vasanthakumar</by> <date>27-10-2016</date> <description>Acct: Edit TL Sub-SO Functionality</description>
+<id>US26377</id> <by>Baldev Singh Thakur</by> <date>02-03-2017</date> <description>Added visible property for MakeCopy</description>
+<id>7266</id> <by>Shreesha Adiga</by><date>23-11-2018</date><description>Hide/Show Mas tab based on IsRedirectedFromCC</description>
+</changeHistory>
+!-->
+<div class="container-fluid" style="padding-right:20px">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"> <!--, height: 1000-->
+
+		<div class="alignrigth margin-top-1" id="topButtonsDiv" style="float:none; margin-right:27px;">
+			<!--	<div data-bind="compose: { model: saveStatusIndicatorControl, view: 'templates/saveStatusIndicatorControl' }" style="float: left; margin-right:5px; margin-top:5px"></div>-->
+			<button class="btn btn-primary" data-bind="click: onSetFinalized, visible: isSetToFinalize, enable: isSetToFinalizeEnable">Set As Finalized</button>
+			<button class="btn btn-primary" data-bind="click: onEditReBill, visible: isEditRebill">Edit Rebill Information</button>
+			<!--##START US25349-->
+			<button id="btnCreateBill" class="btn btn-primary" data-bind="click: onCreateBill, enable: canCreateBill, visible: isCreateBillVisible">Create Bill</button>
+			<!--##END US25349-->
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isSaveEnable">Save</button>
+			<!--##START US22798-->
+			<!--##START US26377-->
+			<button class="btn btn-primary" data-bind="click: onCopy, visible: isMakeCopyVisible, enable: canMakeCopy">Make Copy</button>
+			<!--##END US26377-->
+			<button class="btn btn-primary" data-bind="click: onCancelOrder, visible: isCancelSalesOrder, enable: isEnableCancelUnCancelSalesOrder">Cancel Order</button>
+			<button class="btn btn-primary" data-bind="click: onUnCancelOrder, visible: isUnCancelSalesOrder, enable: isEnableCancelUnCancelSalesOrder">Un-Cancel Order</button>
+			<!--##END US22798-->
+			<button class="btn btn-primary" data-bind="click: onCreateSubOrder, visible: isCreateSubOrder">Create Sub Order</button>
+			<!--##START US25349-->
+			<button id="btnScheduleInvoice" class="btn btn-primary" data-bind="enable: isScheduleInvoiceEnable, visible: isScheduleInvoiceVisible, text: scheduleInvoiceText, click: onScheduleInvoiceClick"></button>
+			<!--##START US22798-->
+			<button id="btnPrintBOL" class="btn btn-primary" data-bind="click: onPrintBOLClick, enable: isEnablePrintBOL">Print BOL</button>
+			<!--##END US22798-->
+			<!--##START US25171-->
+			<button id="btnRequestCredit" class="btn btn-primary" data-bind="click: onRequestCreditClick, visible: isRequestCredit">Request Credit Memo</button>
+			<!--##END US25171-->
+			<!--##END US25349-->
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButton" style="text-indent: 0;"></i></a>
+		</div>
+
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+
+		<div class="row-fluid" border-top: darkgrey 1px" id="gridbind">
+			<div>
+				<!--Vendor Bill Section START-->
+				<div class="page-header contentAreaWithBackground" style="padding-top:0 !important;">
+					<div id="detailsView" data-bind="compose: { model: salesOrderDetailsViewModel, view: 'salesOrder/SalesOrderDetailsView' }"></div>
+				</div>
+				<!--Vendor Bill Section END-->
+
+				<div>
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="itemLink" class="active"><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemsClick"><span class="tabHeaderText" >Items</span></a></li>
+						<li id="addressLink" class=""><a href="#address" data-toggle="tab" tabindex="-1" data-bind="click: onAddressClick"><span class="tabHeaderText">Address</span></a></li>
+						<li id="multilegLink" class=""  data-bind="visible: multilegLinkVisiblity"><a href="#multileg" data-toggle="tab" tabindex="-1" data-bind="	click: getMultilegDetails"><span class="tabHeaderText" >Multileg Details</span></a></li>
+						<li id="shippingLink" class=""><a href="#shipping" data-toggle="tab" tabindex="-1" data-bind="click: onShippingClick"><span class="tabHeaderText" >Shipping</span></a></li>
+						<li id="shipmentNotesLink" class=""><a href="#shipmentNotes" data-toggle="tab" tabindex="-1" data-bind="click: onShipingNotesClick"><span class="tabHeaderText">Shipment Notes</span></a></li>
+						<li id="podDocLink" class=""><a href="#tab_podDoc" data-toggle="tab" tabindex="-1"  data-bind="click: loadPodDocDetails"><span class="tabHeaderText">POD / DOC</span></a></li>
+						<li id="rebillLink" class="" data-bind="visible: isEditRebill"><a href="#rebill" data-toggle="tab" tabindex="-1" data-bind="	click: getSalesOrderRebill" ><span class="tabHeaderText" >Re-Bill</span></a></li>
+						<li id="DisputeLink" class="" data-bind="visible: isDisputeSectionVisible"><a href="#dispute" data-toggle="tab" tabindex="-1"  data-bind="	click: getSalesOrderDispute"><span class="tabHeaderText" >Dispute</span></a></li>
+					    <li id="AuditedBillLink" class="" data-bind="visible: isEditRebill"><a href="#auditedBill" data-toggle="tab" tabindex="-1" data-bind="	click: getSalesOrderAuditedBill"><span class="tabHeaderText"  >Audited Bill</span></a></li>
+						<li id="hazmatLink" class=""><a href="#hazmat" data-toggle="tab" tabindex="-1" data-bind="click: onHazmatClick"><span class="tabHeaderText">Hazmat</span></a></li>
+						<li id="NotificationLink" class="" data-bind="visible: agentNotifcationLinkVisiblity"><a href="#notification" data-toggle="tab" tabindex="-1" data-bind="	click: getAgentNotification"><span class="tabHeaderText" >Agent Notification</span></a></li>
+						<li id="linksLink" class=""><a href="#links" data-toggle="tab" tabindex="-1" data-bind="click: getShipmentLinks"><span class="tabHeaderText" >Links</span></a></li>
+						<li id="historyLink" class=""><a href="#history" data-toggle="tab" tabindex="-1" data-bind="click: getSalesOrderHistorydetails"><span class="tabHeaderText" >History</span></a></li>
+					   	<li id="invoiceExceptionLink" class="" data-bind="visible: invoiceExceptionVisibility"><a href="#invoiceException" data-toggle="tab" tabindex="-1"  data-bind="	click: getInvoiceExceptionDetails"><span class="tabHeaderText">Invoice Exception</span></a></li>
+                        <li id="claimLink" class=""><a href="#claim" data-toggle="tab" tabindex="-1" data-bind="click: getClaim"><span class="tabHeaderText" >Claim</span></a></li>
+						<li id="creditMemoLink" class="" data-bind="visible: creditMemoVisiblity"><a href="#creditMemo" data-toggle="tab" tabindex="-1" data-bind="	click: onCreditMemoClick"><span class="tabHeaderText" >Credit Memo</span></a></li>
+						<li id="masLink" data-bind="visible: !isRedirectedFromCC" class=""><a href="#mas" data-toggle="tab" tabindex="-1" data-bind="	click: onGetSalesOrderMasDetailsClick"><span class="tabHeaderText" >MAS</span></a></li>
+                        <!--<li id="auditLink" class=""><a href="#audit" data-toggle="tab" tabindex="-1"><span class="tabHeaderText" data-bind="click: getSalesOrderProcesslog">Audit</span></a></li>-->
+					</ul>
+					<div id="myTabContent" class="tab-content contentAreaWithBackground">
+						<div class="tab-pane fade active in " id="item">
+							<!--Items Section START-->
+							<div tabindex="-1" data-bind="compose: { model: salesOrderItemViewModel, view: 'salesOrder/SalesOrderItemView' }"></div>
+						</div>
+						<div class="tab-pane fade " id="address">
+							<!--Address Section START-->
+							<div id="addressDiv" data-bind="compose: { model: salesOrderAddressViewModel, view: 'salesOrder/SalesOrderAddressView' }"></div>
+						</div>
+
+						<div class="tab-pane fade" id="shipping">
+							<!--Shipping Section START-->
+							<div data-bind="compose: { model: salesOrderShippingViewModel, view: 'salesOrder/SalesOrderShippingView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="shipmentNotes">
+							<!--Notes Section START-->
+							<div data-bind="compose: { model: salesOrderNotesViewModel, view: 'salesOrder/SalesOrderNotes' }"></div>
+						</div>
+						<div class="tab-pane fade" id="tab_podDoc">
+							<!--POD/DOC Section START-->
+						    <div data-bind="compose: { model: salesOrderPODDocViewModel, view: 'salesOrder/SalesOrderPODDocView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="dispute">
+							<!--Dispute Section START-->
+							<div data-bind="compose: { model: salesOrderDisputeViewModel, view: 'salesOrder/SalesOrderDisputeView' }, showContentProgress: listProgressDispute, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+						<div class="tab-pane fade" id="hazmat">
+							<!--Hazmat Section START-->
+							<div data-bind="compose: { model: salesOrderHazmatViewModel, view: 'salesOrder/SalesOrderHazmatView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="notification">
+							<!--Notification Section START-->
+							<div data-bind="compose: { model: salesOrderAgentNotificationViewModel, view: 'salesOrder/SalesOrderAgentNotificationView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="links">
+							<!--Links Section START-->
+							<div data-bind="compose: { model: salesOrderLinksViewModel, view: 'salesOrder/SalesOrderLinks' }, showContentProgress: listProgressLinks, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+						<div class="tab-pane fade" id="history">
+							<!--History Section START-->
+							<div data-bind="compose: { model: salesOrderHistoryViewModel, view: 'salesOrder/SalesOrderHistory' }"></div>
+						</div>
+						<!--MultiLEg  Section START-->
+						<div class="tab-pane fade" id="multileg">
+
+							<div data-bind="compose: { model: salesOrderMultiLegViewModel, view: 'salesOrder/SalesOrderMultileg' }, visible: multilegLinkVisiblity, showContentProgress: listProgressMultileg, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+
+                        <!--Claim  Section START-->
+						<div class="tab-pane fade" id="claim">
+
+							<div data-bind="compose: { model: salesOrderClaimViewModel, view: 'salesOrder/SalesOrderClaimView' }, showContentProgress: listProgressClaim, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+
+                          <!--Invoice Exception  Section START-->
+						<div class="tab-pane fade" id="invoiceException">
+
+							<div data-bind="compose: { model: salesorderInvoiceExceptionViewModel, view: 'salesOrder/SalesOrderInvoiceException' }, showContentProgress: listProgressInvoiceException, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+                         <!--Audit  Section START-->
+						<div class="tab-pane fade" id="audit">
+
+							<div data-bind="compose: { model: salesOrderAuditViewModel, view: 'salesOrder/SalesOrderAuditView' }"></div>
+						</div>
+						 <!--Rebill  Section START-->
+						<div class="tab-pane fade" id="rebill" data-bind="visible: isEditRebill">
+
+							<div data-bind="compose: { model: salesorderReBillViewModel, view: 'salesOrder/SalesOrderReBillView' }"></div>
+						</div>
+						 <!--Audited Bill  Section START-->
+						<div class="tab-pane fade" id="auditedBill" data-bind="visible: isEditRebill">
+
+							<div data-bind="compose: { model: salesorderAuditedBillViewModel, view: 'salesOrder/SalesOrderAuditedBillView' }"></div>
+						</div>
+
+						 <!--Credit Memo Section START-->
+						<div class="tab-pane fade" id="creditMemo">
+
+							<div data-bind="compose: { model: salesOrderCreditMemoViewModel, view: 'salesOrder/SalesOrderCreditMemoView' }"></div>
+						</div>
+						<!-- MAS Section START -->
+						<div class="tab-pane fade" id="mas">
+							<div data-bind="compose: { model: salesOrderMasViewModel, view: 'salesOrder/SalesOrderMas' }, showContentProgress: listProgressClaim, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+						<!-- MAS Section END -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

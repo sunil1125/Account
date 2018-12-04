@@ -1,0 +1,82 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px;" data-bind="text: gridHeader"></label>
+</div>
+<table id="tblVendorBillItems" class="table table-bordered shipment-item">
+	<thead>
+		<tr>
+			<th>
+				<label class="align-center">PRO No</label></th>
+			<th>
+				<label class="align-center">Items</label></th>
+			<th>
+				<label class="align-center">Description</label></th>
+			<th>
+				<label class="align-center">Cost</label></th>
+			<th data-bind="visible: isDisputeAmountVisible()">
+				<label class="align-center">Dispute Amount</label></th>
+			<th>
+				<label class="align-center">Class</label></th>
+			<th>
+				<label class="align-center">Weight</label></th>
+			<th>
+				<label class="align-center">PCS</label></th>
+			<th>
+				<label class="align-center">Dimensions</label></th>
+			<th>
+				<label class="align-center">Package Type</label></th>
+		</tr>
+	</thead>
+	<tbody data-bind='foreach: vendorBillItemsList' class="line-items">
+		<tr class="lineItemRow" data-bind="css: totalRow">
+			<td data-title="PRO No" class="width-percent-11">
+				<span data-bind="text: proNo"></span>
+			</td>
+			<td data-title="Unit Type" class="width-percent-1">
+				<label data-bind="text: itemName, attr: { title: itemName }" style="width: 150px; overflow: hidden;"></label>
+			</td>
+			<td data-title="Description" data-bind="attr: { class: $parent.descColCssClass }">
+				<label class="td-wrap-word" data-bind="text: userDescription, attr: { title: userDescription }" style="width: auto; overflow: hidden;"></label>
+			</td>
+			<td data-title="Cost" class="width-percent-10" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: cost"></span>
+			</td>
+			<td data-title="Dispute Amount" class="width-percent-10" data-bind="visible: $parent.isDisputeAmountVisible()" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: disputeAmount"></span>
+			</td>
+			<td data-title="Class" class="width-percent--5" style="text-align: center;">
+				<label data-bind="text: selectedClassType, attr: { title: selectedClassType }" style="width: auto; overflow: hidden;"></label>
+			</td>
+			<td data-title="Weight" class="nowrap width-percent-3" style="text-align: center;">
+				<span data-bind="text: weight"></span>
+			</td>
+			<td data-title="#Pcs" class="width-percent-4" style="text-align: center;">
+				<span data-bind="text: pieceCount"></span>
+			</td>
+			<td data-title="Dimensions" class="width-percent--5">
+				<table>
+					<tr>
+						<td style="text-align: center;">
+							<label data-bind="text: dimensionLength, attr: { title: dimensionLength }" style="width: 20px; overflow: hidden;"></label>
+						</td>
+						<td style="text-align: center;">
+							<label data-bind="text: dimensionWidth, attr: { title: dimensionWidth }" style="width: 20px; overflow: hidden;"></label>
+						</td>
+						<td style="text-align: center;">
+							<label data-bind="text: dimensionHeight, attr: { title: dimensionHeight }" style="width: 20px; overflow: hidden;"></label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td data-title="package" class="width-percent--5">
+				<label data-bind="text: packageName, attr: { title: packageName }" style="width: auto; overflow: hidden;"></label>
+			</td>
+		</tr>
+	</tbody>
+</table>

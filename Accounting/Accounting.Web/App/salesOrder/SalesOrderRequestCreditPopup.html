@@ -1,0 +1,226 @@
+﻿<!--******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+******************************************************************************-->
+
+<!--
+<summary>
+Popup to do Request Credit
+</summary>
+<createDetails>
+<id>US25171</id> <by>Janakiram</by> <date>04-10-2016</date>
+</createDetails>
+<changeHistory>
+<id>US24865</id> <by>Shreesha Adiga</by> <date>18-10-2016</date><description>Create UI</description>
+<id>US25277</id> <by>Baldev Singh Thakur</by> <date>19-10-2016</date><description>Modify the Credit Reason drop down</description>
+<id>US24865</id> <by>Shreesha Adiga</by> <date>21-10-2016</date><description>Added a new field; Changed the width of the Dropdown</description>
+<id>US25310</id> <by>Shreesha Adiga</by> <date>24-10-2016</date><description>Enable Credit Reason conditionally</description>
+<id>US25679</id> <by>Baldev Singh Thakur</by> <date>11-11-2016</date><description>Added Total Pending Vendor Amount</description>
+<id>DE24930</id> <by>Janakiram</by> <date>18-10-2016</date><description>Added Validation for Customer Credit Memo</description>.
+<id>DE25338</id> <by>Janakiram</by> <date>20-12-2016</date> <description>Handling when Customer credit amount/Vendor credit amount empty , Final revenue /Final cost value is showing as Zero</description>
+<id>US26559</id> <by>Vasanthakumar</by> <date>02-02-2017</date> <description>Add Select SO dropdown if credit reason is Dispute won.</description>
+<id>US26574</id> <by>Vasanthakumar</by> <date>03-02-2017</date> <description>If BSCustomer, show BS Cost instead of Final Revenue.</description>
+<id>US26377</id> <by>Vasanthakumar</by> <date>03-03-2017</date> <description>If CancelSO credit request reason then disable the customer credit amount.</description>
+</changeHistory>
+-->
+
+<div class="email-popup custom-msg-box border-radius-8" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }" style="background-color: #f0eeeb; max-width: 700px !important; width: 700px;">
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text" data-bind="text: 'Issue Credit Memo'"></h4>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+
+		<div class="tableLayout">
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td colspan="2" class="credit-request-section-header">Current Financials
+						</td>
+					</tr>
+					<tr>
+						<!-- ###START: US26574 !-->
+						<td class="typeLabels" data-bind="text: finalRevenueText()"></td>
+						<!-- ###END: US26574 !-->
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-92" readonly="readonly" data-bind="value: finalRevenueCurrent" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">Final Cost $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-92" readonly="readonly" data-bind="value: finalCostCurrent" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td colspan="2" class="credit-request-section-header">Post Credit Financials
+						</td>
+					</tr>
+					<tr>
+						<!-- ###START: US26574 !-->
+						<td class="typeLabels" data-bind="text: finalRevenueText()"></td>
+						<!-- ###END: US26574 !-->
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-92" readonly="readonly" data-bind="value: finalRevenuePostCredit" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">Final Cost $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-92" readonly="readonly" data-bind="value: finalCostPostCredit" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<br />
+
+		<div class="tableLayout">
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Customer Credit Amount $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: customerCreditAmount">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (customerCreditAmount.isModified() && !customerCreditAmount.isValid()), tooltip: { title: customerCreditAmount.isModified() ? customerCreditAmount.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<!-- ###START: DE24930 !-->
+								<!-- ###START: DE25338 !-->
+								<input type="text" class="width-percent-90 requiredFieldBgColor" maxlength="11"
+									data-bind="event: { keypress: isNumber }, value: customerCreditAmount, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (customerCreditAmount.isModified() && !customerCreditAmount.isValid()) }, enable: enableCustomerCreditAmount" />
+								<!-- ###END: DE25338 !-->
+								<!-- ###END: DE24930 !-->
+							</label>
+						</td>
+					</tr>
+					<tr data-bind="visible: isCreditMemoExceeds()">
+						<td data-bind="visible: isCreditMemoExceeds()" colspan="2">
+							<!-- ###START: US26574 !-->
+							<div id="chart-Container-Requote" class=" float-left" style="color: red" data-bind="text: isCreditMemoExceedsWarningMessage()"></div>
+							<!-- ###END: US26574 !-->
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Credit Reason:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--###START: US25277-->
+							<label id="lblCreditReason" class="validation-label2" data-bind=" validationElement: selectedCreditReason">
+								<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectedCreditReason.isModified() && !selectedCreditReason.isValid()), tooltip: { title: selectedCreditReason.isModified() ? selectedCreditReason.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<!--##START: US25310-->
+								<select class="newselect width-percent-100  validation2 requiredFieldBgColor"
+									data-bind="options: creditReasonOptions, optionsText: 'CreditReasons', value: selectedCreditReason, optionsCaption: 'Select', css: { 'padding-left-16 borderRedOnValidation': (selectedCreditReason.isModified() && !selectedCreditReason.isValid()) }, enable: enableCreditReason">
+								</select>
+								<!--##END: US25310-->
+							</label>
+							<!--###END: US25277-->
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<br />
+
+		<div class="tableLayout">
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Vendor Credit Amount $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: vendorCreditAmount">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (vendorCreditAmount.isModified() && !vendorCreditAmount.isValid()), tooltip: { title: vendorCreditAmount.isModified() ? vendorCreditAmount.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<!-- ###START: DE24930 !-->
+								<!-- ###START: DE25338 !-->
+								<input type="text" class="width-percent-90 requiredFieldBgColor" maxlength="11"
+									data-bind="event: { keypress: isNumber }, numericDecimalInput: NumericInputWithDecimalPoint, value: vendorCreditAmount, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (vendorCreditAmount.isModified() && !vendorCreditAmount.isValid()) }, enable: isVendorCredit()" />
+								<!-- ###START: DE25338 !-->
+								<!-- ###END: DE24930 !-->
+							</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Total Pending Credit Memo $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-90" readonly="readonly" data-bind="value: totalPendingCreditAmount" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<br />
+		<!--###START: US25679-->
+		<div class="tableLayout">
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Total Pending Vendor Credit $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-90" readonly="readonly" data-bind="value: totalPendingVendorAmount" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-cell width-percent-50">
+				<!-- ###START: US26559 !-->
+				<table class="tbl-sales-order" data-bind="visible: selectSOVisible()">
+					<tr>
+						<td class="typeLabels">Select SO:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label id="lblSelectSO" class="validation-label2" data-bind=" validationElement: selectedSO">
+								<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectSOVisible() && selectedSO.isModified() && !selectedSO.isValid()), tooltip: { title: selectedSO.isModified() ? selectedSO.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<select class="newselect width-percent-100  validation2 requiredFieldBgColor"
+									data-bind="options: availableSO, optionsText: 'BOLNumber', value: selectedSO, optionsCaption: 'Select', css: { 'padding-left-16 borderRedOnValidation': (selectedSO.isModified() && !selectedSO.isValid()) }">
+								</select>
+							</label>
+						</td>
+					</tr>
+				</table>
+				<!-- ###END: US26559 !-->
+			</div>
+		</div>
+		<!--###END: US25679-->
+		<br />
+		<div>
+			<fieldset style="width: 43%">
+				<legend>Add Notes</legend>
+				<textarea id="textarea" class="accounting-textarea" style="width: 95%" rows="5" maxlength="500"
+					data-bind="value: notes"></textarea>
+			</fieldset>
+
+		</div>
+
+	</div>
+	<div class="margin-left-12 margin-right-10">
+		<div id="button-container" class="align-right margin-top-5">
+			<button class="btn btn-primary" data-bind="click: onSave">Save</button>
+			<button class="btn btn-primary" data-bind="click: onCancel">Close</button>
+		</div>
+	</div>
+	<br />
+</div>

@@ -1,0 +1,248 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<style>
+	/*.nav {
+		margin-bottom: -1px;
+		margin-left: 0;
+		list-style: none;
+	}
+
+	.nav-tabs {
+		border-bottom: 0px;
+	}
+
+		.nav-tabs > li > a, .nav > li > a:hover {
+			padding: 8px;
+			line-height: 20px;
+			border-bottom: 0px solid #F0EEEB;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+			background: #c9c7c5;
+			border: 1px solid #C1B7AB;
+			color: #666666;
+			margin-right: 4px;
+		}
+
+		.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+			color: black;
+			cursor: default;
+			background: none repeat scroll 0 0 #f0eeeb;
+			border: 0px solid #dddddd;
+			border-bottom-color: transparent;
+			border: 1px solid #f0eeeb;
+		}*/
+
+	/*.username {
+		font-weight: bold;
+		text-transform: capitalize;
+		color: #EF7037;
+	}
+
+	.usertitle {
+		color: #ADAAB2;
+	}
+
+	.userTitle {
+		color: #000000;
+		margin-top: 10px;
+		font-weight: bold;
+		font-size: 18px;
+	}*/
+
+	/*#region overriding some predefined CSS*/
+	a.greenColor
+	{
+		color: #85B271;
+	}
+
+	/*input.input-validation-error, .input-validation-error {
+		text-align: left;
+	}
+
+		.input-validation-error .textboxSize {
+			margin: 0 !important;
+			width: 180px;
+		}
+
+		.input-validation-error .typeahead {
+			margin: 0 !important;
+			width: 180px;
+			padding: 4px 2px !important;
+			border: 1px solid #ff0000 !important;
+		}*/
+
+	.profileLabels
+	{
+		color: #9C9D9F;
+	}
+
+	.horizontalLine
+	{
+		color: #9C9D9F;
+	}
+
+	.themeDivContainer > div, label
+	{
+		cursor: pointer;
+	}
+
+	/*#endregion*/
+</style>
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+
+		<div class="align-right">
+			<span class="PageTitleBlack float-left" style="margin-top: 12px;">My Settings</span>
+		</div>
+		<div class="row-fluid margin-top-10" id="gridbind">
+			<div class="tab-pane" id="themes">
+				<div class="chooseThemeContainer">
+					<div class="chooseThemeTextContainer">
+						Choose a Theme
+					</div>
+					<div class="rightContainer displayInlineBlock">
+						<div class="themeOptionContainer">
+							<!--- #region theme1 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme1' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme1" type="radio" value="theme1" name="Theme" data-bind="checked: selectedTheme">
+									<label class="displayInline" for="rdBtnTheme1">Theme 1</label>
+								</div>
+								<label for="rdBtnTheme1" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/denim.png); border: 1px solid #ffffff;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #595959; border: 1px solid #ffffff;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #929090; border: 1px solid #ffffff;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #2B4678; border: 1px solid #ffffff;"></div>
+								</label>
+							</div>
+							<!---#endregion theme 1 --->
+
+							<!-- #region theme 2 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme2' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme2" type="radio" data-bind="checked: selectedTheme" value="theme2" name="Theme">
+									<label class="displayInline" for="rdBtnTheme2">Theme 2</label>
+								</div>
+								<label for="rdBtnTheme2" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/lightdenim3.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #595959; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #929090; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #3C63AB; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 2--->
+
+							<!-- #region theme 3 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme3' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme3" type="radio" data-bind="checked: selectedTheme" value="theme3" name="Theme">
+									<label class="displayInline" for="rdBtnTheme3">Theme 3</label>
+								</div>
+								<label for="rdBtnTheme3" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/denim.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #ffffff; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #C4C1C1; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #3C63AB; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 3--->
+
+							<!-- #region theme 4 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme4' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme4" type="radio" data-bind="checked: selectedTheme" value="theme4" name="Theme">
+									<label class="displayInline" for="rdBtnTheme4">Theme 4</label>
+								</div>
+								<label for="rdBtnTheme4" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/lightdenim3.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #762A65; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #839B14; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #3F1435; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 4--->
+
+							<!-- #region theme 5 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme5' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme5" type="radio" data-bind="checked: selectedTheme" value="theme5" name="Theme">
+									<label class="displayInline" for="rdBtnTheme5">Theme 5</label>
+								</div>
+								<label for="rdBtnTheme5" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/denim.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #1B7823; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #839B14; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #082E0B; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 5--->
+
+							<!-- #region theme 6 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme6' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme6" type="radio" data-bind="checked: selectedTheme" value="theme6" name="Theme">
+									<label class="displayInline" for="rdBtnTheme6">Theme 6</label>
+								</div>
+								<label for="rdBtnTheme6" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/lightLiningBackground.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #004B98; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #3C63Ab; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #ECECEC; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 6--->
+
+							<!-- #region theme 8 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme8' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme8" type="radio" data-bind="checked: selectedTheme" value="theme8" name="Theme">
+									<label class="displayInline" for="rdBtnTheme8">Theme 7</label>
+								</div>
+								<label for="rdBtnTheme8" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/denim.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #978169; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #E95A5A; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #788F97; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 8--->
+
+							<!-- #region theme 7 --->
+							<div class="themeInnerContainer" data-bind="css: selectedTheme() === 'theme7' ? 'selectedThemeOption' : ''">
+								<div class="displayInlineBlock">
+									<input id="rdBtnTheme7" type="radio" data-bind="checked: selectedTheme" value="theme7" name="Theme">
+									<label class="displayInline" for="rdBtnTheme7">Theme 8</label>
+								</div>
+								<label for="rdBtnTheme7" class="displayInlineBlock">
+									<div class="themeDivContainer displayInlineBlock" style="background: url(Content/images/lightLiningBackground.png); border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #849D71; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #037E8C; border: 1px solid #979797;"></div>
+									<div class="themeDivContainer displayInlineBlock" style="background: #024859; border: 1px solid #979797;"></div>
+								</label>
+							</div>
+							<!--- #endregion theme 7--->
+						</div>
+					</div>
+
+					<div class="leftConatiner displayInlineBlock">
+						<img class="themeImagePreview" src="Content/images/theme01.PNG" data-bind="visible: selectedTheme() === 'theme1' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme02.PNG" data-bind="visible: selectedTheme() === 'theme2' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme03.PNG" data-bind="visible: selectedTheme() === 'theme3' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme04.PNG" data-bind="visible: selectedTheme() === 'theme4' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme05.PNG" data-bind="visible: selectedTheme() === 'theme5' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme06.PNG" data-bind="visible: selectedTheme() === 'theme6' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme07.PNG" data-bind="visible: selectedTheme() === 'theme7' ? true : false" />
+						<img class="themeImagePreview" src="Content/images/theme08.PNG" data-bind="visible: selectedTheme() === 'theme8' ? true : false" />
+						<button class="floatRight successbtn saveThemeBtn" data-bind="click: saveTheme, enable: enbaleThemeSaveButton">SAVE THEME</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

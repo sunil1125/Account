@@ -1,0 +1,30 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+<!--
+<summary>
+Container view for the dashboard tabs; Moved all the existing code from Welcome.html to DashboardCharts.html
+</summary>
+<createDetails>
+<id>US25143</id> <by>Shreesha Adiga</by> <date>05-10-2016</date>
+</createDetails>
+-->
+
+<br />
+<div class="dashboard-container">
+	<div class="dashboard_bar">
+		<ul class="dashboard_menu">
+			<li data-bind="click: onDashboardChartsClick, css: { active_dashboard_li: activeDashboardView() == 'dashboard-charts', inactive_dashboard_li: activeDashboardView() != 'dashboard-charts' }">Dashboard</li>
+			<li data-bind="click: onARDashboardClick, css: { active_dashboard_li: activeDashboardView() == 'ar-dashboard', inactive_dashboard_li: activeDashboardView() != 'ar-dashboard' }, visible: isARDashboardTabVisible">AR - Dashboard</li>
+		</ul>
+		<div class="clear-both"></div>
+						</div>
+
+	<div>
+		<div id='dashboard-charts-container' data-bind="compose: { view: 'dashboard/DashboardCharts', model: dashboardCharts }, visible: activeDashboardView() == 'dashboard-charts'"></div>
+		<div id='ar-dashboard-container' data-bind="compose: { view: 'dashboard/ARDashboard', model: arDashboard }, visible: activeDashboardView() == 'ar-dashboard'"></div>
+						</div>
+						</div>

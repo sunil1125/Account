@@ -1,0 +1,684 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+body
+{
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: normal;
+	color: #333333;
+	background: #C7C0B6 repeat;
+}
+
+html > body .main_div
+{
+	height: 280px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+::-webkit-input-placeholder
+{ /* WebKit browsers */
+	font-style: normal;
+	font-size: 15px;
+}
+
+:-moz-placeholder
+{ /* Mozilla Firefox 4 to 18 */
+	font-style: normal;
+	font-size: 15px;
+}
+
+::-moz-placeholder
+{ /* Mozilla Firefox 19+ */
+	font-style: normal;
+	font-size: 15px;
+}
+
+:-ms-input-placeholder
+{ /* Internet Explorer 10+ */
+	font-style: normal;
+	font-size: 15px;
+}
+
+.icon-question-sign_new
+{
+	background-image: url(images/glyphicons_049_star.png);
+	background-position: -96px -96px;
+	background-color: red;
+}
+
+.login_unit
+{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+	.login_unit h3
+	{
+		margin-top: 50%;
+		color: white;
+		padding-top: 25px;
+	}
+
+.main_div .tagline1
+{
+	float: none;
+	color: #FFF;
+	font-size: x-large;
+	text-align: center;
+}
+
+.main_div .tagline2
+{
+	float: none;
+	color: white;
+	font-size: x-large;
+	text-align: center;
+	padding-top: 210px;
+}
+
+.stretch
+{
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+}
+
+#welcomeMessage
+{
+	z-index: 100;
+	color: #586D7A;
+	font-size: 25px;
+	font-style: italic;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 360px;
+	width: 72%;
+	padding-left: 15px;
+	padding-top: 8px;
+	min-height: 90%;
+}
+
+.wrap_main
+{
+	/*background-image: url(../Content/images/login_heroimage.jpg);*/
+	/*background-image: url(../Content/images/login_background1.png);*/
+	max-width: 100%;
+	/*width: 70%;*/
+	background-repeat: no-repeat;
+	/* max-height: 552px; */ /* background-position: center; */
+	/*-moz-background-size: 100% 95%;
+	-o-background-size: 100% 95%;
+	-webkit-background-size: 100% 95%;
+	background-size: 100% 100%;*/
+	/*padding: 0px 0px 0px 0px;
+	position: absolute;*/
+	/*height: 98%;*/
+	/*margin: 0;*/
+	overflow: hidden;
+	float: right;
+}
+
+.login_form
+{
+	background-color: #c7c0b6;
+	/* max-height: 399px; */
+	height: 100%;
+	width: 350px;
+	/*padding: 20px 20px 5px 45px;*/
+	/*border-radius: 5px;*/
+	position: absolute;
+	left: 0;
+	/*right: 0;*/
+	/*margin: auto;*/
+	/*margin-top:-18%;
+	margin-left: -30px;*/
+}
+
+.login_header
+{
+	padding-left: 10px;
+	width: 100%;
+	height: 40px;
+	line-height: 30px;
+	font-size: 19px;
+	background-color: #586d7a;
+	z-index: 9999;
+	position: fixed;
+	font-family: 'Source Sans Pro', Arial;
+	-moz-box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+	left: 0;
+}
+
+.links
+{
+	font-size: 16px;
+	font-family: 'Source Sans Pro';
+	text-decoration: none;
+	border-width: 0 0 1px;
+	border-style: solid;
+	color: #1865BD;
+}
+
+	.links:hover,
+	.links:focus
+	{
+		font-size: 16px;
+		font-family: 'Source Sans Pro';
+		text-decoration: none;
+		border-width: 0 0 1px;
+		border-style: solid;
+		color: #1865BD;
+	}
+
+.loginTopDiv
+{
+	position: fixed;
+	background-color: #c7c0b6;
+	min-height: 100%;
+	width: 350px;
+}
+
+.red
+{
+	color: #a50505;
+}
+
+.green
+{
+	color: #0C7435;
+}
+
+.margin_left_12
+{
+	margin-left: 12px;
+}
+
+.usernameControl
+{
+	height: 32px;
+	margin-bottom: 10px;
+}
+
+.passwordControl
+{
+	height: 32px;
+}
+
+.checkboxRemember
+{
+	/*margin-top: 15px;*/
+}
+
+.forgotPasswordLabel
+{
+	color: #1c1d21;
+	text-align: left;
+	font-size: 19px;
+	border-bottom: none;
+}
+
+.forgotPasswordMessage
+{
+	font-size: 14px;
+	color: black;
+	padding-top: 10px;
+	width: 82%;
+}
+
+input.checkbox
+{
+	width: 50px;
+	height: 50px;
+}
+
+/*Reset Password Section*/
+.resetPasswordControls
+{
+	width: 400px;
+	height: 150px;
+	padding-top: 109px;
+	margin-left: 21px;
+	margin-right: auto;
+}
+
+.passwordInputReset
+{
+	border: 1px solid #cccccc;
+	width: 295px;
+	border-color: black;
+	position: absolute;
+	color: black;
+	z-index: 1;
+}
+
+.margin_top__16_Per
+{
+	margin-top: -16%;
+}
+
+.margin_top_10_Per
+{
+	margin-top: 10%;
+}
+
+.passwordValidationControl
+{
+	margin-left: -15px;
+	width: 324px;
+	height: 31px;
+	position: absolute;
+}
+
+.resetSuccessMessageDiv
+{
+	width: 310px;
+	height: 150px;
+	text-align: center;
+	padding-top: 57px;
+	margin-top: 23%;
+	margin-left: 5%;
+}
+
+.resetPageExpireMessageDiv
+{
+	width: 310px;
+	height: 150px;
+	text-align: center;
+	padding-top: 57px;
+	margin-top: 23%;
+	margin-left: 5%;
+}
+
+.welcomeTextResetPassword
+{
+	z-index: 100;
+	color: #586D7A;
+	font-size: 25px;
+	font-style: italic;
+	position: absolute;
+	margin-top: -264px;
+	margin-left: 360px;
+	width: 500px;
+	padding-left: 15px;
+	padding-top: 8px;
+	min-height: 90%;
+}
+
+.resetPasswordBackgroundImage
+{
+	width: 100%;
+	height: 94%;
+	margin-top: 40px;
+	position: fixed;
+	margin-left: 350px;
+	left: 0px;
+	top: 0px;
+}
+
+.billBoardResetPassword
+{
+	margin-top: 90px;
+	margin-left: 379px;
+	position: absolute;
+}
+
+.validationDivResetPassword
+{
+	margin-left: -15px;
+	width: 324px;
+	height: 31px;
+	position: absolute;
+}
+
+.labelResetPassword
+{
+	font-size: small;
+}
+
+.mainLabelResetPassword
+{
+	font-size: 19px;
+}
+
+/*Code ends for Reset Password*/
+#header_logo
+{
+	/*background-image: url(../Content/images/logo.jpg);*/
+	z-index: 9999;
+	position: fixed;
+	height: 45px;
+	top: 0;
+	width: 208px;
+	margin-left: 5px;
+}
+
+#usernamePasswordErrorMsg
+{
+	height: 60px;
+	background-color: #BD1818;
+	width: 305px;
+	color: white;
+	font-size: 16px;
+	position: absolute;
+}
+
+#signInLabel
+{
+	font-family: 'Source Sans Pro', Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+	font-size: 19px;
+	text-align: left;
+	border-bottom: none;
+	padding-top: 25px;
+}
+
+.login_btn
+{
+	color: #ffffff;
+	font-family: 'Source Sans Pro';
+	font-size: 16px;
+	background-color: #1865BD;
+	padding-left: 25px;
+	padding-right: 25px;
+	height: 30px;
+	width: 100px;
+	border: 0px;
+	/*position:fixed;*/
+	margin-top: 15px;
+}
+
+.input-validation-error-login
+{
+	border-color: #333333;
+	outline: 0;
+	outline: thin dotted \9;
+	/* IE6-9 */
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;*/
+	border: 1px solid #e80c4d;
+	margin-left: 2px;
+	margin-right: 2px;
+	padding: 1px;
+	text-align: right;
+}
+
+.header span
+{
+	background-color: #FFF;
+	display: inline-block;
+	height: 20px;
+}
+
+#header_logo
+{
+	/*background-image: url(../Content/images/logo.jpg);*/
+	z-index: 9999;
+	position: fixed;
+	height: 45px;
+	top: 0;
+	width: 208px;
+	margin-left: 5px;
+}
+
+.toptable
+{
+	top: 0;
+	background-image: url(header_bg.jpg);
+	position: fixed;
+	width: 100%;
+	height: auto;
+	left: 0;
+}
+
+#forgotPasswordDivConatiner
+{
+	float: right;
+	font-size: 25px;
+	display: none;
+	min-height: 100%;
+	margin-top: 16px;
+	padding-left: 10px;
+	position: fixed;
+	background-color: #c7c0b6;
+}
+
+#txt_CareerRate
+{
+	margin-left: 15px;
+	color: white;
+	margin-top: 5px;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+}
+
+#txt_web
+{
+	z-index: 100;
+	position: absolute;
+	color: white;
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+	right: 0px;
+	top: 0;
+	margin-right: 15px;
+	margin-top: 5px;
+	font-size: 16px;
+	font-family: 'Source Sans Pro';
+}
+
+#or_txt
+{
+	position: absolute;
+	color: #666666;
+	font-size: 11px;
+	font-weight: bold;
+	margin-left: 86px;
+	margin-top: 3px;
+}
+
+.bodynew
+{
+	background-image: url(../Content/images/login_background1.png);
+	background-attachment: fixed;
+	-moz-background-size: 100% 80%;
+	-o-background-size: 100% 80%;
+	-webkit-background-size: 100% 80%;
+	background-size: 100% 80%;
+	background-repeat: no-repeat;
+	font-size: 11px;
+}
+
+#top_tag
+{
+	z-index: 100;
+	position: absolute;
+	color: #000000;
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 350px;
+	padding-top: 20px;
+	font-style: italic;
+	width: 100%;
+	vertical-align: central;
+	height: 300px;
+}
+
+/*.login-footer
+{
+	bottom: 0;
+	background-color: white;
+	position: fixed;
+	width: 100%;
+	border-top-style: solid;
+	border-top-color: #003366;
+	border-top-width: 4px;
+	left: 0;
+}*/
+
+.login-footer
+{
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	border-top-width: 4px;
+    min-height:4%;
+	left: 0;
+	height: auto;
+	background-color: #586d7a;
+}
+
+.footer_text
+{
+	float: right;
+	color: white;
+	font-size: 10px;
+	margin-right: 5px;
+	opacity: 0.9;
+	padding-top: 10px;
+}
+
+.userInput
+{
+	border-color: black;
+	border-style: solid;
+	padding: 0px 15px;
+	height: 30px;
+	font-size: 19px;
+	width: 275px;
+	margin-bottom: 10px;
+}
+
+.passwordInput
+{
+	border-color: black;
+	border-style: solid;
+	padding: 0px 15px;
+	height: 30px;
+	font-size: 19px;
+	width: 275px;
+}
+
+#loginForm
+{
+	border: solid 0px #c8c8c8;
+	float: left;
+	width: 40%;
+	/*margin-left: 30%;*/
+	margin-right: 30%;
+	/*margin-top: 10%;*/
+	/*padding: 20px;*/
+	min-width: 540px;
+	max-width: 548px;
+}
+
+	#loginForm .validation-error
+	{
+		display: block;
+		margin-left: 15px;
+	}
+
+	#loginForm .validation-summary-errors ul
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	#loginForm .validation-summary-errors li
+	{
+		display: inline;
+		list-style: none;
+		margin: 0;
+	}
+
+	#loginForm input
+	{
+		width: 185px;
+		font-size: 11px;
+		box-shadow: #C5C5C5 2px inset;
+		border: 1px solid #333333;
+	}
+
+		#loginForm input[type="checkbox"],
+		#loginForm input[type="submit"],
+		#loginForm input[type="button"],
+		#loginForm button,
+		#loginForm label
+		{
+			width: auto;
+			font-size: 11px;
+			box-shadow: #C5C5C5 2px inset;
+		}
+
+#back_image
+{
+	max-width: 100%;
+	width: 1700px;
+	background-repeat: no-repeat; /* max-height: 600px; */
+	background-position: center;
+	-moz-background-size: 100% 95%;
+	-o-background-size: 100% 95%;
+	-webkit-background-size: 100% 95%;
+	background-size: 100% 95%;
+	padding: 0 0 170px 0;
+}
+
+.hideDiv
+{
+	display: none;
+}
+
+/*#region flip animation*/
+
+#loginDiv
+{
+	/*transform: rotateX( 0deg );
+	-moz-transform: rotateX( 0deg );
+	-ms-transform: rotateX( 0deg );
+	-o-transform: rotateX( 0deg );
+	-webkit-transform: rotateX( 0deg );*/
+	min-height: 100%;
+	margin: auto;
+	/*position: absolute;*/
+	float: left;
+	/*top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;*/
+}
+
+#login, #create
+{
+	background-color: black;
+	border: 1px solid black;
+	color: white;
+	display: block;
+	float: right;
+	text-align: center;
+	text-decoration: none;
+	width: 50px;
+}
+
+/*#endregion*/

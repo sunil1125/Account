@@ -1,0 +1,97 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US21132</id> <by>Shreesha Adiga</by> <date>26-04-2016</date><description>Spinner to entire popup; changed the method of close button</description>
+</changeHistory>-->
+
+<!--##START: US21132-->
+<div class="mypopup" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<!--##END: US21132-->
+	<div class="custom-modal-header-row"></div>
+	<div class="custom-modal-header">
+		<h4 class="custom-modal-header-text">Dispute Bill [<strong data-bind="text: proNumber"> </strong>]</h4>
+	</div>
+
+	<div class="custom-modal-body rowContainerForLineItems">
+		<div>
+			<!--<strong data-bind="text: proNumber"></strong>-->
+		</div>
+		<div class="row-fluid">
+			<div id="divDisputeLostItemsContainer" class="span12" style="overflow-x: auto; padding: 10px 50px 0 0">
+				<table id="tblDisputeLostVendorBillItems" class="table table-bordered shipment-item ">
+					<thead>
+						<tr>
+							<th>
+								<label>Item</label></th>
+							<th>
+								<label>Description</label></th>
+							<th>
+								<label>Cost</label></th>
+							<th>
+								<label>Dispute Amount</label></th>
+							<th>
+								<label>Dispute Lost</label></th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>
+								<strong></strong></th>
+							<th>
+								<strong><span>Total</span></strong></th>
+							<th style="text-align: right;">
+								<strong>$<span data-bind="text: totalCost"></span></strong></th>
+							<th style="text-align: right;">
+								<strong>$<span data-bind="text: totalDispute"></span></strong></th>
+							<th style="text-align: right;">
+								<strong>$<span data-bind="text: totalDisputeLost"></span></strong></th>
+						</tr>
+						<tr>
+							<td colspan="5"><span class="floatRight" style="color: red;" data-bind="text: totalDisputeLostShouldNotBeZero, visible: isValidateAllDisputZero"></span></td>
+						</tr>
+					</tfoot>
+					<tbody data-bind='foreach: vendorBillItemsList' class="line-items">
+						<tr class="lineItemRow">
+							<td data-title="Unit Type" style="width: 7%;">
+								<span data-bind="text: selectedItemTypes"></span>
+							</td>
+
+							<td data-title="Description" style="width: 17%;">
+								<span data-bind="text: userDescription"></span>
+							</td>
+
+							<td data-title="Cost" style="width: 5%; text-align: right;">$<span data-bind="text: cost"></span>
+							</td>
+
+							<td data-title="Dispute Amount" style="width: 5%; text-align: right;">$<span data-bind="text: disputeAmount"></span>
+							</td>
+
+							<td data-title="Dispute Lost Amount" style="width: 5%;">
+								<div class="input-validation-error-base" style="text-align: right !important; width: 80px; float: right;"
+									data-bind=" validationElement: disputeLostAmount, validationOptions: { errorElementClass: 'input-validation-error' }">
+									<i class=" icon-question-sign tooltip-cursor"
+										data-bind=" visible: (disputeLostAmount.isModified() && !disputeLostAmount.isValid()), tooltip: { title: disputeLostAmount.isModified() ? disputeLostAmount.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+									<strong data-bind=" visible: (!disputeLostAmount.isModified() || disputeLostAmount.isValid())">$</strong>
+									<input type="text" data-togle="tooltip" maxlength="11" style="width: 50px;"
+										data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, css: requiredColor, value: disputeLostAmount, valueUpdate: 'afterkeydown', uniqueName: true, attr: { 'readonly': enableDisputeLostAmount }, validationOptions: { errorElementClass: null }" />
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div id="buttonDiv" class="custom-modal-footer" style="text-align: right;">
+		<button class="btn btn-primary" data-bind="click: onSave, enable: isSaveEnable">Save</button>
+		<!--##START: US21132-->
+		<button class="btn btn-primary" data-bind="click: onClose">Close</button>
+		<!--##END: US21132-->
+	</div>
+</div>

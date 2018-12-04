@@ -1,0 +1,32 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="padding-all-10">
+
+	<div id="content" class="width-percent-100">
+		<div class="historyDatesDIVNewForItem border-top-11 box-Shadow-ForHistoryDate">
+			<div class="custom-modal-header border-top-11">
+				<h4 class="custom-modal-header-text" style="margin-left: 2%;">History Date<h4>
+			</div>
+			<ol class="betterList max-height-558" data-bind="foreach: historyDetailsDatesList" style="margin: 0px;">
+				<li data-bind="click: $root.changeRecord, style: { backgroundColor: isSelectedDate() ? '#C2DFFF' : '' }" style="cursor: pointer">
+					<span data-bind="text: historyDateSelected"></span>
+				</li>
+			</ol>
+		</div>
+		<div id="gridDiv" class="float-right width-percent-86">
+			<div>
+				<div class="row-fluid">
+					<div class="margin-top--10" data-bind="compose: { model: historyNewValueContainer, view: '../templates/reportViewerControlV2' }"></div>
+				</div>
+				<div class="row-fluid">
+					<div class="margin-top--11" data-bind="compose: { model: historyOldValueContainer, view: '../templates/reportViewerControlV2' }"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

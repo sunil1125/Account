@@ -1,0 +1,12 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div data-bind=" validationElement: oceanCarrierName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Multileg-Fields' }">
+	<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (oceanCarrierName.isModified() && !oceanCarrierName.isValid()), tooltip: { title: oceanCarrierName.isModified() ? oceanCarrierName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" id="txtOceanCarrierName" class="txtOceanCarrierName requiredFieldBgColor" maxlength="50" autofocus="autofocus" placeholder="Ocean Carrier Detail" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectOceanCarrierName }, validationOptions: { errorElementClass: null }, style: { width: (oceanCarrierName.isModified() && !oceanCarrierName.isValid()) ? errorWidth : normalWidth }, value: oceanCarrierName, typeahead: searchOceanCarrierName, minLength: 2, items: 20, valueUpdate: 'afterkeydown', enable: isEnable" />
+</div>

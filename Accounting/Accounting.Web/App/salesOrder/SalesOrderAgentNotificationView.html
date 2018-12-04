@@ -1,0 +1,35 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div class="width-percent-40" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<fieldset>
+			<legend>Agent Notification</legend>
+			<table>
+				<tr>
+					<td>
+						<select class="newselect width-253" data-bind="options: agentNotificationTypes, value: selectedNotificationType, optionsValue: 'ID', optionsText: 'Value'"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="align-left padding-top-10">Mail Preview:</td>
+				</tr>
+				<tr>
+					<td class="padding-top-5">
+						<textarea id="Textarea1" class="accounting-textarea height-120 width-450"
+							data-bind="value: mailPreview, valueUpdate: 'afterkeydown', enable: isMailPreview, event: { keyup: onKeyUp }"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="align-right padding-top-5">
+						<button class="btn btn-primary width-80" data-bind="enable: isalertRep, click: sendMail">Alert Rep</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<div>
+
+		<div class="app-page-title">
+			<span class="PageTitleBlack margin-left-25">Unmatched Vendor Bill Edit</span>
+		</div>
+		<div class="requiredtext-right">
+			<div class="requiredBox"></div>
+			= Required
+		</div>
+		<div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+			<!-- Carousel items -->
+			<div class="carousel-inner" id="CarouselInner">
+				<div></div>
+				<div data-bind="css: isTabAcitve ? tabbedClass : accordianClass">
+					<div class="btn-accordion-tab">
+
+						<ul class="btn-group fa-ul">
+							<li id="accordianLink" class="btn btn-default fa fa-bars fa-fw" data-bind="click: accordian, css: { active: isAccordianAcitve }" data-target="#myCarousel"></li>
+							<li id="tabbedLink" class="btn btn-default fa fa-folder-o fa-fw" data-bind="click: tabbed, css: { active: isTabAcitve }" data-target="#myCarousel"></li>
+						</ul>
+					</div>
+					<!--<div data-bind="compose: { model: purchaseOrdermainView, view: 'purchaseOrder/PurchaseOrderEditDetails' }"></div>-->
+					<div id='vb-details-container' data-bind='compose: purchaseOrderEditDetailsContainer'></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

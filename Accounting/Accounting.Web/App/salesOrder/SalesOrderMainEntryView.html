@@ -1,0 +1,44 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<div>
+		<div class="app-page-title">
+			<span class="PageTitleBlack margin-left-25">Sales Order Entry</span>
+		</div>
+		<div class="requiredtext-right">
+			<div class="requiredBox"></div>
+			= Required
+		</div>
+
+		<div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+			<!-- Carousel items -->
+			<div class="carousel-inner" id="CarouselInner">
+				<div id="accordianDiv" data-bind="css: accordianClass">
+					<!-- Carousel indicators -->
+					<div class="btn-accordion-tab">
+						<ul class="btn-group fa-ul">
+							<li id="accordianLink" class="btn btn-default fa fa-bars fa-fw" data-bind="click: accordian, css: { active: isAccordianAcitve }" data-target="#myCarousel" data-slide-to="0"></li>
+							<li id="tabbedLink" class="btn btn-default fa fa-folder-o fa-fw" data-bind="click: tabbed, css: { active: isTabAcitve }" data-target="#myCarousel" data-slide-to="1"></li>
+						</ul>
+					</div>
+					<div data-bind="compose: { model: salesOrderMainView, view: 'salesOrder/SalesOrderMainEntryViewAccordion' }"></div>
+				</div>
+				<div id="tabbedDiv" data-bind="css: tabbedClass">
+					<!-- Carousel indicators -->
+					<div class="btn-accordion-tab-view">
+						<ul class="btn-group fa-ul">
+							<li id="Li1" class="btn btn-default fa fa-bars fa-fw" data-bind="click: accordian, css: { active: isAccordianAcitve }" data-target="#myCarousel" data-slide-to="0"></li>
+							<li id="Li2" class="btn btn-default fa fa-folder-o fa-fw" data-bind="click: tabbed, css: { active: isTabAcitve }" data-target="#myCarousel" data-slide-to="1"></li>
+						</ul>
+					</div>
+					<div data-bind="compose: { model: salesOrderMainView, view: 'salesOrder/SalesOrderMainEntryViewTabbed' }"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Company Mapping Settings</span>
+		</div>
+		<div>
+			<!--region TABS-->
+			<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+				<li id="foreignBolLink" class="active"><a href="#foreignBol" data-toggle="tab" tabindex="-1" data-bind="click: onForeignBolClick"><span class="tabHeaderText">Foreign BOL</span></a></li>
+				<li id="rexnordLink" class=""><a href="#rexnord" data-toggle="tab" tabindex="-1" data-bind="click: onRexnordCompaniesClick"><span class="tabHeaderText">Rexnord</span></a></li>
+			</ul>
+			<!--endregion TABS-->
+
+			<!--region SECTIONS-->
+			<div id="myTabContent" class="tab-content contentAreaWithBackground">
+				<div class="tab-pane fade  active in" id="foreignBol">
+					<!--Address Section START-->
+					<div tabindex="-1" data-bind="compose: { model: foreginBolCustomerSettingsViewModel, view: 'purchaseOrder/ForeginBolCustomerSettings' }"></div>
+				</div>
+				<div class="tab-pane fade" id="rexnord">
+					<div id="rexnordCompaniesDiv" tabindex="-1" data-bind="compose: { model: rexnordCompaniesViewModel, view: 'purchaseOrder/rexnordMappedCompanies' }"></div>
+				</div>
+			</div>
+			<!--endregion SECTIONS-->
+		</div>
+	</div>
+</div>

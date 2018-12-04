@@ -1,0 +1,87 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>DE23302</id> <by>Shreesha Adiga</by> <date>23-06-2016</date> <description>Added Legend for exclaimation icon</description>
+</changeHistory>-->
+<div id="mainDiv" class="row-fluid">
+	<div class="app-page-title width-percent-100">
+		<div class="float-left" style="width: 97%;">
+			<span class="PageTitleBlack margin-left-25">Disputed Bills</span>
+			<!--##START: DE23302-->
+			<span class="float-right"><i class="fa fa-exclamation-circle" style="color:red"></i> = <b>New Note Added</b></span>
+			<!--##END: DE23302-->
+		</div>
+	</div>
+	<div class="container-fluid">
+		<fieldset class="margin-top-9 bg-lightGray height-45">
+			<legend>Filters</legend>
+			<table class="tbl-sales-order width-percent-32">
+				<tr>
+					<!--###START: US20247-->
+					<td style="background-color: #E6E6E6; font-size:larger">Dispute Date </td>
+					<!--###START: US20247-->
+					<td class="typeLabels width-percent-2">From:</td>
+					<td class="typeLabels width-150">
+						<div class="typecontrols padding-top-0">
+							<!--###START: DE20289-->
+							<div data-bind=" validationElement: startDateForDisputeIterm, validationOptions: { errorElementClass: 'input-validation-error width-146' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (startDateForDisputeIterm.isModified() && !startDateForDisputeIterm.isValid()), tooltip: { title: startDateForDisputeIterm.isModified() ? startDateForDisputeIterm.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+								<div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+									data-bind="datepicker: startDateForDisputeIterm, datepickerOptions: datepickerOptions">
+									<input id="Text1" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToStartDate }, value: startDateForDisputeIterm, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (startDateForDisputeIterm.isModified() && !startDateForDisputeIterm.isValid()) ? '111px' : '125px' }" maxlength="10" />
+									<!--###END: DE20289-->
+									<span class="add-on">
+										<i class="icon-calendar"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td class="typeLabels margin-left-2 width-percent-2">To:</td>
+					<td class="typeLabels width-150">
+						<div class="typecontrols padding-top-0">
+							<!--###START: DE20289-->
+							<div data-bind=" validationElement: endDateForDisputeIterm, validationOptions: { errorElementClass: 'input-validation-error width-146' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (endDateForDisputeIterm.isModified() && !endDateForDisputeIterm.isValid()), tooltip: { title: endDateForDisputeIterm.isModified() ? endDateForDisputeIterm.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+									data-bind="datepicker: endDateForDisputeIterm, datepickerOptions: datepickerOptions">
+									<input id="billDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToEndDate }, value: endDateForDisputeIterm, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (endDateForDisputeIterm.isModified() && !endDateForDisputeIterm.isValid()) ? '111px' : '120px' }" maxlength="10" />
+									<!--###END: DE20289-->
+
+									<span class="add-on">
+										<i class="icon-calendar"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td class="typeLabels">
+						<input type="button" class="btn btn-primary width-150 height-30" value="Submit" data-bind="click: onSubmit" />
+					</td>
+				</tr>
+			</table>
+			<table class="width-percent-100 margin-top--30">
+				<tr class="float-right" style="margin-right: 20px;">
+					<td>
+						<button class="btn btn-primary height-30 margin-top--6" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+						<!--<input type="button" class="btn btn-primary width-150 height-30 margin-top--6" value="Submit" data-bind="click: onSubmit" />-->
+					</td>
+					<td style="position: relative;">
+						<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+	<div class="container-fluid margin-top--15">
+		<div class="row-fluid">
+			<div data-bind="compose: { model: disputeBoardReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>

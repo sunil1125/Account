@@ -1,0 +1,130 @@
+﻿<!--******************************************************************************
+
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+
+******************************************************************************-->
+<!--
+<summary>
+Popup to do Process Credit
+</summary>
+<createDetails>
+<id>US25237</id> <by>Janakiram</by> <date>12-10-2016</date>
+</createDetails>
+<changeHistory>
+<id>US25154</id> <by>Janakiram</by> <date>13-10-2016</date><description>Added Clik event for Process button</description>
+<id>US25315</id> <by>Janakiram</by> <date>26-10-2016</date><description>Populate data on MAS Credit pop-up</description>
+<id>DE24930</id> <by>Janakiram</by> <date>27-10-2016</date><description>Added Validation for Customer Credit Memo</description>
+<id>US26027</id> <by>Janakiram</by> <date>14-12-2016</date><description>Added Rejecte button for Credit Memo Process</description>
+<id>US25942</id> <by>Baldev Singh Thakur</by> <date>20-12-2016</date><description>Added a <tr> tag for displaying warning.</description>
+<id>US25942</id> <by>Janakiram</by> <date>21-12-2016</date><description>Added new control like Orginal Final Revenue</description>
+<id>US26189</id> <by>Vasanthakumar</by> <date>03-01-2017</date><description>Acct: Add a new field in Process Credit Pop-up</description>
+<id>US27139</id> <by>Vasanthakumar</by> <date>03-03-2017</date><description>Disable the customer credit amount if credit reason is Cancel SO</description>
+</changeHistory>
+-->
+<div class="process-credit-popup custom-msg-box border-radius-8 " data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text" data-bind="text: 'Process Credit to MAS'"></h4>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+		<div class="tableLayout">
+			<div class="table-cell width-percent-100">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">BOL #:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-110" readonly="true" data-bind="value: bOLNumber" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Customer Credit Amount $:
+						</td>
+						<td class="typeStatus" tabindex="2">
+							<!-- ###START: US25154 !-->
+							<!-- ###START: DE24930 !-->
+							<label class="validation-label2" data-bind="validationElement: customerCreditAmount">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (customerCreditAmount.isModified() && !customerCreditAmount.isValid()), tooltip: { title: customerCreditAmount.isModified() ? customerCreditAmount.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" class="width-percent-110 requiredFieldBgColor" maxlength="11"
+									data-bind="numericDecimalInput: NumericInputWithDecimalPoint, value: customerCreditAmount, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (customerCreditAmount.isModified() && !customerCreditAmount.isValid()) }, enable: enableCustomerCreditAmount" />
+							</label> 
+							<!-- ###END: DE24930 !-->
+							<!-- ###END: US25154 !-->
+						</td>
+					</tr>
+					<!-- ###START: US25942 !-->
+					<tr data-bind="visible: isCreditMemoExceeds()">
+						<td data-bind="visible: isCreditMemoExceeds()" colspan="2">
+							<div id="CreditMemoExceedsWarningDiv" class=" float-left" style="color: red">Warning: Entered Amount is greater than the Original Final Revenue.</div>
+						</td>
+					</tr>
+					<!-- ###END: US25942 !-->
+					<!-- ###START: US26189 !-->
+					<tr data-bind="visible: isNegativeRevenueCreditMemo()">
+						<td data-bind="visible: isNegativeRevenueCreditMemo()" colspan="2">
+							<div id="NegativeRevenueCreditMemoWarningDiv" class=" float-left" style="color: red">Warning: Processing Credit with the above entered amount will result in Negative Final Revenue.</div>
+						</td>
+					</tr>
+					<!-- ###END: US26189 !-->
+					<!-- ###START: US25942 !-->
+					<tr>
+						<td class="typeLabels">Original Final Revenue $:
+						</td>
+						<td class="typeStatus" tabindex="2"> 
+							<input type="text" class="width-percent-110" readonly="true" data-bind="value: finalRevenue" /> 
+						</td>
+					</tr>
+					<!-- ###END: US25942 !-->
+					<tr>
+					<tr>
+						<td class="typeLabels">Vendor Credit Amount $:
+						</td>
+						<td class="typeStatus" tabindex="2">
+							<!-- ###START: US25154 !-->
+							<input type="text" class="width-percent-110" readonly="true" data-bind="value: vendorCreditAmount" />
+							<!-- ###END: US25154 !-->
+						</td>
+					</tr>
+					<!-- ###START: US26189 !-->
+					<tr>
+						<td class="typeLabels">Total Pending Credit Memo $:
+						</td>
+						<td class="typeStatus" tabindex="2">
+							<input type="text" class="width-percent-110" readonly="true" data-bind="value: totalPendingCreditAmount" />
+						</td>
+					</tr>
+					<!-- ###END: US26189 !-->
+					<tr>
+						<td class="typeLabels">Notes:
+						</td>
+						<td class="typeStatus" tabindex="2">
+							<!-- ###START: US25154 !-->
+							<textarea class="accounting-textarea height-100 width-percent-110" readonly="readonly" data-bind="value: notesDescription"
+								maxlength="500"></textarea>
+							<!-- ###END: US25154 !-->
+						</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+
+		<div id="button-container" class="align-right margin-top-5">
+
+			<!-- ###START: US26027 !-->
+			<button class="btn btn-danger" data-bind="click: onReject">Reject</button>
+			<!-- ###END: US26027 !-->
+
+			<!-- ###START: US25154 !-->
+			<button class="btn btn-primary" data-bind="click: onProcess">Process</button>
+			<!-- ###END: US25154 !-->
+			<button class="btn btn-primary" data-bind="click: onCancel">Close</button>
+		</div>
+	</div>
+	<br />
+</div>

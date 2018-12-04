@@ -1,0 +1,17 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div data-bind=" validationElement: companyName, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Multileg-Fields' }">
+	<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (companyName.isModified() && !companyName.isValid()), tooltip: { title: companyName.isModified() ? companyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" class="txtOceanCarrierName requiredFieldBgColor" maxlength="50" autofocus="autofocus" placeholder="Company Name" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectCompanyName }, style: { width: (companyName.isModified() && !companyName.isValid()) ? errorWidth : normalWidth }, value: companyName, throttle: true, typeahead: searchCompanyName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isEnable, attr: { id: id }" />
+</div>-->
+<label id="lblcompanyName" class="validation-label2" data-bind=" validationElement: companyName">
+	<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (companyName.isModified() && !companyName.isValid()), tooltip: { title: companyName.isModified() ? companyName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" class="validation2 txtOceanCarrierName requiredFieldBgColor" maxlength="50" autofocus="autofocus" placeholder="Company Name" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectCompanyName }, css: { borderRedOnValidation: (companyName.isModified() && !companyName.isValid()) }, style: { 'padding-left': (companyName.isModified() && !companyName.isValid()) ? '17px' : '', width: normalWidth }, value: companyName, throttle: true, typeahead: searchCompanyName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { id: id, 'readonly': !(isEnable()) }" />
+</label>

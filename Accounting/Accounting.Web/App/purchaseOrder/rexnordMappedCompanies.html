@@ -1,0 +1,29 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<div>
+		<div class="margin-left-20 div-float-left width-percent-33">
+			<table>
+				<tr>
+					<td class="align-right">New Company Name:</td>
+					<td class="padding-left-5">
+						<input type="text" class="requiredFieldBgColor" data-bind="value: companyName" />
+					</td>
+					<td>
+						<button class="btn btn-primary" data-bind="click: saveClick, enable: isSave">Save</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="gridDiv">
+		<div class="row-fluid">
+			<div id="gridHistory" class="disputeBoardDetailsGrid" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>

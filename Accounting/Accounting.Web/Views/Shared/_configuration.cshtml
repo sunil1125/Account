@@ -1,0 +1,131 @@
+@******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************@
+
+@using System.Collections
+@using System.Configuration
+<script lang="JavaScript" type="text/javascript">
+	!(function (utilsConstants) {
+		utilsConstants.HolidayList = (utilsConstants.HolidayList || new Array());
+		@if (ConfigurationManager.GetSection("Holidays") != null)
+		{
+			Hashtable holidayList = ((Hashtable)ConfigurationManager.GetSection("Holidays"));
+			foreach (var item in holidayList.Values)
+			{
+				@:utilsConstants.HolidayList.push('@item')
+			}
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("AtlasBaseURL"))
+		{
+			@:utilsConstants.AtlasBaseURL = '@ConfigurationManager.AppSettings["AtlasBaseURL"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.AtlasBaseURL = '';																				
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("DefaultTabCounts"))
+		{
+			@:utilsConstants.DefaultTabCounts = '@ConfigurationManager.AppSettings["DefaultTabCounts"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.DefaultTabCounts = '';																				
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("jsVersion") && !String.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["jsVersion"].ToString()))
+		{
+			@:utilsConstants.JSVersion = @ConfigurationManager.AppSettings["jsVersion"]
+		}
+		else
+		{
+			@:utilsConstants.JSVersion = 1.0001;
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("DisputeCarrierContactToolUrl") && !String.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["DisputeCarrierContactToolUrl"].ToString()))
+		{
+			@:utilsConstants.DisputeCarrierContactToolUrl = '@ConfigurationManager.AppSettings["DisputeCarrierContactToolUrl"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.DisputeCarrierContactToolUrl = '';
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("DelayForFileDownload"))
+		{
+			@:utilsConstants.DelayForFileDownload = '@ConfigurationManager.AppSettings["DelayForFileDownload"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.DelayForFileDownload = '';
+		}
+
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("IsCanadaToCanadaShipEnabled"))
+		{
+			@:utilsConstants.IsCanadaToCanadaShipEnabled = '@ConfigurationManager.AppSettings["IsCanadaToCanadaShipEnabled"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.IsCanadaToCanadaShipEnabled = '';
+		}
+
+		//// ###START: US23868
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("LoginPageURL"))
+		{
+			@:utilsConstants.LoginPageURL = '@ConfigurationManager.AppSettings["LoginPageURL"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.LoginPageURL = '';
+		}
+		//// ###END: US23868
+
+		//// ###START: DE24451
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("ApplicationBaseURL"))
+		{
+			@:utilsConstants.ApplicationBaseURL = '@ConfigurationManager.AppSettings["ApplicationBaseURL"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.ApplicationBaseURL = '';																				
+		}
+		//// ###END: DE24451
+		
+		//// ###START: DE24638
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("IsDisputeEmailPopupEnabled"))
+		{
+			@:utilsConstants.IsDisputeEmailPopupEnabled = '@ConfigurationManager.AppSettings["IsDisputeEmailPopupEnabled"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.IsDisputeEmailPopupEnabled = '';																				
+		}
+		//// ###END: DE24638
+
+		//// ###START: US26886
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("ShipingServiceANSICode"))
+		{
+			@:utilsConstants.ShipingServiceANSICode = '@ConfigurationManager.AppSettings["ShipingServiceANSICode"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.ShipingServiceANSICode = '';																				
+		}
+		//// ###END: US26886
+		//// ###START: US29002
+		@if (ConfigurationManager.AppSettings.AllKeys.Contains("IsMakeCopyVisible"))
+		{
+			@:utilsConstants.IsMakeCopyVisible = '@ConfigurationManager.AppSettings["IsMakeCopyVisible"].ToString()';
+		}
+		else
+		{
+			@:utilsConstants.IsMakeCopyVisible = '';																				
+						}
+
+		//// ###END: US29002
+	})(Utils.Constants || (Utils.Constants = {}));
+</script>

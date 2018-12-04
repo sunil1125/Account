@@ -1,0 +1,81 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px; padding-top: 10px;" data-bind="text: gridHeader"></label>
+</div>
+<table id="tblSalesOrerMasAPDetails" class="table table-bordered shipment-item">
+	<thead>
+		<tr>
+			<th>
+				<label class="align-center">BOL #</label>
+			</th>
+			<th>
+				<label class="align-center">Vendor Invoice #</label>
+			</th>
+			<th>
+				<label class="align-center">Vendor</label>
+			</th>
+			<th>
+				<label class="align-center">Factor Vendor</label>
+			</th>
+			<th>
+				<label class="align-center">Invoice Date</label>
+			</th>
+			<th>
+				<label class="align-center">Status</label>
+			</th>
+			<th>
+				<label class="align-center">Invoice Amount</label>
+			</th>
+			<th>
+				<label class="align-center">Payment #</label>
+			</th>
+			<th>
+				<label class="align-center">Payment Date</label>
+			</th>
+			<th>
+				<label class="align-center">Payment Amount</label>
+			</th>
+		</tr>
+	</thead>
+	<tbody data-bind='foreach: salesOrderMasAPList' class="line-items">
+		<tr class="lineItemRow" data-bind="css: totalRow">
+			<td data-title="BOL #" class="width-percent-11 " style="text-align: center;">
+				<span data-bind="text: BOLNumber"></span>
+			</td>
+			<td data-title="Vendor Invoice #" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: VendorInvoiceNumber"></span>
+			</td>
+			<td data-title="Vendor" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: Vendor"></span>
+			</td>
+			<td data-title="Factor Vendor" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: FactorVendor"></span>
+			</td>
+			<td data-title="Invoice Date" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: InvoiceDateDisplay"></span>
+			</td>
+			<td data-title="Status" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: Status"></span>
+			</td>
+			<td data-title="Invoice Amount" class="width-percent-11" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: InvoiceAmount"></span>
+			</td>
+			<td data-title="Payment #" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: PaymentNumber"></span>
+			</td>
+			<td data-title="Payment Date" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: PaymentDateDisplay"></span>
+			</td>
+			<td data-title="Payment Amount" class="width-percent-11 text-right" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: PaymentAmount"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+

@@ -1,0 +1,153 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+
+<!--** <summary>
+** Sales Order Edit Details ViewModel
+** </summary>
+** <changeHistory>
+** <id>US22365</id> <by>Baldev Singh Thakur</by> <date>25-05-2016</date> <description>Acct: Update Copy Cost Revenue Button Functionality.</description>
+** </changeHistory>-->
+<div class="tableLayout" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 50.9, height: 500 }">
+	<div class="table-cell">
+		<fieldset>
+			<legend>Re-Quote Summary Item Details</legend>
+			<div class="width-percent-100" style="height: 100%;">
+				<div>
+					<table class="width-percent-100">
+
+						<tr>
+							<td class="vertical-align-top" style="width: 50%;">
+								<div class="padding-right-16 width-percent-100" data-bind="compose: { model: salesOrderReBillOriginalItemViewModel, view: 'salesOrder/SalesOrderReBillItemView' }"></div>
+								<div style="text-align: right;">
+									<!--// ###START: US22365-->
+									<button class="btn btn-primary width-95" data-bind="click: copyCostRevenue, enable: btnCopyEnable">Copy Items</button>
+									<!--// ###END: US22365-->
+									<button class="btn btn-primary width-85" data-bind="click: copyCostOnly, enable: btnCopyEnable">Copy Cost</button>
+								</div>
+							</td>
+							<td class="vertical-align-top" style="width: 50%;">
+								<div class="width-percent-100" data-bind="compose: { model: salesOrderReBillAdjustItemViewModel, view: 'salesOrder/SalesOrderReBillItemView' }"></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="padding-top-10">
+					<table class="width-percent-100">
+
+						<tr>
+							<td class="vertical-align-top">
+								<div class="padding-right-16 width-percent-100" data-bind="compose: { model: salesOrderReBillVendorItemViewModel, view: 'salesOrder/SalesOrderRebillVendorItemonlyAmountView' }"></div>
+							</td>
+							<td>
+								<table class="span4  width-percent-100">
+									<tr>
+										<td class="width-percent-30 vertical-align-top ">
+
+											<div class="span4 width-percent-100">
+												<table class="tbl-sales-order width-percent-100 ">
+													<tr>
+														<td class="typeLabels width-percent-10">Rebill Rep:
+														</td>
+														<td class="typeStatus">
+															<input id="Text17" type="text" maxlength="10" placeholder="" class="width-140" data-bind=" value: rebillRep, valueUpdate: 'afterkeydown', uniqueName: true, enable: false" />
+														</td>
+													</tr>
+
+													<tr>
+														<td class="typeLabels">Adjustment Date:
+														</td>
+														<td class="typeStatus">
+															<div class="typecontrols padding-top-0" tabindex="8">
+																<div class="input-append date width-150" id="bookdate" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: adjustmentDate, datepickerOptions: datepickerOptions">
+																	<input id="bookeddate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToAdjustmentDate }, attr: { disabled: true }, value: adjustmentDate, valueUpdate: 'afterkeydown'" maxlength="10" />
+																	<span class="add-on" data-bind="css: { disabledateLink: true }">
+																		<i class="icon-calendar"></i>
+																	</span>
+																</div>
+															</div>
+														</td>
+													</tr>
+
+													<tr>
+														<td class="typeLabels">CRR Review Date:
+														</td>
+														<td class="typeStatus">
+															<div class="typecontrols padding-top-0" tabindex="8">
+																<div class="input-append date width-150" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: crrReviewDate, datepickerOptions: datepickerOptions">
+																	<input id="Text1" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToCrrReviewDate }, value: crrReviewDate, valueUpdate: 'afterkeydown', enable: isSaveEnable" maxlength="10" />
+																	<span class="add-on" data-bind="css: { disabledateLink: !isSaveEnable() }">
+																		<i class="icon-calendar"></i>
+																	</span>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">Origin Zip:
+														</td>
+														<td class="typeStatus">
+															<input type="text" class="width-percent-90" data-bind="value: originZip, attr: { title: originZip }, enable: false" />
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">Destination Zip:
+														</td>
+														<td class="typeStatus">
+															<input type="text" class="width-percent-90" data-bind="value: destinationZip, attr: { title: destinationZip }, enable: false" />
+														</td>
+													</tr>
+													<tr>
+														<td class="typeLabels">
+															<!--Cost Difference$:-->
+														</td>
+														<td class="typeStatus">
+															<!--<input id="Text21" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: costDiff, valueUpdate: 'afterkeydown', uniqueName: true, enable: false" />-->
+														</td>
+													</tr>
+													<tr>
+
+														<td>
+															<button type="button" id="electButton" class=" flatButton btn btn-checkbox active width-100" data-bind="css: { active: isOtherReason }, html: isOtherReason() ? html() : name, click: otherOption, enable: isSaveEnable ">
+															</button>
+														</td>
+														<td>
+															<textarea id="txtother Reason" class="accounting-textarea height-75 width-percent-90" style="margin-left: 3px; margin-top: 2px;" data-bind="value: otherReason, valueUpdate: 'afterkeydown', visible: isOtherReason, enable: isSaveEnable"
+																maxlength="500"></textarea>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+										<td class="width-percent-30  ">
+
+											<div class="span4 width-percent-100 padding-right-5">
+												<fieldset>
+													<legend>ReBill Reasons:</legend>
+													<div class="btnControlcheckbox" data-bind="compose: { model: obcSalesOrderOptionList, view: 'salesOrder/SalesOrderOptionButtonControl' }"></div>
+												</fieldset>
+											</div>
+										</td>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="padding-top-10">
+					<table>
+						<tr>
+							<td class="vertical-align-top">
+								<div class="padding-right-16 width-percent-100" data-bind="compose: { model: salesOrderAuditViewModel, view: 'salesOrder/SalesOrderAuditView' }"></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

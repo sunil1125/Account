@@ -1,0 +1,134 @@
+﻿<!--******************************************************************************
+
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+
+******************************************************************************-->
+
+<!--
+<summary>
+Popup 'Vendor Bill Reassignment
+</summary>
+<createDetails>
+<id>US25683</id> <by>Janakiram</by> <date>16-11-2016</date>
+</createDetails>
+<changeHistory>
+<id>US25684</id> <by>Shreesha Adiga</by> <date>23-11-2016</date><description>Bind knockout properties to the view;Add validaion icons and css</description>
+<id>DE25164</id> <by>Shreesha Adiga</by> <date>29-11-2016</date><description>Changes to placement of '*'. Changes to radio container</description>
+<id>US27614</id> <by>Baldev Singh Thakur</by> <date>21-03-2017</date> <description>Added Id for Reassign BOL</description>
+<changeHistory>
+-->
+
+<div class="email-popup custom-msg-box border-radius-8" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }" style="background-color: #f0eeeb; max-width: 700px !important; width: 700px;">
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text" data-bind="text: 'Vendor Bill Reassignment'"></h4>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+
+		<!--##START: US25684-->
+		<div class="tableLayout">
+			<div class="table-cell width-percent-95">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">*Vendor Bill Reassignment Reason:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: selectedReason">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (selectedReason.isModified() && !selectedReason.isValid()), tooltip: { title: selectedReason.isModified() ? selectedReason.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<select class="newselect width-percent-102 requiredFieldBgColor"
+									data-bind="options: vendorBillReassignmentReasons, optionsText: 'VendorBillReassignReason', optionsCaption: 'Select', value: selectedReason, css: { 'borderRedOnValidation padding-left-16': (selectedReason.isModified() && !selectedReason.isValid()) }">
+								</select>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Current Paired SO#:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-92" readonly="readonly" data-bind="value: currentBOLNumber, attr: { title: currentBOLNumber }" />
+						</td>
+						<td>&nbsp;&nbsp;</td>
+						<td class="typeLabels">PRO#:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-90" readonly="readonly" data-bind="value: proNumber, attr: { title: proNumber }" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Reassign to SO#:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: reassignToBOLNumber">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (reassignToBOLNumber.isModified() && !reassignToBOLNumber.isValid()), tooltip: { title: reassignToBOLNumber.isModified() ? reassignToBOLNumber.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text"  id="reassignToBOLNumber" class="width-percent-92 requiredFieldBgColor"
+									data-bind="event: { keypress: isAlphaNumericSpace }, value: reassignToBOLNumber, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (reassignToBOLNumber.isModified() && !reassignToBOLNumber.isValid()) }" />
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Does the customer need to be credited for current SO?:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<div class="padding-left-5" data-bind="css: { 'borderRedOnValidation padding-left-16': (doesCustomerNeedToBeCredited.isModified() && !doesCustomerNeedToBeCredited.isValid()) }">
+								<input id="radio_yes" type="radio" value="Yes" name="credit-customer" style="margin: 5px" data-bind="checked: doesCustomerNeedToBeCredited">
+								<label class="displayInline" for="radio_yes">Yes</label>
+								&nbsp;
+							<input id="radio_no" type="radio" value="No" name="credit-customer" style="margin: 5px" data-bind="checked: doesCustomerNeedToBeCredited">
+								<label class="displayInline" for="radio_no">No</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Sales Order to Credit:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: selectedOrder">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (selectedOrder.isModified() && !selectedOrder.isValid()), tooltip: { title: selectedOrder.isModified() ? selectedOrder.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<select class="newselect width-percent-102 requiredFieldBgColor"
+									data-bind="options: suborderOptions, value: selectedOrder, optionsText: 'BOLNumber', optionsCaption: 'Select', enable: enableSuborderDropdown, css: { 'borderRedOnValidation padding-left-16': (selectedOrder.isModified() && !selectedOrder.isValid()) }">
+								</select>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Amount to Credit the Customer $:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind="validationElement: amountToBeCreditedToCustomer">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (amountToBeCreditedToCustomer.isModified() && !amountToBeCreditedToCustomer.isValid()), tooltip: { title: amountToBeCreditedToCustomer.isModified() ? amountToBeCreditedToCustomer.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" class="width-percent-92 requiredFieldBgColor"
+									data-bind="numericDecimalInput: NumericInputWithDecimalPoint, value: amountToBeCreditedToCustomer, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (amountToBeCreditedToCustomer.isModified() && !amountToBeCreditedToCustomer.isValid()) }, attr: { 'readonly': !enableAmountToCredit() }" />
+							</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<br />
+
+		<div>
+			<fieldset style="width: 43%">
+				<legend>Add Notes</legend>
+				<textarea id="textarea" class="accounting-textarea" style="width: 95%" rows="5" maxlength="500"
+					data-bind="value: notes"></textarea>
+			</fieldset>
+		</div>
+
+	</div>
+	<div class="margin-left-12 margin-right-10">
+		<div id="button-container" class="align-right margin-top-5 margin-right-10">
+			<button class="btn btn-primary" data-bind="click: onSave">Save</button>
+			<button class="btn btn-primary" data-bind="click: onClose">Close</button>
+		</div>
+	</div>
+	<!--##END: US25684-->
+
+	<br />
+</div>

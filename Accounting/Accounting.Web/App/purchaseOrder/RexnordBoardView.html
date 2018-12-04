@@ -1,0 +1,114 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div id="mainDiv">
+	<div id="content">
+		<div id="gridDiv">
+
+			<div class="row-fluid">-->
+
+<!-- HEADER COUNT DIV -->
+<!--				<div class="top-adjustment-header-count">
+					<div style="float: left">
+						<label class="label-padding-10">
+							Total UVB Count : &nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBCount" readonly /></label>
+					</div>
+					<div style="float: left">
+						<label class="label-padding-10">
+							Created Today :&nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBCreatedToday" readonly /></label>
+					</div>
+					<div style="float: left">
+						<label class="label-padding-10">
+							Worked Today :&nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBWorkedToday" readonly /></label>
+					</div>
+				</div>
+
+				<div class="refresh-rexnord" style="margin-top: 0.5% !important; right: 110px; top: 80px">
+					<table>
+						<tr>
+							<td>
+								<button class="btn btn-primary" data-bind="click: onMoveToGTBoard, visible: isMoveGTBoard" style="height: 30px;">Move To GlobalTranz Board</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30 clear-all-filter-rexnord-board" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button></td>
+							<td class="position-Relative">
+								<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div id="gridPORexnordBoard" style="margin-top: -6px; padding: 0 20px 0 20px" data-bind="compose: { model: purchaseOrderBoardsGrid, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<style>
+	@-moz-document url-prefix()
+	{
+		.margin-bottom-firefox;
+
+	{
+		margin-bottom: -14px;
+	}
+
+	}
+</style>
+
+<div class="row-fluid">
+	<div class="app-page-title margin-left-25">
+		<span class="PageTitleBlack">Unmatched Vendor Bill Rexnord Board</span>
+	</div>
+
+	<div class="container-fluid margin-bottom-firefox">
+		<div class="accordion" id="accordion2">
+			<div class="ediGridWithHeader margin-top-30 gridOptionalHeader">
+
+				<!-- HEADER COUNT DIV -->
+				<!--				<div>
+					<div style="float: left">
+						<label class="label-padding-10">Total UVB Count : &nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBCount" readonly /></label>
+					</div>
+					<div style="float: left">
+						<label class="label-padding-10">Created Today :&nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBCreatedToday" readonly /></label>
+					</div>
+					<div style="float: left">
+						<label class="label-padding-10">Worked Today :&nbsp;
+							<input style="background-color: white !important;" class="header-count-input" data-bind="value: totalUVBWorkedToday" readonly /></label>
+					</div>
+				</div>-->
+
+				<div class="margin-right-35 float-right margin-all-10">
+					<table>
+						<tr>
+							<td>
+								<button class="btn btn-primary" style="margin-top: -3px;" data-bind="click: onMoveToGTBoard, visible: isMoveGTBoard" style="height: 30px;">Move To GlobalTranz Board</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30" style="margin-top: -3px;" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+							</td>
+							<td class="position-Relative">
+								<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div id="gridPORexnordBoard" class="margin-top--36" data-bind="compose: { model: purchaseOrderBoardsGrid, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>

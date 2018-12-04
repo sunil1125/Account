@@ -1,0 +1,17 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div style="height: 100%;">
+	<header data-bind="compose: { view: 'nav' }" class="realEstateWidth"></header>
+	<section style="height: 90%;" data-bind="compose: { view: 'content' }, event: { mouseover: mouseoutFromNav }" class="realEstateWidth"></section>
+	<footer data-bind="compose: { view: 'views/footer', model: 'viewmodels/footer' }, event: { mouseover: mouseoutFromNav }"></footer>
+	<div data-bind="visible: showProgress, css: { 'modal-backdrop-new': blockFullUI }">
+		<div class="modal modal-body cr-progress-bar">
+			<p>Please wait...</p>
+		</div>
+	</div>
+</div>

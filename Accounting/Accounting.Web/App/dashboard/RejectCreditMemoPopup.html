@@ -1,0 +1,30 @@
+﻿<!--******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+******************************************************************************-->
+
+<div class="custom-msg-box border-radius-8">
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text" data-bind="text: 'Reason for Rejection'"></h4>
+	</div>
+	<table class="tbl-agentMail shipment-item margin-all-15">
+		<tr>
+			<td colspan="2">
+				<div>
+					<textarea id="textarea" class="accounting-textarea" data-bind="value: rejectionNote, css: { borderRedOnValidation: (rejectionNote.isModified() && !rejectionNote.isValid()) }, valueUpdate: 'afterkeydown'" 
+						style="width: 300px; height: 200px" cols="10" rows="3" maxlength="500" placeholder="Please enter minimum 6 characters"></textarea>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id="buttonDiv" class="align-right margin-top-5">
+					<button class="btn btn-primary" data-bind="click: onReject">OK</button>
+					<button class="btn btn-primary" data-bind="click: onCancel">Cancel</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

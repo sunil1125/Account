@@ -1,0 +1,42 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="mypopup custom-msg-box border-radius-8" style="width: 500px">
+	<div class="custom-modal-header">
+		<h4 class="custom-modal-header-text">CONFIRMATION</h4>
+	</div>
+
+	<div>
+		<div class="reason-code-popup-header">
+			<span>Please select a reason code for the UVB to confirm why this UVB was on the board
+			</span>
+		</div>
+		<div id="reasonCodeDiv" tabindex="-1" class="table-cell div-percent-20" data-bind="foreach: reasonCodeList">
+			<div class="radio-label-container">
+				<input type="radio"
+					class="zero-margin"
+					name="reasoncodeGroup"
+					data-bind="attr: { value: Id, id: 'radio_' + Id }, checked: $parent.selectedReason">
+				<label class="displayInline" style="margin-top: 4px" data-bind="text: Description, attr: { for: 'radio_' + Id }"></label>
+				<br />
+			</div>
+		</div>
+		<br />
+		<div class="padding-left-8 padding-bottom-5" style="width: 96%;">
+			<fieldset>
+				<legend>Add Notes</legend>
+				<textarea id="txtuserNote" class="accounting-textarea"
+					data-bind="value: userNote, valueUpdate: 'afterkeydown', css: { requiredFieldBgColor: (!isOtherChecked()) }"
+					maxlength="150" style="width: 440px"></textarea>
+			</fieldset>
+		</div>
+		<div class="padding-right-8 padding-bottom-20">
+			<button class="btn btn-primary" data-bind="click: submitReason, enable: isOtherChecked" style="float: right; margin-right: 5px">Submit</button>
+		</div>
+		<br />
+	</div>
+</div>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10CBE041-2E26-4CB1-A913-5F98F4A9801B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GooglemapsClustering.Clustering</RootNamespace>
+    <AssemblyName>GooglemapsClustering.Clustering</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithm\ClusterAlgorithmBase.cs" />
+    <Compile Include="Algorithm\GridCluster.cs" />
+    <Compile Include="Contract\IMemCache.cs" />
+    <Compile Include="Contract\IP.cs" />
+    <Compile Include="Contract\ICluster.cs" />
+    <Compile Include="Contract\IGmcSettings.cs" />
+    <Compile Include="Contract\IPointsDatabase.cs" />
+    <Compile Include="Contract\IMapService.cs" />
+    <Compile Include="Data\CacheKeys.cs" />
+    <Compile Include="Data\Config\GmcSettings.cs" />
+    <Compile Include="Data\Algo\Boundary.cs" />
+    <Compile Include="Data\Algo\Bucket.cs" />
+    <Compile Include="Data\Algo\ClusterInfo.cs" />
+    <Compile Include="Data\DatasetToSerialize.cs" />
+    <Compile Include="Data\FilterData.cs" />
+    <Compile Include="Data\Json\JsonGetMarkersInput.cs" />
+    <Compile Include="Data\Json\JsonGetMarkersReceive.cs" />
+    <Compile Include="Data\Json\JsonInfoReply.cs" />
+    <Compile Include="Data\Json\JsonMarkerInfoReply.cs" />
+    <Compile Include="Data\Json\JsonMarkersReply.cs" />
+    <Compile Include="Data\Json\JsonReplyBase.cs" />
+    <Compile Include="Data\Geometry\LatLonInfo.cs" />
+    <Compile Include="Data\Geometry\Line.cs" />
+    <Compile Include="Data\Repository\PointsDatabase.cs" />
+    <Compile Include="Data\Geometry\Numbers.cs" />
+    <Compile Include="Data\Geometry\P.cs" />
+    <Compile Include="Data\Geometry\PBase.cs" />
+    <Compile Include="Data\Geometry\Rectangle.cs" />
+    <Compile Include="Extensions\MonadExtension.cs" />
+    <Compile Include="Extensions\IEnumerableExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\LeadList.cs" />
+    <Compile Include="Service\MemCache.cs" />
+    <Compile Include="Utility\ClusterUtil.cs" />
+    <Compile Include="Extensions\DataExtension.cs" />
+    <Compile Include="Utility\Dataset.cs" />
+    <Compile Include="Utility\ExceptionUtil.cs" />
+    <Compile Include="Utility\FileUtil.cs" />
+    <Compile Include="Utility\FilterUtil.cs" />
+    <Compile Include="Utility\MathTool.cs" />
+    <Compile Include="Utility\Serializer.cs" />
+    <Compile Include="Service\MapService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documents\Design\googlemaps-clustering-viewport_ver1.png" />
+    <Content Include="Documents\Design\GoogleMapsClustering_SD_ver1.png" />
+    <Content Include="Documents\FAQ.txt" />
+    <Content Include="Documents\License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documents\Design\googlemaps-clustering-viewport_ver1.vsd" />
+    <None Include="Documents\Design\GoogleMapsClustering_SD_ver1.vsd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

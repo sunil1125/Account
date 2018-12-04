@@ -1,0 +1,79 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" class="row-fluid">
+	<!--<div id="mainDiv" class="row-fluid searchpop">
+		</div>-->
+	<!--<div class="align-left">
+			<span class="PageTitleBlack float-left margin-top-12">EDI 210 Carrier Exception Board</span>
+		</div>-->
+	<div class="row-fluid searchpop">
+		<div class="app-page-title margin-left-25">
+			<span class="PageTitleBlack">EDI 210 Carrier Exception Board</span>
+		</div>
+		<div class="clearfix"></div>
+		<div class="container-fluid">
+			<div class="accordion" id="accordion2">
+				<div class="carrierMappingGridWithHeader">
+					<div class="float-left margin-all-10">
+						<select data-bind="options: edi210SearchOption, optionsValue: 'ID', optionsText: 'Value', value: selectedExceptionRule"></select>
+						<!--<button class="btn btn-primary height-30" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>-->
+					</div>
+					<div class="margin-right-35 float-right margin-all-10">
+						<table>
+							<tr>
+								<td>
+									<button class="btn btn-primary height-30" style="margin-top: -3px;" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+								</td>
+								<td class="position-Relative">
+									<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div id="gridEdi" class="gridHeaderPosition" data-bind="compose: { model: ediCarrierExceptionReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="resultpop">
+		<div class="float-right" style="margin-left: 4px; margin-right: 1%;">
+			<button id="btnOnBackClick" class="btn btn-primary" data-bind="click: onBackClick">Back</button>
+		</div>
+		<div>
+			<div data-bind="compose: { model: edi210CarrierExceptionDetailsViewModel, view: 'board/Edi210CarrierExceptionDetails' }"></div>
+		</div>
+	</div>
+
+	<!--        <div class="refresh_DisputeBoard"><a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonBoard"></i></a></div>
+		<div class="row-fluid margin-top-40">
+			<div class="accordion" id="accordion2">
+				<div>
+					<select style="margin:10px;" data-bind="options: edi210SearchOption, optionsValue: 'ID', optionsText: 'Value', value: selectedExceptionRule"></select>
+					<button class="btn btn-primary height-30" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+				</div>
+				<div class="row-fluid margin-top--57">
+				<div id="gridEdi" class="margin-top--10" data-bind="compose: { model: ediCarrierExceptionReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+			</div>
+		</div>
+
+    <div class="resultpop">
+        <div class="float-right" style="margin-left:4px;">
+			<button id="btnOnBackClick" class="btn btn-primary" data-bind="click: onBackClick">Back</button>
+		</div>
+        <div>
+            <div data-bind="compose: { model: edi210CarrierExceptionDetailsViewModel, view: 'board/Edi210CarrierExceptionDetails' }"></div>
+        </div>
+    </div>-->
+</div>

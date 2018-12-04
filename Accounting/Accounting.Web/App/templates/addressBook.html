@@ -1,0 +1,333 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="custom-msg-box" style="border-radius: 8px;">
+	<div class="custom-modal-header-row"></div>
+	<div class="custom-modal-header" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+
+		<h4 data-bind="text: title" class="custom-modal-header-text">Shipment Address</h4>
+	</div>
+	<fieldset style="border-radius: 8px; box-shadow: 0 0 10px #999">
+		<!--<legend></legend>-->
+		<div class="span4">
+			<table class="tbl-salse-order">
+				<tbody>
+					<tr>
+						<td colspan="2" aria-label="left">
+							<div class="requiredtext">
+								<div class="requiredBox"></div>
+								= Required</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Company Name:
+						</td>
+						<td class="typeStatus">
+							<div class="width-240">
+								<i></i>
+								<input id="textCompanyName" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" placeholder="Company Name">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Contact Name:
+						</td>
+						<td class="typeStatus">
+							<div class="width-240">
+								<i></i>
+								<input id="textContactName" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" placeholder="Contact Name">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Street:
+						</td>
+						<td class="typeStatus">
+							<div class="width-240">
+								<i></i>
+								<input id="textStreet" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" placeholder="Street">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*City State or Zip:
+						</td>
+						<td class="typeStatus">
+							<div>
+								<i></i>
+								<input id="textCityStateOrZip" type="text" class="requiredFieldBgColor" style="padding: 4px 6px; width: 206px; margin-top: 1px;" autofocus="autofocus" placeholder="City State or Zip..." autocomplete="off" data-filterkey="Display">
+								<!--data-bind="value: cityStateZip, typeahead: searchLocation, minLength: 2, items: 20, event: { onSelect: onSelectLocation }, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'"-->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Country:
+						</td>
+						<td class="typeStatus">
+							<div class="width-240">
+								<i></i>
+								<input id="textCountry" type="text" maxlength="100" class="requiredFieldBgColor" data-togle="tooltip" placeholder="Country">
+								<!--data-bind=" value: consigneeCompanyName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'"-->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Phone:
+						</td>
+						<td class="typeStatus">
+							<div>
+								<i></i>
+								<input id="textPhone" type="text" maxlength="13" class="">
+								<!--data-bind="value: consigneePhone, validationOptions: { errorElementClass: null }, event: { keypress: formatPhoneNumber(consigneePhone) }, valueUpdate: 'afterkeydown'"-->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Fax:
+						</td>
+						<td class="typeStatus">
+							<div>
+								<i></i>
+								<input id="textFax" type="text" maxlength="13" class="">
+								<!--data-bind="value: consigneeFax, validationOptions: { errorElementClass: null }, event: { keypress: formatPhoneNumber(consigneeFax) }, valueUpdate: 'afterkeydown'"-->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Email:
+						</td>
+						<td class="typeStatus">
+							<div>
+								<i></i>
+								<input id="textEmail" type="text" maxlength="100" data-togle="tooltip" placeholder="Email">
+								<!--data-bind=" value: consigneeCompanyName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'"-->
+							</div>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td class="typeLabels">Pickup Ready Time:
+						</td>
+						<td class="typeStatus">
+							<div class="input-append bootstrap-timepicker" style="margin-bottom: 0px;">
+								<div class="bootstrap-timepicker-widget dropdown-menu">
+									<table>
+										<tbody>
+											<tr>
+												<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>
+											</tr>
+											<tr>
+												<td>
+													<input type="text" name="hour" class="bootstrap-timepicker-hour" maxlength="2"></td>
+												<td class="separator">:</td>
+												<td>
+													<input type="text" name="minute" class="bootstrap-timepicker-minute" maxlength="2"></td>
+												<td class="separator">&nbsp;</td>
+												<td>
+													<input type="text" name="meridian" class="bootstrap-timepicker-meridian" maxlength="2"></td>
+											</tr>
+											<tr>
+												<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator"></td>
+												<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<input id="tpReadyTimeP" type="text" data-bind="value: pickupReadyTime, validationOptions: { errorElementClass: '' }, timepicker: pickupReadyTime, timepickerOptions: { minuteStep: 30, startHour: 6, endHour: 7, allowEmptyAsDefault: true }" class="input-small inputWidth" value="" placeholder="h:mm AM/PM">
+								<span class="add-on"><i class="icon-time"></i></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Pickup close Time:
+						</td>
+						<td class="typeStatus">
+							<div class="input-append bootstrap-timepicker " style="margin-bottom: 0px;">
+								<div class="bootstrap-timepicker-widget dropdown-menu">
+									<table>
+										<tbody>
+											<tr>
+												<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>
+											</tr>
+											<tr>
+												<td>
+													<input type="text" name="hour" class="bootstrap-timepicker-hour" maxlength="2"></td>
+												<td class="separator">:</td>
+												<td>
+													<input type="text" name="minute" class="bootstrap-timepicker-minute" maxlength="2"></td>
+												<td class="separator">&nbsp;</td>
+												<td>
+													<input type="text" name="meridian" class="bootstrap-timepicker-meridian" maxlength="2"></td>
+											</tr>
+											<tr>
+												<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator"></td>
+												<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<input id="tpCloseTimeP" type="text" data-bind="value: pickupCloseTime, validationOptions: { errorElementClass: '' }, timepicker: pickupCloseTime, timepickerOptions: { minuteStep: 30, startHour: 6, endHour: 9, allowEmptyAsDefault: true }" class="input-small inputWidth" value="" placeholder="h:mm AM/PM">
+								<span class="add-on"><i class="icon-time"></i></span>
+							</div>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td class="typeLabels">Pick Up Remarks:
+						</td>
+						<td class="typeStatus">
+							<textarea cols="50" rows="2" style="resize: none;"></textarea>
+							<!--data-bind='value: processDetails'-->
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td class="typeLabels">Deliver Ready Time:
+						</td>
+						<td class="typeStatus">
+							<div class="input-append bootstrap-timepicker" style="margin-bottom: 0px;">
+								<div class="bootstrap-timepicker-widget dropdown-menu">
+									<table>
+										<tbody>
+											<tr>
+												<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>
+											</tr>
+											<tr>
+												<td>
+													<input type="text" name="hour" class="bootstrap-timepicker-hour" maxlength="2"></td>
+												<td class="separator">:</td>
+												<td>
+													<input type="text" name="minute" class="bootstrap-timepicker-minute" maxlength="2"></td>
+												<td class="separator">&nbsp;</td>
+												<td>
+													<input type="text" name="meridian" class="bootstrap-timepicker-meridian" maxlength="2"></td>
+											</tr>
+											<tr>
+												<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator"></td>
+												<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<input id="tpReadyTimeD" type="text" data-bind="value: deliveryReadyTime, validationOptions: { errorElementClass: '' }, timepicker: deliveryReadyTime, timepickerOptions: { minuteStep: 30, startHour: 6, endHour: 7, allowEmptyAsDefault: true }" class="input-small inputWidth" value="" placeholder="h:mm AM/PM">
+								<span class="add-on"><i class="icon-time"></i></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Delivery Close Time:
+						</td>
+						<td class="typeStatus">
+							<div class="input-append bootstrap-timepicker " style="margin-bottom: 0px;">
+								<div class="bootstrap-timepicker-widget dropdown-menu">
+									<table>
+										<tbody>
+											<tr>
+												<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>
+											</tr>
+											<tr>
+												<td>
+													<input type="text" name="hour" class="bootstrap-timepicker-hour" maxlength="2"></td>
+												<td class="separator">:</td>
+												<td>
+													<input type="text" name="minute" class="bootstrap-timepicker-minute" maxlength="2"></td>
+												<td class="separator">&nbsp;</td>
+												<td>
+													<input type="text" name="meridian" class="bootstrap-timepicker-meridian" maxlength="2"></td>
+											</tr>
+											<tr>
+												<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator"></td>
+												<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>
+												<td class="separator">&nbsp;</td>
+												<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<input id="tpCloseTimeD" type="text" data-bind="value: deliveryCloseTime, validationOptions: { errorElementClass: '' }, timepicker: deliveryCloseTime, timepickerOptions: { minuteStep: 30, startHour: 6, endHour: 9, allowEmptyAsDefault: true }" class="input-small inputWidth" value="" placeholder="h:mm AM/PM">
+								<span class="add-on"><i class="icon-time"></i></span>
+							</div>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td class="typeLabels">Delivery Remarks:
+						</td>
+						<td class="typeStatus">
+							<textarea cols="50" rows="2" style="resize: none;"></textarea>
+							<!--data-bind='value: processDetails'-->
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus">
+							<button class="btn btn-primary">Appointment</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus">
+							<button class="btn btn-primary">Lumper</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus">
+							<a class="links" href="#">Get Direction</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Location Notes:
+						</td>
+						<td class="typeStatus">
+							<textarea cols="50" rows="2" style="resize: none;"></textarea>
+							<!--data-bind='value: processDetails'-->
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus"></td>
+					</tr>
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus">
+
+							<button class="btn btn-primary" data-dismiss="modal" data-bind="click: closeAddressBook">Cancel</button>&nbsp;
+                            <button class="btn btn-primary">Save</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</fieldset>
+</div>

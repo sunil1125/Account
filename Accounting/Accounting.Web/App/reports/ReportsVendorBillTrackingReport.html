@@ -1,0 +1,61 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>DE20986</id> <by>Shreesha Adiga</by> <date>14-12-2015</date><description>Added validation to pronumber field</description>
+</changeHistory>-->
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Vendor Bill Tracking Report</span>
+		</div>
+		<div class="row-fluid">
+			<div class="accordion" id="accordion2">
+				<div class="ediGridWithHeader">
+					<div class="float-left margin-all-10">
+						<table class="tbl-vb-track-report tbl-sales-order">
+							<tr>
+								<td class="typeLabels">Pro Number</td>
+								<td class="typeLabels">
+									<!--##START: DE20986-->
+									<label class="validation-label2" data-bind="validationElement: proNumber">
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (proNumber.isModified() && !proNumber.isValid()), tooltip: { title: proNumber.isModified() ? proNumber.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+										<input type="text" class="requiredFieldBgColor" data-togle="tooltip"
+											data-bind="value: proNumber, css: { borderRedOnValidation: (proNumber.isModified() && !proNumber.isValid()) }, style: { 'padding-left': (proNumber.isModified() && !proNumber.isValid()) ? '20px' : '' }, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+									</label>
+									<!--##END: DE20986-->
+								</td>
+								<td class="typeLabels">Vendor Name</td>
+								<td class="typeLabels">
+									<input type="text" data-bind="value: vendorName" />
+								</td>
+								<td class="typeLabels"><b>OR</b></td>
+								<td class="typeLabels">
+									<input type="file" class="display-none" name="fileToUpload" id="fileToUpload" accept=".csv,.xls" data-bind="event: { change: uploadDocument }" data-buttontext="Your label here." />
+									<input type="text" disabled="disabled" data-bind="value: uploadedFileName" />
+								</td>
+								<td class="typeLabels">
+									<button id="btnUploadCSVFile" class="btn flatButton" onclick="$('input[id=fileToUpload]').click();">Browse</button>
+									<button class="btn btn-primary" data-bind="enable: notDisableUploadButton, click: uploadData">Upload</button>
+									<button class="btn btn-primary" onclick="window.location='files/VendorBillTrackingReportSample.csv'">Download Sample CSV File</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="margin-right-20 float-right margin-all-10">
+						<button id="btngenerateReport" class="btn btn-primary" data-bind="click: generateReport">Generate Report</button>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div id="gridHistory" class="gridHeaderPosition" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

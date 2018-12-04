@@ -1,0 +1,384 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+Sales order shipping Details Entry/Edit
+</summary>
+<changeHistory>
+<id>US22417</id> <by>Janakiram</by> <date>19-05-2016</date> <description>Main SO Screen UI Field changes Removed like Customer BOL#, Total Pieces, Total Weight</description>
+<id>US22419</id> <by>Shreesha Adiga</by> <date>25-05-2016</date> <description>Added Factor Company and MAS Vendor ID</description>
+<id>DE22970</id> <by>Janakiram</by> <date>10-06-2016</date> <description>Booked date Enable/Disabled based on entry/edit</description>
+<id>US22797</id> <by>Shreesha Adiga</by> <date>15-06-2016</date> <description>Disable the 'Ship Via' dropdwon</description>
+<id>US24905</id> <by>Baldev Singh Thakur</by> <date>06-10-2016</date><description>Set the Maximum field length of PO# to 25</description>
+<id>US25186</id> <by>Baldev Singh Thakur</by> <date>12-10-2016</date><description>Set the Maximum field length of Shipper's Ref/PU# to 50</description>
+</changeHistory>
+!-->
+<div id="divSalesOrderDetailsView" class="tableLayout">
+	<!--Basic Section START-->
+	<div class="table-cell fourDiv">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels" style="width: 24%">Ship Via:
+				</td>
+				<td class="typeStatus">
+					<!--##START: US22797-->
+					<select id="selectShipVia" class="margin-bottom-0 custom-input width-percent-83" data-bind="options: shipViaList, optionsValue: 'ID', optionsText: 'Value', value: selectedShipVia" disabled="disabled"></select>
+					<!--##END: US22797-->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Customer:
+				</td>
+				<td class="typeStatus">
+					<div id="divTempleteCustomerAuto" data-bind="compose: { model: customerSearchList, view: 'templates/searchCustomerAutoComplete' }, attr: { 'readonly': !(isSaveEnable()) }"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Booked Date:
+				</td>
+				<td class="typeStatus">
+					<div class="typecontrols padding-top-0" tabindex="8">
+						<div class="input-append date width-percent-88" id="bookdate" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: bookedDate, datepickerOptions: datepickerOptions, enable: isSaveEnable">
+							<!--###START: DE22970-->
+							<input id="bookeddate" type="text" size="16" class="span10" style="width: 89%;" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToBookedDate }, value: bookedDate, valueUpdate: 'afterkeydown', attr: { 'readonly': (!(isSaveEnable()) || isDisableBookedDate()) }" maxlength="10" />
+							<!--###START: DE21287-->
+							<span class="add-on" data-bind="css: { disabledateLink: (!isSaveEnable() || isDisableBookedDateLink() || isDisableBookedDate()) }">
+								<i class="icon-calendar"></i>
+							</span>
+							<!--###END: DE21287-->
+							<!--###END: DE22970-->
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Sales Order#:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" maxlength="20" readonly="readonly" data-bind="event: { keypress: isAlphaNumericSpace }, value: salesOrderNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PRO#:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" maxlength="15" data-bind="event: { keypress: isAlphaNumericSpace }, value: proNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PO#:
+				</td>
+				<td class="typeStatus">
+					<!--##START: US24905-->
+					<input type="text" class="width-percent-83" maxlength="25" data-bind="event: { keypress: isAlphaNumericSpace }, value: poNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) }" />
+					<!--##END: US24905-->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Shipper's Ref/PU#:
+				</td>
+				<td class="typeStatus">
+					<!--##START: US25186-->
+					<input type="text" class="width-percent-83" maxlength="50" data-bind="event: { keypress: isAlphaNumericSpace }, value: puNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { 'readonly': !(isSaveEnable()) } " />
+					<!--##END: US25186-->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Carrier:
+				</td>
+				<td class="typeStatus">
+					<div data-bind="compose: { model: carrierSearchList, view: 'templates/searchVendorNameControl' }, attr: { 'readonly': !(isSaveEnable()) }"></div>
+				</td>
+			</tr>
+
+			<!--##START: US22419-->
+
+			<tr data-bind="visible: salesOrderId() > 0">
+				<td class="typeLabels">Factor Company:
+				</td>
+				<td class="typeStatus" tabindex="1">
+					<input type="text" class="width-percent-83" data-bind="value: factorCompany" readonly="readonly" />
+				</td>
+			</tr>
+
+			<tr data-bind="visible: salesOrderId() > 0">
+				<td class="typeLabels" style="width: 24%;">MAS Vendor ID:
+				</td>
+				<td class="typeStatus" tabindex="1">
+					<input type="text" class="width-percent-83" data-bind="value: masVendorId" readonly="readonly" />
+				</td>
+			</tr>
+
+			<!--##END: US22419-->
+			<tr data-bind="visible: isCallForEdit">
+				<td class="typeLabels">MAS Customer:
+				</td>
+				<td class="typeStatus">
+					<div>
+						<i class="MASCustomerIcon" data-bind="css: progressClass"></i>
+						<input type="text" class="width-percent-83" data-bind="value: MasCustomer, validationOptions: { errorElementClass: null }, attr: { 'readonly': 'readonly' }" />
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!--Basic Section END-->
+
+	<!--Summary Section START-->
+	<div class="table-cell fourDiv">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels width-percent-24">*Origin Zip:
+				</td>
+				<td class="typeStatus">
+					<!--<div data-bind=" validationElement: originZip, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Header-FieldsNewForZip' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (originZip.isModified() && !originZip.isValid()), tooltip: { title: originZip.isModified() ? originZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtOriginZip" class="requiredFieldBgColor" placeholder="City State or Zip..." disabled="disabled"
+							data-bind="style: { width: (originZip.isModified() && !originZip.isValid()) ? errorWidth : normalWidth }, value: originZip, minLength: 2, items: 20, validationOptions: { errorElementClass: null }" />
+					</div>-->
+					<label id="lblOriginZip" class="validation-label2" data-bind=" validationElement: originZip">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (originZip.isModified() && !originZip.isValid()), tooltip: { title: originZip.isModified() ? originZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtOriginZip" class="validation2 width-percent-83" readonly="readonly" placeholder="City State or Zip..." data-bind="css: { borderRedOnValidation: (originZip.isModified() && !originZip.isValid()) }, style: { paddingLeft: (originZip.isModified() && !originZip.isValid()) ? '7%' : '' }, value: originZip, minLength: 2, items: 20, validationOptions: { errorElementClass: null }" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Destination Zip:
+				</td>
+				<td class="typeStatus">
+					<!--<div data-bind=" validationElement: destinationZip, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Header-FieldsNewForZip' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (destinationZip.isModified() && !destinationZip.isValid()), tooltip: { title: destinationZip.isModified() ? destinationZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtDestinationZip" class="requiredFieldBgColor" placeholder="City State or Zip..." disabled="disabled"
+							data-bind="style: { width: (destinationZip.isModified() && !destinationZip.isValid()) ? errorWidth : normalWidth }, value: destinationZip, minLength: 2, items: 20, validationOptions: { errorElementClass: null }" />
+					</div>-->
+					<label id="lblDestinationZip" class="validation-label2" data-bind=" validationElement: destinationZip">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (destinationZip.isModified() && !destinationZip.isValid()), tooltip: { title: destinationZip.isModified() ? destinationZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" class="validation2 width-percent-83" id="txtDestinationZip" readonly="readonly" placeholder="City State or Zip..." data-bind="css: { borderRedOnValidation: (destinationZip.isModified() && !destinationZip.isValid()) }, style: { paddingLeft: (destinationZip.isModified() && !destinationZip.isValid()) ? '7%' : '' }, value: destinationZip, minLength: 2, items: 20, validationOptions: { errorElementClass: null }" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Order Status:
+				</td>
+				<td class="typeStatus">
+					<select class="requiredFieldBgColor margin-bottom-0 custom-input width-percent-83" data-bind="options: orderStatusList, optionsValue: 'ID', optionsText: 'Value', value: selectedOrderStatus, event: { keydown: isTabPress }, enable: isSaveEnable"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Invoice Status:
+				</td>
+				<td class="typeStatus">
+					<select class="margin-bottom-0 width-percent-83 custom-input" data-bind="options: invoiceStatusList, optionsValue: 'ID', optionsText: 'Value', value: selectedInvoiceStatus, attr: { 'disabled': isInoviceDisabled }"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Sales Rep:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" data-bind="value: salesRep, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Agency#:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" data-bind="value: agencyName, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Tariff:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" data-bind="value: tariffType, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+			</tr>
+
+			<!--##START: US22054-->
+
+			<tr>
+				<td class="typeLabels">Tariff Start Date:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" data-bind="value: TariffStartDateDisplay, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+			</tr>
+
+			<tr>
+				<td class="typeLabels">Tariff #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-83" data-bind="value: TariffNumber, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+			</tr>
+
+			<!--##END: US22054-->
+
+			<tr data-bind="visible: isCallForEdit">
+				<td class="typeLabels">MAS Customer Name:
+				</td>
+				<td class="typeStatus">
+					<div>
+						<i class="MASCustomerIcon" data-bind="css: progressClass"></i>
+						<input type="text" class="width-percent-83" data-bind="value: MasCustomerName, validationOptions: { errorElementClass: null }, attr: { 'readonly': 'readonly' }" />
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!--Summary Section END-->
+
+	<!--Sales Order Summary Section START-->
+	<div class="table-cell">
+		<table class="tbl-sales-order margin-left-10">
+
+			<tr>
+				<td class="typeLabels" style="width: 15%">Estimated Revenue $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: estimatedRevenue, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Final Revenue $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: finalRevenue, uniqueName: true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Estimated Cost $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: estimatedCost, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Final Cost $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: finalCost, uniqueName: true" />
+				</td>
+			</tr>
+			<tr data-bind="visible: isBscost">
+				<td class="typeLabels">Estimated BS Cost $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: estimateBSCost, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Final BS Cost $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: finalBSCost, uniqueName: true" />
+				</td>
+			</tr>
+
+			<tr data-bind="visible: notIsBscost">
+				<td colspan="4">
+					<div class="height-30"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Estimated Profit $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: estimatedProfit, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Final Profit $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: finalProfit, uniqueName: true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Estimated Profit %:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: estimatedProfitPer, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Final Profit %:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: finalProfitPer, uniqueName: true" />
+				</td>
+			</tr>
+			<tr data-bind="visible: isBscost">
+				<td></td>
+				<td></td>
+				<td class="typeLabels">GTz Margin:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: gtzMargin, uniqueName: true" />
+				</td>
+			</tr>
+			<tr data-bind="visible: notIsBscost">
+				<td colspan="4">
+					<div class="height-30"></div>
+				</td>
+			</tr>
+			<!--Sales Order Summary Section END-->
+
+			<!--Vendor Bill Summary Section START-->
+			<tr>
+				<td class="typeLabels">
+					<!--<span data-bind="visible: !isActualOrVendor()">Actual Cost $:</span><span data-bind="visible: isActualOrVendor()">Vendor Bill Cost $:</span>-->
+					Vendor Bill Cost $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: actualCost, uniqueName: true" />
+				</td>
+
+				<td class="typeLabels">Cost $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind=" value: salesOrderAmount, uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">
+					<!--<span data-bind="visible: !isActualOrVendor()">Actual Profit $:</span><span data-bind="visible: isActualOrVendor()">Vendor Bill Profit $:</span>-->
+					Vendor Bill Profit $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: actualProfit, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Revenue $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind=" value: salesOrderRevenue, uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">
+					<!--<span data-bind="visible: !isActualOrVendor()">Actual Profit %:</span><span data-bind="visible: isActualOrVendor()">Vendor Bill Profit %:</span>-->
+					Vendor Bill Profit %:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: actualProfitPer, uniqueName: true" />
+				</td>
+				<td class="typeLabels">Dispute $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: dispute, uniqueName: true" />
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="typeLabels">Cost Difference $:
+				</td>
+
+				<td class="typeStatus">
+					<input type="text" class="width-percent-75 " readonly="readonly" data-bind="value: costDiff, uniqueName: true" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<!--Vendor Bill Summary Section END-->

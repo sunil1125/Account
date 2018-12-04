@@ -1,0 +1,95 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>DE20306</id> <by>Shreesha Adiga</by> <date>21-10-2015</date><description>Added classes to fix UI issues in IE and firefox</description>
+</changeHistory>-->
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="div-float-left" style="width: 50%">
+			<div class="align-left">
+				<span class="PageTitleBlack float-left margin-top-12">Comparison Tolerance</span>
+			</div>
+			<div class="row-fluid margin-top-40">
+				<!--##START: DE20306-->
+				<div class="ediGridWithHeader margin-top-20-firefox">
+					<select class="margin-top-20-IE" style="margin: 6px;" data-bind="options: customerSearchOptionList, optionsValue: 'ID', optionsText: 'Value', value: selectedCustomer"></select>
+					<!--##END: DE20306-->
+				</div>
+				<div class="row-fluid margin-top--57">
+					<div class="margin-top--10" data-bind="compose: { model: comparisonTolerancereportContainer, view: '../templates/reportViewerControlV2' }"></div>
+				</div>
+			</div>
+		</div>
+		<div class="float-right margin-top-31 width-percent-48" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+			<fieldset>
+				<legend>Tolerance Setup</legend>
+				<table class="tbl-sales-order width-percent-100">
+					<tr>
+						<td class="typeLabels">Customer Type:
+						</td>
+						<td class="typeStatus">
+							<input type="text" disabled="disabled" data-bind="value: selectedToleranceCustomer" /></td>
+					</tr>
+					<tr>
+						<td class="typeLabels">*Tolerance Amount: $
+						</td>
+						<td class="typeStatus">
+							<div data-bind=" validationElement: selectedToleranceAmount, validationOptions: { errorElementClass: 'input-validation-error errorWidth-ComparisonTolerance' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (selectedToleranceAmount.isModified() && !selectedToleranceAmount.isValid()), tooltip: { title: selectedToleranceAmount.isModified() ? selectedToleranceAmount.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" data-bind="numericDecimalInput: NumericInputWithDecimalPoint, value: selectedToleranceAmount, valueUpdate: 'afterkeydown', style: { width: (selectedToleranceAmount.isModified() && !selectedToleranceAmount.isValid()) ? '190px' : '206px' }, validationOptions: { errorElementClass: null }" />
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">Tolerance Group Name
+						</td>
+						<td class="typeStatus">
+							<select class="margin-bottom-0" data-bind="options: toleranceGroupList, optionsValue: 'ID', optionsText: 'Description', optionsCaption: 'Select...', value: selectedToleranceGroup, enable: false"></select>
+						</td>
+					</tr>
+					<tr data-bind="visible: isGroupItemsVisible">
+						<td colspan="2" class="typeStatus">
+							<!--<div>
+								<select style="height:121px;" id="multiSelect" class="margin-bottom-0" multiple="multiple" data-bind="options: itemNumberList, optionsValue: 'ItemId', optionsText: 'ShortDescription'">
+								</select>
+							</div>-->
+							<fieldset style="height: 263px;">
+								<legend>Group Items</legend>
+								<div class="div-float-left width-percent-40 comparisonToleranceGropItmes_Height">
+
+									<select id="multiSelectMainItems" class="margin-bottom-0 comparisonTolerance_Select_Height" multiple="multiple" data-bind="options: itemNumberList, optionsText: 'ShortDescription', optionsValue: 'ItemId'">
+									</select>
+								</div>
+								<div class="div-float-left  margin-left-45 margin-top-85">
+									<button data-bind="click: onAddButtonClick"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></button>
+									<br />
+									<br />
+									<button data-bind="click: onRemoveButtonClick"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+								</div>
+								<div class="float-right width-percent-40 comparisonToleranceGropItmes_Height">
+									<select id="multiSelectedChildItems" class="margin-bottom-0 comparisonTolerance_Select_Height" multiple="multiple" data-bind="options: selectedItemNumberList, optionsValue: 'ItemMasId', optionsText: 'ItemDescription'">
+									</select>
+								</div>
+							</fieldset>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div id="buttonDiv" class="align-right margin-top-5">
+								<button id="btnSaveMapUnmap" class="btn btn-primary" data-bind="click: onSave, enable: isSaveEnable">
+									Save</button>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+	</div>
+</div>

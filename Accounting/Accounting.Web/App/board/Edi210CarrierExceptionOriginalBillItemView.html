@@ -1,0 +1,82 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<div class="row-fluid">
+		<div id="divItemsContainer" class="span12 item-div-container">
+			<table id="tblVendorBillItems" class="table table-bordered shipment-item ">
+				<thead>
+					<tr>
+						<th>
+							<label class="align-center">Items</label></th>
+						<th>
+							<label class="align-center">Description</label></th>
+						<th>
+							<label class="align-center">Cost</label></th>
+						<th>
+							<label class="align-center">Class</label></th>
+						<th>
+							<label class="align-center">Weight</label></th>
+						<th>
+							<label class="align-center">PCS</label></th>
+						<th>
+							<label class="align-center">Dimensions</label></th>
+					</tr>
+				</thead>
+				<tbody class="line-items" data-bind="foreach: ediOriginalItemsList">
+					<tr class="lineItemRow">
+
+						<td data-title="Unit Type" class="width-percent-10">
+							<span class="margin-left-5" data-bind="text: items"></span>
+						</td>
+
+						<td data-title="Description" class="width-percent-10">
+							<span class="margin-left-5" data-bind="text: description"></span>
+						</td>
+
+						<td data-title="Cost" class="width-percent-5">
+							<span class="float-right" data-bind="text: cost"></span><span class="float-right">$</span>
+						</td>
+
+						<td data-title="Class" class="width-percent-5">
+							<span class="margin-left-5" data-bind="text: selectedClass"></span>
+						</td>
+
+						<td data-title="Weight" class="nowrap width-percent-3">
+							<span class="margin-left-5" data-bind="text: weight"></span>
+						</td>
+
+						<td data-title="#Pcs" class="width-percent-4">
+							<span class="margin-left-5" data-bind="text: pcs"></span>
+						</td>
+
+						<td data-title="Dimensions" class="width-percent--5">
+							<div class="dimensions">
+								<input type="text" data-bind="value: dimensionLength" style="width: 20px" placeholder="L" maxlength="9" disabled="disabled" />
+								<input type="text" data-bind="value: dimensionWidth" style="width: 20px" placeholder="W" maxlength="9" disabled="disabled" />
+								<input type="text" data-bind="value: dimensionHeight" style="width: 20px" placeholder="H" maxlength="9" disabled="disabled" />
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tr class="lineItemRow line-items">
+					<td class="width-percent-1 align-center vertical-align-middle" style="font-weight: bolder">Total
+					</td>
+					<td style="width: auto;"></td>
+					<td class="width-percent-3" style="font-weight: bolder">
+						<span class="float-right" data-bind="text: totalCost"></span><span class="float-right">$</span>
+					</td>
+					<td class="width-percent-3"></td>
+					<td class="width-percent-3"></td>
+					<td class="nowrap width-percent-3"></td>
+					<td class="nowrap width-percent-3" colspan="5"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!--Line Item End-->

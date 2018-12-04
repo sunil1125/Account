@@ -1,0 +1,2 @@
+Swashbuckle.core.dll (custom dll ) is refered only within "ShipperCenter.Component.Documentation".
+"ShipperCenter.Component.Common" is using Swashbuckle.core.dll from package as it contains additional functionailities.

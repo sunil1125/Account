@@ -1,0 +1,16 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div data-bind=" validationElement: customerName, validationOptions: { errorElementClass: 'input-validation-error' }">
+    <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (customerName.isModified() && !customerName.isValid()), tooltip: { title: customerName.isModified() ? customerName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+    <input type="text" id="txtCustomerName" class="txtCustomerName"  maxlength="50"  autofocus="autofocus" placeholder="Customer Name" autocomplete="off" data-filterkey="display"
+           data-bind="event: { onSelect: onSelectCustomerName }, css: customClass, style: { width: (customerName.isModified() && !customerName.isValid()) ? errorWidth : normalWidth }, value: customerName, throttle: true, typeahead: searchCustomerName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isEnable" />
+</div>-->
+<label id="lblCustomerName" class="validation-label2" data-bind=" validationElement: customerName">
+	<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (customerName.isModified() && !customerName.isValid()), tooltip: { title: customerName.isModified() ? customerName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" id="txtCustomerName" class="validation2 width-percent-83 txtCustomerName" autofocus="autofocus" placeholder="Customer Name" autocomplete="off" data-filterkey="display" data-bind="event: { onSelect: onSelectCustomerName }, attr: { 'class': customClass, 'readonly': !(isEnable()) }, css: { borderRedOnValidation: (customerName.isModified() && !customerName.isValid()) }, style: { 'padding-left': (customerName.isModified() && !customerName.isValid()) ? '7%' : '', width: normalWidth }, value: customerName, throttle: true, typeahead: searchCustomerName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+</label>

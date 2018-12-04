@@ -1,0 +1,343 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="divCarriermapping" class="width-percent-100 min-height-550" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<div class="app-page-title width-percent-100">
+		<span class="PageTitleBlack margin-left-25">Carrier Mapping</span>
+		<!--<div class="float-left" style="width:97%;">
+		</div>-->
+		<!--<div>
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonBoard"></i></a>
+		</div>-->
+	</div>
+	<div class="div-float-left" style="width: 63%">
+		<!--<div class="refresh_CarrierMapping"><a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonBoard"></i></a></div>
+		<div>
+			<button class="btn btn-primary height-30 clearAllFilterFoCarrierMapping" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+		</div>-->
+		<div class="container-fluid">
+			<div id="mainDiv" class="row-fluid">
+				<div class="accordion" id="accordion2" style="width: 99%;">
+					<div class="carrierMappingGridWithHeader">
+						<div class="float-left margin-all-10">
+							<!--<table class="tbl-vb-track-report tbl-sales-order">
+                            <tr>
+                                <td class="typeLabels">Pro Number</td>
+                                <td class="typeLabels">
+                                    <input type="text" class="requiredFieldBgColor" data-bind="value: proNumber" />
+                                </td>
+                                <td class="typeLabels">Vendor Name</td>
+                                <td class="typeLabels">
+                                    <input type="text" data-bind="value: vendorName" />
+                                </td>
+                            </tr>
+                        </table>-->
+						</div>
+						<div class="margin-right-35 float-right margin-all-10">
+							<table>
+								<tr>
+									<td>
+										<div class="float-left">
+											<button class="btn btn-primary height-30" style="margin-top: -3px;" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+										</div>
+										<div class="float-right position-Relative">
+											<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div id="carrierMappingGrid" class="gridHeaderPosition" style="width: 99%" data-bind="compose: { model: carrierMappingGrid, view: '../templates/reportViewerControlV2' }"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="float-right width-percent-36">
+		<div id="divSetPositionOnScroll">
+
+			<div class="container-fluid" style="margin-left: -25px; width: 100%;">
+				<div class="row-fluid">
+					<div class="row-fluid" style="border-top: darkgrey 1px" id="gridbind">
+						<div>
+
+							<div>
+								<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+									<li id="mapUnmapLink" class="active"><a href="#mapUnmap" data-toggle="tab" tabindex="-1"><span class="tabHeaderText" data-bind="visible: isMap">Map</span><span class="tabHeaderText" data-bind="	visible: isUnmap">Unmap</span><span class="tabHeaderText" data-bind="	visible: isMapOrUnmap">Map / Unmap</span></a></li>
+									<li id="carrierContactLink" class=""><a href="#carrierContact" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Carrier Contact</span></a></li>
+									<li id="documentLink" data-bind="visible: isTruckLoadSelected, click: loadDocumnetDetails" class=""><a href="#document" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Document</span></a></li>
+								</ul>
+								<div id="myTabContent" class="tab-content contentAreaWithBackground" style="overflow: visible;" data-bind="showContentProgress: listProgressDetails, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+									<div class="tab-pane fade active in " id="mapUnmap">
+										<!--Map / Unmap Section START-->
+										<div>
+											<table class="width-percent-100">
+												<tr>
+													<td class="vertical-align-top">
+														<fieldset>
+															<legend><span data-bind="visible: isMap">Map</span><span data-bind="	visible: isUnmap">Unmap</span><span data-bind="	visible: isMapOrUnmap">Map / Unmap</span></legend>
+															<div>
+																<table class="width-percent-100">
+																	<tr>
+																		<td colspan="2">
+																			<div class="requiredtext align-right">
+																				<div class="requiredBox"></div>
+																				= Required
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="2"><span>GT Carrier Name:</span><br />
+																			<input type="text" class="width-percent-95" data-bind="value: carrierName" readonly="true" /></td>
+																	</tr>
+																	<tr>
+																		<td colspan="2"><span>GT Carrier Code:</span><br />
+																			<input type="text" class="width-percent-95" data-bind="value: carrierCode" readonly="true" /></td>
+																	</tr>
+																	<tr>
+																		<td colspan="2"><span>*MAS Carrier:</span><br />
+																			<div data-bind="compose: { model: masCarrierSerachViewModel, view: 'templates/searchMasCarrierAutoComplete' }"></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="2"><span>*Legal Name:</span><br />
+																			<!--<div data-bind=" validationElement: legalName, validationOptions: { errorElementClass: 'input-validation-error width-percent-97-2' }">
+																				<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (legalName.isModified() && !legalName.isValid()), tooltip: { title: legalName.isModified() ? legalName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" class="requiredFieldBgColor" data-bind="value: legalName, validationOptions: { errorElementClass: null }, style: { width: (legalName.isModified() && !legalName.isValid()) ? '92%' : '95%' }, valueUpdate: 'afterkeydown'" maxlength="100" />
+																			</div>-->
+																			<label class="validation-label2" data-bind=" validationElement: legalName">
+																				<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (legalName.isModified() && !legalName.isValid()), tooltip: { title: legalName.isModified() ? legalName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" id="txtlegalName" class="requiredFieldBgColor validation2" data-bind=" css: { borderRedOnValidation: (legalName.isModified() && !legalName.isValid()) }, style: { 'padding-left': (legalName.isModified() && !legalName.isValid()) ? '20px' : '' }, value: legalName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" maxlength="100" style="width: 95%" />
+																			</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td class="width-13">
+																			<br />
+																			<input type="checkbox" data-bind="checked: isBlock, enable: isMapContactEnable" style="margin-top: -5px;" /></td>
+																		<td class="margin-left--30">Block From System</td>
+																	</tr>
+																	<tr>
+																		<td colspan="2">
+																			<div id="buttonDiv" class="align-right margin-top-5">
+																				<button id="btnSaveMapUnmap" class="btn btn-primary" data-bind="click: saveMapDetails, enable: isMapContactAndSaveEnable">Save</button>
+																				<!--<button id="btnResetMapUnmap" class="btn btn-primary" data-bind="click: closeMap , enable: isMapVisible">Cancel</button>-->
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<!--Map / Unmap Section End -->
+									</div>
+									<div class="tab-pane fade" id="carrierContact">
+										<!-- CarrierContact Details Section START-->
+										<div>
+											<table style="width: 100%;" data-bind="with: carrierContactDetailViewModel">
+												<tr>
+													<td>
+														<fieldset data-bind="with: selectedCarrierContacts">
+															<legend>Carrier Contact Details</legend>
+															<div>
+																<table style="width: 100%;">
+																	<tr>
+																		<td colspan="2">
+																			<div class="requiredtext align-right">
+																				<div class="requiredBox"></div>
+																				= Required
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>Carrier Name</td>
+																		<td>Contact Type</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<input type="text" data-bind="value: $parent.contactCarrierName" class="width-percent-90" style="margin-top: -9px;" disabled="disabled" />
+																		</td>
+																		<td>
+																			<select class="width-percent-98" data-bind="options: $parent.contactTypeList, optionsText: 'DisplayName', value: $parent.contactType"></select>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>Contact Name</td>
+																		<td>Contact Email</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<!--<div data-bind=" validationElement: contactName, validationOptions: { errorElementClass: 'input-validation-error' }">
+																				<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (contactName.isModified() && !contactName.isValid()), tooltip: { title: contactName.isModified() ? contactName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" class="requiredFieldBgColor" data-bind="style: { width: (contactName.isModified() && !contactName.isValid()) ? '84%' : '90%' }, value: contactName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+																			</div>-->
+																			<label class="validation-label2" data-bind=" validationElement: contactName">
+																				<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (contactName.isModified() && !contactName.isValid()), tooltip: { title: contactName.isModified() ? contactName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" id="txtContactName" class="requiredFieldBgColor validation2" data-bind=" css: { borderRedOnValidation: (contactName.isModified() && !contactName.isValid()) }, style: { 'padding-left': (contactName.isModified() && !contactName.isValid()) ? '20px' : '' }, value: contactName, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" style="width: 91%" />
+																			</label>
+																		</td>
+																		<td>
+																			<!--<div data-bind=" validationElement: contactEmail, validationOptions: { errorElementClass: 'input-validation-error' }">
+																				<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (contactEmail.isModified() && !contactEmail.isValid()), tooltip: { title: contactEmail.isModified() ? contactEmail.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" class="requiredFieldBgColor" data-bind=" style: { width: (contactEmail.isModified() && !contactEmail.isValid()) ? '84%' : '90%' }, value: contactEmail, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+																			</div>-->
+																			<label class="validation-label2" data-bind=" validationElement: contactEmail">
+																				<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (contactEmail.isModified() && !contactEmail.isValid()), tooltip: { title: contactEmail.isModified() ? contactEmail.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" id="txtContactEmail" class="requiredFieldBgColor validation2" data-bind=" css: { borderRedOnValidation: (contactEmail.isModified() && !contactEmail.isValid()) }, style: { 'padding-left': (contactEmail.isModified() && !contactEmail.isValid()) ? '20px' : '' }, value: contactEmail, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" style="width: 93.5%" />
+																			</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>Contact Phone</td>
+																		<td>Contact Fax</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<!--<div data-bind=" validationElement: contactphone, validationOptions: { errorElementClass: 'input-validation-error' }">
+																				<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (contactphone.isModified() && !contactphone.isValid()), tooltip: { title: contactphone.isModified() ? contactphone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" maxlength="19" class=" requiredFieldBgColor" data-bind="numeric: contactphone, event: { keypress: formatPhoneNumber(contactphone) }, style: { width: (contactphone.isModified() && !contactphone.isValid()) ? '84%' : '90%' }, value: contactphone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+																			</div>-->
+																			<label class="validation-label2" data-bind=" validationElement: contactphone">
+																				<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (contactphone.isModified() && !contactphone.isValid()), tooltip: { title: contactphone.isModified() ? contactphone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" id="txtContactPhone" class="requiredFieldBgColor validation2" maxlength="19" data-bind="numeric: contactphone, event: { keypress: formatPhoneNumber(contactphone) }, css: { borderRedOnValidation: (contactphone.isModified() && !contactphone.isValid()) }, style: { 'padding-left': (contactphone.isModified() && !contactphone.isValid()) ? '20px' : '' }, value: contactphone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" style="width: 91%" />
+																			</label>
+																		</td>
+																		<td>
+																			<!--<div data-bind=" validationElement: contactFax, validationOptions: { errorElementClass: 'input-validation-error' }">
+																				<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (contactFax.isModified() && !contactFax.isValid()), tooltip: { title: contactFax.isModified() ? contactFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" class=" requiredFieldBgColor" maxlength="13" data-bind=" event: { keypress: formatFaxNumber(contactFax) }, style: { width: (contactFax.isModified() && !contactFax.isValid()) ? '84%' : '90%' }, value: contactFax, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+																			</div>-->
+																			<label class="validation-label2" data-bind=" validationElement: contactFax">
+																				<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (contactFax.isModified() && !contactFax.isValid()), tooltip: { title: contactFax.isModified() ? contactFax.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+																				<input type="text" id="txtContactFax" class="requiredFieldBgColor validation2" maxlength="13" data-bind=" event: { keypress: formatFaxNumber(contactFax) }, css: { borderRedOnValidation: (contactFax.isModified() && !contactFax.isValid()) }, style: { 'padding-left': (contactFax.isModified() && !contactFax.isValid()) ? '20px' : '' }, value: contactFax, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" style="width: 93.5%" />
+																			</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td class="typeStatus" colspan="2">
+																			<div class="width-percent-100 margin-left--5">
+																				<table class="shipment-item width-percent-100" border="1">
+																					<thead>
+																						<tr>
+																							<th class="width-percent-27" style="background-color: #343434;">
+																								<label class="style-label align-center">Name</label></th>
+																							<th class="width-percent-27" style="background-color: #343434">
+																								<label class="style-label align-center">Email</label></th>
+																							<th class="width-percent-27" style="background-color: #343434">
+																								<label class="style-label align-center">Phone</label></th>
+																							<th class="padding-right-7 width-percent-19" style="background-color: #343434">
+																								<label class="style-label align-center">Type</label></th>
+																						</tr>
+																					</thead>
+																				</table>
+																			</div>
+																			<div class="inner-scroll-160 width-percent-100 margin-left--5">
+																				<style>
+																					table.altColorRowTable tr:nth-child(even)
+																					{
+																						background-color: #EBEBEB;
+																					}
+																				</style>
+																				<table style="background-color: white;" id="tblContactDetails" class="table table-bordered shipment-item altColorRowTable">
+																					<tbody data-bind="foreach: $parent.conatctLists">
+
+																						<tr class="height-33" data-bind="click: selected" style="cursor: pointer;">
+																							<td class="td-text-nowrap width-percent-27">
+																								<label class="style-label align-center cursor-pointer" data-bind="text: contactName"></label>
+																							</td>
+																							<td class="td-text-nowrap width-percent-27">
+																								<label class="style-label align-center cursor-pointer" data-bind="text: contactEmail"></label>
+																							</td>
+																							<td class="td-text-nowrap width-percent-27">
+																								<label class="style-label align-center cursor-pointer" data-bind="text: contactphone"></label>
+																							</td>
+																							<td class="td-text-nowrap width-percent-27">
+																								<label class="style-label align-center cursor-pointer" data-bind="text: displayName"></label>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="2">
+																			<div id="buttonDiv2" class="align-right margin-top-5">
+																				<!-- ko if: $root.isMapContactEnable -->
+																				<button id="btnSaveContact" class="btn btn-primary" data-bind="click: $root.saveContactDetails, enable: $root.isSaveEnable">Save</button>
+																				<!-- /ko -->
+																				<!-- ko ifnot: $root.isMapContactEnable -->
+																				<button id="Button1" class="btn btn-primary" disabled="disabled">Save</button>
+																				<!-- /ko -->
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<!-- Carrier Contact details Section End -->
+									</div>
+									<div class="tab-pane fade" id="document">
+										<!-- Document Section START-->
+										<div data-bind="visible: isTruckLoadSelected">
+											<table style="width: 100%;">
+												<tr>
+													<td>
+														<fieldset>
+															<legend>Document</legend>
+															<div>
+																<table style="width: 100%; height: 160px;">
+																	<tr>
+																		<td class="typeStatus">
+																			<input type="file" class="display-none" name="fileToUpload" id="fileToUpload" data-bind="event: { change: uploadCarrierMappingrDocument }" data-buttontext="Your label here." />
+																			<!--data-bind="event: { change: uploadDocument }"-->
+																			<input type="text" class="width-percent-95" data-bind="value: UploadedFileName" disabled="disabled" />
+																			<!--data-bind="value: uploadedFileName"-->
+																		</td>
+																		<td class="typeStatus">
+																			<button id="btnUploadCSVFile" class="btn flatButton" onclick="$('input[id=fileToUpload]').click();">Browse</button>
+																			<button id="btnAttached" class="btn btn-primary" style="height: 29px;" data-bind="click: onAttach, enable: enableAttachedButton()">Attach</button>
+																			<!--data-bind="enable: notDisableUploadButton, click: uploadData"-->
+																		</td>
+																	</tr>
+																	<tbody data-bind='foreach: truckLoadDocumentTypeItemsList'>
+																		<tr>
+																			<td>
+																				<input type="checkbox" data-bind="checked: isChecked, enable: isEnable" style="margin-top: 4px;" />
+																				<span data-bind="text: documentTypeName"></span></td>
+																			<td>
+																				<a style="cursor: pointer; margin-left: 10px;" target="_blank" data-bind="attr: { href: 'DocumentViewer/OpenCarrierMappingFromDocumentManagement?fileLocationURL=' + documentPathToView() }, css: { disableAnchorTag: !isFileUploaded() }" aria-disabled="true">View</a>
+																				<a style="cursor: pointer;" target="_blank" data-bind="attr: { href: 'DocumentViewer/DownloadCarrierMappingFromDocumentManagement?fileLocationURL=' + documentPathToView() }, css: { disableAnchorTag: !isFileUploaded() }" aria-disabled="true">Download</a>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</fieldset>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

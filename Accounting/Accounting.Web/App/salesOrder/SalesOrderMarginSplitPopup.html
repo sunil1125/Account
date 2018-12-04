@@ -1,0 +1,42 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="custom-modal-header-row"></div>
+<div class="custom-modal-header">
+	<h4 class="custom-modal-header-text">MarginSplit</h4>
+</div>
+
+<div class="custom-modal-body rowContainerForLineItems">
+	<div class="row-fluid">
+		<table id="tblVendorBillItems" class="table table-bordered shipment-item ">
+			<tr>
+				<td>Rep Absorbing Perc:</td>
+				<td>
+					<div data-bind=" validationElement: repAbsorbingPerc, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-Fields' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (repAbsorbingPerc.isModified() && !repAbsorbingPerc.isValid()), tooltip: { title: repAbsorbingPerc.isModified() ? repAbsorbingPerc.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" class="requiredFieldBgColor" data-bind="percentageInput: percentageValidation, style: { width: (repAbsorbingPerc.isModified() && !repAbsorbingPerc.isValid()) ? '86%' : '93%' }, value: repAbsorbingPerc, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeyup'" />
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>GT Absorbing Perc:</td>
+				<td>
+					<input type="text" disabled="disabled" data-bind="value: gtAbsorbingPerc" /></td>
+			</tr>
+			<tr>
+				<td>Negative Margin:</td>
+				<td>
+					<input type="text" disabled="disabled" data-bind="value: negativeMargin" /></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div id="buttonDiv" class="custom-modal-footer" style="text-align: right;">
+	<button class="btn btn-primary" data-bind="click: clickOnOk">OK</button>
+	<button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+</div>

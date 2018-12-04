@@ -1,0 +1,54 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<createDetails>
+<id>US22955</id> <by>Shreesha Adiga</by> <date>30-06-2016</date><description>Sales order cancel reason popup</description>
+</createDetails>-->
+<div class="custom-msg-box border-radius-8">
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text">Sales Order Cancelation Reason</h4>
+	</div>
+
+	<div>
+		<div class="reason-code-popup-header">
+			<span>You are about to cancel this sales order. Please confirm the reason for cancelation.
+			</span>
+		</div>
+	</div>
+
+	<div id="reasonCodeDiv" tabindex="-1" class="table-cell div-percent-20" data-bind="foreach: cancelReasonList">
+		<div class="radio-label-container">
+			<input type="radio" class="zero-margin" name="reasoncodeGroup" data-bind="value: ID, attr: { id: 'radio_' + ID }, checked: $parent.selectedReason">
+			<label class="displayInline" style="margin-top: 4px" data-bind="text: Value, attr: { for: 'radio_' + ID }"></label>
+			<br />
+		</div>
+	</div>
+
+	<br>
+
+	<table class="margin-left-10" data-bind="visible: isBOLNumberVisible">
+		<tr>
+			<td>
+				<b>Please enter the BOL#:</b>
+			</td>
+			<td class="typeStatus">
+				<label id="lblBolNumber" class="validation-label2" data-bind="validationElement: bolNumber">
+					<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (bolNumber.isModified() && !bolNumber.isValid()), tooltip: { title: bolNumber.isModified() ? bolNumber.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+					<input type="text" class="width-percent-92" maxlength="15"
+						data-bind="value: bolNumber, event: { keypress: isAlphaNumericSpace }, css: { 'borderRedOnValidation padding-left-16': (bolNumber.isModified() && !bolNumber.isValid()) }, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</label>
+			</td>
+		</tr>
+	</table>
+
+	<div class="padding-right-8 padding-bottom-20">
+		<div id="buttonDiv" class="align-right margin-top-5">
+			<button class="btn btn-primary" data-bind="click: onSubmit, enable: isSubmitButtonEnabled">Submit</button>
+			<button class="btn btn-primary" data-bind="click: onCancel">Cancel</button>
+		</div>
+	</div>
+</div>

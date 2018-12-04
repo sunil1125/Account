@@ -1,0 +1,20 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv">
+	<div id="labelDiv" style="width: 100%; text-align: right;">
+		<button class="btn btn-primary" style="margin-right: 15px; margin-top: 10px;" data-bind="click: openHistoryDetails, enable: isHistoryDetailEnable">History Details</button>
+	</div>
+	<div id="content">
+		<div id="gridDiv" style="float: left; width: 87%; margin-top: -83px">
+
+			<div class="row-fluid">
+				<div id="gridHistory" class="margin-top--10" data-bind="compose: { model: historyPurchaseOrderContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

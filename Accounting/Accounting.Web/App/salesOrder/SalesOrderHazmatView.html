@@ -1,0 +1,104 @@
+﻿<!--******************************************************************************
+
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+
+******************************************************************************-->
+
+<!--
+<summary>
+Popup to send the dispute email using the selected template
+</summary>
+<createDetails>
+<id></id> <by></by> <date></date>
+</createDetails>
+<changeHistory>
+<id>US25117</id> <by>Baldev Singh Thakur</by> <date>30-09-2016</date><description>Packing Group Changes</description>
+<id>DE24698</id> <by>Baldev Singh Thakur</by> <date>05-10-2016</date><description>Added enable flag on Packing Group drop down</description>
+<id>US24907</id> <by>Vasanthakumar</by> <date>24-10-2016</date><description>Increase character limit for Product Name</description>
+</changeHistory>
+-->
+<div id="divHazDetails" class="tableLayout">
+	<div class="table-cell">
+		<div id="content" class="padding-left-10">
+			<div id="gridDiv">
+				<div class="row-fluid">
+					<div id="divItemsContainer" class="span12 item-div-container">
+						<table id="tblHazmatItems" class="table table-bordered shipment-item">
+							<thead>
+								<tr>
+									<th>
+										<label class="align-center">Description</label>
+									</th>
+
+									<th>
+										<label class="align-center">Hazmat/UN#</label>
+									</th>
+									<th>
+										<label class="align-center">Packing Group#</label>
+									</th>
+									<th>
+										<label class="align-center">Hazardous Class</label>
+									</th>
+								</tr>
+							</thead>
+							<tbody data-bind='foreach: salesOrderItemsList' class="line-items">
+								<tr class="lineItemRow">
+									<td data-title="Description">
+
+										<label id="lblDescription" class="validation-label2" data-bind=" validationElement: userDescription">
+											<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (userDescription.isModified() && !userDescription.isValid()), tooltip: { title: userDescription.isModified() ? userDescription.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<!--##START: US24907-->
+											<input type="text" class="requiredFieldBgColor validation2" name="Commodity" id="txtHazDescription" data-bind="css: { borderRedOnValidation: (userDescription.isModified() && !userDescription.isValid()) }, style: { 'padding-left': (userDescription.isModified() && !userDescription.isValid()) ? '18px' : '' }, value: userDescription, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', uniqueName: true, enable: $parent.isSaveEnable" maxlength="300" style="width: 94%;" />
+											<!--##END: US24907-->
+										</label>
+									</td>
+									<td data-title="HazmatUN">
+
+										<label id="lblHazmatUN" class="validation-label2" data-bind=" validationElement: hazmatUnNumber">
+											<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (hazmatUnNumber.isModified() && !hazmatUnNumber.isValid()), tooltip: { title: hazmatUnNumber.isModified() ? hazmatUnNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<input type="text" class="requiredFieldBgColor validation2" name="HazmatUN" id="hazmatUn" data-bind="css: { borderRedOnValidation: (hazmatUnNumber.isModified() && !hazmatUnNumber.isValid()) }, style: { 'padding-left': (hazmatUnNumber.isModified() && !hazmatUnNumber.isValid()) ? '18px' : '' }, value: hazmatUnNumber, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', uniqueName: true, enable: $parent.isSaveEnable" maxlength="15" style="width: 94%;" />
+										</label>
+									</td>
+									<!--##START: US25117-->
+									<td data-title="PackingGroup" class="width-percent-11 validation-label2" style="text-align: center;">
+
+										<label id="lblPackingGroup" class="validation-label2" data-bind=" validationElement: packingGroup">
+											<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (packingGroup.isModified() && !packingGroup.isValid()), tooltip: { title: packingGroup.isModified() ? packingGroup.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<!--###START: DE24698-->
+											<select class="newselect width-180  validation2 requiredFieldBgColor" data-bind="options: $parent.salesOrderHazmatPackingGroup, optionsValue: 'ID', optionsText: 'Value', value: packingGroup, optionsCaption: 'Select', css: {'padding-left-16 borderRedOnValidation': (packingGroup.isModified() && !packingGroup.isValid()) }, enable: $parent.isSaveEnable"></select>
+											<!--###END: DE24698-->
+										</label>
+									</td>
+									<!--##END: US25117-->
+									<td data-title="HazardousClass">
+
+										<label id="lblhazardousClass" class="validation-label2" data-bind=" validationElement: hazardousClass">
+											<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (hazardousClass.isModified() && !hazardousClass.isValid()), tooltip: { title: hazardousClass.isModified() ? hazardousClass.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+											<input type="text" class="requiredFieldBgColor validation2" name="hazardousClass" id="hazardousClass" data-bind="event: { keypress: isNumber }, css: { borderRedOnValidation: (hazardousClass.isModified() && !hazardousClass.isValid()) }, style: { 'padding-left': (hazardousClass.isModified() && !hazardousClass.isValid()) ? '18px' : '' }, value: hazardousClass, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: $parent.isSaveEnable" maxlength="13" style="width: 93%;" />
+										</label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table style="width: 23%;">
+							<tr>
+								<td class="typeLabels">Emergency Contact:
+								</td>
+								<td class="typeStatus">
+
+									<label id="Label1" class="validation-label2" data-bind=" validationElement: emergencyPhone">
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (emergencyPhone.isModified() && !emergencyPhone.isValid()), tooltip: { title: emergencyPhone.isModified() ? emergencyPhone.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+										<input type="text" class="requiredFieldBgColor validation2" id="EmergencyPhoneNo" data-bind="numeric: emergencyPhone, event: { keypress: formatToExtensionPhoneNumber(emergencyPhone) }, css: { borderRedOnValidation: (emergencyPhone.isModified() && !emergencyPhone.isValid()) }, style: { 'padding-left': (emergencyPhone.isModified() && !emergencyPhone.isValid()) ? '18px' : '' }, value: emergencyPhone, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', attr: { 'readonly': !(isSaveEnable()) }" maxlength="19" style="width: 93%;" />
+									</label>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

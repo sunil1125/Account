@@ -1,0 +1,141 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+Audit Bill View
+</summary>
+<createDetails>
+<id></id> <by></by> <date></date>
+</createDetails>
+<changeHistory>
+<id>DE24890</id> <by>Baldev Singh Thakur</by> <date>25-10-2016</date><description>added logic to display the Ref and Po on hover</description>
+</changeHistory>
+-->
+
+<div class="tableLayout">
+	<div class="table-cell" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 50.9, height: 300 }">
+		<fieldset>
+			<legend>Audited Bill Details</legend>
+			<div class="width-percent-100" style="height: 100%;">
+				<div>
+					<table class="width-percent-100">
+
+						<tr>
+							<td class="vertical-align-top" style="width: 50%;">
+								<div class="padding-right-16 width-percent-100" data-bind="compose: { model: salesOrderOriginalBillItemViewModel, view: 'salesOrder/SalesOrderAuditedBillItemsView' }"></div>
+								<div style="text-align: right;">
+									<button class="btn btn-primary width-85" data-bind="click: copyCostOnly, enable: btnCopyEnable">Copy Cost</button>
+								</div>
+							</td>
+							<td class="vertical-align-top" style="width: 50%;">
+								<div class="width-percent-100" data-bind="compose: { model: salesOrderAuditedBillItemViewModel, view: 'salesOrder/SalesOrderAuditedBillItemsView' }"></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="padding-top-10">
+					<table>
+
+						<tr>
+							<td class="vertical-align-top">
+								<table class="span4  width-percent-100">
+									<tr>
+										<td class="width-percent-30  ">
+
+											<div class="span4 width-percent-100">
+												<table class="tbl-sales-order width-percent-100 ">
+													<tr>
+														<td class="typeLabels width-percent-10">Origin Zip:
+														</td>
+														<td class="typeStatus">
+															<input id="Text2" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: orgZip, valueUpdate: 'afterkeydown', uniqueName: true, enable: false" />
+														</td>
+													</tr>
+													<tr>
+
+														<td class="typeLabels width-percent-10">Destination Zip:
+														</td>
+														<td class="typeStatus">
+															<input id="Text3" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: destZip, valueUpdate: 'afterkeydown', uniqueName: true, enable: false" />
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+										<td class="width-percent-30  ">
+
+											<div class="span4 width-percent-100">
+												<table class="tbl-sales-order width-percent-100 ">
+
+													<tr>
+														<td class="typeLabels width-percent-10">PRO #:
+														</td>
+														<td class="typeStatus">
+															<input id="Text4" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: pro, valueUpdate: 'afterkeydown', uniqueName: true, enable: false" />
+														</td>
+													</tr>
+													<tr>
+
+														<td class="typeLabels width-percent-10">PO #:
+														</td>
+														<td class="typeStatus">
+															<!--###START: DE24890-->
+															<input id="Text5" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: po, valueUpdate: 'afterkeydown', uniqueName: true, enable: false,attr:{ title: po }" />
+															<!--###END: DE24890-->
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+								</table>
+							</td>
+							<td>
+								<table class="span4  width-percent-100">
+									<tr>
+										<td class="width-percent-30 vertical-align-top ">
+
+											<div class="span4 width-percent-100">
+												<table class="tbl-sales-order width-percent-100 ">
+													<tr>
+														<td class="typeLabels width-percent-10">Reference #:
+														</td>
+														<td class="typeStatus">
+															<!--###START: DE24890-->
+															<input id="Text6" type="text" maxlength="10" placeholder="" class="width-140" data-bind="value: ref, valueUpdate: 'afterkeydown', uniqueName: true, enable: false,attr:{ title: ref }" />
+															<!--###END: DE24890-->
+														</td>
+													</tr>
+
+													<tr>
+														<td class="typeLabels width-percent-10">Bill Date:
+														</td>
+														<td class="typeStatus">
+															<div class="typecontrols padding-top-0" tabindex="8">
+																<div class="input-append date width-150" id="Div2" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: billDate, datepickerOptions: datepickerOptions">
+																	<input id="Text7" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertTobillDateDate }, value: billDate, valueUpdate: 'afterkeydown', enable: btnCopyEnable" maxlength="10" />
+																	<span class="add-on" data-bind="css: { disabledateLink: true }">
+																		<i class="icon-calendar"></i>
+																	</span>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

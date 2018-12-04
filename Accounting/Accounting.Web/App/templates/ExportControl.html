@@ -1,0 +1,12 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div data-bind="foreach: exportOptionList">
+	<button class="btn " type="button" data-bind='text: (enabled() ? name : ""), enable: enabled, click: $parent.onButtonClick' style="min-height: 30px; min-width: 60px;">
+	</button>
+	<i class="icon-spinner icon-spin active" style="margin-top: 5px; font-size: 1.5em; position: relative; top: 3px; left: -39px;" data-bind="visible: !enabled()"></i>
+</div>

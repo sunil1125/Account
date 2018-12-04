@@ -1,0 +1,422 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+/*#region Global Variables */
+/*#endregion */
+/*#region classes and id for css */
+body {
+  background: url('../images/lightdenim3.png') !important;
+}
+/*#region Login Style */
+.pageHeader {
+  background-color: #343434 !important;
+}
+.pageFooter {
+  background-color: #343434 !important;
+}
+.welcomeText {
+  color: #343434 !important;
+}
+.loginBackground {
+  background-color: #808080 !important;
+}
+.loginHotButton {
+  background-color: #343434 !important;
+}
+.loginLinks {
+  color: #343434 !important;
+}
+/*#endregion */
+/*#region Navigation Styles */
+.navBackground {
+  background-color: #595959 !important;
+}
+.whiteDownCaret:after {
+  border-top-color: #595959 !important;
+}
+.open .whiteDownCaret::before {
+  /*border-top-color: @menuBackground !important;*/
+
+  top: 13px !important;
+  border-bottom-color: #fff !important;
+  border-top-color: transparent !important;
+}
+.open .whiteDownCaret:after {
+  border-top-color: transparent !important;
+  border-bottom-color: #595959 !important;
+}
+.loginName:hover .whiteDownCaret::after {
+  border-top-color: #3c63ab !important;
+}
+.open .loginName:hover .whiteDownCaret::after {
+  border-top-color: transparent !important;
+  border-bottom-color: #3c63ab !important;
+}
+.menuBackground {
+  background-color: #595959;
+  color: White;
+}
+.menuBtn {
+  background: #595959;
+  color: White;
+}
+.menuBtn:hover {
+  background-color: #3c63ab;
+  color: White;
+}
+.menuBtn.hover {
+  background-color: #3c63ab;
+  color: White;
+}
+.menuBtnClick,
+.menuBtnClick:hover {
+  background-color: #3c63ab;
+  color: White;
+}
+#subMenuList {
+  background-color: #595959;
+  color: White;
+}
+#subMenuList:hover,
+#subMenuList:active {
+  background-color: #595959;
+  color: White;
+}
+#subMenuList > li {
+  background: #595959;
+  color: White;
+}
+#subMenuList > li > a,
+#subMenuList > li > a > span {
+  color: White;
+}
+#subMenuList > li > a:hover,
+#subMenuList > li > a:hover span {
+  color: White !important;
+  background: #3c63ab;
+  border-bottom: 0px;
+}
+.loginName {
+  background: #595959;
+  color: White;
+}
+.loginName:hover {
+  background-color: #3c63ab;
+  color: White;
+}
+.loginName.active,
+.loginName:hover,
+.open .loginName,
+.LoginNameSubMenuClick {
+  background-color: #3c63ab;
+  color: White;
+}
+#myaccountSubMenu {
+  background-color: #595959;
+  color: White;
+}
+#myaccountSubMenu:hover,
+#myaccountSubMenu:active {
+  background-color: #3c63ab;
+  color: White;
+}
+#myaccountSubMenu > li {
+  background: #595959;
+  color: White;
+}
+#myaccountSubMenu > li > a,
+#myaccountSubMenu > li > a > span {
+  color: White;
+}
+#myaccountSubMenu > li > a:hover,
+#myaccountSubMenu > li > a:hover span {
+  color: White !important;
+  background: #3c63ab;
+  border-bottom: 0px;
+}
+/*#endregion */
+.homeIcon {
+  border-left: 1px solid White;
+  border-right: 1px solid White;
+}
+.homeIcon:hover,
+.homeIcon:active {
+  background-color: #3c63ab;
+}
+.menuIcon {
+  background-color: #595959 !important;
+}
+#CRImage {
+  background-image: url(../images/CRlogo1.png) !important;
+  background-repeat: no-repeat;
+}
+#homeImage {
+  background-image: url(../images/icons_home1.png) !important;
+  background-repeat: no-repeat;
+}
+#searchIcon {
+  background-image: url(../images/search_drktheme_def.png);
+  background-repeat: no-repeat;
+}
+#resourcesIcon {
+  background-image: url(../images/resources_drktheme_def.png) !important;
+  background-repeat: no-repeat;
+}
+#calculatorIcon {
+  background-image: url(../images/calculator_drktheme_def.png) !important;
+  background-repeat: no-repeat;
+}
+#searchIcon:hover {
+  background-image: url(../images/search_drktheme_sel.png);
+  background-repeat: no-repeat;
+}
+#resourcesIcon:hover {
+  background-image: url(../images/resources_drktheme_sel.png) !important;
+  background-repeat: no-repeat;
+}
+#calculatorIcon:hover {
+  background-image: url(../images/calculator_drktheme_sel.png) !important;
+  background-repeat: no-repeat;
+}
+/*#region Hot Button */
+.hotButton {
+  background-color: #343434 !important;
+  color: White !important;
+}
+/*#endregion */
+/*#region Tab style  */
+.nav-tab-new > li > a {
+  background: #c9c7c5 !important;
+  border: 1px solid #C1B7AB !important;
+}
+.nav-tab-new > .active > a,
+.nav-tab-new > .active > a:hover,
+.nav-tab-new > .active > a:focus {
+  background: none repeat scroll 0 0 #f0eeeb !important;
+}
+/*#endregion */
+/*#region Content Area */
+.contentAreaWithoutDenimBackground {
+  background: #f5f5f5 !important;
+}
+/*#endregion */
+/*#region KoGrid style */
+.gridOptionalHeader {
+  background: #929090;
+}
+.kgGroupPanel,
+.kgHeaderContainer,
+.kgHeaderCell,
+.kgTopPanel {
+  background-color: #3e3d3d !important;
+  color: #ffffff;
+}
+.kgFooterPanel {
+  background-color: #343434 !important;
+  color: #fff;
+}
+.kgLabel,
+.pageDropdownLabel {
+  color: #ffffff !important;
+}
+.kgHeaderButton {
+  color: #ffffff !important;
+}
+.gridHeader {
+  background-color: rgba(52, 52, 52, 0.7);
+}
+/*#endregion KoGrid style */
+/*#region Calendar control */
+.daterangepicker {
+  background: none repeat scroll 0 0 #343434;
+  color: #000000;
+}
+.daterangepicker.opensright:after {
+  border-bottom: 6px solid #343434;
+}
+.daterangepicker .ranges li {
+  background: none repeat scroll 0 0 #343434;
+  color: #ffffff;
+}
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+  background: none repeat scroll 0 0 #3c63ab;
+  color: white;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #3f4c5c;
+  background-image: linear-gradient(to bottom, #3f4c5c, #3f4c5c);
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+}
+.daterangepicker td.available:hover {
+  background: #3c63ab;
+  color: #fff;
+}
+.daterangepicker td.in-range {
+  background: #f0eeeb;
+}
+.daterangepicker .calendar-ranges input.active {
+  background: #3f4c5c;
+  border: 1px solid #3f4c5c;
+  color: #fff;
+}
+.daterangepicker .calendar-ranges span,
+.daterangepicker .calendar-ranges span.active {
+  color: white;
+}
+/*#endregion */
+/* #region online payment flow indicator arrows*/
+.onlineArrow {
+  background: #D8D8D8;
+  color: #999999;
+}
+.onlineArrow::after {
+  border-left-color: #D8D8D8;
+  color: #999999;
+}
+.onlineArrowActive {
+  background-color: #3c63ab;
+  color: White;
+}
+.onlineArrowActive::after {
+  border-left-color: #3c63ab;
+}
+/* #endregion online payment flow indicator arrows*/
+/*#region Account management tab background and font color */
+.settings-tabs-account > .active > a,
+.settings-tabs-account > .active > a:hover,
+.settings-tabs-account > .active > a:focus {
+  background-color: #f0eeeb;
+  color: #555 !important;
+}
+.settings-tabs-account > li > a,
+.settings-tabs-account > li > a:hover {
+  background: #c9c7c5;
+  color: black !important;
+}
+/*#endregion */
+/*#region Chat Control UI */
+.chatOnlineStatusBlock {
+  background-color: #595959;
+}
+.chatUserBlock {
+  background-color: #595959;
+}
+.chatCaret:before {
+  border-bottom-color: #9A9A9A;
+}
+.chatCaret:after {
+  border-bottom-color: #595959;
+}
+#chatText {
+  color: white;
+}
+#chatText a {
+  color: white;
+}
+#chatText a:hover {
+  color: white;
+}
+.chatboxhead {
+  background-color: #595959 !important;
+}
+.chatboxblink {
+  background-color: #f99d39 !important;
+  border-right: 1px solid #f99d39 !important;
+  border-left: 1px solid #f99d39 !important;
+}
+.dropdownChat-menu {
+  background-color: #595959 !important;
+}
+.btn-checkbox.active {
+  background-color: #3c63ab !important;
+  color: White;
+  font-weight: normal;
+  /*border-color: @contentBackground;*/
+}
+/*#endregion */
+/*#region LTL Flow Breadcrumb */
+#breadcrumb {
+  color: #999999;
+  border: 1px solid white;
+}
+#breadcrumb > a {
+  background: #d8d8d8;
+  color: #999999;
+}
+#breadcrumb > a:before {
+  border-color: #d8d8d8;
+  border-left-color: transparent;
+}
+#breadcrumb > a:after {
+  border-left-color: #d8d8d8;
+}
+#breadcrumb > .currentOrPreviousPage {
+  background: #3c63ab;
+  color: White;
+}
+#breadcrumb > .currentOrPreviousPage:before {
+  border-color: #3c63ab;
+  border-left-color: transparent;
+}
+#breadcrumb > .currentOrPreviousPage:after {
+  border-left-color: #3c63ab;
+}
+/*#endregion LTL Flow breadCrumb*/
+/*#region for modal pop-ups and popover*/
+.custom-modal-header {
+  background: #595959 !important;
+}
+.custom-modal-header-text {
+  color: #ffffff !important;
+}
+.popover-title {
+  background: #595959 !important;
+  color: #ffffff !important;
+}
+.popover.right .arrow {
+  border-right-color: #595959 !important;
+}
+.popover.right .arrow:after {
+  border-right-color: #595959 !important;
+}
+.popover.top .arrow {
+  border-top-color: #595959 !important;
+}
+.popover-content {
+  border: 2px solid #595959 !important;
+}
+.popover.left .arrow {
+  border-left-color: #595959 !important;
+}
+.popover.left .arrow:after {
+  border-left-color: #595959 !important;
+}
+.popover.bottom .arrow {
+  border-bottom-color: #595959 !important;
+}
+.popover.bottom .arrow:after {
+  border-bottom-color: #595959 !important;
+}
+/*#endregion for modal pop-ups and popover*/
+/*#region Action Buttons */
+.successbtn {
+  background: #00a651 !important;
+}
+.cacnelbtn {
+  background: #e6e6e6 !important;
+}
+/*#endregion Action Buttons*/
+/*#region Forms*/
+.rowContainer,
+.rowContainerForLineItems {
+  background: #d9d9d9 !important;
+}
+/*#endregion Form*/
+/*#endregion classes and id for css */

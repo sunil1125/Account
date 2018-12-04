@@ -1,0 +1,104 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US23631</id> <by>Shreesha Adiga</by> <date>03-08-2016</date> <description>Modified hardcoded dropdown values to be populated from knokout arrays</description>
+<id>US25380</id> <by>Janakiram</by> <date>02-11-2016</date> <description>Modified Tool Tip CSS</description>
+</changeHistory>-->
+
+<div id="divDashBoardPopUp" class="custom-msg-box border-radius-8" style="max-width: 450px !important">
+	<!--<div class="custom-modal-header-row"></div>-->
+	<div class="custom-modal-header border-top-8">
+
+		<h4 class="custom-modal-header-text">Select Date Range</h4>
+	</div>
+	<div class="tableLayout" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<table class="tbl-sales-order shipment-item margin-all-15">
+			<tr>
+				<td class="typeLabels">From</td>
+				<td class="typeLabels">
+					<div class="validation-label2" data-bind=" validationElement: fromDate">
+						<!--##START: US25380-->
+						<i class="fa fa-question-circle valdation_icon" style="z-index: 999;" data-bind=" visible: (fromDate.isModified() && !fromDate.isValid()), tooltip: { title: fromDate.isModified() ? fromDate.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+						<div id="toDateDIV" class="input-append date" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+							data-bind="datepicker: fromDate, datepickerOptions: datepickerOptions, css: { 'borderRedOnValidation padding-left-16': (fromDate.isModified() && !fromDate.isValid()) }">
+
+							<input type="text" id="txtFormDate" size="16" class="requiredFieldBgColor span10 validation2 height-20-important" placeholder="mm/dd/yyyy"
+								data-bind="event: { blur: convertTofromDate }, value: fromDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" maxlength="10" style="width: 75%" />
+							<!--##END: US25380-->
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</td>
+				<td class="typeLabels">To</td>
+				<td class="typeLabels">
+					<div class="validation-label2" data-bind=" validationElement: toDate">
+						<!--##START: US25380-->
+						<i class="fa fa-question-circle valdation_icon" style="z-index: 999;" data-bind=" visible: (toDate.isModified() && !toDate.isValid()), tooltip: { title: toDate.isModified() ? toDate.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+						<div class="input-append date" id="fromDateDatepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+							data-bind="datepicker: toDate, datepickerOptions: datepickerOptions, css: { 'borderRedOnValidation padding-left-16': (toDate.isModified() && !toDate.isValid()) }">
+
+							<input type="text" id="txtToDate" size="16" class="requiredFieldBgColor span10 validation2 height-20-important" placeholder="mm/dd/yyyy"
+								data-bind="event: { blur: convertToToDate }, value: toDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" maxlength="10" style="width: 75%" />
+							<!--##END: US25380-->
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="height: 8px;"></div>
+				</td>
+			</tr>
+
+			<!--##START: US23631-->
+			<tr>
+				<td colspan="4" class="align-center" data-bind="foreach: reportCategoryRadioList">
+					<input type="radio" data-bind="attr: { title: Text, value: Value, id: ('radio_' + Value) }, checked: $parent.selectedCategory" name="report" style="margin: 0px;" />
+					<label class="displayInline" style="font-size: 13px" data-bind="text: Text, attr: { for: 'radio_' + Value }"></label>
+					&nbsp;
+				</td>
+			</tr>
+			<!--##END: US23631-->
+			<tr>
+				<td colspan="4">
+					<div style="height: 8px;"></div>
+				</td>
+			</tr>
+			<tr>
+
+				<td colspan="4">
+					<div data-bind="visible: isRexnord()">
+						Report Type: 
+						<!--##START: US23631-->
+						<select id="drpItems" class="newselect width-percent-51 margin-left-percent-2" data-togle="tooltip" data-bind="options: reportTypesList, optionsValue: 'Value', optionsText: 'Text', value: selectedReportType">
+						</select>
+						<!--##END: US23631-->
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="height: 8px;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align: right">
+					<button class="btn btn-primary" data-bind="click: onDownloadClick, enable: isDownloaded">Download</button>
+					<button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div data-bind="if: isHorizontalView ">
+	<div id="VerticalOptionButtonGroup" class="btn-group" data-bind="foreach: optionList">
+		<button type="button" class=" flatButton btn btn-checkbox active" data-bind="text: name, css: { active: selected }, html: $parent.useHtmlBinding() ? html() : name, enable: enabled, click: $parent.selectOption">
+		</button>
+	</div>
+</div>
+<div data-bind="if: isVerticalView ">
+	<ul id="HorizontalOptionButtonGroup" class="nav btn-group" data-bind="foreach: optionList">
+		<li>
+			<button type="button" class="flatButton btn btn-checkbox btn-checkbox-sharp active" data-bind="text: name, css: { active: selected }, html: $parent.useHtmlBinding() ? html() : name, enable: enabled, click: $parent.selectOption">
+			</button>
+			<div data-bind="style: { height: $parent.verticalControlSpace }"></div>
+		</li>
+	</ul>
+</div>

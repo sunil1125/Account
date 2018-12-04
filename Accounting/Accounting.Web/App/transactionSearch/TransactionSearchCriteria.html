@@ -1,0 +1,256 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+<!--
+<summary>
+Report Viewer Control
+</summary>
+<changeHistory> 
+<id>DE25057   </id> <by>Janakiram</by> <date>31-11-2016</date> <description>Added required filed for truck load quote</description>
+</changeHistory>
+-->
+<div class="tableLayout">
+	<div class="table-cell threeDiv">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Type:
+				</td>
+				<td class="typeStatus">
+					<select id="drpTypeList" class="margin-bottom-0" data-bind="options: typeList, optionsValue: 'ID', optionsText: 'Value', value: selectedtypeList">
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="typeLabels">Amount $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="numericDecimalInput: NumericInputWithDecimalPoint, value: amount, uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels"><span data-bind="text: statusHeader"></span>
+				</td>
+				<td class="typeStatus">
+					<select class="margin-bottom-0" data-bind="options: orderStatusList, optionsValue: 'ID', optionsText: 'Value', value: selectedorderStatusList, enable: isNotTruckLoadQuoteNumber">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">BOL #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="event: { keypress: isAlphaNumericSpace }, value: bolNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Shipper Company Name:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: shipperCompanyName, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Consignee Company Name:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: consigneeCompanyName, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Vendor Name:
+				</td>
+				<td class="typeStatus">
+					<div data-bind="compose: { model: vendorNameSearchList, view: 'templates/searchVendorNameControl' }"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Mode:
+				</td>
+				<td class="typeStatus">
+					<select class="margin-bottom-0" data-bind="options: modeList, optionsValue: 'ID', optionsText: 'Value', value: selectedModeList, enable: isModeEnable">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PO #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="event: { keypress: isAlphaNumericSpace }, value: poNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Shipper City:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: shipperCity, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Consignee City:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: consigneeCity, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Sales Rep Name:
+				</td>
+				<td class="typeStatus">
+					<div data-bind="compose: { model: userSearchList, view: 'templates/searchUserAutoComplete' }"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Select Date Range:
+				</td>
+
+				<td class="typeStatus">
+					<select class="margin-bottom-0" data-bind="options: dateRangeOptionsList, optionsValue: 'ID', optionsText: 'Value', value: dateRangeSelectedOption, enable: isNotTruckLoadQuoteNumber">
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="table-cell threeDiv">
+		<table class="tbl-sales-order" style="width: 100%;">
+			<tr>
+				<td class="typeLabels">Shipper Zip Code:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: shipperZip, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+
+			<tr>
+				<td class="typeLabels">Consignee Zip Code:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: consigneeZip, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Customer BOL #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="event: { keypress: isAlphaNumericSpace }, value: customerBOLNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PRO #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="event: { keypress: isAlphaNumericSpace }, value: proNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Item Numbers:
+				</td>
+				<td class="typeStatus">
+					<div>
+						<select id="multiSelect" class="margin-bottom-0" multiple="multiple" data-bind="options: itemNumberList, optionsValue: 'ItemId', optionsText: 'ShortDescription', enable: isNotTruckLoadQuoteNumber">
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Customer Name:
+				</td>
+				<td class="typeStatus">
+					<div data-bind="compose: { model: customerNameSearchList, view: 'templates/searchCustomerAutoComplete' }"></div>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="typeLabels">TruckLoad Quote #:
+				</td>
+				<td class="typeStatus">
+					<!--###START: DE25057   -->
+					<label class="validation-label2" data-bind="validationElement: truckLoadQuoteNumber">
+						<i class="fa fa-question-circle valdation_icon"
+							data-bind=" visible: (truckLoadQuoteNumber.isModified() && !truckLoadQuoteNumber.isValid()), tooltip: { title: truckLoadQuoteNumber.isModified() ? truckLoadQuoteNumber.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" class="requiredFieldBgColor" maxlength="11"
+							data-bind="value: truckLoadQuoteNumber, enable: isTruckLoadQuoteNumber, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (truckLoadQuoteNumber.isModified() && !truckLoadQuoteNumber.isValid()) }" />
+					</label>
+					<!--###START: DE25057   -->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Invoice Status:
+				</td>
+				<td class="typeStatus">
+					<select class="margin-bottom-0" data-bind="options: invoiceStatusList, optionsValue: 'ID', optionsText: 'Value', value: selectedInvoiceStatusList, enable: isInvoiceStatusEnable">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Ref #:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: refNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Weight:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind='numeric: totalWeight, value: totalWeight, uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber' />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Pieces:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind='numeric: totalPieces, value: totalPieces, uniqueName: true, validationOptions: { errorElementClass: null }, enable: isNotTruckLoadQuoteNumber' />
+				</td>
+			</tr>
+			<tr data-bind="visible: isDateSectionVisible()">
+				<td colspan="2">
+					<div class="table-cell-with-nopadding">
+						<table>
+							<tr>
+								<td class="typeLabels">From Date:
+								</td>
+
+								<td class="typeStatus">
+
+									<div class="typecontrols padding-top-0">
+										<div data-bind=" validationElement: fromDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (fromDate.isModified() && !fromDate.isValid()), tooltip: { title: fromDate.isModified() ? fromDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+											<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: fromDate, datepickerOptions: datepickerOptions">
+												<input id="pickupDate" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertFromDate }, value: fromDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (fromDate.isModified() && !fromDate.isValid()) ? '109px' : '125px' }" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td class="typeLabels">To Date:
+								</td>
+								<td class="typeStatus">
+
+									<div class="typecontrols padding-top-0">
+										<div data-bind=" validationElement: toDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+											<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (toDate.isModified() && !toDate.isValid()), tooltip: { title: toDate.isModified() ? toDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+											<div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: toDate, datepickerOptions: datepickerOptions">
+												<input id="Text1" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToDate }, value: toDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (toDate.isModified() && !toDate.isValid()) ? '109px' : '125px' }" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

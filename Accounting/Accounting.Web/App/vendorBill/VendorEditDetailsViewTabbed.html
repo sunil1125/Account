@@ -1,0 +1,93 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+<!--<changeHistory>
+<id>US25681</id> <by>Janakiram</by> <date>15-11-2016</date> <description>Added a Button on VB Screen like Vendor Bill Reassignment</description>
+</changeHistory>-->
+
+<div class="container-fluid" style="padding-right: 20px">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+
+		<div class="alignrigth margin-top-1" id="topButtonsDiv" style="float: none; margin-right: 27px;">
+			<!--	<div data-bind="compose: { model: saveStatusIndicatorControl, view: 'templates/saveStatusIndicatorControl' }" style="float: left; margin-right:5px; margin-top:5px"></div>-->
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isChange">Save</button>
+			<button class="btn btn-primary" data-bind="click: onCreateSubBill, visible: isSubOrderBill">Create Sub Bill</button>
+			<button class="btn btn-primary" data-bind="click: onCreateLostBill, visible: isCreateLostBillVisible">Create Lost Bill</button>
+			<button class="btn btn-primary" data-bind="click: onDisputeWon, visible: isDisputeWonLostVisible, disable: isChange">Dispute Won</button>
+			<button class="btn btn-primary" data-bind="click: onDisputeLost, visible: isDisputeWonLostVisible, disable: isChange">Dispute Lost</button>
+			<button class="btn btn-primary" data-bind="click: onForcePushBillToMas, visible: canForcePushToMasVisible ">Force Push to Mas</button>
+			<button class="btn btn-primary" data-bind="click: onRevertBill, visible: isRevertBillVisible">Revert Bill From IDB</button>
+			<!-- ###START: US25681-->
+			<button class="btn btn-primary" data-bind="click: onVBReassignmentClick, visible: isVBReassignmentVisible">Vendor Bill Reassignment</button>
+			<!-- ###END: US25681-->
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButton" style="text-indent: 0;"></i></a>
+		</div>
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+		<div class="row-fluid" style="border-top: darkgrey 1px;" id="gridbind">
+			<div>
+				<!--Vendor Bill Section START-->
+				<div class="page-header contentAreaWithBackground" style="padding-top: 0 !important;">
+					<div id="vendorDetails" data-bind="compose: { model: vendorBillDetailsViewModel, view: 'vendorBill/VendorBillDetailsView' }"></div>
+				</div>
+				<!--Vendor Bill Section END-->
+
+				<div>
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="itemLink" class="active"><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemClick"><span class="tabHeaderText">Items</span></a></li>
+						<li id="addressLink" class=""><a href="#address" data-toggle="tab" tabindex="-1" data-bind="click: onAddressClick"><span class="tabHeaderText">Address</span></a></li>
+						<li id="notesLink" class=""><a href="#notes" data-toggle="tab" tabindex="-1" data-bind="click: onNotesClick"><span class="tabHeaderText">Notes</span></a></li>
+						<li id="paymentLink" class=""><a href="#payment" data-toggle="tab" tabindex="-1" data-bind="click: getPaymentDetails"><span class="tabHeaderText">Payment Details</span></a></li>
+						<li id="linksLink" class=""><a href="#links" data-toggle="tab" tabindex="-1" data-bind="click: getShipmentLinks"><span class="tabHeaderText">Links</span></a></li>
+						<li id="historyLink" class=""><a href="#history" data-toggle="tab" tabindex="-1" data-bind="click: getHistorydetails"><span class="tabHeaderText">History</span></a></li>
+						<li id="exceptionLink" class="" data-bind="visible: isExceptionTabAndAccordion"><a href="#exception" data-toggle="tab" tabindex="-1" data-bind="	click: getVendorBillExceptionRulesAndResolution"><span class="tabHeaderText">Exception</span></a></li>
+						<li id="disputeLink" class=""><a href="#dispute" data-toggle="tab" tabindex="-1" data-bind="click: getVendorBillDisputeItemDetails"><span class="tabHeaderText">Dispute Notes</span></a></li>
+						<li id="podDocLink" class=""><a href="#tab_podDoc" data-toggle="tab" tabindex="-1" data-bind="click: loadPodDocDetails"><span class="tabHeaderText">POD / DOC</span></a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content contentAreaWithBackground">
+						<div class="tab-pane fade active in " id="item">
+							<!--Items Section START-->
+							<div data-bind="compose: { model: vendorBillItemViewModel, view: 'vendorBill/VendorBillItemView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="address">
+							<!--Address Section START-->
+							<div data-bind="compose: { model: vendorAddressViewModel, view: 'vendorBill/VendorAddressView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="notes">
+							<!--Notes Section START-->
+							<div data-bind="compose: { model: vendorBillNotesViewModel, view: 'vendorBill/VendorBillNotesView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="payment">
+							<!--Payment Details Section START-->
+							<div class="margin-top--35" data-bind="compose: { model: vendorBillPaymentDetailsViewModel, view: 'vendorBill/VendorBillPaymentDetails' }"></div>
+						</div>
+						<div class="tab-pane fade" id="links">
+							<!-- Links Section START -->
+							<div data-bind="compose: { model: vendorBillLinksViewModel, view: 'vendorBill/VendorBillLinks' }, showContentProgress: listProgressLinksTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+						<div class="tab-pane fade" id="history">
+							<!-- History Section START -->
+							<div data-bind="compose: { model: vendorBillHistoryViewModel, view: 'vendorBill/VendorBillHistory' }"></div>
+						</div>
+						<div class="tab-pane fade" id="exception">
+							<!-- Exception Section START -->
+							<div data-bind="compose: { model: VendorBillException, view: 'vendorBill/VendorBillException' }"></div>
+						</div>
+						<div class="tab-pane fade" id="dispute">
+							<!-- Exception Section START -->
+							<div data-bind="compose: { model: VendorBillDispute, view: 'vendorBill/VendorBillDispute' }, showContentProgress: listProgressLinksTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+						</div>
+						<div class="tab-pane fade" id="tab_podDoc">
+							<!--POD/DOC Section START-->
+							<div data-bind="compose: { model: vendorBillPODDocViewModel, view: 'vendorBill/VendorBillPODDocView' }"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

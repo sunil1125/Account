@@ -1,0 +1,250 @@
+﻿<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US21290</id> <by>Shreesha Adiga</by> <date>17-03-2016</date><description>Show longdescription instead of short description in item dropdown</description>
+<id>US24473</id> <by>Shreesha Adiga</by> <date>16-09-2016</date><description>Disable all the inputs for Insurance for TL orders; Removed all commented code</description>
+<id>DE24475</id> <by>Dhaval Tamhane</by> <date>22-09-2016</date><description>Showing full validation messsage to user for Items</description>
+<id>US24975</id> <by>Shreesha Adiga</by> <date>28-09-2016</date> <description>Disable cost and revenue for multiple Base Rate items for TL orders</description>
+<id>US24907</id> <by>Vasanthakumar</by> <date>07-10-2016</date><description>Increase character limit for Product Name</description>
+</changeHistory>-->
+
+<div id="divSalesOrderItemView" class=" padding-left-10">
+	<div class="row-fluid">
+		<div class="align-left" style="padding-left: 16px">
+		</div>
+		<div id="divItems" class="divItems">
+			<div id="divItemsContainer" class="span12 item-div-container align-left" style="padding-right: 20px; padding-left: 4px">
+				<table id="tblSalesOrderItems" class="table table-bordered shipment-item">
+					<thead>
+						<tr>
+							<th>
+								<label class="align-center">Items</label></th>
+							<th>
+								<label class="align-center">Description</label></th>
+							<th>
+								<label class="align-center" data-bind="text: costHeader"></label>
+							</th>
+							<th data-bind="visible: isBSCost">
+								<label class="align-center">BS Cost</label></th>
+							<th>
+								<label class="align-center">Rev</label></th>
+							<th>
+								<label class="align-center">NMFC</label></th>
+							<th>
+								<label class="align-center">Class</label></th>
+							<th>
+								<label class="align-center">Weight</label></th>
+							<th>
+								<label class="align-center">PCS</label></th>
+							<th>
+								<label class="align-center">Dimensions</label></th>
+							<th>
+								<label class="align-center">Package Type</label></th>
+							<th>
+								<label class="align-center">Pts</label></th>
+							<th>
+								<label class="align-center">Haz</label></th>
+							<th>
+								<button class="btn btn-primary width-50 height-30" tabindex="-1" id="addItemButton" data-bind="click: onAdd, enable: isSaveEnable">Add</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="bodysalesOrderItems" data-bind='foreach: salesOrderItemsList' class="line-items">
+						<tr class="lineItemRow">
+
+							<!--##START: DE24475-->
+							<td data-title="Unit Type" class="unit-type width-percent-1">
+								<!--##END: DE24475-->
+
+								<label class="validation-label2" data-bind=" validationElement: selectedItemTypes">
+
+									<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectedItemTypes.isModified() && !selectedItemTypes.isValid()), tooltip: { title: selectedItemTypes.isModified() ? selectedItemTypes.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+									<!--##START: US21290-->
+									<!--##START: US24473-->
+									<select id="drpItems" class=" validation2 requiredFieldBgColor newselect width-200" data-togle="tooltip"
+										data-bind="options: $parent.shipmentItemTypes, css: { borderRedOnValidation: (selectedItemTypes.isModified() && !selectedItemTypes.isValid()), requiredFieldBgColor: isServiceTypeTruckload }, style: { 'padding-left': (selectedItemTypes.isModified() && !selectedItemTypes.isValid()) ? '16px' : '' }, value: selectedItemTypes, enable: $parent.isSaveEnable() && !isTLInsuranceItem(), validationOptions: { errorElementClass: null }, optionsText: 'LongDescription', optionsCaption: 'Select...', attr: { id: ('selectItemsList' + $index() + 1) }">
+									</select>
+									<!--##END: US24473-->
+									<!--##END: US21290-->
+								</label>
+							</td>
+
+							<td data-title="Description" data-bind="attr: { class: $parent.descColCssClass }" class="width-percent-13">
+								<label class="validation-label2" data-bind="validationElement: userDescription">
+									<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (userDescription.isModified() && !userDescription.isValid()), tooltip: { title: userDescription.isModified() ? userDescription.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+									<!--##START: US24473-->
+									<!--##START: US24907-->
+									<input type="text" id="txtDescription" name="Commodity" class="requiredFieldBgColor validation2 txtDescription" data-bind=" css: { borderRedOnValidation: (userDescription.isModified() && !userDescription.isValid()) }, style: { 'padding-left': (userDescription.isModified() && !userDescription.isValid()) ? '15px' : '' }, attr: { id: ('txtDescription' + $index() + 1), 'readonly': (!isShippingItemMiscellaneous() || isTLInsuranceItem()) }, value: userDescription, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" style="width: 95%" maxlength="300" />
+									<!--##END: US24907-->
+									<!--##END: US24473-->
+								</label>
+							</td>
+
+							<td data-title="Cost" class="width-percent-3">
+								<label class="validation-label2" data-bind=" validationElement: cost">
+
+									<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (cost.isModified() && !cost.isValid()), tooltip: { title: cost.isModified() ? cost.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+									<strong data-bind=" visible: (!cost.isModified() || cost.isValid())">$</strong>
+									<!--##START: US24473-->
+									<!--##START: US24975-->
+									<input type="text" id="txtCost" class="requiredFieldBgColor validation2 txtCost height-20 min-width-50" data-togle="tooltip" maxlength="11"
+										data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, css: { borderRedOnValidation: (cost.isModified() && !cost.isValid()) }, style: { 'padding-left': (cost.isModified() && !cost.isValid()) ? '16px' : '' }, value: cost, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { id: ('txtCost' + $index() + 1), 'readonly': (!$parent.isSaveEnable() || isTLInsuranceItem() || disableCostRevenue()) }" style="width: 73%" />
+									<!--##END: US24975-->
+									<!--##END: US24473-->
+								</label>
+							</td>
+							<td data-title="BSCost" class="width-percent-3" data-bind="visible: $parent.isBSCost">
+								<div>
+									<strong>$</strong>
+									<!--##START: US24473-->
+									<!--##START: US24975-->
+									<input type='text' maxlength="12" class="height-20 min-width-50" data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, value: bSCost, style: { width: '69%' }, attr: { id: ('txtBSCost' + $index() + 1), 'readonly': (!$parent.isBSCostEditable() || isTLInsuranceItem() || disableCostRevenue()) }" />
+									<!--##END: US24975-->
+									<!--##END: US24473-->
+								</div>
+							</td>
+							<td data-title="Rev" class="width-percent-3">
+
+								<label class="validation-label2" data-bind=" validationElement: rev">
+
+									<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (rev.isModified() && !rev.isValid()), tooltip: { title: rev.isModified() ? rev.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+									<strong data-bind=" visible: (!rev.isModified() || rev.isValid())">$</strong>
+									<!--##START: US24473-->
+									<!--##START: US24975-->
+									<input type="text" id="txtRev" class="requiredFieldBgColor validation2 txtrev height-20 min-width-50" data-togle="tooltip" maxlength="11"
+										data-bind="numericDecimalInput: $parent.NumericInputWithDecimalPoint, css: { borderRedOnValidation: (rev.isModified() && !rev.isValid()) }, style: { 'padding-left': (rev.isModified() && !rev.isValid()) ? '16px' : '' }, value: rev, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { id: ('txtRevenue' + $index() + 1), 'readonly': (!$parent.isSaveEnable() || isTLInsuranceItem() || disableCostRevenue()) }" style="width: 73%" />
+									<!--##END: US24975-->
+									<!--##END: US24473-->
+								</label>
+							</td>
+							<td data-title="NMFC" class="nowrap width-percent-5">
+								<div data-bind="visible: isShippingItem">
+									<input class="width-percent-80" id="Text4" type='text' maxlength="12" data-bind="value: nmfc, attr: { id: ('txtNMFC' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" />
+								</div>
+							</td>
+							<td data-title="Class" class="width-percent--5">
+
+								<div data-bind="visible: isShippingItem">
+									<label class="validation-label2" data-bind=" validationElement: selectedClassType">
+
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectedClassType.isModified() && !selectedClassType.isValid()), tooltip: { title: selectedClassType.isModified() ? selectedClassType.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+										<select class=" validation2 txtSelectClass  newselect width-50 " data-togle="tooltip"
+											data-bind="options: $parent.classTypes, optionsValue: 'ID', css: { borderRedOnValidation: (selectedClassType.isModified() && !selectedClassType.isValid()), requiredFieldBgColor: isServiceTypeTruckload }, style: { 'padding-left': (selectedClassType.isModified() && !selectedClassType.isValid()) ? '16px' : '' }, value: selectedClassType, optionsText: 'Value', optionsCaption: 'Select...', enable: $parent.isSaveEnable, validationOptions: { errorElementClass: null }, attr: { id: ('selectClasstype' + $index() + 1) }" style="width: 85%">
+										</select>
+									</label>
+								</div>
+							</td>
+							<td data-title="Weight" class="nowrap width-percent-3">
+								<div class="weightDiv">
+
+									<label class="validation-label2" data-bind="visible: isShippingItem, validationElement: weight">
+
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (weight.isModified() && !weight.isValid()), tooltip: { title: weight.isModified() ? weight.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+										<input type="text" id="lineItemWeight" class="requiredFieldBgColor validation2 lineItemWeightClass" data-togle="tooltip" maxlength="6"
+											data-bind="numeric: weight, css: { borderRedOnValidation: (weight.isModified() && !weight.isValid()) }, style: { 'padding-left': (weight.isModified() && !weight.isValid()) ? '16px' : '' }, value: weight, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { id: ('txtweight' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" style="width: 80%" />
+									</label>
+								</div>
+							</td>
+
+							<td data-title="#Pcs" class="width-percent-4">
+								<div data-bind="visible: isShippingItem">
+									<label class="validation-label2" data-bind="validationElement: pieceCount">
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (pieceCount.isModified() && !pieceCount.isValid()), tooltip: { title: pieceCount.isModified() ? pieceCount.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+										<input type="text" class="validation2 txtPCS" data-bind="numeric: pieceCount, css: { borderRedOnValidation: (pieceCount.isModified() && !pieceCount.isValid()) }, style: { 'padding-left': (pieceCount.isModified() && !pieceCount.isValid()) ? '15px' : '' }, value: pieceCount, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, attr: { id: ('txtPCS' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" style="width: 85%" maxlength="4" />
+									</label>
+								</div>
+							</td>
+
+							<td data-title="Dimensions" class="width-percent--5">
+								<div class="dimensions" data-bind="visible: isShippingItem">
+									<input type="text" style="width: 20px" placeholder="L" maxlength="4" data-bind="numeric: dimensionLength, value: dimensionLength, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtLength' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" />
+									<input type="text" style="width: 20px" placeholder="W" maxlength="4" data-bind="numeric: dimensionWidth, value: dimensionWidth, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtWeidth' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" />
+									<input type="text" style="width: 20px" placeholder="H" maxlength="4" data-bind="numeric: dimensionHeight, value: dimensionHeight, valueUpdate: 'afterkeydown', uniqueName: true, attr: { id: ('txtHeight' + $index() + 1), 'readonly': !($parent.isSaveEnable()) }" />
+								</div>
+							</td>
+
+							<td data-title="package" class="width-percent--5">
+								<div data-bind="visible: isShippingItem">
+									<label class="validation-label2" data-bind=" validationElement: selectedPackageType">
+
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (selectedPackageType.isModified() && !selectedPackageType.isValid()), tooltip: { title: selectedPackageType.isModified() ? selectedPackageType.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+										<select class="validation2 txtSelectpackageTypeClass  newselect width-100 " data-togle="tooltip"
+											data-bind=" css: { borderRedOnValidation: (selectedPackageType.isModified() && !selectedPackageType.isValid()), requiredFieldBgColor: isServiceTypeTruckload }, options: $parent.packageTypes, optionsValue: 'ID', style: { 'padding-left': (selectedPackageType.isModified() && !selectedPackageType.isValid()) ? '16px' : '' }, value: selectedPackageType, optionsText: 'Value', optionsCaption: 'Select...', enable: $parent.isSaveEnable, validationOptions: { errorElementClass: null }, attr: { id: ('txtSelectpackageType' + $index() + 1) }" style="width: 99%">
+										</select>
+									</label>
+								</div>
+							</td>
+							<td data-title="Pts" class="width-percent-4">
+								<div data-bind="visible: isShippingItem">
+									<label class="validation-label2" data-bind=" validationElement: palletCount">
+
+										<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (palletCount.isModified() && !palletCount.isValid()), tooltip: { title: palletCount.isModified() ? palletCount.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+										<input type="text" class="validation2 txtPTSClass" data-togle="tooltip" maxlength="6"
+											data-bind="numeric: palletCount, css: { borderRedOnValidation: (palletCount.isModified() && !palletCount.isValid()) }, style: { 'padding-left': (palletCount.isModified() && !palletCount.isValid()) ? '16px' : '' }, value: palletCount, valueUpdate: 'afterkeydown', enable: isPallet, validationOptions: { errorElementClass: null }, attr: { id: ('txtPTS' + $index() + 1) }" style="width: 87%" />
+									</label>
+								</div>
+							</td>
+							<td data-title="Haz" class="width-percent-2 align-center vertical-align-middle">
+								<div data-bind="visible: isShippingItem">
+									<input type="checkbox" class="margin-top-7" data-togle="tooltip" data-bind="checked: isHazardous, enable: $parent.isSaveEnable, attr: { id: ('chkBoxHAZ' + $index() + 1) }" />
+								</div>
+							</td>
+							<td data-title="delete" class="width-percent-2 align-center vertical-align-middle">
+								<!--##START: US24473-->
+								<input type="image" data-bind="click: $parent.removeLineItem, uniqueName: true, event: { keydown: $parent.isTabPress }, attr: { id: ($index() + 1) }, enable: ($parent.isSaveEnable() && !isTLInsuranceItem()), attr: { id: ('imgButtonDelete' + $index() + 1) }" src="Content/images/Icon_Trash.png" onmouseover="this.src='Content/images/Icon_Trash_Over.png';" onmouseout="this.src='Content/images/Icon_Trash.png';" onmousedown="this.src='Content/images/Icon_Trash_Down.png';" onmouseup="this.src='Content/images/Icon_Trash_Over.png';" />
+								<!--##END: US24473-->
+							</td>
+						</tr>
+					</tbody>
+					<tr class="lineItemRow">
+						<td class="width-percent-1 align-center vertical-align-middle" style="font-weight: bolder">Total
+						</td>
+						<td class="width-percent-13"></td>
+						<td class="width-percent-3">
+							<label class="totalCost-label2">
+								<!--<strong data-bind=" visible: true">$</strong>-->
+								<i class="fa fa-usd valdation_icon"></i>
+								<input type="text" class="height-20 min-width-50 padding-left-16" readonly="readonly" data-bind="value: salesOrderItemAmount, style: { width: '73%', 'font-weight': 'bolder' }, uniqueName: true, validationOptions: { errorElementClass: null }" />
+							</label>
+						</td>
+						<td class="width-percent-3" data-bind=" visible: isBSCost">
+							<label class="totalCost-label2">
+								<i class="fa fa-usd valdation_icon"></i>
+								<input type="text" class="height-20 min-width-50 padding-left-16" readonly="readonly" data-bind="value: salesOrderBsCost, style: { width: '73%', 'font-weight': 'bolder' }, uniqueName: true, validationOptions: { errorElementClass: null }" />
+							</label>
+							<!--<strong>$</strong>
+							<input type="text" class="height-20 min-width-50" readonly="readonly" data-bind="value: salesOrderBsCost, style: { width: '73%', 'font-weight': 'bolder' }, uniqueName: true, validationOptions: { errorElementClass: null }" />-->
+						</td>
+						<td class="width-percent-3">
+							<label class="totalCost-label2">
+								<i class="fa fa-usd valdation_icon"></i>
+								<input type="text" class="height-20 min-width-50 padding-left-16" readonly="readonly" data-bind="value: salesOrderRevenue, style: { width: '73%', 'font-weight': 'bolder' }, uniqueName: true, validationOptions: { errorElementClass: null }" />
+								<!--<strong data-bind=" visible: true">$</strong>
+								<input type="text" class="height-20 min-width-50" readonly="readonly" data-bind="value: salesOrderRevenue, style: { width: '73%', 'font-weight': 'bolder' }, uniqueName: true, validationOptions: { errorElementClass: null }" />-->
+							</label>
+						</td>
+						<td class="nowrap width-percent-3" colspan="2"></td>
+						<td class="nowrap width-percent-3">
+							<input type="text" class="height-20 min-width-30" readonly="readonly" data-bind="value: salesOrderItemWeight, uniqueName: true, style: { width: '70%', 'font-weight': 'bolder' }, validationOptions: { errorElementClass: null }" />
+						</td>
+						<td class="width-percent-4">
+							<input type="text" class="height-20 min-width-20" readonly="readonly" data-bind="value: salesOrderItemPieces, uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: '70%', 'font-weight': 'bolder' }" />
+						</td>
+						<td class="width-percent--5" colspan="5"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Line Item End-->

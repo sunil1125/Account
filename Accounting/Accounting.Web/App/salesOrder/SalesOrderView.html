@@ -1,0 +1,287 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div class="table-cell threeDiv">
+		<table class="tbl-sales-order">
+								<tr>
+									<td class="typeLabels">Ship Via:
+									</td>
+									<td class="typeStatus">
+										<select id="selectShipVia" class="margin-bottom-0" ></select>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*Customer:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="requiredFieldBgColor" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Booked Date:
+									</td>
+									<td class="typeStatus">
+										<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" style="width: 233px;">
+											<input id="billDate" type="text" size="16" class="requiredFieldBgColor span10" placeholder="mm/dd/yyyy" />
+											<span class="add-on">
+												<i class="icon-calendar"></i>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Sales Order#:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Customer BOL#:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">PRO#:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">PO#:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Shipper's Ref/PU#:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*Carrier:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="requiredFieldBgColor" />
+									</td>
+								</tr>
+							</table>
+
+	</div>
+
+	<div class="table-cell threeDiv">
+		<table class="tbl-sales-order">
+								<tr>
+									<td class="typeLabels">*Origin Zip:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="requiredFieldBgColor" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*Destination Zip:
+									</td>
+									<td class="typeStatus">
+										<input type="text" class="requiredFieldBgColor" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Total Pieces:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Total Weight:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">*Order Status:
+									</td>
+									<td class="typeStatus">
+										<select id="selectOrderStatus" class="margin-bottom-0 requiredFieldBgColor"></select>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Invoice Status:
+									</td>
+									<td class="typeStatus"><select id="selectInvoiceStatus" class="margin-bottom-0"></select>
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Sales Rep:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+
+							</table>
+		</div>
+
+	<div class="table-cell threeDiv">
+		<table class="tbl-sales-order">
+								<tr>
+									<td class="typeLabels">Estimated Revenue$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+									</tr>
+								<tr>
+									<td class="typeLabels">Final Revenue$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+										</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Estimated Cost$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+									</tr>
+								<tr>
+									<td class="typeLabels">Final Cost$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Estimated Profit$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+									</tr>
+								<tr>
+									<td class="typeLabels">Final Profit$:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td class="typeLabels">Estimated Profit %:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+									</tr>
+								<tr>
+									<td class="typeLabels">Final Profit %:
+									</td>
+									<td class="typeStatus">
+										<input type="text" />
+									</td>
+								</tr>
+
+
+							</table>
+		</div>
+</div>
+
+<div class="tableLayout">
+	<div class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Cost $:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div  class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Revenue $:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Actual Cost$:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div  class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Dispute $:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div  class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Actual Profit $:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div  class="table-cell" style="width:16.6%">
+		<table>
+			<tr>
+				<td class="typeLabels">Actual Profit %:
+				</td>
+
+				<td class="typeStatus" >
+					<input type="text" style="width:70%;" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	
+</div>

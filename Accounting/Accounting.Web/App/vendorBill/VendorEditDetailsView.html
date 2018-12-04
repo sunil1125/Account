@@ -1,0 +1,201 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+<!--<changeHistory>
+<id>US25681</id> <by>Janakiram</by> <date>15-11-2016</date> <description>Added a Button on VB Screen like Vendor Bill Reassignment</description>
+</changeHistory>-->
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressAccordian, contentProgressOptions: { showProgressBar: true, opacity: 0.9, height: 800 }">
+
+		<div class="alignrigth margin-top-1" style="float: none; margin-right: 27px;">
+			<!--	<div data-bind="compose: { model: saveStatusIndicatorControl, view: 'templates/saveStatusIndicatorControl' }" style="float: left; margin-right:5px; margin-top:5px"></div>-->
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isChange">Save</button>
+			<button class="btn btn-primary" id="btnCreateSubBill" data-bind="click: onCreateSubBill, visible: isSubOrderBill">Create Sub Bill</button>
+			<button class="btn btn-primary" data-bind="click: onCreateLostBill, visible: isCreateLostBillVisible">Create Lost Bill</button>
+			<button class="btn btn-primary" data-bind="click: onDisputeWon, visible: isDisputeWonLostVisible, disable: isChange">Dispute Won</button>
+			<button class="btn btn-primary" data-bind="click: onDisputeLost, visible: isDisputeWonLostVisible, disable: isChange">Dispute Lost</button>
+			<button class="btn btn-primary" data-bind="click: onForcePushBillToMas, visible: canForcePushToMasVisible ">Force Push to Mas</button>
+			<button class="btn btn-primary" data-bind="click: onRevertBill, visible: isRevertBillVisible">Revert Bill From IDB</button>
+			<!-- ###START: US25681-->
+			<button class="btn btn-primary" data-bind="click: onVBReassignmentClick, visible: isVBReassignmentVisible">Vendor Bill Reassignment</button>
+			<!-- ###END: US25681-->
+			<input type="image" style="height: 30px" data-bind="click: expandAllAccordions, attr: { src: expandSourceImage }" />
+			<input type="image" src="Content/images/collapse.png" style="height: 30px" data-bind="click: collapseAllAccordions, attr: { src: collapseSourceImage }" />
+			<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButton" style="text-indent: 0;"></i></a>
+		</div>
+		<!--	<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+		<div class="row-fluid margin-top-5" id="gridbind">
+			<div class="accordion" id="accordion2">
+
+				<!--Vendor Bill Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<span class="custom-accordian-header" data-bind="text: vendorBillHeader"></span>
+						</div>
+						<div id="collapseVendorBill" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div id="detailsDiv" data-bind="compose: { model: vendorBillDetailsViewModel, view: 'vendorBill/VendorBillDetailsView' }"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Vendor Bill Section END-->
+
+				<!--Items Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseItems" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseItems" data-bind="click: onItemClick">Items
+							</a>
+						</div>
+						<div id="collapseItems" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="itemsDiv" tabindex="-1" data-bind="compose: { model: vendorBillItemViewModel, view: 'vendorBill/VendorBillItemView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Items Section END-->
+
+				<!--Address Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseAddress" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseAddress" data-bind="click: onAddressClick">Address
+							</a>
+						</div>
+						<div id="collapseAddress" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="addressDiv" tabindex="-1" data-bind="compose: { model: vendorAddressViewModel, view: 'vendorBill/VendorAddressView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Address Section END-->
+
+				<!--Notes Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseNotes" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseNotes" data-bind="click: onNotesClick">Notes
+							</a>
+						</div>
+						<div id="collapseNotes" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="notesDiv" data-bind="compose: { model: vendorBillNotesViewModel, view: 'vendorBill/VendorBillNotesView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Notes Section END-->
+
+				<!--Payment Details Section START-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapsePaymentDetails" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapsePaymentDetails" data-bind="click: getPaymentDetails">Payment Details
+							</a>
+						</div>
+						<div id="collapsePaymentDetails" class="accordion-body collapse" data-bind="showContentProgress: listProgressPayment, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="accordion-inner">
+								<div id="paymentDiv" class="margin-top--35" data-bind="compose: { model: vendorBillPaymentDetailsViewModel, view: 'vendorBill/VendorBillPaymentDetails' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Payment Details Section END-->
+
+				<!-- Links Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseLinks" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseLinks" data-bind="click: getShipmentLinks">Links
+							</a>
+						</div>
+						<div id="collapseLinks" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: vendorBillLinksViewModel, view: 'vendorBill/VendorBillLinks' }, showContentProgress: listProgressLinks, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Links Section END -->
+
+				<!-- History Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseHistory" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseHistory" data-bind="click: getHistorydetails">History
+							</a>
+						</div>
+						<div id="collapseHistory" class="accordion-body collapse" data-bind="showContentProgress: listProgressHistory, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="accordion-inner">
+								<div class="alignrigth" style="margin-top: 1px">
+									<!--<a href="#">History Details</a>-->
+								</div>
+								<div data-bind="compose: { model: vendorBillHistoryViewModel, view: 'vendorBill/VendorBillHistory' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- History Section END -->
+
+				<!-- Exception Section START -->
+				<div class="accordion-group" data-bind="visible: isExceptionTabAndAccordion">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AnchorcollapseException" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseException" data-bind="click: getVendorBillExceptionRulesAndResolution">Exception
+							</a>
+						</div>
+						<div id="collapseException" class="accordion-body collapse" data-bind="showContentProgress: listProgressException, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: VendorBillException, view: 'vendorBill/VendorBillException' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Exception Section END -->
+
+				<!-- Dispute Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseDispute" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseDispute" data-bind="click: getVendorBillDisputeItemDetails">Dispute Notes
+							</a>
+						</div>
+						<div id="collapseDispute" class="accordion-body collapse" data-bind="showContentProgress: listProgressDispute, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: VendorBillDispute, view: 'vendorBill/VendorBillDispute' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Dispute Section END -->
+
+				<!-- POD Doc Section START -->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="A1" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapsePOD" data-bind="click: loadPodDocDetails">POD / DOC
+							</a>
+						</div>
+						<div id="collapsePOD" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="podDoc" tabindex="-1" data-bind="compose: { model: vendorBillPODDocViewModel, view: 'vendorBill/VendorBillPODDocView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- POD Doc Section END -->
+			</div>
+		</div>
+	</div>
+</div>

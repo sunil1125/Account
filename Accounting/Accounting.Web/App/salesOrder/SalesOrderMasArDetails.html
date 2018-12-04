@@ -1,0 +1,74 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div>
+	<label class="align-left" style="font-size: medium; font-weight: bold; padding-left: 10px;" data-bind="text: gridHeader"></label>
+</div>
+<table id="tblSalesOrerMasAPDetails" class="table table-bordered shipment-item">
+	<thead>
+		<tr>
+			<th>
+				<label class="align-center">BOL #</label>
+			</th>
+			<th>
+				<label class="align-center">Sales Order #</label>
+			</th>
+			<th>
+				<label class="align-center">Apply From</label>
+			</th>
+			<th>
+				<label class="align-center">Invoice Date</label>
+			</th>
+			<th>
+				<label class="align-center">Invoice Amount</label>
+			</th>
+			<th>
+				<label class="align-center">Payment Memo Date</label>
+			</th>
+			<th>
+				<label class="align-center">Applied Amount</label>
+			</th>
+			<th>
+				<label class="align-center">Applied to Invoice</label>
+			</th>
+			<th>
+				<label class="align-center">Posted</label>
+			</th>
+		</tr>
+	</thead>
+	<tbody data-bind='foreach: salesOrderMasARList' class="line-items">
+		<tr class="lineItemRow" data-bind="css: totalRow">
+			<td data-title="BOL #" class="width-percent-11 " style="text-align: center;">
+				<span data-bind="text: BOLNumber"></span>
+			</td>
+			<td data-title="Sales Order #" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: SalesOrderNumber"></span>
+			</td>
+			<td data-title="Apply From" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: ApplyFrom"></span>
+			</td>
+			<td data-title="Invoice Date" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: InvoicedDateDisplay"></span>
+			</td>
+			<td data-title="Invoice Amount" class="width-percent-11" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: InvoicedAmount"></span>
+			</td>
+			<td data-title="Payment Memo Date" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: PaymentMemoDateDisplay"></span>
+			</td>
+			<td data-title="Applied Amount" class="width-percent-11" style="text-align: right;">
+				<strong>$</strong><span data-bind="text: AppliedAmount"></span>
+			</td>
+			<td data-title="Applied to Invoice" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: AppliedToInvoice"></span>
+			</td>
+			<td data-title="Posted" class="width-percent-11" style="text-align: center;">
+				<span data-bind="text: PostedDisplay"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

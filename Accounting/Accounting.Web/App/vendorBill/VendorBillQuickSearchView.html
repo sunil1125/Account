@@ -1,0 +1,71 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="vbQuickSearch" class="tableLayout">
+	<div class="table-cell">
+		<table class="tbl-sales-order width-percent-50">
+			<tr>
+				<td class="typeLabels" style="width: 12%;">Pro #:
+				</td>
+				<td class="typeStatus">
+					<!--<div data-bind=" validationElement: proNumber, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Search-Fields' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind="visible: (proNumber.isModified() && !proNumber.isValid()), tooltip: { title: proNumber.isModified() ? proNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtproNumber" style="width:36.3%" data-bind="value: proNumber, style: { width: (proNumber.isModified() && !proNumber.isValid()) ? errorWidth : normalWidth }, uniqueName: true, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown'" />
+					</div>-->
+					<label class="validation-label2" data-bind=" validationElement: proNumber">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (proNumber.isModified() && !proNumber.isValid()), tooltip: { title: proNumber.isModified() ? proNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtproNumber" class=" validation2" data-bind=" css: { borderRedOnValidation: (proNumber.isModified() && !proNumber.isValid()) }, style: { 'padding-left': (proNumber.isModified() && !proNumber.isValid()) ? '20px' : '' }, value: proNumber, uniqueName: true, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" style="width: 36.3%" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Vendor Name:
+				</td>
+				<td class="typeStatus">
+					<div data-bind="compose: { model: vendorNameSearchList, view: 'templates/searchVendorNameControl' }"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Status:
+				</td>
+				<td class="typeStatus">
+					<select class=" margin-bottom-0" style="width: 38.1%" data-bind="options: billStatusList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select...', value: selectedbillStatus">
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="typeLabels">BOL:
+				</td>
+				<td class="typeStatus">
+					<!--<div data-bind=" validationElement: bolNumber, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Search-Fields' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind="visible: (bolNumber.isModified() && !bolNumber.isValid()), tooltip: { title: bolNumber.isModified() ? bolNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" style="width:36.3%" maxlength="20" data-bind=" value: bolNumber, uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: (bolNumber.isModified() && !bolNumber.isValid()) ? errorWidth : normalWidth }, valueUpdate: 'afterkeydown'" />
+					</div>-->
+					<label class="validation-label2" data-bind=" validationElement: bolNumber">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (bolNumber.isModified() && !bolNumber.isValid()), tooltip: { title: bolNumber.isModified() ? bolNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtBOLNumber" class=" validation2" data-bind=" css: { borderRedOnValidation: (bolNumber.isModified() && !bolNumber.isValid()) }, style: { 'padding-left': (bolNumber.isModified() && !bolNumber.isValid()) ? '20px' : '' }, value: bolNumber, uniqueName: true, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" style="width: 36.3%" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PO #:
+				</td>
+				<td class="typeStatus">
+					<!--<div data-bind=" validationElement: poNumber, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Search-Fields' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind="visible: (poNumber.isModified() && !poNumber.isValid()), tooltip: { title: poNumber.isModified() ? poNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" style="width:36.3%" data-bind="value: poNumber, uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: (poNumber.isModified() && !poNumber.isValid()) ? errorWidth : normalWidth }, valueUpdate: 'afterkeydown'" />
+					</div>-->
+					<label class="validation-label2" data-bind=" validationElement: poNumber">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (poNumber.isModified() && !poNumber.isValid()), tooltip: { title: poNumber.isModified() ? poNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtPONumber" class=" validation2" data-bind=" css: { borderRedOnValidation: (poNumber.isModified() && !poNumber.isValid()) }, style: { 'padding-left': (poNumber.isModified() && !poNumber.isValid()) ? '20px' : '' }, value: poNumber, uniqueName: true, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" style="width: 36.3%" />
+					</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

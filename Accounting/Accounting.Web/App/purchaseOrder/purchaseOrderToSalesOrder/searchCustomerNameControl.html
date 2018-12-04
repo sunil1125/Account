@@ -1,0 +1,12 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div data-bind=" validationElement: customerName, validationOptions: { errorElementClass: 'input-validation-error width-percent-92' }">
+	<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (customerName.isModified() && !customerName.isValid()), tooltip: { title: customerName.isModified() ? customerName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" id="txtCustomerName" class="txtCustomerName requiredFieldBgColor" maxlength="50" autofocus="autofocus" placeholder="Customer Name" autocomplete="off" data-filterkey="display"
+		data-bind="event: { onSelect: onSelectCustomerName }, style: { width: (customerName.isModified() && !customerName.isValid()) ? errorWidth : normalWidth }, value: customerName, typeahead: searchCustomerName, minLength: 2, items: 20, validationOptions: { errorElementClass: null }, valueUpdate: 'afterkeydown', enable: isEnable" />
+</div>

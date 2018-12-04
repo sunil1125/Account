@@ -1,0 +1,64 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<summary>
+sales order upload page
+</summary>
+<createDetails>
+	<id>US19882</id> <by>Shreesha Adiga</by> <date>23-12-2015</date>
+</createDetails>
+<changeHistory>
+	<id>US20264</id> <by>Shreesha Adiga</by> <date>11-01-2016</date> <description>Added placeholder to display error messages</description>
+</changeHistory>
+-->
+
+<div class="span4 margin-left--10 width-percent-100 padding-upload">
+	<section>
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Sales Order (Invoice) Upload</span>
+		</div>
+
+		<div class="custom-msg-box border-radius-8 vendorCSVWidth">
+			<table class="tbl-agentMail shipment-item margin-all-15 margin-left-percent-10 width-percent-78">
+				<tr>
+					<td class="typeStatus">
+						<input type="file" class="display-none" name="fileToUpload" id="fileToUpload" accept=".csv" data-bind="event: { change: uploadDocument }" data-buttontext="Your label here." />
+						<input type="text" class="width-percent-95" disabled="disabled" data-bind="value: uploadedFileName" />
+					</td>
+					<td class="typeStatus">
+						<button id="btnUploadCSVFile" class="btn flatButton" onclick="$('input[id=fileToUpload]').click();">Browse</button>
+						<button class="btn btn-primary" data-bind="enable: notDisableUploadButton, click: uploadData">Upload</button>
+						<button class="btn btn-primary" onclick="window.location='files/SalesOrderSample_BathId_RunId.csv'">Download Sample CSV File</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br />
+
+		<!--##START: US20264-->
+		<div class="alert alert-danger margin-bottom--5 weight-bold" data-bind="html: errorMessages, visible: isErrorMessageVisible">
+		</div>
+		<br />
+		<!--##END: US20264-->
+
+
+		<div class="ediGridWithHeader margin-bottom--15 gridOptionalHeader">
+			<div class="margin-right-35 float-right margin-all-10">
+				<table>
+					<tr>
+						<td>
+							<button class="btn btn-primary margin-top--3" style="height: 30px;" data-bind="click: onReprocessClick, enable: isReprocessButtonEnabled">Reprocess</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+		<div data-bind="compose: { model: salesOrderUploadCSVGrid, view: '../templates/reportViewerControlV2' }"></div>
+	</section>
+</div>

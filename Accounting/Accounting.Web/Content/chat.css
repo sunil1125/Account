@@ -1,0 +1,217 @@
+.chatbox {
+	position: fixed;
+	position: expression("absolute");
+	width: 250px;
+	display: none;
+	z-index: 9999;
+}
+
+.chatboxhead {
+	/*background-color: #f99d39;*/
+	background-color: #5D6C7F;
+	padding: 7px;
+	color: #ffffff;
+	border-right: 1px solid rgb(102, 102, 102);
+	border-left: 1px solid rgb(102, 102, 102);
+}
+
+.chatboxblink {
+	background-color: #f99d39;
+	border-right: 1px solid rgb(249, 157, 57);
+	border-left: 1px solid rgb(249, 157, 57);
+}
+
+.chatboxcontent {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #333333;
+	height: 200px;
+	width: 234px;
+	overflow-y: auto;
+	overflow-x: auto;
+	padding: 7px;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #eeeeee;
+	background-color: #ffffff;
+	line-height: 1.3em;
+}
+
+.chatboxinput {
+	padding: 5px;
+	background-color: #ffffff;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+
+.chatboxtextarea {
+	width: 230px;
+	height: 44px;
+	padding: 3px 0pt 3px 3px;
+	border: 1px solid #eeeeee;
+	margin: 1px;
+	overflow: hidden;
+	resize: none;
+}
+
+.chatboxtextareaselected {
+	border: 2px solid #f99d39;
+	margin: 0;
+}
+
+.chatboxmessage {
+	margin-left: 1em;
+}
+
+.chatboxinfo {
+	margin-left: -1em;
+	color: #666666;
+}
+
+.chatboxmessagefrom {
+	margin-left: -1em;
+	font-weight: bold;
+}
+
+.chatboxmessagecontent {
+}
+
+.chatboxoptions {
+	float: right;
+}
+
+	.chatboxoptions a {
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		font-family: Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+	}
+
+.chatboxtitle {
+	float: left;
+}
+/*#region Chat Control UI */
+.chatOnlineStatusBlock {
+	background-color: #5D6C7F;
+	width: 40px;
+	height: 30px;
+	float: left;
+}
+
+.chatUserBlock {
+	float: left;
+	background-color: #5D6C7F;
+	width: 60px;
+	height: 30px;
+}
+
+.chatbar {
+	width: 100px;
+	height: 30px;
+}
+
+.footerBar {
+	width: 100px;
+	height: 30px;
+}
+
+.chatCaret {
+}
+
+	.chatCaret:before {
+		content: ' ';
+		height: 0;
+		position: absolute;
+		width: 0;
+		border: 6px solid transparent;
+		border-bottom-color: #333;
+	}
+
+	.chatCaret:after {
+		content: ' ';
+		height: 0;
+		position: absolute;
+		width: 0;
+		top: 2px;
+		left: 33px;
+		border: 6px solid transparent;
+		border-bottom-color: #5D6C7F;
+	}
+
+#chatText {
+	color: white;
+	text-decoration: none;
+}
+
+	#chatText a {
+		color: white;
+		text-decoration: none;
+	}
+
+		#chatText a:hover {
+			color: white;
+			text-decoration: none;
+		}
+
+/*#endregion */
+
+/*to fix chat bar at bottom*/
+@media (max-width: 979px) {
+	.navbar-fixed-top, .navbar-fixed-bottom {
+		position: fixed;
+	}
+}
+
+.dropdownChat-menu {
+	background-color: #5D6C7F;
+	border: 0px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0px;
+	box-shadow: 0px rgba(0, 0, 0, 0.2);
+	display: none;
+	float: left;
+	left: 0;
+	list-style: none outside none;
+	margin-bottom: 5px !important;
+	min-width: 130px;
+	padding: 0;
+	position: absolute;
+	top: 100%;
+	z-index: 1000;
+}
+
+.contactBoxtitleText {
+	font-weight: bolder;
+	font-size: 13px;
+	color: white;
+}
+
+.txtContacts {
+	color:white;
+}
+
+.txtCompanyName {
+	font-size: 10px;
+	margin-left: 0px;
+	color: white;
+}
+
+/*#region Chat reconnection */
+.chat-reconnecting {
+	text-transform: none;
+	cursor: pointer;
+	font-size: 13px;
+	min-width: 400px;
+	margin: 20px 0px 25px 0px;
+	text-align: center;
+}
+
+.icon-chat-connecting {
+	background-image: url(images/GreenDot.png);
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin: 0px 0px 4px 0px;
+	vertical-align: bottom;
+}
+/*#endregion */

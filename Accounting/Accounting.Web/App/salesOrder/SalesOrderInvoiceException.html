@@ -1,0 +1,85 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<div class="table-cell twoDiv">
+		<table>
+			<tr>
+				<td class="typeLabels">Scheduled Age:
+				</td>
+				<td class="typeStatus">
+					<input type="text" data-bind="value: scheduleAge, uniqueName: true, validationOptions: { errorElementClass: null }" readonly="readonly" />
+				</td>
+				<td class="align-right">
+					<button class="btn btn-primary " data-bind="click: onForcePushClick, enable: isForceInvoiceEnable">Force Invoice</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<fieldset>
+						<legend>Exception Reasons</legend>
+						<textarea id="txtuserSalesOrderExceptionreason" readonly="readonly" class="accounting-textarea height-170 width-580"
+							data-bind="value: exceptionReason"
+							maxlength="500"></textarea>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="table-cell invreason invoicereasondiv-none" style="left: 0" data-bind="visible: isEnableInvoiceReason">
+		<div class="invReasonMainDiv">
+			<div class="invReasonHeadorDiv">
+				<h4 class="invReasonTitle">Force Invoice Shipment</h4>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<td class="padding-left-15">
+							<fieldset>
+								<legend>Force Invoice Reason</legend>
+								<div data-bind=" validationElement: invoiceReason, validationOptions: { errorElementClass: 'input-validation-error width-460' }">
+									<i class=" icon-question-sign tooltip-cursor" data-bind="visible: (invoiceReason.isModified() && !invoiceReason.isValid()), tooltip: { title: invoiceReason.isModified() ? invoiceReason.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+									<textarea id="txtInvoiceReason" class="accounting-textarea height-120" data-bind="value: invoiceReason, value: invoiceReason, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: (invoiceReason.isModified() && !invoiceReason.isValid()) ? '420px' : '450px' }"
+										maxlength="1000"></textarea>
+								</div>
+							</fieldset>
+						</td>
+					</tr>
+					<tr>
+						<td class="align-right">
+							<button class="btn btn-primary" data-bind="click: onSaveClick, enable: isEnable()">Save</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="invoiceReason margin-top-percent--1-8" data-bind="visible: invoicedReasonVisibility">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Forced Invoiced By:</td>
+				<td class="typeStatus">
+					<label class="weight-normal height-10" data-bind="text: updatedBy"></label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="padding-top-5">
+					<fieldset>
+						<legend>Reason</legend>
+						<textarea class="accounting-textarea height-170 width-500" readonly="readonly" data-bind="value: invoiceReason, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }"
+							maxlength="1000"></textarea>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

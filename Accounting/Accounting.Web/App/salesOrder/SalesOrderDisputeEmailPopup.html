@@ -1,0 +1,205 @@
+﻿<!--******************************************************************************
+
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved.
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz.
+
+******************************************************************************-->
+
+<!--
+<summary>
+Popup to send the dispute email using the selected template
+</summary>
+<createDetails>
+<id>US24862</id> <by>Shreesha Adiga</by> <date>20-09-2016</date>
+</createDetails>
+<changeHistory>
+<id>US24862</id> <by>Dhaval Tamhane</by> <date>21-09-2016</date><description>Email body related changes</description>
+<id>US24865</id> <by>Shreesha Adiga</by> <date>23-09-2016</date><description>Implement all the functionality of the popup: values, validations, events etc</description>
+<id>US24871</id> <by>Janakiram</by> <date>23-09-2016</date><description>Implemented Progress Template</description>
+<id>DE24585</id> <by>Shreesha Adiga</by> <date>29-09-2016</date><description>Display each uploaded file in a table with individual delete button</description>
+<id>US24866</id> <by>Shreesha Adiga</by> <date>30-09-2016</date><description>get the header of the table displaying list of files dynamically</description>
+</changeHistory>
+-->
+
+<!--##START: US24866-->
+<div class="email-popup custom-msg-box border-radius-8"  data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }" style="max-width: 900px !important; width: 900px; background-color: #f0eeeb">
+	<!--##END: US24866-->
+	<div class="custom-modal-header border-top-8">
+		<h4 class="custom-modal-header-text" data-bind="text: 'Send Carrier Dispute Email'"></h4>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+		<div class="tableLayout">
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Carrier Name:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<input type="text" class="width-percent-83" data-bind="value: carrierName, attr: { title: carrierName }" readonly="readonly" />
+							<!--##END: US24865-->
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">PRO#:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-83" data-bind="value: proNumber" readonly="readonly" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">BOL#:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-83" data-bind="value: bolNumber" readonly="readonly" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-cell width-percent-50">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Carrier Contact Address:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<select id="multiSelect" class="margin-bottom-0" multiple="multiple"
+								data-bind="options: carrierContactEmailAddresses, optionsText: 'DisputeTypeDescription', optionsValue: 'Email'">
+							</select>
+							<!--##END: US24865-->
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">Dispute Template:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<label class="validation-label2" data-bind=" validationElement: selectedDisputeTemplate">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (selectedDisputeTemplate.isModified() && !selectedDisputeTemplate.isValid()), tooltip: { title: selectedDisputeTemplate.isModified() ? selectedDisputeTemplate.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<select class="margin-bottom-0 width-percent-89"
+									data-bind="options: disputeTemplateList, value: selectedDisputeTemplate, optionsText: 'TemplateName', optionsCaption: 'Select', css: { 'borderRedOnValidation padding-left-16': (selectedDisputeTemplate.isModified() && !selectedDisputeTemplate.isValid()) }">
+								</select>
+							</label>
+							<!--##END: US24865-->
+						</td>
+					</tr>
+
+					<tr>
+						<td class="typeLabels">Dispute Amount: $
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<input type="text" class="width-percent-83" data-bind="value: disputeAmount" readonly="readonly" />
+							<!--##END: US24865-->
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="tableLayout">
+			<div class="table-cell" style="padding-top: 2px">
+				<table class="tbl-sales-order" style="width: 92% !important">
+					<tr>
+						<td class="typeLabels" style="width: 16.5%">Email ID(s):
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<label class="validation-label2" data-bind=" validationElement: emailIds">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (emailIds.isModified() && !emailIds.isValid()), tooltip: { title: emailIds.isModified() ? emailIds.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" class="width-percent-98 requiredFieldBgColor"
+									data-bind="value: emailIds, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (emailIds.isModified() && !emailIds.isValid()) }" />
+							</label>
+							<!--##END: US24865-->
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels" style="width: 16.5%">CC ID(s):
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<label class="validation-label2" data-bind=" validationElement: ccIds">
+								<i class="fa fa-question-circle valdation_icon"
+									data-bind=" visible: (ccIds.isModified() && !ccIds.isValid()), tooltip: { title: ccIds.isModified() ? ccIds.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" class="width-percent-98"
+									data-bind="value: ccIds, valueUpdate: 'afterkeydown', css: { 'borderRedOnValidation padding-left-16': (ccIds.isModified() && !ccIds.isValid()) }" />
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels" style="width: 16.5%">Email Subject:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<input type="text" class="width-percent-98" data-bind="value: emailSubject" readonly="readonly" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels" style="width: 16.5%">Attachments:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<!--##START: US24865-->
+							<button class="btn flatButton" data-bind="click: function () { $('#upload-file-dispute-email').trigger('click'); }">Choose File</button>
+							<input type="file" class="display-none" name="fileToUpload" id="upload-file-dispute-email" data-bind="event: { change: uploadAttachments }" multiple="multiple" />
+							<!--##END: US24865-->
+						</td>
+					</tr>
+
+					<!--##START: DE24585-->
+					<tr>
+						<td class="typeLabels"></td>
+						<td class="typeStatus email-attachments">
+							<table class="table-bordered shipment-item width-percent-100" data-bind="visible: isFileNamesTableVisible">
+								<thead>
+									<tr>
+										<th>
+											<!--##START: US24866-->
+											<label class="style-label" data-bind="text: fileTableHeaderText"></label>
+										</th>
+										<!--##END: US24866-->
+										<th style="width: 12%">
+											<label class="style-label">Remove</label></th>
+									</tr>
+								</thead>
+								<tbody data-bind="foreach: uploadedFilesList">
+									<tr>
+										<td>
+											<span data-bind="text: FileName, attr: { title: FileName }"></span>
+										</td>
+										<td class="td-upload-agent-mail" style="width: 10%">
+											<i class="fa fa-trash-o cursor-pointer" title="Remove Attachment" data-bind="click: $parent.deleteAttachments"></i>
+										</td>
+									</tr>
+								</tbody>
+				</table>
+						</td>
+					</tr>
+					<!--##END: DE24585-->
+
+				</table>
+			</div>
+		</div>
+		<br />
+		<fieldset>
+			<legend>Email Body:</legend>
+			<!--##START: US24866-->
+			<div class="email-body">
+				<div data-bind="attr: { class: emailBodyEditorId }"></div>
+			</div>
+			<!--##END: US24866-->
+		</fieldset>
+	</div>
+	<div class="margin-left-12 margin-right-10">
+		<div id="button-container" class="align-right margin-top-5">
+			<!--##START: US24865-->
+			<button class="btn btn-primary" data-bind="click: onSendEmail">Send Mail</button>
+			<!--##END: US24865-->
+			<button class="btn btn-primary" data-bind="click: onCancel">Close</button>
+		</div>
+	</div>
+	<br />
+</div>

@@ -1,0 +1,105 @@
+@******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************@
+
+@model Accounting.Models.UserUISettingsModel
+@using System.Web.Optimization
+@using System.Configuration
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Accounting</title>
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="~/Content/images/appolo-favicon-circle-1.png" type="image/vnd.microsoft.icon">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="~/Content/reportViewerControlV2.css" rel="stylesheet" />
+	<link rel="apple-touch-startup-image" href="~/Content/images/ios-startup-image-landscape.png" media="(orientation:landscape)" />
+	<link rel="apple-touch-startup-image" href="~/Content/images/ios-startup-image-portrait.png" media="(orientation:portrait)" />
+	<link rel="apple-touch-icon" href="~/Content/images/icon.png" />
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+	<link href="~/Content/font-awesome-family.css" rel="stylesheet" rel="stylesheet" />
+
+	<script src="~/App/localStorage/LocalStorage.js"></script>
+	@Styles.Render("~/Content/css")
+	<script type="text/javascript">
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			var mq = "@@-ms-viewport{width:auto!important}";
+			msViewportStyle.appendChild(document.createTextNode(mq));
+			document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+
+		localStorage.clear();
+	</script>
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+		var ga_host = window.location.hostname;
+		if (/10-4.com/.test(ga_host)) {
+			//hits from 10-4 test servers
+			ga('create', 'UA-46646669-1', '10-4.com');
+		} else { //if (/localhost/.test(ga_host)) {
+			//hits from dev machines
+			ga('create', 'UA-46646669-2', 'cr2env.com', {
+				'cookieDomain': 'none'
+			});
+		}
+
+		window.onbeforeunload = function (e) {
+			if (window.ischange !== "undefined" && window.ischange === true)
+				return "You have unsaved changes.";
+		}
+	</script>
+</head>
+<body>
+	@*@Html.Hidden("chatServer", ConfigurationManager.AppSettings["ChatServer"].ToString())*@
+	@if (@User.Identity.IsAuthenticated)
+ {
+		<div id="applicationHost">
+			@Html.Partial("_splash")
+		</div>
+		@Scripts.Render("~/Scripts/vendor.js")
+		@Scripts.Render("~/Scripts/applicationJs.js")
+
+	 string jsVersion;
+	 if (ConfigurationManager.AppSettings.AllKeys.Contains("jsVersion"))
+	 {
+		 jsVersion = ConfigurationManager.AppSettings["jsVersion"].ToString();
+		 jsVersion = String.IsNullOrWhiteSpace(jsVersion) ? "1.0001" : jsVersion;
+	 }
+	 else
+	 {
+		 jsVersion = "1.0001";
+	 }
+
+	 //Adding User Template
+	 if (Model != null && !string.IsNullOrEmpty(Model.ThemeName))
+	 {
+		@Styles.Render("~/Content/themes/" + Model.ThemeName + ".css?v=" + jsVersion);
+	 }
+	 else
+	 {
+
+		@Styles.Render("~/Content/themes/DefaultTheme.css?v=" + jsVersion);
+	 }
+		<script src="~/Scripts/Vendor/require.js" data-main="@Url.Content("~/App/main.js?v=" + jsVersion)"></script>
+ }
+ else
+ {
+	 Response.Redirect(Request.Url.AbsoluteUri + "/Account/Login");
+ }
+	@Html.Partial("_configuration")
+</body>
+</html>

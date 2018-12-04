@@ -1,0 +1,18 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" style="overflow: hidden;">
+	<div id="Div2" style="float: left; width: 87%; margin-top: -55px">
+
+		<div class="row-fluid">
+			<div id="gridException" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+	<div id="labelDiv" class="float-right" style="width: 11%;">
+		<button class="btn btn-primary" style="margin-right: 15px; margin-top: 10px;" data-bind="click: forcePush, visible: isAnyExceptionAvailable">Force Push</button>
+	</div>
+</div>

@@ -1,0 +1,156 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>DE20722</id> <by>SHREESHA ADIGA</by> <date>19-11-2015</date><description>Added Maxlength to BOL input field</description>
+</changeHistory>-->
+<div class="container-fluid">
+	<div id="mainDiv">
+
+		<div class="align-left">
+			<span class="PageTitleBlack float-left margin-top-12" data-bind="text: exceptionRuleLabel"></span>
+		</div>
+
+		<div id="btnDiv" class="align-right margin-right-4">
+			<button id="btnSave" class="btn btn-primary" data-bind="visible: isSave, click: onSave, enable: isSaveEnable">Save</button>
+			<button id="btnCreateSubBill" class="btn btn-primary" data-bind="visible: isCreateSubBill, click: onCreateSubBill, enable: isEnableAllButtonAfterSuccessCall">Create Sub Bill</button>
+			<button id="btnCreatePo" class="btn btn-primary" data-bind="visible: isPurchaseOrder, click: onCreatePo, enable: isEnableAllButtonAfterSuccessCall">Create PO</button>
+			<!--<button id="Button1" class="btn btn-primary" data-bind="visible: isForceAttach, click: onForceAttach, enable: !isEnableAllButtonAfterSuccessCall()">Force Attach</button>-->
+			<button id="btnInactiveButton" class="btn btn-primary" data-bind="visible: isInactiveButton, click: getMakeOrderInactive, enable: isEnableAllButtonAfterSuccessCall">Inactive</button>
+			<button id="btnReprocess" class="btn btn-primary" data-bind="visible: isReprocess, click: getReprocessStatus, enable: isEnableAllButtonAfterSuccessCall">Re-Process</button>
+		</div>
+
+		<div id="DetailsDiv" class="row-fluid margin-top-10" data-bind="showContentProgress: listProgressEDIDetials, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+			<div class="width-percent-100">
+				<!--Progress Bar for loading data on details , enable: isCreateSubBillenable-->
+				<div class="float-left width-percent-28">
+					<table class="tbl-sales-order width-percent-20">
+						<tr>
+							<td class="typeLabels">*Carrier Name:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: carrierName" />
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">*PRO#:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: proNumber" />
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">BOL/Sales Order#:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<!--##START: DE20722-->
+								<input type="text" maxlength="31" data-bind="value: bolNumber, enable: isInactiveButton" />
+								<!--##END: DE20722-->
+							</td>
+						</tr>
+						<tr data-bind="visible: !isDuplicateBillOrOriginalBillItems()">
+							<td class="typeLabels"></td>
+							<td class="edi_details_create_link">
+								<a class="cursor-pointer margin-left-10" data-bind="click: onClickBOLNumber, text: bolNumber" />
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">*Bill Date:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<!--<input type="text" disabled="disabled" />-->
+								<div class="typecontrols padding-top-0">
+									<div class="input-append date width-percent-98" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+										data-bind="datepicker: billDate, datepickerOptions: datepickerOptions">
+										<input id="internalDisputeDate" type="text" size="16" class="span10" style="width: 89%" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToBookedDate }, value: billDate, valueUpdate: 'afterkeydown'" maxlength="10" disabled="disabled" />
+										<span class="add-on" data-bind="css: { disabledateLink: true } ">
+											<i class="icon-calendar"></i>
+										</span>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">PO#:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: po" />
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">EDI BOL#:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: ediBol" />
+							</td>
+						</tr>
+						<tr>
+							<td class="typeLabels">Reference:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: referenceNo" />
+							</td>
+						</tr>
+						<tr data-bind="visible: isOrginalBol">
+							<td class="typeLabels">Original BOL#:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="text" disabled="disabled" data-bind="value: originalBol" />
+							</td>
+						</tr>
+						<tr data-bind="visible: isInactiveCheckBox">
+							<td class="typeLabels">Inactive:
+							</td>
+							<td class="typeStatus" tabindex="1">
+								<input type="checkbox" data-bind="checked: isCheckedInactive" />
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="float-right width-percent-72">
+					<div class="width-percent-100" data-bind="visible: isItem">
+						<div>
+							<span class="gridHeadingTitleBlack">Items</span>
+						</div>
+						<div>
+							<div data-bind="compose: { model: edi210CarrierExceptionItemViewModel, view: 'board/Edi210CarrierExceptionItemView' }"></div>
+						</div>
+					</div>
+
+					<div class="width-percent-100" data-bind="visible: isDuplicateBillOrOriginalBillItems">
+						<div>
+							<span class="gridHeadingTitleBlack">Original Bill &nbsp; &nbsp; &nbsp;
+								<!--								<a style="cursor: pointer" data-bind="text: bolNumber, click: onClickBOLNumber"></a>&nbsp; &nbsp; &nbsp;
+								<a style="cursor: pointer" data-bind="	text: proNumber, click: onProNumberClick"></a>-->
+
+								<a style="cursor: pointer" data-bind="text: (bolNumber() + (ProcessStatus() && bolNumber() ? '(' + ProcessStatus() + ')' : '')), click: onClickBOLNumber"></a>&nbsp; &nbsp; &nbsp;
+								<a style="cursor: pointer" data-bind="text: (proNumber() + (BillStatus() && proNumber() ? '(' + BillStatus() + ')' : '')), click: onProNumberClick"></a>
+							</span>
+						</div>
+						<div>
+							<div data-bind="compose: { model: edi210CarrierExceptionOriginalBillItemViewModel, view: 'board/Edi210CarrierExceptionOriginalBillItemView' }"></div>
+						</div>
+					</div>
+					<div class="width-percent-100" data-bind="visible: isDuplicateBillOrOriginalBillItems">
+						<div>
+							<span class="gridHeadingTitleBlack">Corrected Bill</span>
+						</div>
+						<div>
+							<div data-bind="compose: { model: edi210CarrierExceptionDuplicateBillItemViewModel, view: 'board/Edi210CarrierExceptionDuplicateBillItemView' }"></div>
+						</div>
+					</div>
+					<button id="Button2" class="btn btn-primary" data-bind="visible: isDuplicateBillOrOriginalBillItems, enable: isCreateSubbillItemsEnable, click: onCreateSubbillItems">Create Sub Bill Line Items</button>
+				</div>
+
+				<div id="sub-bill-div" data-bind="visible: showSubbillItemsView">
+					<div data-bind="compose: { model: edi210CarrierExceptionSubBillItemView, view: 'board/Edi210CarrierExceptionSubBillItemView' }"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

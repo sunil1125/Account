@@ -1,0 +1,17 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<div class="container-fluid">
+    <div class="displayInlineBlock float-left" style="margin: 5px 15px 20px 15px;" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true }">
+        <div id="divInvContainer" class="InvContainer">
+        </div>
+    </div>
+</div>-->
+
+<div data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }" style="min-height: 500px;">
+	<div data-bind="html: invoiceHtml"></div>
+</div>

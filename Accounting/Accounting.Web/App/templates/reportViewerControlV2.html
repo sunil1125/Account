@@ -1,0 +1,332 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+<!--
+<summary>
+View of Report Controller
+</summary>
+<createDetails>
+<id></id> <by></by> <date></date>
+</createDetails>
+<changeHistory>
+<id>US26560</id> <by>Baldev Singh Thakur</by> <date>15-02-2017</date>
+</changeHistory>
+-->
+
+<div id="ReportControlContainer" data-bind="attr: { id: reportControlId }">
+	<!-- Report Name User name and creation date  -->
+	<div>
+		<div id="reportTitleDiv" data-bind="if: (reportHeader && reportHeader != '')">
+			<span id="reportTitle" class="PageTitleBlack" data-bind="text: reportHeader, visible: reportHeader && reportHeader != '' ? true : false "></span>
+		</div>
+		<div class="reportViewSelector" data-bind="if: viewSelector">
+			<div class="pull-right" data-bind="compose: { model: viewSelector, view: 'templates/optionButtonControlReport' }"></div>
+		</div>
+	</div>
+
+	<!-- Report Common Control div -->
+	<div id="gridOptionalHeader" class="margin-top-10 gridOptionalHeader" data-bind="visible: showOptionalHeaderRow(), css: showOptionalHeaderRow() ? 'gridCorners' : '' ">
+		<!-- ko if: showOptionalHeaderRow() -->
+		<div data-bind="css: showOptionalHeaderRow() ? 'gridCorners' : '' ">
+
+			<!-- ko if: (showDimension1Option()) -->
+			<div id="chartdim2Button" class="pull-left dimensionOption dimensionSeparator" data-bind="if: showDimension1Option()">
+
+				<!--<div style="display:inline;" class ="kgColumnHeaderButtonExpandIcon" data-bind="click: toggleDimension1Option, tooltip: { title: 'Select to refine report', placement: 'bottom', trigger: 'hover'}" data-original-title="" title="">
+					    <i class ="kgColumnHeaderButtonExpandIcon" ></i>
+				    </div>-->
+				<a class="kgColumnHeaderButtonExpandIcon" data-bind="click: toggleDimension1Option">
+					<div class="kgColumnHeaderButtonExpandIcon" data-bind="tooltip: { title: 'Select to refine report', placement: 'bottom', trigger: 'hover' }" />
+				</a>
+				<div class="dimensionLabel dimensionLabelPosition" data-bind="text: seletedDimension1ItemName()"></div>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (showDimension2Option() && !dimension2Option().isCustomColumnHeader) -->
+			<div id="chartdim2Button2" class="pull-left dimensionOption dimensionSeparator" data-bind="if: showDimension2Option()">
+				<div>
+					<a class="kgColumnHeaderButtonExpandIcon" data-bind="click: toggleDimension2Option, css: selectedDimension1Item() <= 0 ? ' disableExpandIcon' : ''">
+						<div class="kgColumnHeaderButtonExpandIcon" data-bind="css: selectedDimension1Item() <= 0 ? ' disableExpandIcon' : '', tooltip: { title: 'Select to refine report', placement: 'bottom', trigger: 'hover' }" />
+					</a>
+				</div>
+				<div class="dimensionLabel dimensionLabelPosition" data-bind="text: seletedDimension2ItemName()"></div>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (showFilter1Option() && !filter1Option().isCustomColumnHeader ) -->
+			<div class="pull-left filterOption" data-bind="if: showFilter1Option()" style="margin-left: 15px;">
+				<!-- ko if: filter1Option().filterDisplayLabel -->
+				<label class="control-label controlGap margin-top-8px" data-bind="visible: showFilter1Option(), text: filter1Option().filterDisplayLabel"></label>
+				<!-- /ko -->
+				<select style="margin-top: 8px;" data-bind="options: filter1Option().filterList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: (filter1Option().filterWatermark ? filter1Option().filterWatermark : '<--  Select -->'), value: selectedFilter1Item">
+				</select>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (showFilter2Option() && !filter2Option().isCustomColumnHeader ) -->
+			<div class="pull-left filterOption" data-bind="if: showFilter2Option()">
+				<!-- ko if: filter2Option().filterDisplayLabel -->
+				<label class="control-label controlGap margin-top-8px" data-bind="visible: showFilter2Option(), text: filter2Option().filterDisplayLabel"></label>
+				<!-- /ko -->
+				<select style="margin-top: 8px;" data-bind="options: filter2Option().filterList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: (filter2Option().filterWatermark ? filter2Option().filterWatermark : '<--  Select -->'), value: selectedFilter2Item">
+				</select>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (showFilter3Option() && !filter3Option().isCustomColumnHeader ) -->
+			<div class="pull-left filterOption" data-bind="if: showFilter3Option()">
+				<!-- ko if: filter3Option().filterDisplayLabel -->
+				<label class="control-label controlGap margin-top-8px" data-bind="visible: showFilter3Option(), text: filter3Option().filterDisplayLabel"></label>
+				<!-- /ko -->
+				<select style="margin-top: 8px;" data-bind="options: filter3Option().filterList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: (filter3Option().filterWatermark ? filter3Option().filterWatermark : '<--  Select -->'), value: selectedFilter3Item">
+				</select>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (showFilter4Option() && !filter4Option().isCustomColumnHeader ) -->
+			<div class="pull-left filterOption" data-bind="if: showFilter4Option()">
+				<!-- ko if: filter4Option().filterDisplayLabel -->
+				<label class="control-label controlGap margin-top-8px" data-bind="visible: showFilter4Option(), text: filter4Option().filterDisplayLabel"></label>
+				<!-- /ko -->
+				<select class="margin-top-8px" data-bind="options: filter4Option().filterList, optionsValue: 'Key', optionsText: 'Value', optionsCaption: (filter4Option().filterWatermark ? '<--' + filter4Option().filterWatermark + '-->' : '<--  Select -->'), value: selectedFilter4Item">
+				</select>
+			</div>
+			<!-- /ko -->
+
+			<div data-bind="if: context" style="display: inline-block; vertical-align: top;">
+				<div class="pull-left controlGap" data-bind="compose: { model: context, view: 'templates/optionButtonControl' }"></div>
+			</div>
+
+			<div id="slideDiv">
+				<!-- ko if: actionButton1() -->
+				<div id="actionButton1Div">
+					<button class="btn btn-success actionButtonPosition displayActionButtons"
+						data-bind="text: actionButton1().buttonName, enable: showActionButton1(), click: onButton1Click, slideRightLeftVisible: (showActionButton1() || showActionButton2() || showActionButton3()), contentVisibilityOptions: { showSlide: true, slideInDuration: 150 }">
+					</button>
+				</div>
+				<!-- /ko -->
+
+				<!-- ko if: actionButton2() -->
+				<div id="actionButton2Div">
+					<button class="btn btn-success actionButtonPosition displayActionButtons"
+						data-bind="text: actionButton2().buttonName, enable: showActionButton2(), click: onButton2Click, slideRightLeftVisible: (showActionButton1() || showActionButton2() || showActionButton3()), contentVisibilityOptions: { showSlide: true, slideInDuration: 150 }">
+					</button>
+				</div>
+				<!-- /ko -->
+
+				<!-- ko if: actionButton3() -->
+				<div>
+					<button class="btn btn-success actionButtonPosition displayActionButtons"
+						data-bind="text: actionButton3().buttonName, enable: showActionButton3(), click: onButton3Click, slideRightLeftVisible: (showActionButton1() || showActionButton2() || showActionButton3()), contentVisibilityOptions: { showSlide: true }">
+					</button>
+				</div>
+				<!-- /ko -->
+			</div>
+		</div>
+		<!-- /ko -->
+	</div>
+
+	<div id="gridHeader" data-bind="if: dateFilter || gridTitleHeader,
+	css: (OptionalHeaderRowLocation() === 'BOTTOM' || (!showOptionalHeaderRow() && OptionalHeaderRowLocation() === 'TOP')) ? 'margin-top-10 gridCorners' : 'gridHeader' ">
+		<!--ko if: gridTitleHeader()-->
+		<div id="gridTitleHeaderDiv" class="margin-top-10">
+			<span class="PageTitle" data-bind="text: gridTitleHeader, visible: gridTitleHeader && gridTitleHeader != '' ? true : false "></span>
+		</div>
+		<!--/ko-->
+
+		<!--ko if: dateFilter-->
+		<div class="dateFilterInitialContainer" data-bind="compose: { model: dateFilter, view: 'templates/dateRangeFilter' }"></div>
+		<!--/ko-->
+
+		<div data-bind="if: reportExport" class="exportControl">
+
+			<div>
+
+				<!--<div id="filLiId" style="color: #fff; right: 0px;display:inline-block;vertical-align: top;padding-top: 2px;">
+				<span data-bind="event: { 'click': $data.reportExport.showFilterModal }"><img src="Content/images/filter.png" /></span>
+				</div>-->
+
+				<!-- ko foreach: reportExport.exportOptionList -->
+				<div id="divExportControlFilter" class="exportControlSpan1"  data-bind='css: {
+	csvenabled: enabled && exportType == 0, csvdisabled: !enabled() && exportType == 0, xlsenabled: enabled && exportType == 1,
+	xlsdisabled: !enabled() && exportType == 1, pdfenabled: enabled && exportType == 2, pdfdisabled: !enabled() && exportType == 2,
+	filterenabled: enabled && exportType == 3, filterdisabled: !enabled() && exportType == 3
+},
+	event: { error: $parent.reportExport.Onerrorfunc }, enable: enabled(), click: $parent.reportExport.onClickGenerateReport, style: { cursor: enabled() ? "pointer" : "default" },
+	showContentProgress: !enabled(), contentProgressOptions: { showProgressBar: true, spinneroptions: { lines: 9, length: 1, radius: 5, width: 2, corners: 0.5, rotate: 0, trial: 55 } }'>
+				</div>
+				<!-- /ko -->
+			</div>
+		</div>
+		<!--###START: US26560-->
+		<div class="gridSearch" data-bind="visible: showGridSearchFilter">
+			<input type="text" class="searchtextbox" id="search-text-box" data-bind="attr: { placeholder: placeHolderText }, value: gridOptions.filterOptions.filterText, valueUpdate: 'afterkeydown', enable: isEnable">
+		</div>
+		<!--###END: US26560-->
+	</div>
+
+	<!-- Binding grids -->
+	<div data-bind="visible: showGrid">
+
+		<!-- ko if: gridOrientation() === 'Horizontal' -->
+
+		<!-- ko if: isAttachedToView() -->
+		<div data-bind="koGrid: gridOptions, showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true }, attr: { id: gridOptions.UIGridID != '' ? gridOptions.UIGridID : 'reportGrid' }"></div>
+		<!-- /ko -->
+		<!-- /ko -->
+
+		<!-- ko if: gridOrientation() === 'Vertical' -->
+		<div data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true }">
+			<div data-bind="compose: { model: verticalGridObject, view: 'templates/verticalGrid' }"></div>
+		</div>
+		<!-- /ko -->
+	</div>
+
+	<!-- Binding map -->
+	<!--<div class="mapDiv" data-bind="visible: showMap">
+		<div style="width: 2000px;" data-bind="compose: { view: 'templates/GeneralMap', model: mapVM }"></div>
+	</div>-->
+	<!--	<div style="position: absolute" data-bind="visible: showGraph">
+	<div id="graphid" data-bind="compose: { model: 'templates/graphControl', view: 'templates/graphControl' }"></div>
+	</div>-->
+
+	<!-- ko if: (showDimension1Option() && showDimension1List() ) -->
+	<div id="dimensionList1" data-bind="visible: showDimension1List() " class="DimensionItems">
+		<ul class="kgColList" data-bind="foreach: dimension1Option().dimensionItemList">
+			<li class="">
+				<a class="kgMenuText" data-bind="click: function () { $parent.updateSelectedDimension1Option(ID, Value) }">
+					<span data-bind="text: Value"></span></a>
+			</li>
+		</ul>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: (showDimension2Option() && showDimension2List() )   -->
+	<div id="dimensionList2" data-bind="visible: showDimension2List()" class="DimensionItems">
+		<ul class="kgColList" data-bind="foreach: dimension2Option().dimensionItemList">
+			<li class="">
+				<a class="kgMenuText" data-bind="click: function () { $parent.updateSelectedDimension2Option(ID, Value) }">
+					<span data-bind="text: Value"></span></a>
+			</li>
+		</ul>
+	</div>
+	<!-- /ko -->
+</div>
+
+<style>
+	.filterenabled + .popover {
+		max-width: 100%;
+	}
+
+		.filterenabled + .popover .popover-title {
+			font-size: 18px !important;
+		}
+
+		.filterenabled + .popover h3.popover-title > div > span {
+			font-size: 18px !important;
+		}
+
+		.filterenabled + .popover .popover-content {
+		}
+
+		.filterenabled + .popover.bottom .arrow {
+			top: -11px !important;
+		}
+
+			.filterenabled + .popover.bottom .arrow:after {
+			}
+
+	table#Table1 tr td {
+		padding-right: 10px;
+		vertical-align: top;
+	}
+
+		table#Table1 tr td img {
+			width: 20px;
+			height: 20px;
+			opacity: 0.6;
+		}
+
+			table#Table1 tr td img.fadeImg {
+				width: 20px;
+				height: 20px;
+				opacity: 1;
+			}
+
+		table#Table1 tr td select {
+			width: 140px !important;
+		}
+
+		table#Table1 tr td input[type="text"] {
+			width: 135px !important;
+		}
+
+		table#Table1 tr td:last-child {
+			padding-right: 0px;
+		}
+
+	table#Table1 tr:first-child td {
+		color: #fff;
+	}
+
+	table#Table1 tr td:first-child {
+		padding-right: 5px;
+		padding-top: 5px;
+	}
+
+	table#Table1 tr th {
+		font-weight: normal;
+	}
+</style>
+
+<div id="filter" class="filter popover fade bottomleft in" style="max-width:none; width:auto" data-bind="with: reportColumnFilter">
+	<div class="arrow">
+	</div>
+	<h3 class="popover-title">
+		<div>
+			<div style="float: left;">Filter</div>
+			<div style="float: right;">
+				<img class="my-remove-sign" src="Content/images/close.png" style="width: 12px; height: 12px; cursor: pointer;" data-bind="click: closePopup"></div>
+			<div style="clear: both;">
+			</div>
+		</div>
+	</h3>
+	<div class="popover-content">
+
+		<div>
+			<table>
+				<tbody>
+					<tr>
+						<th></th>
+						<th>Field</th>
+						<th>Operator</th>
+						<th>Value</th>
+					</tr>
+				</tbody>
+				<tbody data-bind="foreach: reportColumnFilters">
+					<tr>
+						<td>
+					<!--		<i class="fa fa-minus-square-o"></i>-->
+						<i class="fa fa-minus-square" style="cursor: pointer" data-bind="click: $parent.deleterow"></i>
+						</td>
+						<td>
+							<select data-bind="options: serviceTypes, optionsText: 'displayName', value: selectedserviceType, optionsCaption: 'Select...'"></select></td>
+						<td>
+							<select data-bind="options: operatorTypes, optionsText: 'opratorName', value: selectedOperatorType, optionsCaption: 'Select...'"></select></td>
+						<td>
+							<input type="text" data-bind="value: searchText" style="margin-top:-10px;"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="CancelApplyButtons" style="padding: 10px; text-align: right;border-top: 2px solid #666666;"">
+			<button class="btn btn-primary" style="margin-right: 20px;" data-bind="click: clearAll">Clear All</button>
+			<button class="btn btn-primary" style="margin-right: 20px;" data-bind="click: addNew">Add New</button>
+			<button class="btn btn-primary" data-bind="click: applyFilter">Apply</button>
+		</div>
+	</div>
+</div>

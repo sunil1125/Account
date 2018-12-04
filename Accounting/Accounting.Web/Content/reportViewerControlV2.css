@@ -1,0 +1,292 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+#reportGrid {
+	/*border: 1px solid rgb(212,212,212);*/
+	/*height: 400px;*/
+}
+
+#reportTitleDiv {
+	padding-top: 10px;
+	display: inline-block;
+	width: 50%;
+	overflow: hidden;
+	line-height:21px;
+}
+
+.gridCorners {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.gridHeader {
+	height: 42px;
+	background: #586D7C;
+	padding: 8px 0px 0px 0px;
+	background-color: #A6A9Ad;
+}
+
+.gridOptionalHeader {
+	height: 42px;
+	background: #D1DBE3;
+	padding: 0px;
+}
+
+.gridSearch {
+	/*margin-top:19px;*/
+	display: inline-block;
+	margin-right: 28px;
+	/*(should locate 348px from right - after deducting exportControl right location)*/
+	float: right;
+	width: 167px;
+}
+
+.controlGap {
+	margin-right: 15px;
+}
+
+.exportControl {
+	display: inline-block;
+	float: right;
+	margin-right: 110px;
+	height: 100%;
+}
+
+	.exportControl > div {
+		height: 100%;
+		padding-top: 2px;
+		display: inline-block;
+	}
+
+.exportControlSpan1 {
+	height: 26px;
+	width: 19px;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+#chartdim2Button2 > div {
+	display: inline-block;
+	height: 100%;
+}
+
+.kgColumnHeaderButtonExpandIcon {
+	background: url('../Content/Images/Icon_expand.png') no-repeat center;
+	background-repeat: no-repeat;
+	height: inherit;
+	width: 20px;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+
+.disableExpandIcon {
+	pointer-events: none;
+	cursor: not-allowed;
+	opacity: 0.3;
+}
+
+.kgColumnHeaderButtonAddIcon {
+	background: url('../Content/Images/Icon_add1.png') no-repeat center;
+	background-repeat: no-repeat;
+	height: inherit;
+	width: 100%;
+	display: inline-block;
+	margin: 0px auto;
+	padding-left: 8px;
+	margin-bottom: 12px;
+}
+
+.kgColumnHeaderButtonAddIcon-disabled {
+	background: url('../Content/Images/Icon_add2.png') no-repeat center;
+	background-repeat: no-repeat;
+	height: inherit;
+	width: 100%;
+	display: inline-block;
+	margin: 0px auto;
+	padding-left: 8px;
+	margin-bottom: 12px;
+	pointer-events: none;
+	cursor: not-allowed;
+}
+
+.filterOption {
+	width: 214px;
+	margin-left: 0px;
+	margin-right: 15px;
+}
+
+.dimensionSeparator {
+	border-right: solid;
+	border-right-color: gray;
+	border-right-width: 1px;
+	margin: 0px;
+	padding: 0px;
+	height: 42px;
+}
+
+.dimensionOption {
+	width: 214px;
+	margin-left: 0px;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.dimensionLabel {
+	color: #000000;
+	display: inline;
+	overflow: visible;
+	padding: 5px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	white-space: nowrap;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	padding-left: 10px;
+}
+
+.dimensionLabelPosition {
+	position: relative;
+	top: -16px;
+}
+
+#search-text {
+	/*margin-left: 25px;*/
+	width: 167px;
+}
+
+.green {
+	color: red;
+	font-weight: bold;
+}
+
+.csvenabled {
+	background-image: url(../content/images/csv-1.png);
+}
+
+	.csvenabled:hover {
+		opacity: 0.6;
+	}
+
+/*.csvdisabled {
+	background-image: url(../content/images/icon_CSV2.png);
+}*/
+.xlsenabled {
+	background-image: url(../content/images/xls-1.png);
+}
+
+	.xlsenabled:hover {
+		opacity: 0.6;
+	}
+/*.xlsdisabled {
+	background-image: url(../content/images/icon_XLS2.png);
+}*/
+.pdfenabled {
+	background-image: url(../content/images/pdf-1.png);
+}
+
+	.pdfenabled:hover {
+		opacity: 0.6;
+	}
+
+	.filterenabled {
+	background-image: url(../content/images/filter16.png);
+	background-repeat:no-repeat;
+	width:25px;
+	height:22px;
+}
+
+	.filterenabled:hover {
+		opacity: 0.6;
+	}
+
+	.popover.bottomleft .arrow {
+		top: -11px;
+		right: 3px;
+		margin-left: -11px;
+		border-bottom-color: #999;
+		border-bottom-color: rgba(0, 0, 0, 0.25);
+		border-top-width: 0;
+	}
+
+/*.pdfdisabled {
+	background-image: url(../content/images/icon_PDF2.png);
+}*/
+.margin-spin {
+	margin-left: -21px;
+	position: relative;
+	top: -5px;
+	left: -1px;
+	font-size: 14px;
+}
+
+.reportViewSelector {
+	display: inline-block;
+	width: 49%;
+}
+
+	.reportViewSelector > div {
+		margin-top: -3px;
+	}
+
+.margin-top-8px {
+	margin: 8px 0px 0px 0px;
+}
+
+.actionButtonPosition {
+	float: right;
+	height: 30px;
+	margin: -10px 7px 0px 0px;
+}
+
+#gridTitleHeaderDiv {
+	display: inline-block;
+}
+
+	#gridTitleHeaderDiv > span {
+		margin-left: 15px;
+		color: #000000;
+	}
+
+.dateFilterInitialContainer {
+	margin-left: 15px;
+	display: inline-block;
+}
+/*#region action button control visibility*/
+.displayActionButtons {
+	display: none;
+}
+/*endregion*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+	.margin-spin:last-child {
+		top: -5px !important;
+		left: 74px;
+	}
+
+	.reportViewSelector {
+		margin: 0px;
+		padding-right: 0px;
+		display: inline-block;
+		float: right;
+		width: 48%;
+	}
+
+	.gridNoOptHeader {
+		height: 0px;
+		padding: 0px 0px 0px 0px;
+	}
+
+	.searchBoxDisplayImageCSS {
+		background-image: url(../Content/images/glyphicons_027_search_gray.png) !important;
+	}
+
+	.searchBoxDisplayNoneCSS {
+		background-image: none !important;
+	}
+}

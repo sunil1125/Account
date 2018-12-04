@@ -1,0 +1,103 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div id="mainDiv" class="row-fluid" style="margin-left:20px;">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Scheduled Reports</span>
+		</div>
+			<div style="width:60%;">
+					<table class="tbl-sales-order" style="width:100%">
+						<tr style="border:2px solid #fff">
+							<td class="typeLabels" style="width:10%">Report name:
+							</td>
+							<td class="typeLabels" style="float:left;">
+								<select class="width-250 margin-bottom-0" id="selectReportName"  data-bind="options: reportsNameList, optionsValue: 'ID', optionsText: 'Value', optionsCaption: 'Select...', value: selectedreportsName"></select>
+							</td>
+							<td class="typeLabels" style="width:5%;" data-bind="visible: isPROEnable">
+								PRO#:
+							</td>
+							<td  data-bind="visible: isPROEnable">
+								<input type="text" />
+							</td>
+							<!--  -->
+							<td class="typeLabels" data-bind="visible: isFormDateToDate">From Date:
+                                </td>
+
+                                <td class="typeLabels" data-bind="visible: isFormDateToDate">
+
+                                    <div class="typecontrols padding-top-0">
+                                        <div data-bind=" validationElement: fromDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+                                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (fromDate.isModified() && !fromDate.isValid()), tooltip: { title: fromDate.isModified() ? fromDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                                            <div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: fromDate, datepickerOptions: datepickerOptions">
+                                                <input id="pickupDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToFromDate }, value: fromDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (fromDate.isModified() && !fromDate.isValid()) ? '80px' : '95px' }" />
+                                                <span class="add-on">
+                                                    <i class="icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="typeLabels" data-bind="visible: isFormDateToDate">To Date:
+                                </td>
+                                <td class="typeLabels" data-bind="visible: isFormDateToDate">
+
+                                    <div class="typecontrols padding-top-0">
+                                        <div data-bind=" validationElement: toDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+                                            <i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (toDate.isModified() && !toDate.isValid()), tooltip: { title: toDate.isModified() ? toDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+                                            <div class="input-append date" id="Div1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: toDate, datepickerOptions: datepickerOptions">
+                                                <input id="Text1" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToDate }, value: toDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (toDate.isModified() && !toDate.isValid()) ? '80px' : '95px' }" />
+                                                <span class="add-on">
+                                                    <i class="icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+							<!--  -->
+							<td style="float:right">
+								<button id="btngenerateReport" class="btn btn-primary" data-bind="click: onAdd, enable: isOnAddEnable">Add</button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="9">
+								<table class="table table-bordered shipment-item" style="width:100%">
+									<thead>
+										<tr>
+											<th style="width:50%;">
+												<label class="align-center">Name</label></th>
+											<th>
+												<label class="align-center">Download</label></th>
+											<th>
+												<label class="align-center">Delete</label></th>
+											</tr>
+									</thead>
+									<tbody class="line-items" data-bind="foreach: reportsList">
+									<tr class="lineItemRow" data-bind="style: { backgroundColor: bgColor() > 0 ? 'lightgrey' : '' }">
+										<td style="width:50%;">
+											<span class="label-SalesOrderDispute margin-left-5" data-bind="text: selectedReports"></span>
+										</td>
+										<td class="width-percent-10">
+											<a href="javascript:void(0)" style="margin-left:35px;"> <!-- data-bind="click: onClickDownloadReports""-->
+												<i class="downloadButton" style="text-indent: 0;"></i></a>
+										</td>
+										<td class="width-percent-5" style="text-align:center;">
+											<!--<span class="label-SalesOrderDispute" data-bind="text: countRow"></span>-->
+											<input class="margin-top--5" data-bind="click: $parent.removeLineItem, uniqueName: true, event: { keydown: $parent.isTabPress }, attr: { id: ('imgButtonDelete' + $index() + 1) }" type="image" src="Content/images/Icon_Trash.png" onmouseover="this.src='Content/images/Icon_Trash_Over.png';" onmouseout="this.src='Content/images/Icon_Trash.png';" onmousedown="this.src='Content/images/Icon_Trash_Down.png';" onmouseup="this.src='Content/images/Icon_Trash_Over.png';" />
+										</td>
+									</tr>
+								</tbody>
+								</table>
+							</td>
+						</tr>
+					</table>
+			</div>
+	</div>
+</div>
+

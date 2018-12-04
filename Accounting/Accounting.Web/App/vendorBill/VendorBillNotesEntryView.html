@@ -1,0 +1,40 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="tableLayout">
+	<div id="notesDIV" tabindex="-1" class="table-cell div-percent-20">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Notes Type:
+				</td>
+				<td class="typeStatus">
+					<select id="drpNotesType" class="newselect width-180" data-bind="options: vendorBillNoteTypes, value: selecteedNotesType"></select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<fieldset>
+						<legend>Add Notes</legend>
+						<textarea id="txtuserNote" class="accounting-textarea height-170 width-320"
+							data-bind="value: userNote, valueUpdate: 'afterkeydown', event: { keyup: onKeyUp }"
+							maxlength="500"></textarea>
+					</fieldset>
+				</td>
+			</tr>
+			<!--###START: US20305-->
+			<tr>
+				<td colspan="3" class="align-right">
+					<button class="btn btn-primary width-80" data-bind="click: onAdd, enable: canAdd">Add</button>
+				</td>
+			</tr>
+			<!--###END: US20305-->
+		</table>
+	</div>
+	<div class="table-cell div-percent-80 padding-top-0">
+		<div class="margin-top--55 margin-left-percent-4 width-percent-92" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+	</div>
+</div>

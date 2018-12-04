@@ -1,0 +1,81 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="custom-msg-box border-radius-8">
+	<div class="custom-modal-header border-top-8">
+
+		<h4 class="custom-modal-header-text">Internal Dispute</h4>
+	</div>
+	<table class="tbl-agentMail shipment-item margin-all-15">
+		<tr>
+			<td class="typeLabels">Disputed By:
+			</td>
+			<td class="typeStatus">
+				<input type="text" data-bind="value: disputedBy" disabled="disabled" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">*Disputed Amount $:
+			</td>
+			<td class="typeStatus">
+				<div data-bind=" validationElement: disputeAmount, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Header-Fields' }">
+					<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (disputeAmount.isModified() && !disputeAmount.isValid()), tooltip: { title: disputeAmount.isModified() ? disputeAmount.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+					<input type="text" class="requiredFieldBgColor" data-bind="numericDecimalInput: NumericInputWithDecimalPoint, style: { width: (disputeAmount.isModified() && !disputeAmount.isValid()) ? '190px' : '205px' }, value: disputeAmount, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">*Disputed Date:
+			</td>
+
+			<td class="typeStatus">
+				<div class="typecontrols padding-top-0">
+					<div data-bind=" validationElement: internalDisputeDatePopup, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Header-Fields' }">
+						<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (internalDisputeDatePopup.isModified() && !internalDisputeDatePopup.isValid()), tooltip: { title: internalDisputeDatePopup.isModified() ? internalDisputeDatePopup.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+							data-bind="datepicker: internalDisputeDatePopup, datepickerOptions: datepickerOptions">
+							<input id="internalDisputeDatePopup" type="text" class="requiredFieldBgColor span10" style="height: 20px;" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToBookedDate }, style: { width: (internalDisputeDatePopup.isModified() && !internalDisputeDatePopup.isValid()) ? '170px' : '180px' }, value: internalDisputeDatePopup, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" maxlength="10" />
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">*Disputed Reason:
+			</td>
+
+			<td class="typeStatus">
+				<div data-bind=" validationElement: selectedDisputeReason, validationOptions: { errorElementClass: 'input-validation-error errorWidth-So-Header-Fields' }">
+					<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (selectedDisputeReason.isModified() && !selectedDisputeReason.isValid()), tooltip: { title: selectedDisputeReason.isModified() ? selectedDisputeReason.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+					<select class="margin-bottom-0 requiredFieldBgColor" data-bind="style: { width: (selectedDisputeReason.isModified() && !selectedDisputeReason.isValid()) ? '202px' : '220px' }, options: requoteReasonCode, optionsText: 'ShortDescription', optionsCaption: 'Select...', value: selectedDisputeReason, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }"></select>
+					<!--, value: selectedDisputeReason-->
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<fieldset>
+					<legend>Dispute Note:</legend>
+					<div>
+						<textarea id="Textarea3" class="accounting-textarea" data-bind="value: internalDisputeNotes" style="width: 95%;" cols="10" rows="3" maxlength="200"></textarea>
+					</div>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id="buttonDiv" class="align-right margin-top-5">
+					<button class="btn btn-primary" data-bind="click: onSaveAgentDispute">Save</button>
+					<button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

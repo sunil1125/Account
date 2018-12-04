@@ -1,0 +1,38 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" class="row-fluid">
+	<div class="app-page-title margin-left-25">
+		<!--<span class="PageTitleBlack">Re-Quote Board</span>-->
+	</div>
+	<div class="clearfix"></div>
+	<div class="container-fluid">
+		<div class="accordion" id="accordion2">
+			<div class="carrierMappingGridWithHeader">
+				<!--<div class="float-left margin-all-10">
+							</div>-->
+				<div class="margin-right-35 float-right margin-all-10">
+					<table>
+						<tr>
+							<td>
+								<button class="btn btn-primary height-30" style="margin-top: -3px;" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+							</td>
+							<td class="position-Relative">
+								<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div id="reQuote" class="gridHeaderPosition" data-bind="compose: { model: requoteBoardContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>

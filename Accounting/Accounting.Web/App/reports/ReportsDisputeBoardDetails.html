@@ -1,0 +1,36 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">Dispute Board Details Report</span>
+		</div>
+		<div class="row-fluid">
+			<div class="accordion" id="accordion2">
+				<div class="ediGridWithHeader">
+					<div class="float-left margin-all-10">
+						<table class="tbl-sales-order">
+							<tr>
+								<td class="align-right typeLabels">Carrier Name:</td>
+								<td class="padding-left-5 typeLabels">
+									<input type="text" class="requiredFieldBgColor" data-bind="value: carrierName" />
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="margin-right-20 float-right margin-all-10">
+						<button id="btngenerateReport" class="btn btn-primary" data-bind="click: viewDisputeBoardReport">Generate Report</button>
+					</div>
+				</div>
+				<div class="row-fluid margin-top--15">
+					<div id="gridHistory" data-bind="compose: { model: DisputeBoardReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

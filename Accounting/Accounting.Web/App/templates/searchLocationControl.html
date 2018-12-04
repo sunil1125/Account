@@ -1,0 +1,25 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<changeHistory>
+<id>US22725</id> <by>Janakiram</by> <date>17-06-2016</date> <description>Dispalying Dynamic error message</description>
+</changeHistory>
+!-->
+<!--<div data-bind=" validationElement: cityStateZip, validationOptions: { errorElementClass: 'input-validation-error errorWidth-Address-AutoComplete-Fields' }">
+	<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (cityStateZip.isModified() && !cityStateZip.isValid()), tooltip: { title: cityStateZip.isModified() ? cityStateZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+	<input type="text" class="requiredFieldBgColor" autofocus="autofocus" placeholder="City State or Zip..." autocomplete="off" data-filterkey="Display"
+		data-bind="value: cityStateZip, typeahead: searchLocation, minLength: 2, items: 100, event: { onSelect: onSelectLocation, keydown: isTabPress }, style: { width: (cityStateZip.isModified() && !cityStateZip.isValid()) ? errorWidth : normalWidth }, validationOptions: { errorElementClass: null }, throttle: true, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly, id: id }" />
+</div>-->
+
+<div class="validation-label2 " data-bind="css: idlabel">
+     <!-- ###END: US22725 !-->
+	<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (cityStateZip.isModified() && !cityStateZip.isValid()), tooltip: { title: cityStateZip.isModified() ? cityStateZip.errorMessage : '', placement: 'bottom', trigger: 'hover' } "></i>
+     <!-- ###END: US22725 !-->
+	<input type="text" id="txtcityStateZip" class="requiredFieldBgColor validation2 cityStateZipClass" autofocus="autofocus" placeholder="City State or Zip..." autocomplete="off" data-filterkey="Display"
+		data-bind=" value: cityStateZip, typeahead: searchLocation, minLength: 2, items: 100, event: { onSelect: onSelectLocation, keydown: isTabPress }, style: { 'padding-left': (cityStateZip.isModified() && !cityStateZip.isValid()) ? '15px' : '', width: normalWidth }, css: { borderRedOnValidation: (cityStateZip.isModified() && !cityStateZip.isValid()) }, validationOptions: { errorElementClass: null }, throttle: true, valueUpdate: 'afterkeydown', attr: { 'readonly': shouldBeReadOnly, id: id }" />
+</div>

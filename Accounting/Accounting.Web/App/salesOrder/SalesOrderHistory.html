@@ -1,0 +1,30 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" class="padding-left-10">
+	<div id="labelDiv" style="width: 100%; text-align: right;">
+		<button class="btn btn-primary" style="margin-right: 15px; margin-top: 10px" data-bind="click: openHistoryDetails, enable: isHistoryDetailEnable, visible: isVisible">History Details</button>
+	</div>
+	<div id="content" class="width-percent-100">
+		<div class="historyDatesDIVNew border-top-11 box-Shadow-ForHistoryDate" data-bind=" css: historyDate">
+			<div class="custom-modal-header border-top-11">
+				<h4 class="custom-modal-header-text" style="margin-left: 2%;">History Date<h4>
+			</div>
+			<ol class="betterList" data-bind="foreach: historyDetailsDatesList" style="margin: 0px;">
+				<li data-bind="click: $root.changeRecord, style: { backgroundColor: isSelectedDate() ? '#C2DFFF' : '' }" style="cursor: pointer">
+					<span data-bind="text: historyDateSelected"></span>
+				</li>
+			</ol>
+		</div>
+		<div id="gridDiv" data-bind="css: gridCss" >
+
+			<div class="row-fluid"  data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+				<div id="gridHistory" class="margin-top--35" data-bind="compose: { model: historyNewValueContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

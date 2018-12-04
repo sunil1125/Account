@@ -1,0 +1,217 @@
+﻿<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US22956</id> <by>Shreesha Adiga</by> <date>23-06-2016</date> <description>Added UVBOwnership dropdown to view</description>
+<id>US24616</id> <by>Janakiram</by> <date>10-09-2016</date><description> Shipper Company Name and the Consignee Company Name on the main screen for all UVB's.</description>
+<id>US24905</id> <by>Baldev Singh Thakur</by> <date>06-10-2016</date><description>Set the Maximum field length of PO# to 50</description>
+<id>US25186</id> <by>Baldev Singh Thakur</by> <date>12-10-2016</date><description>Set the Maximum field length of Reference # to 50</description>
+<id>US37137</id> <by>Shreesha Adiga</by> <date>13-06-2018</date><description>Add validation to BOLNumber: Allow only main BOLNumber</description>
+</changeHistory>-->
+
+<div id="divPurchaseOrderDetails" class="tableLayout">
+	<div class="table-cell threeDivWith30Per">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels" style="width: 24%">*Vendor Name:
+				</td>
+				<td class="typeStatus" tabindex="1">
+					<div data-bind="compose: { model: vendorNameSearchList, view: 'templates/searchVendorNameControl' }"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Pro #:
+				</td>
+				<td class="typeStatus" tabindex="2">
+					<label class="validation-label2" data-bind="validationElement: proNumber">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (proNumber.isModified() && !proNumber.isValid()), tooltip: { title: proNumber.isModified() ? proNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtPRO" class="requiredFieldBgColor validation2" maxlength="15" placeholder="Pro Number" data-bind="event: { keypress: isAlphaNumericSpace }, css: { borderRedOnValidation: (proNumber.isModified() && !proNumber.isValid()) }, style: { 'padding-left': (proNumber.isModified() && !proNumber.isValid()) ? '20px' : '' }, value: proNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" style="width: 82.5%" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">BOL/Sales Order #:
+				</td>
+				<td class="typeStatus" tabindex="3">
+					<label class="validation-label2" data-bind="validationElement: bolNumber">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (bolNumber.isModified() && !bolNumber.isValid()), tooltip: { title: bolNumber.isModified() ? bolNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" style="width: 82.5%;" class="vendorbilltextbox" maxlength="20" data-bind="event: { keypress: isNumber }, value: bolNumber, valueUpdate: 'afterkeydown', css: { borderRedOnValidation: (bolNumber.isModified() && !bolNumber.isValid()) }, style: { 'padding-left': (bolNumber.isModified() && !bolNumber.isValid()) ? '17px' : '' }, uniqueName: true, validationOptions: { errorElementClass: null }" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Bill Date:
+				</td>
+				<td class="typeStatus" tabindex="4">
+					<div class="typecontrols padding-top-0">
+						<div class="validation-label2" data-bind=" validationElement: billDate">
+							<i class="fa fa-question-circle valdation_icon" style="z-index: 999;" data-bind=" visible: (billDate.isModified() && !billDate.isValid()), tooltip: { title: billDate.isModified() ? billDate.error : '', placement: 'bottom', trigger: 'hover', container: 'body' } "></i>
+							<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true"
+								data-bind="datepicker: billDate, datepickerOptions: datepickerOptions, css: { borderRedOnValidation: (billDate.isModified() && !billDate.isValid()) }" style="width: 87%;">
+
+								<input type="text" id="pickupDate" size="16" class="requiredFieldBgColor span10 validation2" placeholder="mm/dd/yyyy"
+									data-bind="event: { blur: convertToBillDate }, style: { 'padding-left': (billDate.isModified() && !billDate.isValid()) ? '20px' : '' }, value: billDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" maxlength="10" style="width: 90%" />
+								<span class="add-on" data-bind="css: { disabledateLink: isViewOnly() }">
+									<i class="icon-calendar"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">PO #:
+				</td>
+				<td class="typeStatus" tabindex="5">
+					<!--###START: US24905-->
+					<input type="text" style="width: 82.5%" class="vendorbilltextbox" maxlength="50" data-bind="event: { keypress: isAlphaNumericSpace }, value: poNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+					<!--###END: US24905-->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Reference #:
+				</td>
+				<td class="typeStatus" tabindex="6">
+					<!--###START: US25186-->
+					<input type="text" style="width: 82.5%" class="vendorbilltextbox" maxlength="50" data-bind="value: refNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+					<!--###END: US25186-->
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Pickup Date:
+				</td>
+				<td class="typeStatus">
+					<div class="typecontrols padding-top-0" tabindex="7">
+
+						<div class="input-append date" id="Div1" style="width: 94%;" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: pickupDate, datepickerOptions: datepickerOptions">
+							<input id="Text1" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToPickupDate }, value: pickupDate, valueUpdate: 'afterkeydown'" maxlength="10" />
+							<span class="add-on" data-bind="css: { disabledateLink: isViewOnly() }">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<!--##START: US22956-->
+			<tr>
+				<td class="typeLabels">UVB Ownership:</td>
+				<td class="typeStatus">
+					<select data-bind="options: uvbOwnershipList, optionsText: 'Ownership', optionsValue: 'ID', optionsCaption: 'Select..', value: uvbOwnership" class="margin-bottom-0" style="width: 87.5%"></select>
+				</td>
+			</tr>
+			<!--##END: US22956-->
+		</table>
+	</div>
+	<div class="table-cell threeDivWith30Per">
+		<table class="tbl-sales-order">
+
+			<tr>
+				<td class="typeLabels" style="width: 24%;">*Origin Zip:
+				</td>
+				<td class="typeStatus">
+					<label class="validation-label2" data-bind=" validationElement: originZip">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (originZip.isModified() && !originZip.isValid()), tooltip: { title: originZip.isModified() ? originZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtOriginZip" class="requiredFieldBgColor validation2" readonly="readonly" placeholder="City State or Zip..." data-bind="css: { borderRedOnValidation: (originZip.isModified() && !originZip.isValid()) }, style: { 'padding-left': (originZip.isModified() && !originZip.isValid()) ? '7%' : '' }, value: originZip, minLength: 2, items: 20, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" style="width: 83%" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">*Destination Zip:
+				</td>
+				<td class="typeStatus">
+					<label class="validation-label2" data-bind=" validationElement: destinationZip">
+						<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (destinationZip.isModified() && !destinationZip.isValid()), tooltip: { title: destinationZip.isModified() ? destinationZip.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+						<input type="text" id="txtDestinationZip" class="requiredFieldBgColor validation2" readonly="readonly" placeholder="City State or Zip..." data-bind="css: { borderRedOnValidation: (destinationZip.isModified() && !destinationZip.isValid()) }, style: { 'padding-left': (destinationZip.isModified() && !destinationZip.isValid()) ? '7%' : '' }, value: destinationZip, minLength: 2, items: 20, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" style="width: 83%" />
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">EDI BOL #:
+				</td>
+				<td class="typeStatus" tabindex="8">
+					<input type="text" class="vendorbilltextbox" style="width: 83%;" maxlength="20" data-bind="value: mainBolNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Pieces:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="vendorbilltextbox " style="width: 83%;" maxlength="5" readonly="readonly" data-bind='event: { keypress: isNumber }, value: totalPieces, uniqueName: true, validationOptions: { errorElementClass: null }' />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Weight:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="vendorbilltextbox " style="width: 83%;" maxlength="10" readonly="readonly" data-bind='event: { keypress: isNumber }, value: totalWeigth, uniqueName: true, validationOptions: { errorElementClass: null }' />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Amount $:
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="vendorbilltextbox " style="width: 83%;" maxlength="10" readonly="readonly" data-bind='event: { keypress: isNumber }, value: purchaseOrderAmount, uniqueName: true, validationOptions: { errorElementClass: null }' />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Delivery Date:
+				</td>
+				<td class="typeStatus">
+					<div class="typecontrols padding-top-0" tabindex="8">
+						<div class="input-append date" style="width: 84%;" id="datepicker1" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: deliveryDate, datepickerOptions: datepickerOptions">
+							<input id="deliveryDate" type="text" size="16" class="span10" style="width: 94%;" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertToDeliveryDate }, value: deliveryDate, valueUpdate: 'afterkeydown'" maxlength="10" />
+							<span class="add-on" data-bind="css: { disabledateLink: isViewOnly() }">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<!--###START: US24616-->
+			<tr>
+				<td class="typeLabels">Shipper:
+				</td>
+				<td class="typeStatus">
+					<input type="text" id="shipper" style="width: 83%;" class="vendorbilltextbox" readonly="readonly" data-bind='value: shipper, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { title: shipper }' />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Consignee:
+				</td>
+				<td class="typeStatus">
+					<input type="text" id="consignee" style="width: 83%;" class="vendorbilltextbox" readonly="readonly" data-bind='value: consignee, uniqueName: true, validationOptions: { errorElementClass: null }, attr: { title: consignee }' />
+				</td>
+			</tr>
+			<!--###END: US24616-->
+		</table>
+	</div>
+	<div class="table-cell " style="width: 10%;">
+		<table class="tbl-sales-order" style="width: 100%">
+			<tr>
+				<td class="typeStatus" colspan="2">
+					<div class="typecontrols padding-top-0">
+						<div class="btnControlcheckbox" data-bind="compose: { model: obcvendorBillOptionList, view: 'vendorBill/VendorBillOptionButtonControl' }"></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td tabindex="12" colspan="2" class="typeStatus padding-left-10">
+					<button class="btn btn-primary width-142" data-bind="event: { keydown: isTabPress }, click: openPOToSOCreationClick, enable: isForeignBolSelectedForView">UVB To SO Creation</button>
+					<fieldset style="width: 86%; margin-left: -10px; height: 95px;">
+						<legend>Memo:</legend>
+						<div>
+							<textarea id="txtMemo" class="accounting-textarea width-125 height-72 " data-bind="value: memo, valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="100"></textarea>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="table-cell threeDivWith30Per">
+		<div class="POToSO POToSO-div-none margin-top--10" data-bind="compose: { model: purchaseOrderToSalesOrederViewModel, view: 'purchaseOrder/PurchaseOrderToSalesOrderView' }"></div>
+	</div>
+</div>

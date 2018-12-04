@@ -1,0 +1,44 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+View of AR Dashboard tab on the Welcome page
+</summary>
+<changeHistory>
+<id>US27350</id> <by>Vasanthakumar</by> <date>09-03-2017</date> <description>Increased the width</description>
+</changeHistory>
+-->
+
+<div data-bind="if: isHorizontalView ">
+	<div id="HorizontalOptionButtonGroup" class="btn-group" data-bind="foreach: optionList">
+
+		<button type="button" class=" flatButton btn btn-checkbox active" data-bind="text: name, css: { active: selected }, html: $parent.useHtmlBinding() ? html() : name, enable: enabled, click: $parent.selectOption">
+		</button>
+	</div>
+</div>
+<div data-bind="if: isVerticalView ">
+	<ul id="VerticalOptionButtonGroup" class="nav btn-group" data-bind="foreach: optionList">
+		<li class="vertical-option-button">
+			<button type="button" class="flatButton btn btn-checkbox btn-checkbox-sharp active width-160" data-bind="text: name, css: { active: selected }, html: $parent.useHtmlBinding() ? html() : name, enable: enabled, click: $parent.selectOption, attr: { tabindex: $parent.isTabIndex() ? 0 : -1 }">
+			</button>
+			<div data-bind="style: { height: $parent.verticalControlSpace }"></div>
+		</li>
+	</ul>
+</div>
+<div data-bind="if: isMatrix">
+	<div id="matrixOptionButtonGroup" class="btn-group" data-bind="foreach: optionList">
+
+		<!--###START: US27350-->
+		<button type="button" style="width: 200px; margin: 1px 2px 2px 1px" class=" flatButton btn btn-checkbox active " data-bind="text: name, css: { active: selected }, html: $parent.useHtmlBinding() ? html() : name, enable: enabled, click: $parent.selectOption, attr: { tabindex: $parent.isTabIndex() ? 0 : -1 }">
+		</button>
+		<!--###END: US27350-->
+		<!-- ko if: ($index()%2) -->
+		<br />
+		<!--/ko-->
+	</div>
+</div>

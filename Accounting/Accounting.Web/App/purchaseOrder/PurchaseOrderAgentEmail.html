@@ -1,0 +1,98 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--
+<summary>
+BOL Agent Email Notification
+</summary>
+<changeHistory>
+<id>US23323</id> <by>Janakiram</by> <date>19-05-2016</date> <description> Email text box  allowing multiple email with comma or semicolon</description>
+</changeHistory>
+!-->
+<div class="custom-msg-box border-radius-8" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<!--<div class="custom-modal-header-row"></div>-->
+	<div class="custom-modal-header border-top-8">
+
+		<h4 class="custom-modal-header-text">Send Agent Mail</h4>
+	</div>
+	<table class="tbl-agentMail shipment-item margin-all-15">
+		<tr>
+			<td class="typeLabels">*Select Agent Name:
+			</td>
+			<td class="typeStatus">
+				<div data-bind="compose: { model: userSerachViewMdoel, view: 'templates/searchUserAutoComplete' }"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Email ID<span class="font-weight-100">(Optional)</span>:
+			</td>
+			<td class="typeStatus">
+				<div data-bind="validationElement: emailValidation, validationOptions: { errorElementClass: 'input-validation-error-220' }">
+					<i class="icon-question-sign tooltip-cursor" data-bind="visible: (emailValidation.isModified() && !emailValidation.isValid()), tooltip: { title: emailValidation.isModified() ? emailValidation.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+					 <!-- ###START: US23323 !-->
+                        <input id="emailValidation" type="text" placeholder="Email Id , separated by commas or semicolons" data-bind="style: { width: (emailValidation.isModified() && !emailValidation.isValid()) ? '188px' : '212px' }, value: emailValidation, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+                         <!-- ###END: US23323 !-->
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Attach File:
+			</td>
+
+			<td class="typeStatus">
+				<input type="text" class="width-212" disabled="disabled" data-bind="value: UploadedFileName" />
+				<button class="btn flatButton" onclick="$('input[id=fileToUpload]').click();">Browse</button>
+				<input type="file" name="fileToUpload" id="fileToUpload" data-bind="event: { change: uploadAgentMailDocument }" data-buttontext="Your label here." style="display: none;" />
+			</td>
+		</tr>
+		<tr>
+			<td class="typeLabels">Attached Files:
+			</td>
+			<td class="typeStatus">
+				<table class="table-bordered shipment-item width-percent-100">
+					<thead>
+						<tr>
+							<th>
+								<label class="style-label">Description</label></th>
+							<th>
+								<label class="style-label">Remove</label></th>
+						</tr>
+					</thead>
+					<tbody data-bind='foreach: uploadedItems'>
+						<tr>
+							<td>
+								<span data-bind="text: Description"></span>
+							</td>
+							<td class="td-upload-agent-mail">
+								<input type="image" data-bind="click: $parent.removeAttachedItem" src="Content/images/Icon_Trash.png" onmouseover="this.src='Content/images/Icon_Trash_Over.png';" onmouseout="this.src='Content/images/Icon_Trash.png';" onmousedown="this.src='Content/images/Icon_Trash_Down.png';" onmouseup="this.src='Content/images/Icon_Trash_Over.png';" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<fieldset>
+					<legend>Comments:</legend>
+					<textarea id="txtComments" data-bind="value: Comments" cols="25" rows="5" maxlength="200" class="textarea-percent-96 height-60"></textarea>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2">
+				<div id="buttonDiv" class="align-right margin-top-5">
+
+					<button class="btn btn-primary" data-bind="click: onSave, enable: isMailNotSend">Send Mail</button>
+
+					<button class="btn btn-primary" data-bind="click: closePopup">Close</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

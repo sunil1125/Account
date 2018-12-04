@@ -1,0 +1,140 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressAccordian, contentProgressOptions: { showProgressBar: true, opacity: 0.9, height: 800 }">
+		<div class="alignrigth margin-top-1" style="float: none;">
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isSetModelAndSave">Save</button>
+		</div>
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+
+		<div class="row-fluid margin-top-5" id="gridbind">
+			<div class="accordion" id="accordion2">
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<span class="custom-accordian-header">Sales Order</span>
+						</div>
+						<div id="collapseSalesOrder" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div data-bind="compose: { model: salesOrderDetailsViewModel, view: 'salesOrder/SalesOrderDetailsView' }"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseItems" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseItems" data-bind="click: onItemsClick">Items
+							</a>
+						</div>
+						<div id="collapseItems" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="itemsDiv" tabindex="-1" data-bind="compose: { model: salesOrderItemViewModel, view: 'salesOrder/SalesOrderItemView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseAddress" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseAddress" data-bind="click: onAddressClick">Address
+							</a>
+						</div>
+						<div id="collapseAddress" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="addressDiv" tabindex="-1" data-bind="compose: { model: salesOrderAddressViewModel, view: 'salesOrder/SalesOrderAddressView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group" data-bind="visible: multilegLinkVisiblity">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseItemsMultiLeg" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseMultileg" data-bind="click: onMultilegClick">Multileg Details
+							</a>
+						</div>
+						<div id="collapseMultileg" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="multileg" tabindex="-1" data-bind="compose: { model: salesOrderMultiLegViewModel, view: 'salesOrder/SalesOrderMultileg' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseShipping" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseShipping" data-bind="click: onShippingClick">Shipping
+							</a>
+						</div>
+						<div id="collapseShipping" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="shippingDiv" tabindex="-1" data-bind="compose: { model: salesOrderShippingViewModel, view: 'salesOrder/SalesOrderShippingView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="A1" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseShipmentNotes" data-bind="click: onShipingNotesClick">Shipment Notes
+							</a>
+						</div>
+						<div id="collapseShipmentNotes" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div id="shippmentNotesDiv" tabindex="-1" data-bind="compose: { model: salesOrderNotesViewModel, view: 'salesOrder/SalesOrderNotes' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseHazmat" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseHazmat" data-bind="click: onHazmatClick">Hazmat
+							</a>
+						</div>
+						<div id="collapseHazmat" class="accordion-body collapse">
+							<div id="hazmatAccordionInner" class="accordion-inner">
+								<div tabindex="-1" data-bind="compose: { model: salesOrderHazmatViewModel, view: 'salesOrder/SalesOrderHazmatView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--		<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseLinks" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseLinks" >Links
+							</a>
+						</div>
+						<div id="collapseLinks" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: salesOrderLinksViewModel, view: 'salesOrder/SalesOrderLinks' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+					<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseHistory" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseHistory" >History
+							</a>
+						</div>
+						<div id="collapseHistory" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: salesOrderHistoryViewModel, view: 'salesOrder/SalesOrderHistory' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="align-right">
+			<span class="PageTitleBlack float-left" style="margin-top: 12px;">Unmatched Vendor Bill Edit</span>
+			<button id="btnSearch" class="btn btn-primary" data-bind="click: getSearchData ">Search</button>
+		</div>
+		<div class="row-fluid margin-top-10" id="gridbind">
+			<div class="accordion" id="accordion2">
+				<!--Quick Search-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseQuickSearch" class="accordion-toggle" data-toggle="collapse" href="#collapseQuickSearch" data-bind="click: clickOnQuickSearch">Quick Search
+							</a>
+						</div>
+						<div id="collapseQuickSearch" class="accordion-body collapse in">
+							<div id="quickSearchInner" class="accordion-inner">
+								<div data-bind="compose: { model: purchaseOrderQuickSearchViewModel, view: 'purchaseOrder/PurchaseOrderQuickSearchView' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--Search Results-->
+				<div class="accordion-group">
+					<div class="accordion-caret">
+						<div class="accordion-heading">
+							<a id="AchorcollapseSearchResults" class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseSearchResults" data-bind="click: clickOnSearchResult">Search Results
+							</a>
+						</div>
+						<div id="collapseSearchResults" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

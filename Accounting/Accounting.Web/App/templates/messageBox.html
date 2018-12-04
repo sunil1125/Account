@@ -1,0 +1,27 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="msgBox" class="custom-msg-box">
+	<div class="custom-modal-header-row"></div>
+	<div class="custom-modal-header">
+		<h4 data-bind="text: title" class="custom-modal-header-text"></h4>
+	</div>
+	<div class="custom-modal-body">
+		<!-- ko if: ishtmlBinding === false -->
+		<p class="custom-modal-body-text" data-bind="text: message"></p>
+		<!-- /ko -->
+		<!-- ko if: ishtmlBinding === true -->
+		<script type="text/html" id="html-template" data-bind="html: message">
+		</script>
+		<div data-bind="template: { name: 'html-template', data: bindingObject }"></div>
+		<!-- /ko -->
+	</div>
+	<div class="custom-modal-footer" data-bind="foreach: options">
+		<button class="custom-modal-btn pull-right" data-bind="click: function (option) { $parent.onClick(option, $parent); }, text: name.toUpperCase(), css: { 'custom-modal-btn-primary': $index() === 0, autofocus: $index() === 0 } "></button>
+		<span class="pull-right" style="margin: 8px;"></span>
+	</div>
+</div>

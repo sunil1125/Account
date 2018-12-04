@@ -1,0 +1,1404 @@
+/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+button:focus
+{
+	-moz-outline: none;
+	outline: none;
+}
+
+html, body, #applicationHost
+{
+	height: 100%;
+}
+
+body
+{
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+	font-size: 14px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #333333;
+	background: url('images/denim.png');
+}
+
+#forgotPasswordDivConatiner
+{
+	width: 340px;
+	background-color: #c7c0b6;
+}
+
+#master
+{
+	padding: 0px;
+	position: absolute;
+	background-color: #CCCCCC;
+	min-height: 98%;
+	/*//  min-width: 960px;*/
+	width: 100%;
+}
+
+#masterContent
+{
+	position: absolute;
+	background-color: #CCCCCC;
+	min-height: 98%;
+	width: 100%;
+}
+
+#section-content
+{
+	/*background-color: #f5f5f5;*/
+	margin: 0px 20px 10px 20px;
+	padding: 5px 5px 35px 5px;
+	min-height: 96%;
+}
+
+#section-content-mySetting
+{
+	background-color: #f5f5f5;
+	margin: 0px 20px 10px 20px;
+	padding: 5px 5px 35px 5px;
+	min-height: 96%;
+}
+
+.navbar-search .search-query
+{
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	padding-left: 29px !important;
+}
+
+.navbar-search .icon-search
+{
+	position: absolute;
+	top: 7px;
+	left: 11px; /*background-image: url("images/glyphicons-halflings.png");*/
+}
+
+.contentAreaWithoutDenimBackground {
+	margin-right: 20px !important;
+	margin-left: 20px !important;
+	/*min-height: 96%;*/
+	width: 97%;
+	/*background-color: #F0EEEB;*/
+	background-color: #f5f5f5;
+	background-image: none;
+	/*border:1px solid #C1B7Ab;*/
+}
+
+/******************
+	Basic styling
+*******************/
+.activeClass
+{
+	background: #003366;
+	color: #ffffff;
+}
+
+#logoContainer
+{
+	float: left;
+	padding: 0.6% 0 0 0;
+}
+
+.divHorizontalBars
+{
+	background: #666666;
+	background-repeat: repeat;
+	height: 10px;
+	width: 100%;
+	border-bottom: 10px solid #003366;
+	top: 10%;
+}
+
+#contentContainer
+{
+	padding-left: 1%;
+}
+
+.keepContentInCenter
+{
+	/*width: 100%;*/
+	/*max-width: 1346px;*/
+	min-width: 1363px; /*1250 1280px*/
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
+}
+
+/*#subMenu
+{
+	padding-top: 40px;
+	position: fixed;
+	display: none;
+	min-height: 30px;
+	width: 90%;
+	top: auto;
+	font-size: small;
+	left: 5.3%;
+}*/
+
+/*Customize styles */
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input
+{
+	background-color: #ffffff;
+	-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
+	transition: border linear 0.2s, box-shadow linear 0.2s;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	color: black;
+}
+
+label
+{
+	font-size: 14px;
+	cursor: text;
+}
+
+.btn.active
+{
+	color: white;
+	background-color: rgb(0, 51, 102);
+}
+
+.btn-radio.active
+{
+	color: white;
+	background-color: rgb(0, 51, 102);
+}
+
+/*ANKUR*/
+/*#Saved
+{
+	border-left: 2px solid #ffffff;
+}*/
+/*#Create, #View
+{
+	border-bottom: 1px solid #ffffff !important;
+}
+
+	#Create:hover, #View:hover, #View:active, #Create:active, #Create:focus, #View:focus
+	{
+		cursor: text !important;
+		color: #000000 !important;
+		background: #ffffff !important;
+	}*/
+
+input[type="text"]
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.hideColumn
+{
+	display: none;
+}
+
+.grid thead tr:first-child th, .grid tfoot tr:first-child th
+{
+	background-color: #666666;
+	color: #ffffff;
+	font-size: 14px;
+	text-align: left;
+	padding-left: 3px;
+	white-space: nowrap;
+}
+
+	.grid thead tr:first-child th span, .grid tfoot tr:first-child th span
+	{
+		vertical-align: middle;
+	}
+
+/**********************************************
+ **** changing modal class css of bootstrap ****
+ ***********************************************/
+.modal-backdrop
+{
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.caretW
+{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	vertical-align: middle;
+	border-top: 6px solid white;
+	border-right: 6px solid transparent;
+	border-left: 6px solid transparent;
+	content: "";
+}
+
+.caretB
+{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	vertical-align: middle;
+	border-top: 5px solid black;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	content: "";
+}
+
+/* Success from Bootstrap: Sanjay */
+.btn-success
+{
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #5bb75b;
+	*background-color: #51a351;
+	background-image: -moz-linear-gradient(top, #62c462, #51a351);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+	background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+	background-image: -o-linear-gradient(top, #62c462, #51a351);
+	background-image: linear-gradient(to bottom, #62c462, #51a351);
+	background-repeat: repeat-x;
+	border-color: #51a351 #51a351 #387038;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	height: 35px;
+}
+
+	.btn-success:hover,
+	.btn-success:focus,
+	.btn-success:active,
+	.btn-success[active]
+	{
+		color: #ffffff;
+		background-color: #51a351;
+		*background-color: #499249;
+	}
+
+	.btn-success:disabled,
+	.btn-success[disabled]
+	{
+		color: #ffffff;
+		background-color: gray;
+		*background-color: #499249;
+	}
+
+/* Menu for tablets */
+/*.navbar-inner
+{
+	border-radius: 0px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+	min-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: black;
+}
+
+.navbar-inverse .navbar-inner
+{
+	background-color: white;
+	border-color: white;
+	background-image: linear-gradient(to bottom, #FFFFFF, #FFFFFF);
+}
+
+.navbar-inverse .brand
+{
+	color: #000000;
+}
+
+	.navbar-inverse .brand:hover
+	{
+		color: #000000;
+	}
+
+.navbar-inverse .nav-collapse .nav > li > a, .navbar-inverse .nav-collapse .dropdown-menu a
+{
+	color: #000000;
+	font-size: 14px;
+	font-weight: normal;
+	font-family: sans-serif;
+}*/
+
+/* overriding td of bootstrap for the choose carrier page (sub-table) */
+.tdd
+{
+	background-color: transparent !important;
+	border: 0px solid #000000 !important;
+}
+
+.container-fluid-new-tab
+{
+	margin-right: -20px;
+	margin-left: -20px;
+}
+
+.tab-content-new
+{
+	margin-top: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0px 25px 0px 25px;
+	padding-top: 20px;
+}
+
+.modal-backdrop-new
+{
+	background-color: gray;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+	.modal-backdrop-new, .modal-backdrop-new.fade.in
+	{
+		-moz-opacity: 0.9;
+		opacity: 0.9;
+		filter: alpha(opacity=60);
+		z-index: 1040;
+	}
+
+a:focus
+{
+	-moz-outline: 0px dotted #333;
+	outline: 0px dotted #333;
+	outline: 0px -webkit-focus-ring-color;
+	outline-offset: 0px;
+}
+
+.topHeaderBtn:active,
+.topHeaderBtn.active
+{
+	background-color: rgb(116,118,121) !important;
+	color: white !important;
+	border: 0px none #E7E7E7 !important;
+	text-align: start !important;
+	font-size: 14px !important;
+	height: 29px !important;
+	font-weight: bolder;
+}
+
+.topHeaderBtn
+{
+	border: 0px none #E7E7E7;
+	color: white !important;
+	text-align: start;
+	background-color: transparent;
+	padding-right: 8px;
+	font-size: 14px;
+	height: 29px;
+	font-weight: bold;
+}
+
+.feedbackButton
+{
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg);
+	width: 120px;
+	background-color: green;
+	float: right;
+	text-align: center;
+	z-index: 100;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 2px solid white;
+	position: fixed;
+	margin: auto;
+	right: -50px;
+	top: 0px;
+	bottom: 0px;
+	height: 30px;
+	line-height: 35px;
+	margin-top: 35%;
+	cursor: pointer;
+}
+
+.feedbackButtonForIE
+{
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg);
+	width: 120px;
+	background-color: green;
+	float: right;
+	text-align: center;
+	z-index: 100;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 2px solid white;
+	position: fixed;
+	margin: auto;
+	right: -35px;
+	top: 0px;
+	bottom: 0px;
+	height: 40px;
+	line-height: 35px;
+	margin-top: 35%;
+	cursor: pointer;
+}
+
+#FP, #RP
+{
+	/*background-color:  #c7c0b6;
+
+font-size:12px;
+	position: absolute;
+	padding-left: 30px;
+	/*padding: 20px 20px 5px 45px;*/
+	height: 100%;
+	width: 340px;
+	position: absolute;
+}
+
+	#RP, #FP input
+	{
+		width: 185px;
+		font-size: 13px;
+		box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.075);
+		border: 1px solid #333333;
+		color: black;
+	}
+
+		#RP, #FP input[type="checkbox"],
+		#RP, #FP input[type="submit"],
+		#RP, #FP input[type="button"],
+		#RP, #FP button,
+		#RP, #FP label
+		{
+			width: auto;
+			font-size: 11px;
+			-moz-box-shadow: #C5C5C5 2px inset;
+			box-shadow: #C5C5C5 2px inset;
+		}
+
+.login-footer > a
+{
+	background-color: transparent;
+	color: #ffffff;
+	vertical-align: middle;
+	font-size: 11px;
+	text-decoration: underline;
+	margin: 0px 8px;
+}
+
+.login-nav
+{
+	height: 60px;
+}
+
+	.login-nav > li > a
+	{
+		background-color: rgb(0,90,187) !important;
+		font-size: 20px;
+		line-height: 46px;
+		-webkit-border-radius: 0px 0px 0 0;
+		-moz-border-radius: 0px 0px 0 0;
+		border-radius: 0px 0px 0 0;
+		width: 151px;
+		text-align: center;
+		margin-right: 0px;
+		color: #ffffff;
+		border: 1px solid rgb(0,90,187) !important;
+		/*background-image: url(images/main_nav_background.png);*/
+		/*background-repeat: repeat-x;*/
+		-o-background-size: 70px;
+		-webkit-background-size: 70px;
+		-moz-background-size: 70px;
+		background-size: 70px;
+	}
+
+	.login-nav > li :first-child
+	{
+		width: 156px;
+	}
+
+	.login-nav > .active > a, .login-nav > .active > a:hover, .login-nav > .active > a:focus
+	{
+		color: #ffffff;
+		cursor: default;
+		background-color: rgb(116,118,121) !important;
+		/*border: 1px solid #333333 !important;*/
+		border-bottom-color: transparent;
+		/*background-image: url(images/top_nav_background.png);
+		background-repeat: repeat-x;*/
+		-webkit-background-size: 70px;
+		-moz-background-size: 70px;
+		-o-background-size: 70px;
+		background-size: 70px;
+	}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+{
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.field-validation-error
+{
+	/*color: #e80c4d;*/
+	font-weight: bold;
+}
+
+.field-validation-valid
+{
+	display: none;
+}
+
+input.input-validation-error,
+.input-validation-error
+{
+	border-color: #333333;
+	-moz-outline: 0;
+	outline: 0;
+	outline: thin dotted \9;
+	/* IE6-9 */
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;*/
+	border: 1px solid #e80c4d;
+	/*margin-left: 2px;*/
+	margin-right: 2px;
+	/*padding: 1px;*/
+	text-align: left !important;
+}
+
+.input-validation-error-220
+{
+	border-color: #333333;
+	-moz-outline: 0;
+	outline: 0;
+	outline: thin dotted \9;
+	/* IE6-9 */
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #fb0d0d;*/
+	border: 1px solid #e80c4d;
+	margin-left: 2px;
+	margin-right: 2px;
+	/*padding: 1px;*/
+	text-align: left !important;
+	width: 220px;
+}
+
+.input-validation-error-login
+{
+	text-align: left;
+	padding: 10px 10px 0px 0px;
+	margin-left: -2px;
+	margin-top: -4px;
+}
+
+input[type="checkbox"].input-validation-error
+{
+	border: 0 none;
+}
+
+.validation-summary-errors
+{
+	color: #e80c4d;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.validation-summary-valid
+{
+	display: none;
+}
+/* login page */
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a
+{
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #003366;
+	background-image: -moz-linear-gradient(top, #003366, #004466);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003366), to(#004466));
+	background-image: -webkit-linear-gradient(top, #003366, #004466);
+	background-image: -o-linear-gradient(top, #003366, #004466);
+	background-image: linear-gradient(to bottom, #003366, #004466);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003366', endColorstr='#ff004466', GradientType=0);
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus
+{
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #003366;
+	background-image: -moz-linear-gradient(top, #003366, #004466);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003366), to(#004466));
+	background-image: -webkit-linear-gradient(top, #003366, #004466);
+	background-image: -o-linear-gradient(top, #003366, #004466);
+	background-image: linear-gradient(to bottom, #003366, #004466);
+	background-repeat: repeat-x;
+	outline: 0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003366', endColorstr='#ff0077b3', GradientType=0);
+}
+
+/*input.validation-focus ,
+  .validation-focus
+   {
+   border: 1px solid #e80c4d;
+	}*/
+
+.ui-autocomplete-loading
+{
+	background: white url('images/ajax-loader_Roller.gif') right center no-repeat;
+}
+
+.ui-autocomplete
+{
+	max-height: 400px;
+	overflow-y: auto; /* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height we use height instead, but this forces the menu to always be this tall*/
+html .ui-autocomplete
+{
+	max-height: 400px;
+}
+
+#HorizontalOptionButtonGroup .btn-checkbox-sharp,
+#btnExtraResults .btn-checkbox-sharp,
+#btnSortResults .btn-checkbox-sharp
+{
+	font-size: 15px;
+	width: 150px;
+	border-radius: 0px;
+}
+
+.main_div
+{
+	height: 280px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.footer_text
+{
+	z-index: 100;
+	position: absolute;
+	color: white;
+	right: 0px;
+	top: 0;
+	margin-right: 15px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 10px;
+	/*font-family:'Helvetica Neue';*/
+	padding-top: 10px;
+}
+
+#divLoading
+{
+	background: transparent url(images/loading-bars.gif) no-repeat center center;
+	height: 100px;
+	width: 150px;
+	position: fixed;
+	z-index: 1000;
+	left: 50%;
+	top: 50%;
+	margin: -25px 0 0 -25px;
+}
+
+.divLoadingBar
+{
+	background: transparent url(images/loading-bars.gif) no-repeat center center;
+	height: 100px;
+	width: 150px;
+	position: absolute;
+	z-index: 1000;
+	left: 45%;
+	top: 50%;
+	/*margin: -25px 0 0 -25px;*/
+}
+
+.page-splash
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #F2F2F2;
+	-moz-opacity: 0.2;
+	opacity: 0.2;
+	pointer-events: auto;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: opacity 0.1s linear;
+	-moz-transition: opacity 0.1s linear;
+	-o-transition: opacity 0.1s linear;
+	transition: opacity 0.1s linear;
+}
+
+.page-splash-message
+{
+	text-align: center;
+	margin: 10% 0 0 0;
+	font-size: 400%;
+	font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	-webkit-text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+	text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+	text-transform: uppercase;
+	text-decoration: none;
+	color: black;
+	padding: 0;
+}
+
+.page-progress-bar
+{
+	margin: 10% 30% 0 30%;
+}
+
+.cr-progress-bar
+{
+	background: transparent url(images/loading-bars.gif) no-repeat center center;
+	height: 50px;
+	background-color: white;
+	width: 150px;
+	position: fixed;
+	z-index: 1000;
+	left: 50%;
+	top: 50%;
+	margin: -25px 0 0 -25px;
+	text-align: center;
+}
+
+.password-strength
+{
+	margin: 0px 10px 10px 0px;
+}
+
+	.password-strength p
+	{
+		margin: 0;
+		text-align: left;
+		font-size: 11px;
+	}
+
+	.password-strength .bar
+	{
+		background: none repeat scroll 0 0 #ffffff;
+		height: 5px;
+		margin: 4px 0;
+	}
+
+		.password-strength .bar #strength-bar
+		{
+			display: block;
+			height: 100%;
+		}
+
+		.password-strength .bar .short
+		{
+			background: none repeat scroll 0 0 #AA0033;
+			width: 20%;
+		}
+
+		.password-strength .bar .weak
+		{
+			background: none repeat scroll 0 0 #AA0033;
+			width: 35%;
+		}
+
+		.password-strength .bar .fair
+		{
+			background: none repeat scroll 0 0 #FFCC33;
+			width: 60%;
+		}
+
+		.password-strength .bar .good
+		{
+			background: none repeat scroll 0 0 #2D98F3;
+			width: 80%;
+		}
+
+		.password-strength .bar .strong
+		{
+			background: none repeat scroll 0 0 #76C261;
+			width: 100%;
+		}
+
+		.password-strength .bar .notRated
+		{
+			background: none repeat scroll 0 0 #666666;
+			width: 100%;
+		}
+
+.password-validation-message
+{
+	text-align: left;
+	margin-left: 30px;
+}
+
+	.password-validation-message span
+	{
+		text-align: left;
+		font-size: 11px;
+	}
+
+/*.ajax_loader {
+	background: url("images/spinner_squares_circle.gif") no-repeat center center transparent;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	/*top: 0px;
+left: 0px;*/
+/*z-index: 99999;
+}*/
+.ajax_loader
+{
+	background: url(images/preloader_animation_image.gif) no-repeat center center;
+	/*width:100%;
+	height:100%;*/
+	height: 58px;
+	-moz-opacity: 1;
+	opacity: 1;
+	width: auto;
+	position: relative;
+	z-index: 500;
+	/*left: 45%;*/
+	top: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	/*margin: -25px 0 0 -25px;*/
+	text-align: center;
+	/*background-color: white;*/
+}
+
+.ajax_loaderMini
+{
+	background: url(images/preloader-animation.gif) no-repeat center center;
+	/*width:100%;
+	height:100%;*/
+	height: 58px;
+	-moz-opacity: 1;
+	opacity: 1;
+	background-color: white;
+	max-width: 70px;
+	width: 25%;
+	position: relative;
+	z-index: 2000;
+	/*left: 45%;*/
+	top: 45%;
+	margin-left: auto;
+	margin-right: auto;
+	/*margin: -25px 0 0 -25px;*/
+	text-align: center;
+	/*background-color: white;*/
+}
+
+.blue-loader .ajax_loader
+{
+	background: url("ajax-loader_blue.gif") no-repeat center center transparent;
+}
+
+.icon-gridmap
+{
+	background-image: url(images/icon_map_unselected.png);
+	display: inline-block;
+	width: 30px;
+	height: 25px;
+}
+
+	.icon-gridmap.active
+	{
+		background-image: url(images/icon_map_selected.png);
+	}
+
+.icon-gridlist
+{
+	background-image: url(images/icon_list_unselected.png);
+	display: inline-block;
+	width: 30px;
+	height: 25px;
+}
+
+	.icon-gridlist.active
+	{
+		background-image: url(images/icon_list_selected.png);
+	}
+
+.icon-gridcal
+{
+	background-image: url(images/icon_cal_unselected.png);
+	display: inline-block;
+	width: 30px;
+	height: 25px;
+}
+
+	.icon-gridcal.active
+	{
+		background-image: url(images/icon_cal_selected.png);
+	}
+
+/* 8th october 2013 by ankur*/
+.requiredField
+{
+	color: #ff0000;
+}
+
+/* 11th Nov 2013 wrapper for topnav, nav and content area*/
+/*.realEstateWidth {
+	max-width: 2000px;
+}*/
+/* Styles for Map Starts*/
+.mapDiv
+{
+	min-width: 91%;
+	min-height: 50%;
+	position: relative;
+}
+
+.mapPopupContainer
+{
+	margin: 0px;
+	overflow: auto;
+	max-height: 200px;
+	width: auto;
+	padding: 0px;
+	background-color: ghostwhite;
+}
+
+.mapPopupHeader
+{
+	padding: 3px;
+	background-color: #4c4c4c;
+	color: white;
+	font-weight: bold;
+	overflow: auto;
+	line-height: 12px;
+	font-size: 13px;
+	max-height: 40px;
+	clear: both;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.mapPopupContent
+{
+	margin-top: 3px;
+	background-color: ghostwhite;
+	color: black;
+	clear: both;
+}
+
+/* The Nokia Maps API is expecting this name. All styling's for Nokia Maps will start with a nm_ prefix */
+.nm_bubble_content
+{
+	color: #2E2B2B;
+	background: ghostwhite;
+	border: 1px solid #2E2B2B;
+	padding: 0px;
+}
+
+#nokia-map-canvas,
+#map-canvas
+{
+	height: 600px;
+	width: 100%;
+	margin: 0px auto;
+	border: 2px solid silver;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+	#nokia-map-canvas img,
+	#map-canvas img
+	{
+		max-width: none;
+	}
+
+.nm_bubble_controls a, .nm_bubble_control_close
+{
+	font-size: 1.80em !important;
+}
+/* Styles for Map Ends*/
+
+.ajax_textloader
+{
+	text-align: center;
+	color: rgba(0,0,0,0.9);
+	top: 35%;
+	padding-bottom: 0px;
+	position: relative;
+	margin-left: 0;
+	margin-right: 0;
+	z-index: 99;
+}
+
+/**********************************************************
+	Common css to disable any element and disable events
+***********************************************************/
+.divBlockout
+{
+	/*position: fixed;*/
+	top: 0;
+	left: 0;
+	/*width: 100%;*/
+	height: 100%;
+	/*background: black;*/
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+	pointer-events: none;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: opacity 0.1s linear;
+	-moz-transition: opacity 0.1s linear;
+	-o-transition: opacity 0.1s linear;
+	transition: opacity 0.1s linear;
+}
+
+/**********************************************************
+	Styles for spinner in button
+***********************************************************/
+.spinner
+{
+	display: inline-block;
+	-moz-opacity: 0;
+	opacity: 0;
+	max-width: 0;
+	-webkit-transition: opacity 0.25s, max-width 0.45s;
+	-moz-transition: opacity 0.25s, max-width 0.45s;
+	-o-transition: opacity 0.25s, max-width 0.45s;
+	transition: opacity 0.25s, max-width 0.45s; /* Duration fixed since we animate additional hidden width */
+}
+
+.has-spinner.active
+{
+	cursor: progress;
+}
+
+	.has-spinner.active .spinner
+	{
+		-moz-opacity: 1;
+		opacity: 1;
+		max-width: 50px; /* More than it will ever come, notice that this affects on animation duration */
+	}
+
+.searchtextbox
+{
+	/*margin-left: -70px;*/
+	width: 167px;
+}
+/**********************************************************
+	Styles for spinner in button
+***********************************************************/
+/***Page Title**/
+.PageTitle
+{
+	color: #647290;
+	/*font-size: 32px;*/
+	font-size: 22px; /*Against US6789*/
+	font-weight: normal;
+}
+
+.contentAreaWithoutDenimBackground .PageTitle {
+	color: #647290;
+}
+
+.PageTitleBlack {
+	color: #343434 !important;
+	font-size: 22px;
+	font-weight: normal;
+	/*margin-top: 30px;*/
+}
+/* DE6987, added height to fieldset to give proper height for safari browser */
+/*fieldset {
+	height: 61px;
+}*/
+
+.btn-daterange-picker button
+{
+	background: #FFFFFF !important;
+	cursor: pointer !important;
+	padding: 5px 10px !important;
+	border: 1px solid #CCCCCC !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+	color: #666666 !important;
+}
+
+	.btn-daterange-picker button:focus,
+	.btn-daterange-picker button:hover,
+	.btn-daterange-picker button:active
+	{
+		outline-width: 0;
+		-moz-outline: none;
+		outline: none;
+	}
+
+.container-fluid
+{
+	padding-right: 18px;
+	padding-left: 20px;
+}
+
+.tooltip.bottom
+{
+	padding: 5px 0;
+	margin-top: 0px;
+}
+
+	.tooltip.bottom .tooltip-arrow
+	{
+		display: none;
+	}
+
+.tooltip-inner
+{
+	max-width: 350px;
+	padding: 5px;
+	color: #ffffff;
+	text-align: center;
+	text-decoration: none;
+	background-color: #f30e0e !important;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.tooltip-cursor
+{
+	cursor: pointer;
+}
+
+.tooltip
+{
+	font-size:11px !important;
+	font-weight:normal !important;
+	font-family:'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+}
+
+.textSavingChanges
+{
+	color: black;
+	margin-left: 5px;
+}
+
+.textChangesSaved
+{
+	color: green;
+	margin-left: 5px;
+}
+
+.textNoChangesDetected
+{
+	color: gray;
+	margin-left: 5px;
+}
+
+.textChangesDetected
+{
+	color: red;
+	margin-left: 5px;
+}
+
+.circleSavingChanges
+{
+	width: 15px;
+	height: 15px;
+	border-radius: 25px;
+	background-color: black;
+	float: left;
+	margin-top: 5px;
+}
+
+.circleChangesSaved
+{
+	width: 15px;
+	height: 15px;
+	border-radius: 25px;
+	background-color: green;
+	float: left;
+	margin-top: 5px;
+}
+
+.circleNoChangesDetected
+{
+	width: 15px;
+	height: 15px;
+	border-radius: 25px;
+	background-color: gray;
+	float: left;
+	margin-top: 5px;
+}
+
+.circleChangesDetected
+{
+	width: 15px;
+	height: 15px;
+	border-radius: 25px;
+	background-color: red;
+	float: left;
+	margin-top: 5px;
+}
+
+.mypopup
+{
+	background-color: white;
+	width: 1000px;
+	border-radius: 8px;
+}
+
+.redBorder
+{
+	border: solid 1px red;
+}
+
+/*#region Action Buttons */
+.successbtn {
+	background: #00A651;
+	color: #fff;
+	border: 0px;
+	height: 40px;
+	width: 150px;
+	padding: 0px;
+	margin-left: 15px;
+}
+
+	.successbtn:disabled {
+		opacity: 0.5;
+	}
+
+	.successbtn:focus {
+		border: 2px solid #01B1FF;
+	}
+
+.cacnelbtn:focus {
+	border: 1px solid #01B1FF;
+}
+
+.cacnelbtn {
+	height: 40px;
+	width: 100px;
+	border: 1px solid #E0E0E0;
+	background: #E6E6E6;
+}
+/*#endregion Action Buttons */
+
+/*#region display types*/
+.displayInlineBlock {
+	display: inline-block;
+}
+
+.displayInline {
+	display: inline;
+}
+
+.displayBlock {
+	display: block;
+}
+/*#endregion display types*/
+
+/*#region My Settings Theme*/
+.chooseThemeContainer {
+	padding: 20px 25px 25px 25px;
+}
+
+.chooseThemeTextContainer {
+	margin: 10px 0px 5px 0px;
+}
+
+.selectedThemeOption > label > .themeDivContainer {
+	border: 1px solid #ffffff !important;
+}
+
+.themeDivContainer {
+	height: 20px;
+	width: 20px;
+	margin: 0px 3px 0px 3px;
+	cursor: pointer;
+}
+
+.themeInnerContainer > div:first-child {
+	vertical-align: top;
+	margin: 0px 20px 0px 0px;
+}
+
+.themeInnerContainer {
+	padding: 10px 15px 0px 15px;
+	margin: 0px 0px 9px 0px;
+}
+
+	.themeInnerContainer:first-child {
+		padding: 10px 15px 0px 15px;
+		margin: 25px 0px 8px 0px;
+	}
+
+	.themeInnerContainer:last-child {
+		padding: 10px 15px 0px 15px;
+		margin: 0px 0px 25px 0px;
+	}
+
+.themeOptionContainer {
+	background: #f3f3f3;
+	width: 250px;
+	border: 1px solid #cccccc;
+}
+
+.selectedThemeOption {
+	background: #999999;
+	color: #fff;
+}
+
+.leftConatiner {
+	width: 75%;
+	vertical-align: top;
+	margin-left: 25px;
+}
+
+.themeImagePreview {
+	height: 450px;
+	width: 100%;
+}
+
+.saveThemeBtn {
+	margin-top: 15px;
+}
+
+/*active tab*/
+.nav-tab-new > .active > a, .nav-tab-new > .active > a:hover, .nav-tab-new > .active > a:focus {
+	height: 27px !important;
+	border: 0 none !important;
+	background: #efeff7;
+}
+/*#endregion My Settings Theme */

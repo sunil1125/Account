@@ -1,0 +1,160 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<summary>
+sales order credit memo view
+</summary>
+<createDetails>
+<id>US20089</id> <by>Shreesha Adiga</by> <date>11-01-2016</date>
+</createDetails>-->
+<div id="divSalesOrderDetailsView" class="tableLayout">
+	<div class="table-cell fourDiv width-percent-50 float-left">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Adjustment Type:
+				</td>
+				<td class="typeStatus">
+					<select class="newselect requiredFieldBgColor" style="width: 43%" data-bind="options: adjustmentTypesArray, value: selectedAdjustmentType">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Create Credit Memo for $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40 requiredFieldBgColor" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Rep Absorb Amount $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">GTZ Absorb Amount $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Order Revenue $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Revenue $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Cost $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Total Profit $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-40" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+
+
+		</table>
+	</div>
+	<div class="table-cell fourDiv width-percent-48 float-left">
+		<table class="tbl-sales-order">
+			<tr>
+				<td class="typeLabels">Total Pending Credit Memo $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-50" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Invoice Balance $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-50" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Disputed Date $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-50" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">Adjusted Date $
+				</td>
+				<td class="typeStatus">
+					<input type="text" class="width-percent-50" readonly="readonly" data-bind="valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+				</td>
+			</tr>
+			<tr>
+				<td class="typeLabels">
+					<select class="newselect" style="width: 50%" data-bind="options: reasonCodeArray, value: selectedReasonCode">
+					</select>
+				</td>
+				<td class="typeStatus">
+					<fieldset class="width-percent-60">
+						<legend>Notes:</legend>
+						<div>
+							<textarea placeholder="Enter notes to be displayed on invoice" class="accounting-textarea height-72 width-percent-90" data-bind="valueUpdate: 'afterkeydown'" cols="10" rows="3" maxlength="100"></textarea>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	<div class="table-cell fourDiv width-percent-50 float-left">
+		<!--		<table class="tbl-sales-order">
+			<tr>
+				<td>-->
+		<div class="margin-top--55 margin-left-percent-4 width-percent-92" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }, visible: selectedAdjustmentType() == 'Vendor Credit(Debit Memo)'"></div>
+		<!--				</td>
+			</tr>
+		</table>-->
+	</div>
+	<div class="table-cell fourDiv width-percent-48 float-left">
+		<table class="tbl-sales-order">
+			<tr>
+				<td>
+					<br />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<fieldset>
+						<legend>Terms and Condition</legend>
+						<textarea id="terms-and-conditions" readonly="readonly" maxlength="500" style="width: 96%" class="height-120">By clicking on the 'Create' button below, you are authorizing a credit to the customer invoice. Additionally, you are authorizing $10.00 to be charged to the Agency. Please allow 2 to 24 hours to process the credit. The customer will be emailed a copy of the credit once the transaction is posted
+					</textarea>
+						<!--data-bind="value: exceptionReason"-->
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" data-bind="checked: agreeToTermsCondition">
+					&nbsp; I agree to the Terms and Conditions</td>
+				<td class="float-right">
+					<button class="btn btn-primary" data-bind="enable: agreeToTermsCondition">Create</button></td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,139 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div style="margin-top: 30px;">
+	<div id="popGrid" class="margin-top--30 searchpop">
+		<div class="align-right">
+			<button class="btn btn-primary" data-bind="click: openFindView">Find More</button>
+		</div>
+		<div class="margin-top--55" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+	</div>
+
+	<div id="findMore" class="findmorepop">
+		<div class="align-right">
+			<button class="btn btn-primary" data-bind="click: onClear">Clear</button>
+			<button class="btn btn-primary" data-bind="click: openSearchView">Back</button>
+			<button class="btn btn-primary" data-bind="click: openFindResult">Find</button>
+		</div>
+		<div class="tableLayout">
+			<div class="table-cell threeDiv">
+				<table class="tbl-sales-order">
+					<tr>
+						<td class="typeLabels">Vendor Name:
+						</td>
+						<td class="typeStatus" tabindex="1">
+							<div data-bind=" validationElement: vendorName, validationOptions: { errorElementClass: 'input-validation-error width-262' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (vendorName.isModified() && !vendorName.isValid()), tooltip: { title: vendorName.isModified() ? vendorName.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" class="vendorbilltextbox" maxlength="15" placeholder="Vendor Name" data-bind="value: vendorName, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: (vendorName.isModified() && !vendorName.isValid()) ? errorWidth : normalWidth }" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Pro #:
+						</td>
+						<td class="typeStatus" tabindex="2">
+							<div data-bind=" validationElement: proNumber, validationOptions: { errorElementClass: 'input-validation-error width-262' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (proNumber.isModified() && !proNumber.isValid()), tooltip: { title: proNumber.isModified() ? proNumber.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+
+								<input type="text" class="vendorbilltextbox" maxlength="15" placeholder="Pro Number"
+									data-bind="event: { keypress: isAlphaNumericSpace }, value: proNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }, style: { width: (proNumber.isModified() && !proNumber.isValid()) ? errorWidth : normalWidth }" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">BOL/Sales Order #:
+						</td>
+						<td class="typeStatus" tabindex="3">
+							<input type="text" class="vendorbilltextbox" maxlength="20" data-bind="event: { keypress: isAlphaNumericSpace }, value: bolNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">PO #:
+						</td>
+						<td class="typeStatus" tabindex="5">
+							<input type="text" class="vendorbilltextbox" maxlength="50" data-bind="event: { keypress: isAlphaNumericSpace }, value: poNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Reference #:
+						</td>
+						<td class="typeStatus" tabindex="6">
+							<input type="text" class="vendorbilltextbox" maxlength="15" data-bind="value: refNumber, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-cell threeDiv">
+				<table class="tbl-sales-order width-percent--70">
+
+					<tr>
+						<td class="typeLabels">Origin Zip:
+						</td>
+						<td class="typeStatus">
+							<input type="text" class="vendorbilltextbox" maxlength="15" placeholder="Origin Zip"
+								data-bind="value: originZip, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Destination Zip:
+						</td>
+						<td class="typeStatus">
+							<input type="text" class="vendorbilltextbox" maxlength="15" placeholder="Destination Zip"
+								data-bind="value: destinationZip, valueUpdate: 'afterkeydown', uniqueName: true, validationOptions: { errorElementClass: null }" />
+						</td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Pickup Date:
+						</td>
+						<td class="typeStatus">
+							<table>
+								<tr>
+									<td>
+										<div class="typecontrols padding-top-0" tabindex="7">
+											<div data-bind=" validationElement: fromPickupDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+												<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (fromPickupDate.isModified() && !fromPickupDate.isValid()), tooltip: { title: fromPickupDate.isModified() ? fromPickupDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+												<div class="input-append date" id="fromPickupDatePicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: fromPickupDate, datepickerOptions: datepickerOptions">
+													<input id="txtFromDate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertTofromPickupDate }, value: fromPickupDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (fromPickupDate.isModified() && !fromPickupDate.isValid()) ? '75px' : '94px' }" maxlength="10" />
+													<span class="add-on">
+														<i class="icon-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<!--<td style="width: 9px;"></td>-->
+									<td class="typeLabels">To</td>
+									<td>
+										<div class="typecontrols padding-top-0" tabindex="8">
+											<div data-bind=" validationElement: toPickupDate, validationOptions: { errorElementClass: 'input-validation-error' }">
+												<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (toPickupDate.isModified() && !toPickupDate.isValid()), tooltip: { title: toPickupDate.isModified() ? toPickupDate.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+												<div class="input-append date" id="toPickupDatePicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: toPickupDate, datepickerOptions: datepickerOptions, style: { width: (toPickupDate.isModified() && !toPickupDate.isValid()) ? '105px' : '161px' }">
+													<input id="txtTODate" type="text" size="16" class="span10" placeholder="mm/dd/yyyy" data-bind="event: { blur: convertTotoPickupDate }, value: toPickupDate, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, style: { width: (toPickupDate.isModified() && !toPickupDate.isValid()) ? '75px' : '94px' }" maxlength="10" />
+													<span class="add-on">
+														<i class="icon-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div id="findResult" class=" resultpop">
+		<div class="align-right">
+			<button class="btn btn-primary" data-bind="click: openFindView">Back</button>
+			<button class="btn btn-primary" data-bind="click: onSaveResult, enable: isEnableOnForceAttach ">Save Result</button>
+		</div>
+		<div class="margin-top--55" data-bind="compose: { model: findMoreResultReportContainer, view: '../templates/reportViewerControlV2' }"></div>
+	</div>
+</div>

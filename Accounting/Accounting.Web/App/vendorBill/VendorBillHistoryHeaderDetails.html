@@ -1,0 +1,35 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack" data-bind="text: vendorBillHeader"></span>
+		</div>
+		<div>
+			<!--region TABS-->
+			<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+				<li id="detailsLink" class="active"><a href="#details" data-toggle="tab" tabindex="-1" data-bind="click: onDetailsClick"><span class="tabHeaderText">Vendor Bill Details</span></a></li>
+				<li id="itemLink" class=""><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemsClick"><span class="tabHeaderText">Vendor Bill Items</span></a></li>
+			</ul>
+			<!--endregion TABS-->
+
+			<!--region SECTIONS-->
+			<div id="myTabContent" class="tab-content contentAreaWithBackground">
+				<div class="tab-pane fade  active in" id="details">
+					<!--Address Section START-->
+					<div tabindex="-1" data-bind="compose: { model: vendorBillHistoryViewModel, view: 'vendorBill/VendorBillHistory' }"></div>
+				</div>
+				<div class="tab-pane fade" id="item">
+
+					<div id="addressDiv" tabindex="-1" data-bind="compose: { model: vendorBillHistoryDetailsViewModel, view: 'vendorBill/VendorBillHistoryDetails' }"></div>
+				</div>
+			</div>
+			<!--endregion SECTIONS-->
+		</div>
+	</div>
+</div>

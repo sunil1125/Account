@@ -1,0 +1,73 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="row-fluid" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<div style="margin: 10px 0px 0px 10px;">
+		<span class="PageTitleBlack">I-Term Audit Setting</span>
+	</div>
+	<div class="margin-right-60 float-right" style="margin-top: -30px;">
+		<button id="btnSave" class="btn btn-primary" style="margin: 10px -45px 0px 0px;" data-bind="click: onSave">Save</button>
+	</div>
+	<div class="tableLayout">
+		<div class="table-cell width-percent-35">
+			<fieldset class="">
+				<legend>Carrier</legend>
+				<table class="tbl-sales-order width-percent-100">
+					<tr>
+						<td class="typeLabels" style="width: 20%;">*Carrier:
+						</td>
+						<td class="typeStatus">
+							<div class="errorWidth-SO-AuditSetting-AutoCompleteField" data-bind="compose: { model: carrierSearchList, view: 'templates/searchVendorNameControl' }"></div>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="typeStatus">
+							<div class="typecontrols padding-top-0 margin-bottom--17 margin-left--5">
+								<div class="btnControlcheckbox" data-bind="compose: { model: obcCheckBox, view: 'vendorBill/VendorBillOptionButtonControl' }"></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Item</legend>
+				<table class="tbl-sales-order width-percent-100">
+					<tr>
+						<td class="typeLabels">Description:
+						</td>
+						<td class="typeStatus">
+							<div data-bind="validationElement: matchingToken, validationOptions: { errorElementClass: 'input-validation-error errorWidth-SO-AuditSetting-Fields' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (matchingToken.isModified() && !matchingToken.isValid()), tooltip: { title: matchingToken.isModified() ? matchingToken.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<input type="text" id="txtDescription" data-bind="value: matchingToken, style: { width: (matchingToken.isModified() && !matchingToken.isValid()) ? '216px' : '240px' }, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }" />
+							</div>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="typeLabels">Item Desc:
+						</td>
+						<td class="typeStatus">
+							<div data-bind="validationElement: selectedItemType, validationOptions: { errorElementClass: 'input-validation-error errorWidth-SO-AuditSetting-Fields' }">
+								<i class=" icon-question-sign tooltip-cursor" data-bind=" visible: (selectedItemType.isModified() && !selectedItemType.isValid()), tooltip: { title: selectedItemType.isModified() ? selectedItemType.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+								<select id="drpItems" data-bind="options: shipmentItemTypes, optionsText: 'ShortDescription', optionsCaption: 'Select...', value: selectedItemType, style: { width: (selectedItemType.isModified() && !selectedItemType.isValid()) ? '230px' : '253px' }, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }"
+									class="newselect">
+								</select>
+							</div>
+						</td>
+						<td>
+							<button class="btn btn-primary" style="margin-left: -80px;" data-bind="click: onAdd">Add</button>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		<div class="table-cell div-percent-40">
+			<div class="margin-top--60 width-percent-98" data-bind="compose: { model: reportContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,92 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid" data-bind="showContentProgress: listProgressTabbed, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<!--, height: 700 -->
+		<!--region BUTTONS-->
+		<div class="alignrigth margin-bottom-0 margin-top-1" style="float: none;">
+			<button class="btn btn-primary" data-bind="click: onSave, enable: isSetModelAndSave ">Save</button>
+		</div>
+		<!--<div class="requiredtext-right margin-top-40">
+			<div class="requiredBox"></div>
+			= Required</div>-->
+		<!--endregion BUTTONS-->
+		<div class="row-fluid" style="border-top: darkgrey 1px" id="gridbind">
+			<div>
+
+				<!--Purchase Order Section START-->
+				<div class="page-header contentAreaWithBackground" style="padding-top: 0 !important;">
+					<div data-bind="compose: { model: salesOrderDetailsViewModel, view: 'salesOrder/SalesOrderDetailsView' }"></div>
+				</div>
+				<!--Purchase Order Section END-->
+
+				<div>
+					<!--region TABS-->
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="itemLink" class="active"><a href="#item" data-toggle="tab" tabindex="-1" data-bind="click: onItemsClick"><span class="tabHeaderText">Items</span></a></li>
+						<li id="addressLink" class=""><a href="#address" data-toggle="tab" tabindex="-1" data-bind="click: onAddressClick"><span class="tabHeaderText">Address</span></a></li>
+
+						<li id="multilegLink" class="" data-bind="visible: multilegLinkVisiblity"><a href="#multilegs" data-toggle="tab" tabindex="-1" data-bind="	click: onMultilegClick"><span class="tabHeaderText">Multileg Details</span></a></li>
+						<li id="shippingLink" class=""><a href="#shipping" data-toggle="tab" tabindex="-1" data-bind="click: onShippingClick"><span class="tabHeaderText">Shipping</span></a></li>
+						<li id="shipmentNotesLink" class=""><a href="#shipmentNotes" data-toggle="tab" tabindex="-1" data-bind="click: onShipingNotesClick"><span class="tabHeaderText">Shipment Notes</span></a></li>
+						<!--<li id="podDocLink" class=""><a href="#podDoc" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">POD / DOC</span></a></li>-->
+						<li id="hazmatLink" class=""><a href="#hazmat" data-toggle="tab" tabindex="-1" data-bind="click: onHazmatClick"><span class="tabHeaderText">Hazmat</span></a></li>
+						<!--	<li id="linksLink" class=""><a href="#links" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Links</span></a></li>
+						<li id="historyLink" class=""><a href="#history" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">History</span></a></li>-->
+					</ul>
+					<!--endregion TABS-->
+
+					<!--region SECTIONS-->
+					<div id="myTabContent" class="tab-content contentAreaWithBackground">
+
+						<div class="tab-pane fade active in" id="item">
+							<!--Items Section START-->
+							<div id="addressDiv" tabindex="-1" data-bind="compose: { model: salesOrderItemViewModel, view: 'salesOrder/SalesOrderItemView' }"></div>
+						</div>
+						<div class="tab-pane fade " id="address">
+							<!--Address Section START-->
+							<div tabindex="-1" data-bind="compose: { model: salesOrderAddressViewModel, view: 'salesOrder/SalesOrderAddressView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="shipping">
+							<!--Notes Section START-->
+							<div tabindex="-1" data-bind="compose: { model: salesOrderShippingViewModel, view: 'salesOrder/SalesOrderShippingView' }"></div>
+						</div>
+						<div class="tab-pane fade" id="shipmentNotes">
+							<!--Notes Section START-->
+							<div tabindex="-1" data-bind="compose: { model: salesOrderNotesViewModel, view: 'salesOrder/SalesOrderNotes' }"></div>
+						</div>
+						<!--<div class="tab-pane fade" id="podDoc">
+
+							<div tabindex="-1" data-bind="compose: { model: salesOrderPODDocViewModel, view: 'salesOrder/SalesOrderPODDocView' }"></div>
+						</div>-->
+						<div class="tab-pane fade" id="hazmat">
+							<!--Notes Section START-->
+							<div tabindex="-1" data-bind="compose: { model: salesOrderHazmatViewModel, view: 'salesOrder/SalesOrderHazmatView' }"></div>
+						</div>
+						<!--Links Section START-->
+						<!--	<div class="tab-pane fade" id="links">
+
+							<div data-bind="compose: { model: salesOrderLinksViewModel, view: 'salesOrder/SalesOrderLinks' }"></div>
+						</div>-->
+						<!--History Section START-->
+						<!--<div class="tab-pane fade" id="history">
+
+							<div data-bind="compose: { model: salesOrderHistoryViewModel, view: 'salesOrder/SalesOrderHistory' }"></div>
+						</div>-->
+						<!--MultiLEg  Section START-->
+						<div class="tab-pane fade" id="multilegs">
+
+							<div tabindex="-1" data-bind="compose: { model: salesOrderMultiLegViewModel, view: 'salesOrder/SalesOrderMultileg' }, visible: multilegLinkVisiblity"></div>
+						</div>
+					</div>
+					<!--endregion SECTIONS-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

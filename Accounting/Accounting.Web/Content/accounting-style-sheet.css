@@ -1,0 +1,3930 @@
+﻿/******************************************************************************
+* Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+*
+* Proprietary and confidential. Unauthorized copying of this file, via any
+* medium is strictly prohibited without the explicit permission of GlobalTranz. 
+******************************************************************************/
+
+/*#region Div as Table*/
+.tbl-agentMail tr {
+	outline: 1px solid #f3f3f3;
+}
+
+.tbl-agentMail td input {
+	height: 15px;
+	line-height: 18px;
+}
+
+.td-upload-agent-mail {
+	width: 2%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.tableLayout {
+	display: table;
+	width: 100% !important;
+}
+
+.table-cell {
+	display: table-cell;
+	padding: 10px 0px 0px 10px;
+	vertical-align: top;
+}
+
+.table-cell-with-nopadding {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.oneDiv {
+	width: 100%;
+}
+
+.oneDiv-99 {
+	width: 99%;
+}
+
+.twoDiv {
+	width: 50%;
+}
+
+.threeDiv {
+	width: 33%;
+}
+
+.threeDivWith30Per {
+	width: 30%;
+}
+
+.fourDiv {
+	width: 25%;
+}
+
+.div-percent-30 {
+	width: 30%;
+}
+
+.div-percent-80 {
+	width: 80%;
+}
+
+.div-percent-10 {
+	width: 10%;
+}
+
+.div-percent-20 {
+	width: 20%;
+}
+
+.div-percent-25 {
+	width: 25%;
+}
+
+.div-percent-60 {
+	width: 60%;
+}
+
+.div-percent-75 {
+	width: 75%;
+}
+
+.div-percent-74 {
+	width: 74%;
+}
+
+.div-percent-72 {
+	width: 72%;
+}
+
+.div-percent-77 {
+	width: 77%;
+}
+
+.div-percent-40 {
+	width: 40%;
+}
+
+.div-percent-50 {
+	width: 50%;
+}
+
+.div-percent-5 {
+	width: 5%;
+}
+
+.div-percent-3 {
+	width: 3%;
+}
+
+.div-percent-1 {
+	width: 3%;
+}
+
+.pixels150 {
+	width: 150px !important;
+}
+
+.pixels180 {
+	width: 180px !important;
+}
+
+.disableAwsomFontLeftRightArrowIcon {
+	cursor: default;
+	color: lightgrey;
+}
+
+.enableAwsomFontLeftRightArrowIcon {
+	cursor: pointer;
+}
+/*#endregion Div as Table*/
+
+/*#region Notes*/
+.notes-container {
+	margin-top: -77px;
+}
+/*#endregion Notes*/
+
+/*#region Model Popup*/
+
+.box-shadow-PopUp {
+	-webkit-box-shadow: 0 0 10px #999;
+	-ms-box-shadow: 0 0 10px #999;
+	box-shadow: 0 0 10px #999;
+	-ms-border-radius: 8px;
+	border-radius: 8px;
+	padding: 15px 15px 15px 15px;
+}
+
+.label-Modal-Popup {
+	font-size: 12px;
+	white-space: nowrap;
+	font-weight: bold !important;
+}
+
+.inner-scroll-400 {
+	height: 400px;
+	position: relative;
+	overflow-x: auto;
+}
+
+.inner-scroll {
+	min-height: 200px;
+	max-height: 400px;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+.inner-scroll-200 {
+	height: auto;
+	max-height: 200px;
+	min-height: 3.5em;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.inner-scroll-165 {
+	height: auto;
+	max-height: 165px;
+	min-height: 3.5em;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.inner-scroll-144 {
+	height: auto;
+	max-height: 144px;
+	min-height: 3.5em;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.inner-scroll-160 {
+	height: auto;
+	max-height: 160px;
+	min-height: 3.5em;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+/*#endregion Model Popup*/
+
+/*#region GENERAL*/
+
+.td-wrap-word {
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999*/
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: pre-wrap; /* css-3 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+	word-break: break-all;
+	white-space: normal;
+}
+
+.weightTextBox {
+	width: 75% !important;
+}
+
+.pcsTextBox {
+	width: 75% !important;
+}
+
+.invoicereasondiv-none {
+	display: none;
+}
+
+.MASCustomerIcon {
+	margin: 8px 0px 0px 230px;
+	position: absolute;
+}
+
+/*#endregion GENERAL*/
+
+/***********************************************
+			UTILITY CLASSES START
+***********************************************/
+/*#region WIDTH*/
+.width-percent--75 {
+	width: .75%;
+}
+
+.width-percent--5 {
+	width: .50%;
+}
+
+.width-percent-1-5 {
+	width: 1.50%;
+}
+
+.width-67 {
+	width: 67px;
+}
+
+.width-13 {
+	width: 13px;
+}
+
+.width-132 {
+	width: 132px;
+}
+
+.width-percent-50 {
+	width: 50%;
+}
+
+.width-percent-51 {
+	width: 51%;
+}
+
+.width-75 {
+	width: 75px;
+}
+
+.width-120 {
+	width: 120px;
+}
+
+.width-150 {
+	width: 150px;
+}
+
+.width-153 {
+	width: 153px;
+}
+
+.width-156 {
+	width: 156px;
+}
+
+.width-160 {
+	width: 160px;
+}
+
+.width-180 {
+	width: 180px;
+}
+
+.width-320 {
+	width: 320px;
+}
+
+.width-215 {
+	width: 215px;
+}
+
+.width-218 {
+	width: 218px;
+}
+
+.width-283 {
+	width: 283px;
+}
+
+.width-230 {
+	width: 230px;
+}
+
+.width-239 {
+	width: 239px;
+}
+
+.width-238 {
+	width: 238px;
+}
+
+.width-231 {
+	width: 231px;
+}
+
+.width-240 {
+	width: 240px;
+}
+
+.width-245 {
+	width: 245px;
+}
+
+.width-270 {
+	width: 270px;
+}
+
+.width-250 {
+	width: 250px;
+}
+
+.width-253 {
+	width: 253px;
+}
+
+.width-260 {
+	width: 260px;
+}
+
+.width-262 {
+	width: 262px;
+}
+
+.width-226 {
+	width: 226px;
+}
+
+.width-264 {
+	width: 264px;
+}
+
+.width-265 {
+	width: 265px;
+}
+
+.width-237 {
+	width: 237px;
+}
+
+.width-286 {
+	width: 286px;
+}
+
+.width-300 {
+	width: 300px;
+}
+
+.width-25 {
+	width: 25px;
+}
+
+.width-40 {
+	width: 40px;
+}
+
+.width-35 {
+	width: 35px;
+}
+
+.width-80 {
+	width: 80px;
+}
+
+.width-85 {
+	width: 85px;
+}
+
+.width-850 {
+	width: 850px;
+}
+
+.width-100 {
+	width: 100px;
+}
+
+.width-130 {
+	width: 130px;
+}
+
+.width-135 {
+	width: 135px;
+}
+
+.width-170 {
+	width: 170px;
+}
+
+.width-212 {
+	width: 212px;
+}
+
+.width-220 {
+	width: 220px;
+}
+
+.width-210 {
+	width: 210px;
+}
+
+.width-217 {
+	width: 217px;
+}
+
+.width-140 {
+	width: 140px;
+}
+
+.width-142 {
+	width: 142px;
+}
+
+/*###START: DE20289*/
+.width-146 {
+	width: 146px;
+}
+/*###END: DE20289*/
+
+.width-50 {
+	width: 50px;
+}
+
+.width-30 {
+	width: 30px;
+}
+
+.width-560 {
+	width: 560px;
+}
+
+.width-580 {
+	width: 580px;
+}
+
+.width-200 {
+	width: 200px;
+}
+
+.width-105 {
+	width: 105px;
+}
+
+.width-125 {
+	width: 125px;
+}
+
+.width-450 {
+	width: 450px;
+}
+
+.width-460 {
+	width: 460px;
+}
+
+.width-500 {
+	width: 500px;
+}
+
+.width-540 {
+	width: 540px;
+}
+
+.min-width-50 {
+	-moz-min-width: 50px;
+	-ms-min-width: 50px;
+	-o-min-width: 50px;
+	-webkit-min-width: 50px;
+	min-width: 50px;
+}
+
+.width-percent-5 {
+	width: 5%;
+}
+
+.width-percent-6 {
+	width: 6%;
+}
+
+.width-percent-7 {
+	width: 7%;
+}
+
+.width-percent-77 {
+	width: 77%;
+}
+
+.width-percent-17 {
+	width: 17%;
+}
+
+.width-percent-11 {
+	width: 11%;
+}
+
+.width-percent-10 {
+	width: 10%;
+}
+
+.width-percent-13 {
+	width: 13%;
+}
+
+.width-percent-15 {
+	width: 15%;
+}
+
+.width-percent-16 {
+	width: 16%;
+}
+
+.width-percent-35 {
+	width: 35%;
+}
+
+.width-percent-20 {
+	width: 20%;
+}
+
+.width-percent-20-6 {
+	width: 20.6%;
+}
+
+.width-percent-19 {
+	width: 19%;
+}
+
+.width-percent-22 {
+	width: 22%;
+}
+
+.width-percent-24 {
+	width: 24%;
+}
+
+.width-percent-30 {
+	width: 30%;
+}
+
+.width-percent-31 {
+	width: 31%;
+}
+
+.width-percent-32 {
+	width: 32%;
+}
+
+.width-percent-34 {
+	width: 34%;
+}
+
+.width-percent-28 {
+	width: 28% !important;
+}
+
+.width-percent-12 {
+	width: 12% !important;
+}
+
+.width-percent-3 {
+	width: 3%;
+}
+
+.width-percent-1 {
+	width: 1%;
+}
+
+.width-percent-4 {
+	width: 4%;
+}
+
+.width-percent-41 {
+	width: 41%;
+}
+
+.width-percent-2 {
+	width: 2%;
+}
+
+.width-percent-100 {
+	width: 100% !important;
+}
+
+.width-percent-102 {
+	width: 102%;
+}
+
+.width-percent-180 {
+	width: 180%;
+}
+
+.width-percent-200 {
+	width: 200%;
+}
+
+.width-percent-75 {
+	width: 75%;
+}
+
+.width-percent-75-2 {
+	width: 75.2%;
+}
+
+.width-percent-70 {
+	width: 7%;
+}
+
+.width-percent-72-5 {
+	width: 72.5%;
+}
+
+.width-percent--70 {
+	width: 70%;
+}
+
+.width-percent-85 {
+	width: 85%;
+}
+
+.width-percent-83 {
+	width: 83%;
+}
+
+.width-percent-80 {
+	width: 80% !important;
+}
+
+.width-percent-88 {
+	width: 88%;
+}
+
+.width-percent-86 {
+	width: 86%;
+}
+
+.width-percent-87 {
+	width: 87%;
+}
+
+.width-percent-87-6 {
+	width: 87.6%;
+}
+
+.width-perecent-89 {
+	width: 89%;
+}
+
+.width-percent-93 {
+	width: 93%;
+}
+
+.width-percent-94 {
+	width: 94%;
+}
+
+.width-percent-92 {
+	width: 92%;
+}
+
+.width-percent-92-5 {
+	width: 92.5%;
+}
+
+.width-percent-98 {
+	width: 98%;
+}
+
+.width-percent-99 {
+	width: 99%;
+}
+
+.width-percent-89 {
+	width: 89%;
+}
+
+.width-percent-27 {
+	width: 27%;
+}
+
+.width-percent-95 {
+	width: 95%;
+}
+
+.width-percent-97 {
+	width: 97%;
+}
+
+.width-percent-97-2 {
+	width: 97.2%;
+}
+
+.width-percent-60 {
+	width: 60%;
+}
+
+.width-percent-69 {
+	width: 69%;
+}
+
+.width-percent-40 {
+	width: 40%;
+}
+
+.width-percent-42 {
+	width: 42%;
+}
+
+.width-percent-48 {
+	width: 48% !important;
+}
+
+.width-percent-33 {
+	width: 33%;
+}
+
+.width-percent-37 {
+	width: 37%;
+}
+
+.width-percent-36 {
+	width: 36%;
+}
+
+.width-percent-12 {
+	width: 12%;
+}
+
+.width-percent-8 {
+	width: 8%;
+}
+
+.width-percent-90 {
+	width: 90% !important;
+}
+
+.width-percent-106 {
+	width: 106% !important;
+}
+
+.width-percent-96 {
+	width: 96%;
+}
+
+.width-percent-96-5 {
+	width: 96.5%;
+}
+
+.width-percent-78 {
+	width: 78%;
+}
+
+.width-percent-45-5 {
+	width: 45.5%;
+}
+
+.width-percent-42-2 {
+	width: 42.2%;
+}
+
+.width-initial {
+	width: initial;
+}
+
+/*#endregion WIDTH*/
+/*#region HEIGHT*/
+
+.height-25 {
+	height: 25px;
+}
+
+.height-26 {
+	height: 26px;
+}
+
+.height-60 {
+	height: 60px;
+}
+
+.height-17 {
+	height: 17px;
+}
+
+.height-20 {
+	height: 20px;
+}
+
+.height-20-important {
+	height: 20px !important;
+}
+
+.height-160 {
+	height: 160px;
+}
+
+.height-77 {
+	height: 77px;
+}
+
+.height-50 {
+	height: 50px;
+}
+
+.height-75 {
+	height: 75px;
+}
+
+.height-72 {
+	height: 72px;
+}
+
+.height-120 {
+	height: 120px;
+}
+
+.height-115 {
+	height: 115px;
+}
+
+.height-165 {
+	height: 165px;
+}
+
+.height-155 {
+	height: 155px;
+}
+
+.height-170 {
+	height: 170px;
+}
+
+.height-30 {
+	height: 30px !important;
+}
+
+.height-3 {
+	height: px !important;
+}
+
+.height-33 {
+	height: 33px;
+}
+
+.height-80 {
+	height: 80px !important;
+}
+
+.height-45 {
+	height: 45px !important;
+}
+
+.height-90 {
+	height: 90px;
+}
+
+.height-100 {
+	height: 100px;
+}
+
+.height-185 {
+	height: 185px;
+}
+
+.min-height-450 {
+	min-height: 450px;
+}
+
+.min-height-460 {
+	min-height: 460px;
+}
+
+.min-height-550 {
+	min-height: 550px;
+}
+
+.min-height-350 {
+	min-height: 350px;
+}
+
+.min-height-150 {
+	min-height: 150px;
+}
+
+/*#endregion HEIGHT*/
+
+/*#region MARGIN*/
+.margin-all-10 {
+	margin: 10px;
+}
+
+.margin-all-15 {
+	margin: 15px 15px 15px 15px;
+}
+
+.margin-T0-R5-B10-L0 {
+	margin: 0 5px 10px 0;
+}
+
+.margin-top-percent--3 {
+	margin-top: -3%;
+}
+
+.margin-top-percent--1-8 {
+	margin-top: 1.8%;
+}
+
+.margin-top-percent--5 {
+	margin-top: -5%;
+}
+
+.margin-top-0 {
+	margin-top: 0px;
+}
+
+.margin-top-percent-5 {
+	margin-top: 5%;
+}
+
+.margin-top-4 {
+	margin-top: 4px;
+}
+
+.margin-top-40 {
+	margin-top: 40px;
+}
+
+.margin-top-5 {
+	margin-top: 5px;
+}
+
+.margin-top-53 {
+	margin-top: 53px;
+}
+
+.margin-top-7 {
+	margin-top: 7px !important;
+}
+
+.margin-top-9 {
+	margin-top: 9px;
+}
+
+.margin-top--9 {
+	margin-top: -9px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+.margin-top-12 {
+	margin-top: 12px;
+}
+
+.margin-top-15 {
+	margin-top: 15px;
+}
+
+.margin-top--10 {
+	margin-top: -10px;
+}
+
+.margin-top--20 {
+	margin-top: -20px;
+}
+
+.margin-top--29 {
+	margin-top: -29px !important;
+}
+
+.margin-top--25 {
+	margin-top: -25px;
+}
+
+.margin-top--24 {
+	margin-top: -24px;
+}
+
+.margin-top--26 {
+	margin-top: -26px;
+}
+
+.margin-top--50 {
+	margin-top: -50px;
+}
+
+.margin-top--57 {
+	margin-top: -57px;
+}
+
+.margin-top--5 {
+	margin-top: -5px;
+}
+
+.margin-top--55 {
+	margin-top: -55px;
+}
+
+.margin-top--60 {
+	margin-top: -60px;
+}
+
+.margin-top-14 {
+	margin-top: 15px;
+}
+
+.margin-top-1 {
+	margin-top: 1px;
+}
+
+.margin-top-25 {
+	margin-top: 25px;
+}
+
+.margin-top-35 {
+	margin-top: 35px;
+}
+
+.margin-top-30 {
+	margin-top: 30px;
+}
+
+.margin-top-85 {
+	margin-top: 85px;
+}
+
+.margin-top-31 {
+	margin-top: 31px;
+}
+
+.margin-top-20 {
+	margin-top: 20px;
+}
+
+.margin-top-22 {
+	margin-top: 22px;
+}
+
+.margin-top-50 {
+	margin-top: 50px;
+}
+
+.margin-top--37 {
+	margin-top: -37px;
+}
+
+.margin-top--36 {
+	margin-top: -36px !important;
+}
+
+.margin-top--38 {
+	margin-top: -38px;
+}
+
+.margin-top--40 {
+	margin-top: -40px;
+}
+
+.margin-top--46 {
+	margin-top: -46px;
+}
+
+.margin-top--33 {
+	margin-top: -33px;
+}
+
+.margin-top--30 {
+	margin-top: -30px;
+}
+
+.margin-top--35 {
+	margin-top: -35px;
+}
+
+.margin-top--15 {
+	margin-top: -15px;
+}
+
+.margin-top--11 {
+	margin-top: -11px;
+}
+
+.margin-top-3 {
+	margin-top: 3px;
+}
+
+.margin-right-3 {
+	margin-right: 3px;
+}
+
+.margin-right-35 {
+	margin-right: 35px;
+}
+
+.margin-right-4 {
+	margin-right: 4px;
+}
+
+.margin-right-5 {
+	margin-right: 5px;
+}
+
+.margin-right-6 {
+	margin-right: 6px;
+}
+
+.margin-right-10 {
+	margin-right: 10px;
+}
+
+.margin-right-25 {
+	margin-right: 25px;
+}
+
+.margin-right-23 {
+	margin-right: 23px;
+}
+
+.margin-right-20 {
+	margin-right: 20px;
+}
+
+.margin-right-60 {
+	margin-right: 60px;
+}
+
+.margin-bottom-3 {
+	margin-bottom: 3px;
+}
+
+.margin-bottom-5 {
+	margin-bottom: 5px;
+}
+
+.margin-bottom--5 {
+	margin-bottom: -5px;
+}
+
+.margin-bottom-0 {
+	margin-bottom: 0;
+}
+
+.margin-botton-30 {
+	margin-bottom: 30px;
+}
+
+.margin-botton-50 {
+	margin-bottom: 50px;
+}
+
+.margin-botton-10 {
+	margin-bottom: 10px;
+}
+
+.margin-bottom--17 {
+	margin-bottom: -17px;
+}
+
+.margin-bottom--38 {
+	margin-bottom: -38px;
+}
+
+.margin-bottom--15 {
+	margin-bottom: -15px;
+}
+
+.margin-left-15 {
+	margin-left: 15px;
+}
+
+.margin-left-12 {
+	margin-left: 12px;
+}
+
+.margin-left-5 {
+	margin-left: 5px;
+}
+
+.margin-left-9 {
+	margin-left: 9px;
+}
+
+.margin-left-3 {
+	margin-left: 3px;
+}
+
+.margin-left-45 {
+	margin-left: 45px;
+}
+
+.margin-left-6 {
+	margin-left: 6px;
+}
+
+.margin-left-35 {
+	margin-left: 35px;
+}
+
+.margin-left-25 {
+	margin-left: 25px;
+}
+
+.margin-left-20 {
+	margin-left: 20px;
+}
+
+.margin-left-10 {
+	margin-left: 10px;
+}
+
+.margin-left--94 {
+	margin-left: -94px;
+}
+
+.margin-left--10 {
+	margin-left: -10px;
+}
+
+.margin-left--2 {
+	margin-left: -2px;
+}
+
+.margin-left--1 {
+	margin-left: -1px;
+}
+
+.margin-top--76 {
+	margin-top: -76px;
+}
+
+.margin-left-2 {
+	margin-left: 2px;
+}
+
+
+
+.margin-left--7 {
+	margin-left: -7px;
+}
+
+.margin-left--5 {
+	margin-left: -5px;
+}
+
+.margin-left--30 {
+	margin-left: -30px;
+}
+
+.margin-left--45 {
+	margin-left: -45px;
+}
+
+.margin-left--69 {
+	margin-left: -69px;
+}
+
+.margin-left-percent-15 {
+	margin-left: 15%;
+}
+
+.margin-left-percent-9-5 {
+	margin-left: 9.5%;
+}
+
+.margin-left-percent-10 {
+	margin-left: 10%;
+}
+
+.margin-left-percent-4 {
+	margin-left: 4%;
+}
+
+.margin-left-percent-2 {
+	margin-left: 2%;
+}
+
+.margin-left-right-20 {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.margin-right-percent-3 {
+	margin-left: 3%;
+}
+
+.margin-right-percent-1 {
+	margin-top: 1%;
+}
+
+.margin-left-percent-1 {
+	margin-left: 1%;
+}
+
+.margin-right-percent-2 {
+	margin-top: 2%;
+}
+
+.margin-bottom--6 {
+	margin-top: -6px !important;
+}
+
+.margin-top--3 {
+	margin-top: -3px !important;
+}
+
+.margin-top--32 {
+	margin-top: -32px !important;
+}
+
+.margin-top--2 {
+	margin-top: -2px !important;
+}
+
+.margin-top--27 {
+	margin-top: -27px !important;
+}
+
+.margin-top--6 {
+	margin-top: -6px !important;
+}
+
+.margin-top--8 {
+	margin-top: -8px !important;
+}
+
+.magin-left-2 {
+	margin-left: 2% !important;
+}
+
+/*#endregion MARGIN*/
+
+/*#region PADDING*/
+
+.padding-left-percent-4 {
+	padding-left: 4%;
+}
+
+.padding-left-percent-3 {
+	padding-left: 4%;
+}
+
+.padding-8 {
+	padding: 8px !important;
+}
+
+.label-padding-10 {
+	font-weight: bold;
+	padding: 10px;
+}
+
+.top-adjustment-header-count {
+	margin-bottom: -45px;
+	margin-top: 40px;
+	padding-left: 30px;
+}
+
+.HH-MM {
+	font-size: 13px;
+	padding-left: 1px;
+	color: grey;
+}
+
+/*#endregion PADDING*/
+
+/*#region BORDER*/
+.border-top-8 {
+	-ms-border-top-left-radius: 8px;
+	border-top-left-radius: 8px;
+	-ms-border-top-right-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.border-top-11 {
+	-ms-border-top-left-radius: 11px;
+	border-top-left-radius: 11px;
+	-ms-border-top-right-radius: 11px;
+	border-top-right-radius: 11px;
+}
+
+.border-radius-8 {
+	-ms-border-radius: 8px;
+	border-radius: 8px;
+}
+/*#endregion BORDER*/
+
+/*#region PADDING*/
+.padding-upload {
+	padding: 2px 16px 0px 16px;
+}
+
+.padding-all-10 {
+	padding: 10px 10px 10px 10px;
+}
+
+.padding-top-0 {
+	padding-top: 0px;
+}
+
+.padding-top-5 {
+	padding-top: 5px;
+}
+
+.padding-top-10 {
+	padding-top: 10px;
+}
+
+.padding-top-20 {
+	padding-top: 20px;
+}
+
+.padding-top-30 {
+	padding-top: 30px;
+}
+
+.padding-top-242 {
+	padding-top: 242px;
+}
+
+.padding-top-25 {
+	padding-top: 25px;
+}
+
+.padding-top-7 {
+	padding-top: 7px;
+}
+
+.padding-top-15 {
+	padding-top: 15px;
+}
+
+.padding-top-110 {
+	padding-top: 110px;
+}
+
+.padding-top-210 {
+	padding-top: 210px;
+}
+
+.padding-top-35 {
+	padding-top: 35px;
+}
+
+.padding-right-8 {
+	padding-right: 8px;
+}
+
+.padding-left-8 {
+	padding-left: 8px;
+}
+
+.padding-right-5 {
+	padding-right: 5px;
+}
+
+.padding-right-7 {
+	padding-right: 7px;
+}
+
+.padding-right-10 {
+	padding-right: 10px !important;
+}
+
+.padding-right-16 {
+	padding-right: 16px !important;
+}
+
+.padding-right-12 {
+	padding-right: 12px !important;
+}
+
+.padding-right-25 {
+	padding-right: 25px;
+}
+
+.padding-left-20 {
+	padding-left: 20px;
+}
+
+.padding-right-20 {
+	padding-right: 20px;
+}
+
+.padding-global-search-VB {
+	padding-right: 100px;
+}
+
+	.padding-global-search-VB:only-child {
+		padding-right: 215px;
+	}
+
+.padding-global-search-SO {
+	padding-right: 90px;
+}
+
+	.padding-global-search-SO:only-child {
+		padding-right: 210px;
+	}
+
+.padding-global-search-EDI {
+	padding-right: 180px;
+}
+
+	.padding-global-search-EDI:only-child {
+		padding-right: 255px;
+	}
+
+.padding-bottom-0 {
+	padding-bottom: 0px;
+}
+
+.padding-bottom-5 {
+	padding-bottom: 5px;
+}
+
+.padding-bottom-15 {
+	padding-bottom: 15px;
+}
+
+.padding-bottom-20 {
+	padding-bottom: 20px;
+}
+
+.padding-left-0 {
+	padding-left: 0;
+}
+
+.padding-left-2 {
+	padding-left: 2px;
+}
+
+.padding-left-25 {
+	padding-left: 25px;
+}
+
+.padding-left-5 {
+	padding-left: 5px;
+}
+
+.padding-left-10 {
+	padding-left: 10px;
+}
+
+.padding-left-12 {
+	padding-left: 12px;
+}
+
+.padding-left-16 {
+	padding-left: 16px !important;
+}
+
+.padding-left-prcent-2 {
+	padding-left: 2%;
+}
+
+.padding-left-prcent-24 {
+	padding-left: 24%;
+}
+
+/*#endregion PADDING*/
+
+/*#region Position*/
+.div-position-fixed {
+	position: fixed;
+}
+/*#endregion Position*/
+
+/*#region TEXT ALIGN*/
+.align-right {
+	text-align: right;
+}
+
+.align-right-margin-top-5 {
+	text-align: right;
+	margin-top: 5px;
+}
+
+.align-center {
+	text-align: center !important;
+}
+
+.align-left {
+	text-align: left !important;
+}
+
+.vertical-align-top {
+	vertical-align: top;
+}
+
+.vertical-align-middle {
+	vertical-align: middle;
+}
+
+.floatRight {
+	float: right;
+}
+
+/*#endregion TEXT ALIGN*/
+
+/*#region FLOAT*/
+.float-left {
+	float: left;
+}
+
+.float-none {
+	float: none;
+}
+
+.float-right {
+	float: right;
+}
+
+.div-float-left {
+	float: left;
+	display: inline;
+	position: relative;
+}
+/*#endregion FLOAT*/
+
+/*#region FONT*/
+.font-weight-100 {
+	font-weight: 100;
+}
+
+.weight-bold {
+	font-weight: bold;
+}
+
+.weight-normal {
+	font-weight: normal;
+}
+
+.font-size-12 {
+	font-size: 12px;
+}
+
+/*#endregion FONT*/
+
+/*#region DISPLAY*/
+.display-none {
+	display: none;
+}
+
+.display-block {
+	display: block;
+}
+
+.displayInlineBlock {
+	display: inline-block;
+}
+
+.displayInline {
+	display: inline;
+}
+/*#endregion DISPLAY*/
+
+/*#region CURSOR*/
+.cursor-pointer {
+	cursor: pointer;
+}
+
+/* START DE19887*/
+.non-clickable-anchor {
+	color: inherit;
+	text-decoration: none !important;
+}
+
+	.non-clickable-anchor:hover {
+		color: inherit;
+	}
+/* END DE19887*/
+
+/*#endregion CURSOR*/
+
+/*#region Background Color*/
+.bg-white {
+	background-color: white;
+}
+
+.bg-tblColorAlt {
+	background-color: #343434;
+}
+
+.bg-gainsboro {
+	background-color: gainsboro;
+}
+
+.bg-lightGray {
+	background-color: lightgray;
+}
+/*#endregion*/
+
+/***********************************************
+			UTILITY CLASSES END
+***********************************************/
+
+/*#region APPLICATION CONTROLS Based on views if required*/
+
+.container-fluid-Second {
+	padding-right: 18px;
+	padding-left: 20px;
+}
+
+.accounting-input-250 {
+	padding: 4px 6px;
+	text-align: left;
+	width: 250px;
+}
+
+.extendedsearch-input {
+	padding: 4px 6px;
+	text-align: left;
+}
+
+.poboard-button-align {
+	margin-right: 18px;
+	text-align: right;
+	float: right;
+	margin-bottom: 10px;
+}
+
+.custom-accordian-header {
+	display: block;
+	padding: 8px 15px;
+	color: #ffffff;
+}
+
+.textarea-300 {
+	margin: 0;
+	width: 300px;
+	height: 100%;
+	-moz-resize: none;
+	-ms-resize: none;
+	-o-resize: none;
+	resize: none;
+}
+
+.textarea-percent-96 {
+	margin: 0;
+	width: 96%;
+	height: 60px;
+	-moz-resize: none;
+	-ms-resize: none;
+	-o-resize: none;
+	resize: none;
+}
+
+.accounting-textarea {
+	margin: 0;
+	-moz-resize: none;
+	-ms-resize: none;
+	-o-resize: none;
+	resize: none;
+}
+
+.SalesOrder-Dispute-accounting-textarea {
+	width: 95%;
+	height: 55px !important;
+}
+
+.SalesOrder-InternalDispute-accounting-textarea {
+	width: 98%;
+	height: 55px !important;
+}
+
+.SalesOrder-Dispute-ReasonNote-accounting-textarea {
+	width: 95%;
+	height: 20px !important;
+}
+
+.SalesOrder-DisputeVendorBill-accounting-textarea {
+	width: 93%;
+	height: 55px !important;
+}
+
+.OnlinePaymentdebitCard {
+	width: 94%;
+	height: 35px !important;
+}
+
+.label {
+	display: inline-block;
+	padding: 6px 10px;
+	font-weight: normal;
+	font-size: 14.844px;
+	line-height: 18px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #0044cc;
+}
+
+.label-SalesOrderDispute {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.notes-add-button {
+	width: 100px;
+	padding-left: 5px;
+}
+
+.item-div-container {
+	width: 100%;
+	margin-left: -5px;
+	padding: 5px 0px 0px 0px;
+	overflow-x: auto;
+}
+
+.item-error-percent-88 {
+	width: 88%;
+}
+
+.item-error-percent-73 {
+	width: 73%;
+}
+
+.item-error-percent-90 {
+	width: 90%;
+}
+
+.item-error-percent-97 {
+	/*width: 97%;*/
+	width: 93%;
+}
+
+.item-error-percent-95 {
+	/*width: 95%;*/
+	width: 90%;
+}
+
+.item-error-percent-88-25 {
+	width: 88.25%;
+}
+
+.item-error-percent-99 {
+	/*width: 99%;*/
+	width: 97.3%;
+}
+
+.vertical-option-button {
+	padding: 0 2px 2px 5px;
+}
+
+.map-grid-padding {
+	padding: 0 35px 0 12px;
+}
+
+.purchase-grid-padding {
+	padding: 0 20px 0 20px;
+}
+
+.disputeBoardDetailsGrid {
+	padding: 25px 20px 20px 20px;
+}
+
+.date-txtbox {
+	width: 193px !important;
+}
+
+.time-txtbox {
+	height: 20px !important;
+	width: 179px !important;
+}
+
+.btn-accordion-tab {
+	margin-left: 25px;
+	margin-bottom: -38px;
+	margin-top: 13px;
+}
+
+.btn-accordion-tab-view {
+	margin-left: 25px;
+	margin-bottom: -38px;
+	margin-top: 14px;
+}
+
+.app-page-title {
+	padding-top: 5px;
+	float: left;
+	margin-bottom: 5px;
+}
+
+.label-text {
+	font-size: 12px;
+	white-space: nowrap;
+	font-weight: bold !important;
+}
+
+.comparisonToleranceGropItmes_Height {
+	height: 225px;
+}
+
+.comparisonTolerance_Select_Height {
+	height: 250px !important;
+}
+
+.rexnord-a {
+	color: #337ec6;
+}
+
+.errorWidth-Vbill-Entry-Fields {
+	width: 91.5%;
+}
+
+.errorWidth-Vbill-Zip-Fields {
+	width: 99%;
+}
+
+.errorWidth-Vbill-Entry-AutoComplete-Fields {
+	width: 93%;
+}
+
+.errorWidth-Vbill-Edit-Fields {
+	/*width: 94%;*/
+	width: 77%;
+}
+
+.errorWidth-Vbill-Dispute-Date-Fields {
+	width: 99%;
+}
+
+.errorWidth-Vbill-Dispute-Fields {
+	/*width: 99.6%;*/
+	width: 98%;
+}
+
+.errorWidth-Vbill-Edit-AutoComplete-Fields {
+	/*width: 95.6%;*/
+	width: 79%;
+}
+
+.errorWidth-Vbill-Edit-AutoComplete-FieldsNew {
+	width: 98%;
+}
+
+.errorWidth-Vbill-Edit-AutoComplete-FieldsNewForPRO {
+	width: 97%;
+}
+
+.errorWidth-Po-Edit-Fields {
+	width: 92%;
+}
+
+.errorWidth-Po-Edit-FieldsNew {
+	width: 87%;
+}
+
+.errorWidth-Po-Edit-FieldsNewForPro {
+	width: 86%;
+}
+
+.errorWidth-Po-Edit-FieldsNewForBillDate {
+	width: 85.5%;
+}
+
+.errorWidth-Po-Zip-Fields {
+	width: 99%;
+}
+
+.errorWidth-Po-Edit-AutoComplete-Fields {
+	width: 93.2%;
+}
+
+.errorWidth-Po-Edit-AutoComplete-FieldsNew {
+	width: 88%;
+}
+
+.errorWidth-Po-Edit-AutoComplete-FieldsNewForVendor {
+	width: 87%;
+}
+
+.errorWidth-So-Header-Fields {
+	width: 99%;
+}
+
+.errorWidth-So-Header-FieldsNewForZip {
+	width: 77%;
+}
+
+.errorWidth-So-Header-AutoComplete-Fields {
+	/*width: 96.5%;*/
+	width: 80.5%;
+}
+
+.errorWidth-Address-Fields {
+	width: 97.2%;
+}
+
+.errorWidth-Multileg-Fields {
+	width: 96.5%;
+}
+
+.errorWidth-Address-AutoComplete-Fields {
+	width: 97.2%;
+}
+
+.errorWidth-Item-So-Description-Fields {
+	/*width: 99.5%;*/
+	width: 96%;
+}
+
+.errorWidth-So-Search-Fields {
+	width: 263px;
+}
+
+.width-PO-SO-Fields {
+	width: 85% !important;
+}
+
+.errorWidth-Payment-Fields {
+	width: 81%;
+}
+
+.errorWidth-SO-AuditSetting-Fields {
+	width: 245px;
+}
+
+.errorWidth-SO-AuditSetting-AutoCompleteField {
+	width: 278px;
+}
+
+.errorWidth-ComparisonTolerance {
+	width: 219px;
+}
+
+/**********************History Details START************************/
+.historyDatesDIV {
+	border: 1px solid black;
+	float: left;
+	height: 200px;
+	width: 165px;
+	margin-top: 5px;
+}
+
+.historyDatesDIVNew {
+	border: 1px solid black;
+	/*border-radius: 11px;*/
+	float: left;
+	height: auto;
+	width: 12%;
+	margin-top: 31px;
+	max-height: 390px;
+}
+
+.max-height-558 {
+	max-height: 558px;
+}
+
+.historyDatesDIVNewForItem {
+	border: 1px solid black;
+	/*border-radius: 11px;*/
+	float: left;
+	height: auto;
+	width: 12%;
+	margin-top: 6px;
+	max-height: 597px;
+}
+
+.historyDatesDIVHeader {
+	background-color: #506a77;
+	padding: 1px 3px 3px 6px;
+	margin-top: -1px;
+}
+
+.historyDatesTitle {
+	background-color: #506a77;
+	color: white;
+}
+
+.historyDatesDIVContent {
+	overflow-y: scroll;
+	height: 78%;
+}
+
+.overFlow-x_Visible {
+	overflow-x: visible;
+}
+
+.overFlow-y_hidden {
+	overflow-x: hidden;
+}
+
+.overFlow-y_Visible {
+	overflow-y: visible;
+}
+
+.visiblityFalse {
+	visibility: hidden;
+}
+
+/*********************History Details END***********************/
+
+/**********************INVOICE EXCEPTION START************************/
+.invReasonHeadorDiv {
+	background-color: #506a77;
+	padding: 1px 3px 3px 6px;
+	margin-top: -1px;
+}
+
+.invReasonTitle {
+	background-color: #506a77;
+	color: white;
+	font-size: 15px;
+}
+
+.invReasonMainDiv {
+	border: 1px solid black;
+	padding: 0px 0px 5px 0px;
+	width: 520px;
+}
+
+/**********************INVOICE EXCEPTION END************************/
+/*#region REPORTVIEWERCONTROLV2*/
+.tooltip-inner {
+	background-color: #000000;
+}
+
+.PageTitle {
+	color: #fff !important;
+	font-size: 22px;
+	font-weight: normal;
+	margin-top: 30px;
+}
+
+.PageTitleBlack {
+	color: #343434 !important;
+	font-size: 22px;
+	font-weight: normal;
+	/*margin-top: 12px;
+	margin-left:1px;*/
+}
+
+.gridHeadingTitleBlack {
+	color: #343434 !important;
+	font-size: 18px;
+	font-weight: normal;
+	/*margin-top: 12px;
+	margin-left:1px;*/
+}
+
+#gridHeader {
+	height: 42px;
+}
+
+.gridSearch {
+	margin-top: 0px;
+}
+
+.searchtextbox {
+	background-size: 170px 15px;
+	background-position: center top;
+}
+
+#search-text {
+	height: 20px;
+}
+
+.exportControlSpan1 {
+	margin-top: 0px;
+}
+/*#endregion REPORTVIEWERCONTROLV2*/
+
+/*#region TABBED VIEW*/
+.navT {
+	margin-bottom: -1px;
+	margin-left: 0;
+	list-style: none;
+}
+
+.nav-tabsT {
+	border-bottom: 0px;
+}
+
+	.nav-tabsT > li > a {
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+		border: 1px solid #C1B7AB !important;
+		margin-right: 4px;
+		background-color: #C9C7C5;
+	}
+
+.page-header {
+	padding: 0;
+	margin: 5px 0 10px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.settings-tabs-account > .active > a, .settings-tabs-account > .active > a:hover, .settings-tabs-account > .active > a:focus {
+	/*color: black;*/
+	cursor: default;
+	font-weight: bold;
+	border-width: 0px !important;
+	border-style: none !important;
+	height: 23px !important;
+	/*height: 15px !important;*/
+	font-weight: normal;
+	background-color: #F0EEEB;
+}
+
+.settings-tabs-account {
+	border-bottom: 0px solid rgb(221, 221, 221);
+}
+
+	.settings-tabs-account > li > a, .settings-pills > li > a {
+		/*border-width: 0px !important;*/
+		padding-left: 8px;
+		padding-right: 8px;
+		/*padding-left: 18px;
+		padding-right: 18px;*/
+	}
+
+input {
+	vertical-align: middle;
+}
+
+.span3 {
+	margin-bottom: 5px;
+}
+
+.span4 {
+	color: black;
+}
+
+input.input-validation-error, .input-validation-error {
+	text-align: left;
+}
+
+	.input-validation-error .inputText {
+		width: 178px !important;
+	}
+
+/*.contentAreaWithoutDenimBackground
+{
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+	min-height: 200px;
+	width: 100%;
+	padding-top: 5px;
+	background-color: #F0EEEB;
+	background-image: none;
+}*/
+
+.contentAreaWithBackground {
+	background: #f0eeeb !important;
+	width: 100%;
+}
+
+.logoname {
+	font-weight: bold;
+	text-transform: capitalize;
+	color: #EF7037;
+	margin-top: 4px;
+}
+
+#tbBilling td, #tblBillingUpdatePopup td {
+	text-align: left;
+	padding-right: 20px;
+	vertical-align: middle;
+}
+
+#tbBilling tr {
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.tabHeaderText {
+	color: #000000;
+	font-size: 16px;
+	width: 100px;
+}
+
+#tbBilling td {
+	/*border: 1px solid #d5d4d2;*/
+}
+
+/*If line is very long hide that line by this property in column(td)*/
+.td-text-nowrap {
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/*#endregion TABBED VIEW*/
+
+/*#region Link*/
+.linkDetailsWithNoBorder {
+	border: none !important;
+	background-color: white;
+}
+
+	.linkDetailsWithNoBorder td {
+		border: none !important;
+	}
+/*#endregion*/
+
+/*#region tabs for pop*/
+.findmorepop {
+	display: none;
+	margin-top: 10px;
+}
+
+.resultpop {
+	display: none;
+}
+
+.searchpop {
+}
+/*#endregion*/
+
+.timepickerTextBox {
+	width: 85%;
+	height: 25px !important;
+	padding: 1px 2px !important;
+	border-radius: 3px !important;
+}
+
+.disabledateLink {
+	pointer-events: none;
+	cursor: default !important;
+}
+
+/*#region popover*/
+
+.popoverpara {
+	font-size: 12px;
+	font-family: sans-serif;
+}
+
+.width-400 {
+	width: 400px;
+}
+
+.width-478 {
+	width: 478px;
+}
+
+.popoverdiv {
+	display: none;
+}
+
+/*#endregion*/
+
+/*#region ACCORDION*/
+.accordion-body.in {
+	overflow: visible;
+}
+
+.carousel-inner {
+	overflow: visible;
+}
+
+#CarouselInner {
+	overflow: hidden;
+	overflow: -moz-hidden-unscrollable;
+}
+
+	#CarouselInner::-webkit-scrollbar {
+		width: 0 !important;
+	}
+
+/*#vendorBillEntryCarouselInner .tab-button
+	{
+		margin-top:14px;
+	}*/
+
+fieldset {
+	border: gray 1px solid;
+}
+
+/*if first DIV is Always Opened like VB, PO,& SO => Header Screen*/
+#collapseAddress,
+#collapseItems,
+#collapseNotes,
+#collapsePOPpossibility,
+#collapseHistory,
+#collapseShipmentNotes,
+#collapsePaymentDetails,
+#collapsePOD,
+#collapseShipping,
+#collapseHazmat,
+#collapseLinks,
+#collapseExtendedSearch,
+#collapseQuickSearch,
+#collapseSearchResults,
+#collapseTransactionSearch,
+#collapseSoQuickSearch,
+#collapseMultileg,
+#collapseClaim,
+#collapseInvoiceException,
+#collapseAudit,
+#collapseNotification,
+#collapseDispute,
+#collapseReBill,
+#collapseDispute #collapseReviewedNotes,
+#collapseAuditedBill {
+	overflow: hidden;
+}
+
+/*if first DIV as ACCORDION like Transaction Search*/
+#collapseTransactionSearch,
+#collapseQuickSearch {
+	overflow: visible;
+}
+
+#hazmatAccordionInner {
+	padding-bottom: 20px !important;
+}
+
+#hazmat {
+	padding-bottom: 20px !important;
+}
+
+#quickSearchInner {
+	padding-bottom: 20px !important;
+}
+
+/*#endregion*/
+
+/*#region  PO To SO Styles*/
+
+.POToSO-div-none {
+	display: none;
+}
+
+.POToSO-div-default {
+	display: normal;
+}
+
+.width-percent-72 {
+	width: 72%;
+}
+
+.width-percent-74 {
+	width: 74%;
+}
+
+.width-percent-76 {
+	width: 76%;
+}
+
+.padding-left-4 {
+	padding-left: 4px;
+}
+
+.padding-left-15 {
+	padding-left: 15px;
+}
+
+.padding-bottom-8 {
+	padding-bottom: 8px;
+}
+
+.errorWidth-Po-So-Date-Fields {
+	width: 95%;
+}
+
+.errorWidth-Po-So-Date-FieldsNew {
+	width: 89%;
+}
+/*#endregion*/
+
+/*#region*/
+.crop {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 94px; /*105px;*/
+}
+
+.cropNotesSODispute {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 10%; /*105px;*/
+	position: absolute;
+}
+
+.cropCarrierNameForLinks {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 14%; /*105px;*/
+	position: absolute;
+}
+
+.cropRebillItems {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 90%; /*105px;*/
+}
+/*#endregion*/
+
+/*For Set Date Picker In popup*/
+.datepicker {
+	z-index: 1151 !important;
+}
+/*For Adding header in Grid for Combo Box*/
+.ediGridWithHeader {
+	background-color: lightgray;
+	height: 50px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.ediGridWithHeaderWithDoubleHeight {
+	background-color: #EEE9E9;
+	height: 90px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.carrierMappingGridWithHeader {
+	background-color: #D1DBE3;
+	height: 50px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.ediGridWithHeaderForVBException {
+	background-color: #F5F5F5;
+	height: 50px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+/**/
+.changeRowColor {
+}
+
+	.changeRowColor tr:active {
+		background-color: gray;
+	}
+
+#activeRow {
+	background-color: gray;
+}
+
+.selected {
+	background-color: lightgray;
+}
+
+.SOBolContainer {
+	background-color: transparent;
+	height: 950px;
+	width: 1000px;
+	margin-top: 25px;
+	margin-left: 100px;
+}
+
+.InvContainer {
+	background-color: transparent;
+	height: 950px;
+	width: 1000px;
+	margin-top: 25px;
+	margin-left: 100px;
+}
+
+.table-weekly-report {
+	width: 70%;
+	margin-bottom: 20px;
+}
+
+.reloadButton {
+	position: relative;
+}
+
+	.reloadButton::before {
+		position: absolute;
+		font-family: FontAwesome;
+		top: 0;
+		left: 5px;
+		content: "\f021";
+		font-weight: 500;
+		font-size: 25px;
+		font-style: normal;
+	}
+
+	.reloadButton:hover {
+		color: blue;
+	}
+
+	.reloadButton:active {
+		color: darkblue;
+	}
+
+.reloadButtonBoard {
+	position: relative;
+}
+
+	.reloadButtonBoard::before {
+		position: absolute;
+		font-family: FontAwesome;
+		top: 3px;
+		left: 5px;
+		content: "\f021";
+		font-weight: 500;
+		font-size: 25px;
+		font-style: normal;
+	}
+
+	.reloadButtonBoard:hover {
+		color: blue;
+	}
+
+	.reloadButtonBoard:active {
+		color: darkblue;
+	}
+
+.position-Relative {
+	position: relative;
+}
+
+.reloadButtonRe-QuoteBoard {
+}
+
+	.reloadButtonRe-QuoteBoard::before {
+		position: absolute;
+		font-family: FontAwesome;
+		top: 3px;
+		left: 5px;
+		content: "\f021";
+		font-weight: 500;
+		font-size: 25px;
+		font-style: normal;
+	}
+
+	.reloadButtonRe-QuoteBoard:hover {
+		color: blue;
+	}
+
+	.reloadButtonRe-QuoteBoard:active {
+		color: darkblue;
+	}
+
+.rebillTotal {
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.refresh_DisputeBoard {
+	text-indent: 0;
+	float: right;
+	padding-right: 50px;
+}
+
+.refresh_VBException {
+	text-indent: 0;
+	float: right;
+	padding-right: 50px;
+	padding-top: 10px;
+}
+
+.refresh_InvoiceException {
+	text-indent: 0;
+	float: right;
+	padding-right: 30px;
+}
+
+.refresh_CarrierMapping {
+	text-indent: 0;
+	float: right;
+	padding-right: 50px;
+	padding-top: 50px;
+}
+
+.refresh-rexnord {
+	float: right;
+	/* margin-right: 4%; */
+	/* margin-top: 0%; */
+	position: absolute;
+	right: 65px;
+	top: 5px;
+}
+
+.clear-all-filter-rexnord-board {
+	margin-top: -7px;
+	margin-right: 5px;
+}
+
+.downloadButton {
+	position: relative;
+}
+
+	.downloadButton::before {
+		position: absolute;
+		font-family: FontAwesome;
+		top: 0;
+		left: 5px;
+		content: "\f019";
+		font-weight: 500;
+		font-size: 25px;
+		font-style: normal;
+	}
+
+	.downloadButton:hover {
+		color: blue;
+	}
+
+	.downloadButton:active {
+		color: darkblue;
+	}
+
+.div-float-history {
+	float: left;
+	width: 87%;
+	margin-top: -60px;
+}
+
+.div-float-historyDetails {
+	float: right;
+	width: 86%;
+	margin-top: -25px;
+}
+
+.newContainer {
+	max-width: 1346px;
+}
+
+/***********************************************
+			VALIDATION CLASSES START
+***********************************************/
+
+.borderRedOnValidation {
+	border: 1px solid #e80c4d !important;
+}
+
+.totalCost-label2 {
+	position: relative;
+	margin-bottom: 0px !important;
+}
+
+	.totalCost-label2 .fa-usd {
+		color: #6A6868;
+		top: 2px;
+		left: 5px;
+		position: absolute;
+	}
+
+.validation-label2 {
+	position: relative;
+	margin-bottom: 0px !important;
+}
+
+	.validation-label2 .fa-question-circle {
+		color: black;
+		top: 2px;
+		left: 5px;
+		position: absolute;
+	}
+
+.validation-label2-for-CityStateZip {
+	position: initial;
+	margin-bottom: 0px !important;
+}
+
+	.validation-label2-for-CityStateZip .fa-question-circle {
+		color: black;
+		top: 2px;
+		left: 5px;
+		position: absolute;
+	}
+
+.validation2 {
+	/*padding-left: 20px;*/
+}
+
+.valdation_icon {
+	cursor: pointer;
+	margin-top: 6px !important;
+}
+
+.valdation_icon_disputeNotes {
+	cursor: pointer;
+	margin-top: 37px !important;
+}
+
+.valdation_icon_SOdisputeNotestab {
+	cursor: pointer;
+	margin-top: 24px !important;
+}
+
+.valdation_icon_grid {
+	cursor: pointer;
+	margin-top: 6px !important;
+	margin-left: 8px;
+}
+
+.edi_details_create_link {
+	height: 30px;
+	background-color: aliceblue;
+	font-weight: normal !important;
+	margin-left: 10px;
+}
+
+.clearAllFilter {
+	height: 30px;
+	position: relative;
+	top: 54px;
+	margin-left: 12px;
+}
+
+.clearAllFilterOfVBException {
+	position: relative;
+	top: 55px;
+	left: 30px;
+}
+
+.clearAllFilterFoPORexnordBoard {
+	position: relative;
+	top: 34px;
+	left: 26px;
+}
+
+.clearAllFilterForPurchaseOrderRexnordBoard {
+	position: relative;
+	top: 47px;
+	left: 26px;
+}
+
+.positionOfRefreshFoVBBoard {
+	position: relative;
+	top: 12px;
+	margin-right: 46px;
+}
+
+.positionOfRefreshFoCompanyMappingAddress {
+	position: relative;
+	top: 8px;
+	margin-right: 34px;
+}
+
+.clearAllFilterForVBExceptionBoard {
+	position: relative;
+	top: 48px;
+	left: 30px;
+}
+
+.clearAllFilterFoCarrierMapping {
+	float: right;
+	margin-top: 46px;
+}
+
+.clearAllFilterFoSOTransactionSearch {
+	float: left;
+	margin-top: 26px;
+	margin-left: 12px;
+}
+
+.clearAllFilterFoInvoiceException {
+	float: left;
+	margin-top: -18px;
+	margin-left: 10px;
+}
+
+.clearAllFilterFoReQuoteBoard {
+	float: left;
+	margin-top: 26px;
+	margin-left: 10px;
+}
+
+.header-count-input {
+	width: 50px;
+	text-align: center;
+}
+
+.gridHeaderPosition {
+	position: relative;
+	top: -35px;
+}
+
+.gridHeaderPositionForVBExceptionBoard {
+	position: relative;
+	top: -46px;
+}
+
+.gridHeaderPositionForPOBoard {
+	position: relative;
+	top: -36px;
+}
+
+.gridHeaderPositionForSOTransactionSearch {
+	position: relative;
+	top: -15px;
+}
+
+.gridForeignBolCustomers {
+	padding: 45px 20px 20px 20px;
+}
+
+.gridForeignBolCustomerSettings {
+	padding: 5px 20px 20px 20px;
+}
+
+.grid-foreignbol-customers {
+}
+
+.grid-foreignbol-customersettings-pop {
+	display: none;
+}
+
+.foreign-bol-inputs {
+	margin: 0px 5px 0px 1px;
+	box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.075);
+}
+
+.foreign-bol-companyname {
+	/*width: 270px !important;*/
+	width: 87%;
+	margin-left: 10px;
+}
+
+.foreign-bol-address1 {
+	/*width: 305px !important;*/
+	width: 86%;
+	margin-left: 10px;
+}
+
+.foreign-bol-address2 {
+	width: 300px !important;
+	margin-left: 10px;
+}
+
+.foreign-bol-city {
+	width: 145px !important;
+	margin-left: 10px;
+}
+
+.foreign-bol-state {
+	width: 90px !important;
+	margin-left: 10px;
+}
+
+.foreign-bol-zip {
+	width: 90px !important;
+	margin-left: 10px;
+}
+
+.foreign-bol-type {
+	width: 230px !important;
+	margin-left: 10px;
+}
+
+.shipperSelected {
+	background-color: lightgray;
+}
+
+.consigneeSelected {
+	background-color: lightgray;
+}
+
+.billtoSelected {
+	background-color: lightgray;
+}
+
+input#foreignBolCompanyTextBox.borderRedOnValidation {
+	width: 85% !important;
+	/*width: 260px !important;*/
+}
+
+input#foreignBolAddress1TextBox.borderRedOnValidation {
+	width: 84% !important;
+	/*width: 295px !important;*/
+}
+
+input#foreignBolCityTextBox.borderRedOnValidation {
+	width: 65% !important;
+	/*width: 135px !important;*/
+}
+
+input#foreignBolZipCodeTextBox.borderRedOnValidation {
+	width: 55% !important;
+	/*width: 80px !important;*/
+}
+
+.kogrid_tooltip + .tooltip.right {
+	position: absolute;
+	margin-left: 5px;
+}
+/*.myOwnTooltip +.tooltip.right .tooltip-arrow
+{
+	display:none;
+}*/
+
+/*.kgCellText.tooltip{
+  top: 26px !important;
+}*/
+
+.foreign-bol-btn-group {
+	position: relative;
+	display: inline-block;
+	*display: inline;
+	*margin-left: .3em;
+	white-space: nowrap;
+	vertical-align: middle;
+	*zoom: 1;
+}
+
+.foreign-bol-characters {
+	margin-top: -30px;
+	padding-left: 750px;
+}
+
+.customerLabel {
+	font-size: 15px;
+	font-weight: bold !important;
+}
+
+.foreign-bol-save {
+	margin-top: -2px !important;
+}
+
+.foreign-bol-timer {
+	/*background-color: white;*/
+	height: 20px;
+	padding-top: 5px;
+	margin-right: 150px;
+	margin-top: 5px;
+	/*padding-left: 20px;*/
+}
+
+.timer-col {
+	background-color: black;
+	height: 20px;
+	width: 60px;
+	color: red;
+	padding-left: 10px;
+}
+
+.timer-colNew {
+	/*background-color: black;*/
+	/*height: 20px;*/
+	/*width: 60px;*/
+	/*color: darkblue;*/
+	padding: 1px;
+	/*font-size:20px;*/
+}
+
+.timer-colNewForLabel {
+	/*background-color: black;*/
+	/*height: 20px;*/
+	/*width: 60px;*/
+	/*color: #33333E;*/
+	padding: 1px;
+	font-weight: bold;
+	/*font-size:19px;*/
+}
+
+.radio-label-container {
+	padding: 2px 0px 2px 1px;
+}
+
+.zero-margin {
+	margin: 0px !important;
+}
+
+.reason-code-popup-header {
+	margin: 10px 0px 0px 10px;
+	font-weight: bold;
+}
+
+/* Region for Validation Sales Order*/
+#divSalesOrderDetailsView input.validation2.borderRedOnValidation {
+	width: 78% !important;
+}
+
+#divSalesOrderDetailsView input#txtCustomerName.borderRedOnValidation {
+	width: 78% !important;
+}
+
+#divSalesOrderDetailsView input#txtvendorName.borderRedOnValidation {
+	width: 79% !important;
+}
+
+#divSalesOrderItemView input.txtDescription.borderRedOnValidation {
+	width: 92.5% !important;
+}
+
+#divSalesOrderItemView input.lineItemWeightClass.borderRedOnValidation {
+	width: 68% !important;
+}
+
+#divSalesOrderItemView input.txtPTSClass.borderRedOnValidation {
+	width: 77% !important;
+}
+
+#divSalesOrderItemView input.txtPCS.borderRedOnValidation {
+	width: 79% !important;
+}
+
+#divsalesOrderAddress input#txtShipperCompany.borderRedOnValidation {
+	width: 90.6% !important;
+}
+
+#divsalesOrderAddress input#txtConsigneeCompany.borderRedOnValidation {
+	width: 90.6% !important;
+}
+
+#divsalesOrderAddress input#txtBillToCompany.borderRedOnValidation {
+	width: 90.6% !important;
+}
+
+#divsalesOrderAddress input#shipperContactPersion.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divsalesOrderAddress input#consigneeContactPerson.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divsalesOrderAddress input#shipperLocationControl.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divsalesOrderAddress input#consigneeLocationControl.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divsalesOrderAddress input#billToLocationControl.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divsalesOrderAddress input#shipperPhoneNo.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#shipperFax.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#shipperAddress1st.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#consigneePhone.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#consigneeFax.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#consigneeAddress1st.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#billToPhone.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#billToFax.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divsalesOrderAddress input#billToAddress1st.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divHazDetails input#txtHazDescription.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divHazDetails input#hazmatUn.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divHazDetails input#packingGroup.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divHazDetails input#hazardousClass.borderRedOnValidation {
+	width: 90% !important;
+}
+
+/* EndRegion for Validation Sales Order*/
+
+/*Region for Vendor Bill Entry View validation*/
+#vendorBillEntryView input#txtvendorName.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillEntryView input#proNumberInput.borderRedOnValidation {
+	width: 91.5% !important;
+}
+
+#vendorBillEntryView div#datepicker.borderRedOnValidation {
+	width: 99.5% !important;
+}
+
+#vendorBillEntryView div#datepicker1.borderRedOnValidation {
+	width: 99.5% !important;
+}
+
+#vendorBillEntryView input#txtOriginZip.borderRedOnValidation {
+	width: 90.5% !important;
+}
+
+#vendorBillEntryView input#txtDestinationZip.borderRedOnValidation {
+	width: 90.5% !important;
+}
+
+#vendorBillAddressView input#shipperPhoneNo.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#shipperFax.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#shipperAddress1st.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#consigneePhone.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#consigneeFax.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#consigneeAddress1st.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#billToPhone.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#billToFax.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillAddressView input#billToAddress1st.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillItemView input.txtDescription.borderRedOnValidation {
+	width: 94% !important;
+}
+
+#vendorBillItemView input.txtCost.borderRedOnValidation {
+	width: 81% !important;
+}
+
+#vendorBillItemView input.txtDisputeAmount.borderRedOnValidation {
+	width: 81% !important;
+}
+
+#vendorBillItemView input.txtdisputeLostAmount.borderRedOnValidation {
+	width: 81% !important;
+}
+
+#vendorBillAddressView input.shipperCompanyNameClass.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#vendorBillAddressView input.consigneeCompanyNameClass.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#vendorBillAddressView input.billToCompanyNameClass.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#vendorBillAddressView input.cityStateZipClass.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#vendorBillDetailsEditView input#txtvendorName.borderRedOnValidation {
+	width: 89.5% !important;
+}
+
+#vendorBillDetailsEditView input#VBproNumber.borderRedOnValidation {
+	width: 89.5% !important;
+}
+
+#vendorBillDetailsEditView input#txtOriginZip.borderRedOnValidation {
+	width: 88% !important;
+}
+
+#vendorBillDetailsEditView input#txtDestinationZip.borderRedOnValidation {
+	width: 88% !important;
+}
+/*#vendorBillDetailsEditView input.txtDisputedAmount.borderRedOnValidation{
+		width: 90.5% !important;
+	}*/
+#vbQuickSearch input#txtproNumber.borderRedOnValidation {
+	width: 34.5% !important;
+}
+
+#vbQuickSearch input#txtBOLNumber.borderRedOnValidation {
+	width: 34.5% !important;
+}
+
+#vbQuickSearch input#txtPONumber.borderRedOnValidation {
+	width: 34.5% !important;
+}
+/*EndRegion for Vendor Bill Entry View validation*/
+/*Purchase Order details*/
+#divPurchaseOrderDetails input#txtvendorName.borderRedOnValidation {
+	width: 80% !important;
+}
+
+#divPurchaseOrderDetails input#txtPRO.borderRedOnValidation {
+	width: 78.5% !important;
+}
+
+#divPurchaseOrderDetails div#datepicker.borderRedOnValidation {
+	width: 85% !important;
+}
+
+#divPurchaseOrderDetails input#txtOriginZip.borderRedOnValidation {
+	width: 78% !important;
+}
+
+#divPurchaseOrderDetails input#txtDestinationZip.borderRedOnValidation {
+	width: 78% !important;
+}
+/*PO TO So Creation*/
+#divPOtoSO input#txtCustomerName.borderRedOnValidation {
+	width: 90% !important;
+}
+/*Purchase Order Details*/
+#divPOItem input.txtDescription.borderRedOnValidation {
+	width: 93.4% !important;
+}
+
+#divPOAddress input.shipperCompanyNameClass.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divPOAddress input.cityStateZipClass.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divPOAddress input.consigneeCompanyNameClass.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divPOAddress input#shipperPhoneNo.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOAddress input#shipperFax.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOAddress input#shipperAddress1st.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOAddress input#consigneePhone.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOAddress input#consigneeFax.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOAddress input#consigneeAddress1st.borderRedOnValidation {
+	width: 90% !important;
+}
+
+#divPOQuickSearch input#txtproNumber.borderRedOnValidation {
+	width: 34.6% !important;
+}
+
+#divPOQuickSearch input#txtBOLNumber.borderRedOnValidation {
+	width: 34.6% !important;
+}
+
+#divPOQuickSearch input#txtPONumber.borderRedOnValidation {
+	width: 34.6% !important;
+}
+
+#divCarriermapping input#txtlegalName.borderRedOnValidation {
+	width: 93% !important;
+}
+
+#divCarriermapping input#txtmasCarrierName.borderRedOnValidation {
+	width: 93% !important;
+}
+
+#divCarriermapping input#txtContactEmail.borderRedOnValidation {
+	width: 89% !important;
+}
+
+#divCarriermapping input#txtContactFax.borderRedOnValidation {
+	width: 89% !important;
+}
+
+#divCarriermapping input#txtContactPhone.borderRedOnValidation {
+	width: 86% !important;
+}
+
+#divCarriermapping input#txtContactName.borderRedOnValidation {
+	width: 86% !important;
+}
+
+#divVBDisputeDetails input#txtsalesOrderTotalDisputeAmount.borderRedOnValidation {
+	width: 83% !important;
+}
+
+#divVBDisputeDetails textarea#txtdisputeNoteString.borderRedOnValidation {
+	width: 96.5% !important;
+}
+
+#divSOShippingView input#txtOriginTerminalPhone.borderRedOnValidation {
+	width: 192px !important;
+}
+
+#divSOShippingView input#txtDestinationTerminalPhone.borderRedOnValidation {
+	width: 192px !important;
+}
+
+#divSOShippingView div#divIdReadyTimeP.borderRedOnValidation input#sdReadyTimeP {
+	width: 166px !important;
+}
+
+#divSOShippingView div#divIdCloseTimeP.borderRedOnValidation input#sdCloseTimeP {
+	width: 166px !important;
+}
+
+#divForeignBolAgent input#emailValidation.borderRedOnValidation {
+	width: 91% !important;
+}
+
+#divPOtoSO div#datepicker.borderRedOnValidation {
+	width: 89% !important;
+}
+
+/*#divDashBoardPopUp div#toDateDIV.borderRedOnValidation input#txtFormDate {
+	width: 64% !important;
+}
+
+#divDashBoardPopUp div#fromDateDatepicker.borderRedOnValidation input#txtToDate {
+	width: 64% !important;
+}*/
+
+/*#divDashBoardPopUp div#toDateDIV.borderRedOnValidation{
+	width:
+}*/
+
+/***********************************************
+			VALIDATION CLASSES END
+***********************************************/
+/*Custom input class for select type input to show equal as minimizing time*/
+.custom-input {
+	border: 1px solid #A9C5E5 !important;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 20px !important;
+}
+
+#controllers {
+	position: inherit;
+	right: 0;
+}
+
+#rootDiv > div > div {
+	display: inline-block;
+	width: 100%;
+}
+
+/***********************************************
+			History Dates UI class started
+***********************************************/
+
+.box-Shadow-ForHistoryDate {
+	box-shadow: 0 10px 2px -2px lightgray;
+}
+
+ol {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-weight: bold;
+	max-height: 339px;
+	overflow-y: auto;
+}
+
+	ol:after {
+		background: #fff;
+		position: absolute;
+		height: 50px;
+	}
+
+	ol:before {
+		position: absolute;
+		background: rgba(0,0,0,0.2);
+		border-radius: 50%;
+		-webkit-box-shadow: 0px 0px 25px 25px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0px 0px 25px 25px rgba(0,0,0,0.2);
+		box-shadow: 0px 0px 25px 25px rgba(0,0,0,0.2);
+	}
+
+	ol > li {
+		margin: 0 0 0 0;
+		padding: 9px 0 16px 40px;
+		list-style: none;
+		height: 8px;
+		-webkit-box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.2);
+		box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.2);
+		font-size: 15px;
+		background: #ffffff;
+	}
+
+		ol > li:first-child {
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			border-top: 0px solid #dedede;
+		}
+
+		ol > li:hover span {
+			color: green;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+		}
+/***********************************************
+			History Dates UI class End
+***********************************************/
+
+/* this we are genrating for header menu */
+#mainNavBackGround {
+	position: fixed;
+	width: 100%;
+	z-index: 99999;
+}
+
+.disable_accordion {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+/* this we are genrating for csv template vendor bill text */
+.vendorCSVTemplate {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.vendorCSVWidth {
+	max-width: 1280px !important;
+}
+
+.margin-left-percent-8 {
+	margin-left: 8%;
+}
+
+/*US20913*/
+
+.vendorBillTrackingCSVWidth {
+	max-width: 1380px !important;
+}
+
+/*START DE19889*/
+/*ONLY for Internet Exlorer*/
+/*@media all and (-ms-high-contrast:none) {
+	*::-ms-backdrop, .width-100-percent-ie {
+		width: 100%;
+	}
+}*/
+/*END DE19889*/
+
+
+/* IE10+ CSS styles go here */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	/*##START: DE20306*/
+	.margin-top-20-IE {
+		margin-top: 20px !important;
+	}
+	/*##END: DE20306*/
+}
+
+/* FIREFOX CSS styles go here */
+@-moz-document url-prefix() {
+	/*##START: DE20306*/
+	.margin-top-20-firefox;
+
+{
+	margin-top: 20px;
+}
+/*##END: DE20306*/
+}
+
+/*#endregion APPLICATION CONTROLS*/
+/*START DE24475*/
+
+.unit-type .tooltip {
+	left: 0 !important;
+}
+
+/*END DE24475*/
+
+/*START US24866*/
+
+@font-face {
+	font-family: tinymce;
+	src: url(font/tinymce.eot);
+	src: url(font/tinymce.eot?#iefix) format('embedded-opentype'), url(font/tinymce.woff) format('woff'), url(font/tinymce.ttf) format('truetype'), url(font/tinymce.svg#tinymce) format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: tinymce-small;
+	src: url(font/tinymce-small.eot);
+	src: url(font/tinymce-small.eot?#iefix) format('embedded-opentype'), url(font/tinymce-small.woff) format('woff'), url(font/tinymce-small.ttf) format('truetype'), url(font/tinymce-small.svg#tinymce) format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+.email-attachments tbody {
+	display: block;
+	height: 35px;
+	overflow: auto;
+}
+
+	.email-attachments thead, .email-attachments tbody tr {
+		display: table;
+		width: 100%;
+	}
+
+@media (min-width:1025px) and (max-width: 1500px) { /* Laptops and small screens */
+	.email-popup {
+		margin-top: -60% !important;
+	}
+
+	.email-body {
+		height: 150px;
+	}
+
+		.email-body iframe {
+			height: 110px !important;
+		}
+}
+
+@media (min-width:1501px) { /* Big screens */
+
+	.email-body {
+		height: 400px;
+	}
+
+		.email-body iframe {
+			height: 360px !important;
+		}
+}
+
+/*END US24866*/
+/*START DE24475*/
+
+.unit-type .tooltip {
+	left: 0 !important;
+}
+
+/*END DE24475*/
+
+/*##START: US25143*/
+/*#region Dashboard Tabs Classes*/
+.dashboard-container {
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.moreInfoBtn {
+	border: transparent;
+	border-radius: 12px;
+	padding: 2px 20px;
+	font-weight: bold;
+	color: #fff;
+	background: #58a6dc;
+	font-size: 15px;
+	cursor: pointer;
+	margin-top: 3px;
+}
+
+.dashboard_bar {
+	width: 100%;
+	border-bottom: 3px solid #1bcca8;
+	height: auto;
+}
+
+.dashboard_menu {
+	float: left;
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+
+	.dashboard_menu li {
+		border-radius: 7px 7px 1px 1px;
+		color: #363638;
+		float: left;
+		line-height: 40px;
+		font-weight: bold;
+		padding: 0 10px;
+		cursor: pointer;
+	}
+
+		.dashboard_menu li.active_dashboard_li {
+			border-bottom: 40px solid #1bcca8;
+			border-left: 20px solid rgba(0, 0, 0, 0);
+			border-right: 20px solid rgba(0, 0, 0, 0);
+			height: 0;
+			color: #fff;
+			text-decoration: underline;
+		}
+
+		.dashboard_menu li.inactive_dashboard_li {
+			border-bottom: 40px solid #567771;
+			border-left: 20px solid rgba(0, 0, 0, 0);
+			border-right: 20px solid rgba(0, 0, 0, 0);
+			height: 0;
+			color: #fff;
+		}
+
+.dashboard_btn {
+	float: right;
+}
+/*#endregion Dashboard Tabs Classes*/
+/*##END: US25143*/
+
+
+/*##START: US25237*/
+/*#region popup Process Credit Classes*/
+
+.margin-top-8 {
+	margin-top: 8px;
+}
+
+.margin-left-0 {
+	margin-left: 0px;
+}
+
+.process-credit-popup {
+	background-color: #f0eeeb;
+}
+/*#endregionpopup Process Credit Classes*/
+
+/*##END: US25237*/
+
+/*##START US25144*/
+/*#region New Grid UI*/
+.new-grid-ui-container .kgHeaderContainer {
+	width: 100% !important;
+}
+
+.new-grid-ui-container .koGrid {
+	background-color: transparent;
+}
+
+.new-grid-ui-container .kgGroupPanel,
+.new-grid-ui-container .kgHeaderContainer,
+.new-grid-ui-container .kgHeaderCell {
+	background-color: transparent !important;
+}
+
+.new-grid-ui-container .kgTopPanel {
+	background-color: transparent !important;
+	border-bottom: none;
+}
+
+.new-grid-ui-container .kgHeaderCell {
+	border-radius: 12px 12px 0 0;
+	color: #fff;
+	background: #22679e !important;
+	text-align: center;
+}
+
+.new-grid-ui-container .kgHeaderText {
+	margin-bottom: 3px;
+	color: #fff;
+}
+
+.new-grid-ui-container .kgFooterPanel {
+	background: #00A9E0 !important;
+}
+
+.new-grid-ui-container .kgViewport {
+	width: 100%;
+	table-layout: fixed;
+	max-width: 100%;
+	text-align: center;
+	background-color: white;
+	padding-bottom: 10px;
+}
+
+.new-grid-ui-container .kgRow:hover {
+	background: #d7effc !important;
+}
+
+.new-grid-ui-container .kgCell {
+	border: 1px solid #58a6dc;
+	border-right: 0;
+	border-bottom: 0;
+}
+
+.new-grid-ui-container .kgRow:last-child {
+	border-bottom: 1px solid #58a6dc;
+}
+
+.new-grid-ui-container .kgRow.odd,
+.new-grid-ui-container .kgRow.even {
+	background-color: white;
+}
+
+.new-grid-ui-container #gridHeader.gridCorners {
+	height: 37px;
+	line-height: 10px;
+}
+
+.new-grid-ui-container .gridCorners {
+	background-color: #00A9E0;
+	border-radius: 10px;
+	padding-top: 7px;
+	margin-bottom: 10px;
+	height: 40px;
+}
+
+.reload-page-ar-dashboard {
+	position: relative;
+	top: 37px;
+}
+
+.new-grid-ui-container .PageTitle {
+	font-weight: bold;
+	font-size: 19px;
+	color: white !important;
+}
+
+.new-grid-ui-container .kgLabel,
+.new-grid-ui-container .pageDropdownLabel {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.new-grid-ui-container .kgFooterTotalItems {
+	padding: 0px;
+}
+/*#endregion*/
+
+.ar-dashboard-grid-container {
+	width: 1780px;
+}
+
+/*##END US25144*/
+
+/*##START: US25300*/
+.credit-request-section-header {
+	font-weight: bold;
+	font-size: large;
+	padding: 5px 0 5px;
+	color: grey;
+}
+/*##END: US25300*/
+
+/*##START: US25164*/
+.credit-request-grid-reload {
+	left: 1465px;
+}
+
+/*##START: US25686*/
+.vendorbill-reassignment-grid-reload {
+	left: 1440px;
+}
+/*##START: US25686*/
+/*##END: US25164*/

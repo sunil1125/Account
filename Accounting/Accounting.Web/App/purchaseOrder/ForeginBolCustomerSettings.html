@@ -1,0 +1,97 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" class="row-fluid">
+	<div id="gridCustomers" class="row-fluid grid-foreignbol-customers" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9, height: 800 }">
+		<div class="container-fluid margin-bottom-firefox">
+			<div class="accordion" id="accordion2">
+				<div class="ediGridWithHeader margin-top-30 gridOptionalHeader">
+					<div class="margin-left-20 div-float-left margin-top-9">
+						<table>
+							<tr>
+								<td class="align-right typeLabels">Customer:</td>
+								<td class="padding-left-5 typeLabelsForCompanyMapping">
+									<div data-bind="compose: { model: customerSearchList, view: 'templates/searchCustomerAutoComplete' }"></div>
+								</td>
+								<td class="padding-left-5">
+									<button class="btn btn-primary" data-bind="click: onAddClick">Add</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="float-right" style="margin: 8px;">
+						<table>
+							<tr>
+								<td>
+									<button class="btn btn-primary height-30" data-bind="click: onClickClearAll, visible: isSearchFilterItemsData">Clear Filter</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="container-fluid">
+					<div class="row-fluid">
+						<div id="gridForeignBolCustomers" class="margin-top--15" data-bind="compose: { model: ForeignBolCustomersContainer, view: '../templates/reportViewerControlV2' }"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-foreignbol-customersettings-pop" data-bind="showContentProgress: listProgressSettings, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+		<div class="padding-top-10">
+			<div class="padding-left-20 customerLabel">
+				<span data-bind="text: customerDisplay"></span>
+			</div>
+		</div>
+		<div class="container-fluid margin-bottom-firefox">
+			<div class="accordion" id="Div1">
+				<div class="ediGridWithHeader margin-top-30 gridOptionalHeader">
+					<div class="typecontrols div-float-left padding-left-20 padding-8">
+						<div class="btnControlcheckbox" data-bind="compose: { model: obcOptionButtonsList, view: 'templates/ForeignBolOptionButtons' }"></div>
+						<!--				<div class="foreign-bol-characters"><span>Characters:</span><input type="text" maxlength="2" data-bind=" numeric: bolCharacters, value: bolCharacters, enable: isEdiBolLengthMapped" style="width: 20px; margin-left: 5px;" /></div>-->
+						<div class="foreign-bol-characters">
+							<table>
+								<tr>
+									<td class="typeLabels">Characters:</td>
+									<td class="typeLabelsForCompanyMapping">
+										<label class="validation-label2" data-bind="validationElement: bolCharacters">
+											<i class="fa fa-question-circle valdation_icon" data-bind=" visible: ((bolCharacters.isModified() && !bolCharacters.isValid()) || (bolCharacters() < 1 && isEdiBolLengthMapped)), tooltip: { title: bolCharacters.error, placement: 'bottom', trigger: 'hover' } "></i>
+											<input type="text" class="validation2" data-bind="numeric: bolCharacters, css: { borderRedOnValidation: ((bolCharacters.isModified() && !bolCharacters.isValid()) || (bolCharacters() < 1 && isEdiBolLengthMapped)) }, style: { 'padding-left': ((bolCharacters.isModified() && !bolCharacters.isValid()) || (bolCharacters() < 1 && isEdiBolLengthMapped)) ? '18px' : '' }, enable: isEdiBolLengthMapped, value: bolCharacters, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }, attr: { id: ('txtPCS' + 1) }" style="width: 40px" maxlength="2" />
+										</label>
+									</td>
+								</tr>
+							</table>
+							<!--<span>Characters:</span>-->
+							<!--				<label class="validation-label2" data-bind="validationElement: bolCharacters">
+					<i class="fa fa-question-circle valdation_icon" data-bind=" visible: (bolCharacters.isModified() && !bolCharacters.isValid()), tooltip: { title: bolCharacters.isModified() ? bolCharacters.error : '', placement: 'bottom', trigger: 'hover' } "></i>
+					<input type="text" maxlength="2" style="width: 40px; margin-left: 5px;" class="validation2 txtPCS" data-bind="numeric: bolCharacters,  validationOptions: { errorElementClass: null }, enable: isEdiBolLengthMapped, css: { borderRedOnValidation: (bolCharacters.isModified() && !bolCharacters.isValid()) }, style: { 'padding-left': (bolCharacters.isModified() && !bolCharacters.isValid()) ? '15px' : '' }" />
+				</label>-->
+						</div>
+					</div>
+					<div class="float-right padding-8">
+						<div class="float-left">
+							<button class="btn btn-primary height-30" data-bind="click: onClickClearAllAddressGrid, visible: isSearchFilterItemsDataAddressGrid">Clear Filter</button>
+							<button id="btnAddNewRow" class="btn btn-primary" data-bind="click: addEmptyRow">Add New Address</button>
+							<button id="btnSave" class="btn btn-primary" data-bind="click: saveCustomerSettings">Save</button>
+							<button id="btnBack" class="btn btn-primary" data-bind="click: onBackClick">Back</button>
+						</div>
+						<div class="float-right">
+
+							<a href="javascript:void(0)" class="positionOfRefreshFoCompanyMappingAddress" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid-Second">
+			<div class="row-fluid">
+				<div id="gridForeignBolCustomerSettings" class="margin-top--35" data-bind="compose: { model: ForeignBolCustomerSettingsContainer, view: '../templates/reportViewerControlV2' }"></div>
+			</div>
+		</div>
+	</div>
+</div>

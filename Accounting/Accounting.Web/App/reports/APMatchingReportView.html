@@ -1,0 +1,132 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div class="container-fluid">
+	<div id="mainDiv" class="row-fluid">
+		<div class="padding-bottom-15 margin-top-5">
+			<span class="PageTitleBlack">AP Matching Report</span>
+		</div>
+		<div class="row-fluid">
+			<div class="row-fluid margin-top-4" style="border-top: darkgrey 1px" id="gridbind">
+				<div>
+					<ul id="tabMySettings" class="nav nav-tabs navT nav-tabsT settings-tabs-account">
+						<li id="uploadDetailsLink" class="active"><a href="#uploadDetails" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Upload Details</span></a></li>
+						<li id="currentStatusLink" class=""><a href="#currentStatus" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">Current Status</span></a></li>
+						<li id="historyLink" class=""><a href="#history" data-toggle="tab" tabindex="-1"><span class="tabHeaderText">History</span></a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content contentAreaWithoutDenimBackground">
+						<div class="tab-pane fade active in " id="uploadDetails" style="margin: 10px;">
+
+							<div id="buttonDiv" class="align-right margin-top-5">
+								<button class="btn btn-primary" style="margin-right: 15px;" data-bind="click: onSchedultIt">Schedule It</button>
+								<button class="btn btn-primary" data-bind="click: onRunDown">Run Now</button>
+							</div>
+							<div style="margin-top: -30px;">
+								<table>
+									<tr>
+										<td class="typeStatus">Carrier
+										</td>
+										<td class="typeStatus">Upload Statement
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="errorWidth-Vbill-Edit-AutoComplete-Fields" data-bind="compose: { model: vendorNameSearchList, view: 'templates/searchVendorNameControl' }" style="margin-right: 30px;"></div>
+										</td>
+										<td>
+											<input type="file" class="display-none" name="fileToUpload" accept=".csv,.xls,.xlsx" id="fileToUpload" data-buttontext="Your label here." data-bind="event: { change: uploadStatementDocument }" />
+											<input type="text" data-bind="value: uploadedStatementFileName" disabled="disabled" />
+										</td>
+										<td>
+											<button id="btnUploadStatemetn" class="btn flatButton" onclick="$('input[id=fileToUpload]').click();">Browse</button>
+										</td>
+									</tr>
+								</table>
+								<table style="margin-top: 20px;">
+									<tr>
+										<td class="typeStatus" colspan="2">Select MAS Report
+										</td>
+										<td class="typeStatus" colspan="2">Select Dispute Report
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="file" class="display-none" name="fileToUploadMasReport" id="fileToUploadMasReport" data-buttontext="Your label here." data-bind="event: { change: uploadMASReportDocument }" />
+											<input type="text" data-bind="value: uploadedMASReportFileName" disabled="disabled" />
+										</td>
+										<td>
+											<button id="btnUploadSelectedMasReport" class="btn flatButton" onclick="$('input[id=fileToUploadMasReport]').click();" style="margin-right: 28px;">Browse</button>
+										</td>
+										<td>
+											<input type="file" class="display-none" name="fileToUploadDisputeReport" id="fileToUploadDisputeReport" data-buttontext="Your label here." data-bind="event: { change: uploadDisputeReportDocument }" />
+											<input type="text" data-bind="value: uploadedDisputeReportFileName" disabled="disabled" />
+										</td>
+										<td>
+											<button id="Button1" class="btn flatButton" onclick="$('input[id=fileToUploadDisputeReport]').click();">Browse</button>
+										</td>
+									</tr>
+								</table>
+								<table style="margin-top: 20px;">
+									<tr>
+										<td class="typeStatus" colspan="2">Select Re-consolidated Report
+										</td>
+										<td class="typeStatus" colspan="2">Schedule Date
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="file" class="display-none" name="fileToUploadReConsolidatedReport" id="fileToUploadReConsolidatedReport" data-buttontext="Your label here." data-bind="event: { change: uploadReConsolidatedDocument }" />
+
+											<input type="text" data-bind="value: uploadedReConsolidatedFileName" disabled="disabled" />
+										</td>
+										<td>
+											<button id="Button2" class="btn flatButton" onclick="$('input[id=fileToUploadReConsolidatedReport]').click();" style="margin-right: 29px;">Browse</button>
+										</td>
+										<td>
+											<div class="typecontrols padding-top-0">
+												<div class="input-append date" id="datepicker" data-date="mm/dd/yyyy" data-date-format="mm/dd/yyyy" data-date-today-btn="true" data-date-today-highlight="true" data-bind="datepicker: scheduleDate, datepickerOptions: datepickerOptions">
+													<input id="scheduleDate" type="text" size="16" class=" span10" placeholder="mm/dd/yyyy" style="width: 265px;" data-bind="event: { blur: convertToscheduleDate }, value: scheduleDate, valueUpdate: 'afterkeydown'" />
+													<span class="add-on">
+														<i class="icon-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="currentStatus">
+							<div class="row-fluid">
+								<div id="divItemsContainer" class="span12 item-div-container" style="width: 60%;">
+									<table id="tblSalesOrderItems" class="table table-bordered shipment-itemDispute">
+										<thead>
+											<tr>
+												<th style="width: 25%;">
+													<label class="align-center">Carrier</label></th>
+
+												<th style="width: 35%;">
+													<label class="align-center">Status</label></th>
+										</thead>
+										<tbody id="bodysalesOrderItems" class="line-items">
+											<tr class="lineItemRow">
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="history">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

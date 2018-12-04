@@ -1,0 +1,106 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<!--<changeHistory>
+<id>US20961</id> <by>Shreesha Adiga</by> <date>08-03-2016</date> <description>Enable save and state dropdown always</description>
+</changeHistory>-->
+<div class="row-fluid" data-bind="showContentProgress: listProgress, contentProgressOptions: { showProgressBar: true, opacity: 0.9 }">
+	<div class="tableLayout">
+		<div class="table-cell">
+			<!--###START: US20352-->
+			<div class="floatLeft">
+				<table>
+					<tr>
+						<!-- data-bind="visible: isCanAccessIRDisputeNotes()"-->
+						<!--##START: US20961-->
+						<td class="typeLabels">State:
+						</td>
+						<td class="typeStatus">
+							<select class="newselect width-238" data-bind="options: salesOrderStatusTypes, optionsText: 'DisputedStatus', optionsValue: 'ID', optionsCaption: 'Select..', value: selectedStatusType"></select>
+						</td>
+						<!--##ENd: US20961-->
+					</tr>
+				</table>
+			</div>
+			<!--###END: US20352-->
+			<div class="floatRight" style="margin-top: -30px; margin-right: 10px;">
+				<!--##START: US20961-->
+				<button class="btn btn-primary" data-bind="click: onSave">Save</button>
+				<!--##ENd: US20961-->
+			</div>
+		</div>
+	</div>
+	<div class="tableLayout">
+		<div class="table-cell">
+			<table class="width-percent-100">
+				<tr>
+					<td>
+						<!--<fieldset>
+						<legend>Vendor Bill Dispute Details</legend>-->
+						<div style="min-height: 130px; background-color: gainsboro;">
+							<div class="row-fluid">
+								<div id="divDisputeItemsContainer" class="span12 item-div-container">
+									<table id="tblSalesOrderItems" class="table table-bordered shipment-itemDispute">
+										<thead>
+											<tr>
+												<th style="width: 15%;">
+													<label class="align-center">Items</label></th>
+												<th style="width: 15%;">
+													<label class="align-center">Desc</label></th>
+												<th style="width: 11%;">
+													<label class="align-center">Cost</label></th>
+												<th style="width: 13%;">
+													<label class="align-center">Dispute Amount</label>
+												</th>
+												<th style="width: 30%;">
+													<label class="align-center">Reason Note</label>
+												</th>
+												<th style="width: 10%;">
+													<label class="align-center">Reason Code</label>
+												</th>
+										</thead>
+										<tbody id="bodysalesOrderItems" class="line-items" data-bind="foreach: DisputeVendorBillItemsModel">
+											<tr class="lineItemRow">
+												<td>
+													<input type="text" class="width-percent-90" data-bind="value: item" readonly="readOnly" />
+												</td>
+												<td>
+													<input type="text" style="width: 85%;" readonly="readOnly" data-bind="value: description" />
+												</td>
+												<td>$<input type="text" style="width: 82%;" readonly="readOnly" data-bind="value: cost" />
+												</td>
+												<td>$<input type="text" style="width: 87%;" readonly="readOnly" data-bind="value: disputeAmount" />
+												</td>
+												<td>
+													<textarea id="Textarea1" style="height: 30px !important" class="accounting-textarea  SalesOrder-Dispute-ReasonNote-accounting-textarea" cols="10" rows="3" maxlength="4000" data-bind="value: reasonNotes, enable: $parent.isBillStatusDispute, valueUpdate: 'afterkeydown', validationOptions: { errorElementClass: null }"></textarea>
+												</td>
+												<td>
+													<select id="select1" class="margin-bottom-0 width-percent-88" data-bind="options: reasonCodesListFoBinding, enable: $parent.isBillStatusDispute, optionsText: 'Remarks', value: selectedReasonCode"></select>
+												</td>
+											</tr>
+										</tbody>
+										<tr class="lineItemRow">
+											<td></td>
+											<td class="width-percent-1 align-center vertical-align-middle" style="font-weight: bolder">Total
+											</td>
+											<td style="text-align: left">
+												<span style="font-weight: bold;">$</span><span class="label-SalesOrderDispute" data-bind="text: salesOrderTotalCost, attr: { title: salesOrderTotalCost }" style="width: 65%; font-weight: bold; margin-left: 2px;"></span>
+											</td>
+											<td style="text-align: left">
+												<span style="font-weight: bold;">$</span><span class="label-SalesOrderDispute" data-bind="text: totalDisputeAmount, attr: { title: totalDisputeAmount }" style="width: 65%; font-weight: bold; margin-left: 2px;"></span>
+											</td>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!--</fieldset>-->
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

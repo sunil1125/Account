@@ -1,0 +1,98 @@
+<!-----------------------------------------------------------------------------
+- Copyright (C) 2010-2016 GlobalTranz - All Rights Reserved. 
+-
+- Proprietary and confidential. Unauthorized copying of this file, via any
+- medium is strictly prohibited without the explicit permission of GlobalTranz. 
+------------------------------------------------------------------------------>
+
+<div id="mainDiv" class="row-fluid">
+	<!--<div class="app-page-title margin-left-25">
+		<span class="PageTitleBlack">Re-Quote Process Board</span>
+	</div>-->
+	<br />
+
+	<style>
+		.legend-requote-ul
+		{
+			list-style: none;
+		}
+
+			.legend-requote-ul li
+			{
+				float: left;
+				margin-right: 10px;
+				font-size: 20px;
+			}
+
+			.legend-requote-ul span
+			{
+				border: 1px solid #ccc;
+				float: left;
+				width: 20px;
+				height: 20px;
+				margin: 2px;
+			}
+
+			.legend-requote-ul .grey-ul-element
+			{
+				background-color: grey;
+			}
+
+		.background-automate-requote
+		{
+			background-color: grey;
+		}
+
+		.background-manual-requote
+		{
+			background-color: yellow;
+		}
+	</style>
+
+	<div class="clearfix"></div>
+	<div class="container-fluid">
+		<div class="accordion" id="accordion2">
+			<div class="carrierMappingGridWithHeader">
+
+				<div class="margin-right-35 float-right margin-all-10">
+					<table>
+						<tr>
+							<td></td>
+							<td>
+								<button class="btn btn-primary height-30 margin-top--3" data-bind="click: saveGridData">Submit</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30 margin-top--3" data-bind="click: onClickAutomateSelectAll">Select Automate</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30 margin-top--3" data-bind="click: onClickManualSelectAll">Select Manual</button>
+							</td>
+							<td>
+								<button class="btn btn-primary height-30 margin-top--3" data-bind="click: onClickUnSelectAll">Unselect All</button>
+							</td>
+							<td class="position-Relative">
+								<a href="javascript:void(0)" data-bind="click: reloadPage, attr: { title: currentDateTime }"><i class="reloadButtonRe-QuoteBoard"></i></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div id="reQuote" class="gridHeaderPosition" data-bind="compose: { model: requoteBoardContainer, view: '../templates/reportViewerControlV2' }"></div>
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<ul class="legend-requote-ul">
+				<li><span style="background-color: #a0ddf2"></span>Automate Process</li>
+				<li><span style="background-color: yellow"></span>Manual Process</li>
+			</ul>
+		</div>
+		<div style="color: red; float: right">* &nbsp; This board will get refreshed after every 4-8 hours</div>
+	</div>
+</div>
